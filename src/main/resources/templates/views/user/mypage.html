@@ -6,14 +6,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="./css/modal.css" />
-        <link rel="stylesheet" href="./css/mypage.css" />
-        <link rel="stylesheet" href="./css/header.css" />
-        <link rel="stylesheet" href="./css/footer.css" />
-        <script defer src="./js/mypage.js"></script>
-        <script defer src="./js/header.js"></script>
-        <script defer src="./js/modal.js"></script>
+        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/modal.css}" />
+        <link rel="stylesheet" th:href="@{/css/mypage.css}" />
+        <link rel="stylesheet" th:href="@{/css/header.css}" />
+        <link rel="stylesheet" th:href="@{/css/footer.css}" />
+        <script defer th:src="@{/js/mypage.js}"></script>
+        <script defer th:src="@{/js/header.js}"></script>
+        <script defer th:src="@{/js/footer.js}"></script>
         <title>마이페이지</title>
     </head>
     <body>
@@ -46,7 +46,7 @@
                         <div class="mypage-content-content">
                             <div>프로필사진</div>
                             <div class="picture-change-wrap">
-                                <img src="./img/핑구.jpg" width="80px" />
+                                <img src="/img/핑구.jpg" width="80px" />
                                 <button type="button" class="picture-change-btn">변경하기</button>
                             </div>
                         </div>

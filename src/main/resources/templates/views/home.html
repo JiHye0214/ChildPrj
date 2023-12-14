@@ -6,10 +6,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="./css/home.css" />
-        <link rel="stylesheet" href="./css/footer.css" />
-        <script defer src="./js/home.js"></script>
+        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/home.css}" />
+        <link rel="stylesheet" th:href="@{/css/footer.css}" />
+        <script defer th:src="@{/js/home.js}"></script>
         <title>우리아이</title>
     </head>
     <body>
@@ -17,22 +17,22 @@
             <div class="home-header">
                 <ul class="headerBtnWrap">
                     <li>
-                        <img class="headerBtn heart" src="./img/zzimBtn.png" height="35px" />
+                        <img class="headerBtn heart" src="/img/zzimBtn.png" height="35px" />
                     </li>
                     <li>
-                        <img class="headerBtn" src="./img/me.png" height="35px" />
+                        <img class="headerBtn" src="/img/me.png" height="35px" />
                     </li>
                     <li>
-                        <img class="headerBtn" src="./img/loginBtn.png" height="35px" />
+                        <img class="headerBtn" src="/img/loginBtn.png" height="35px" />
                     </li>
                     <li>
-                        <img class="headerBtn logoutBtn" src="./img/logoutBtn.png" height="35px" />
+                        <img class="headerBtn logoutBtn" src="/img/logoutBtn.png" height="35px" />
                     </li>
                 </ul>
             </div>
             <div class="home-main">
                 <div class="logo-wrap">
-                    <img class="logo" src="./img/logo.png" />
+                    <img class="logo" src="/img/logo.png" />
                 </div>
                 <div class="home-main-menu">
                     <div class="main-menu-wrap">

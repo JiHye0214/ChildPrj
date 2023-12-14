@@ -6,12 +6,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="./css/header.css" />
-        <link rel="stylesheet" href="./css/protectDetail.css" />
-        <link rel="stylesheet" href="./css/footer.css" />
+        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/header.css}" />
+        <link rel="stylesheet" th:href="@{/css/protectDetail.css}" />
+        <link rel="stylesheet" th:href="@{/css/footer.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-        <script defer src="./js/header.js"></script>
+        <script defer th:src=th:href="@{/js/header.js}"></script>
         <title>지켜주기 상세</title>
     </head>
     <body>
@@ -23,7 +23,7 @@
         <div id="protectDetail-wrap">
             <div id="route-wrap">
                 <p>유치원</p>
-                <img src="./img/rightArrow.png" alt="rightArrow" />
+                <img src="/img/rightArrow.png" />
                 <p>서울솔방울유치원</p>
                 <!-- KINDERNAME -->
             </div>
@@ -63,58 +63,6 @@
                             <p>
                                 <a href="https://www.서울솔방울유치원.kr:497/home/">바로가기 </a>
                                 <!-- HPADDR -->
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- section -->
-        <!-- 어린이집 상세 -->
-        <div id="protectDetail-wrap">
-            <div id="route-wrap">
-                <p>어린이집</p>
-                <img src="./img/rightArrow.png" alt="thinArrow" />
-                <p>사랑별어린이집</p>
-                <!-- CRNAME -->
-            </div>
-
-            <div id="detail-wrap">
-                <div id="map-wrap">
-                    <div id="map"></div>
-                </div>
-                <!-- 위도 : LA / 경도 : LO -->
-
-                <div id="txt-wrap">
-                    <div id="txt-title">사랑별어린이집</div>
-                    <!-- CRNAME -->
-                    <div id="txt-list">
-                        <div id="txt-list-title">
-                            <p>주소</p>
-                            <p>설립유형</p>
-                            <p>보육실수</p>
-                            <p>현원/정원</p>
-                            <p>통학차량</p>
-                            <p>전화번호</p>
-                            <p>홈페이지</p>
-                        </div>
-                        <div id="txt-list-content">
-                            <p>서울특별시 서대문구 수색로2길 19-7 DMC금호리첸시아아파트 단지 내 fdfdfdfdfdfdfdfdfdfdfdfdfdfdfd</p>
-                            <!-- CRADDR -->
-                            <p>국공립</p>
-                            <!-- CRTYPENAME -->
-                            <p>4</p>
-                            <!-- NRTRROOMCNT -->
-                            <p>0/27</p>
-                            <!-- CRCHCNT(현원)/CRCAPAT(정원) -->
-                            <p>미운영</p>
-                            <!-- CRCARGBNAME -->
-                            <p>02-6411-6191</p>
-                            <!-- CRTELNO -->
-                            <p>
-                                <a href="www.daum.net/ktng2022">바로가기 </a>
-                                <!-- CRHOME -->
                             </p>
                         </div>
                     </div>

@@ -6,14 +6,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="./css/signUpAgree.css" />
-        <script defer src="./js/signUpAgree.js"></script>
+        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/signUpAgree.css}" />
+        <script defer th:src="@{/js/signUpAgree.js}"></script>
         <title>회원가입 동의</title>
     </head>
     <body>
         <div class="agree-wrapper">
-            <img class="logo" src="./img/logo.png" />
+            <img class="logo" src="/img/logo.png" />
             <form class="agree-content-wrapper">
                 <div class="agree-content">
                     <input type="checkbox" id="check0" class="agree-checkbox" />
