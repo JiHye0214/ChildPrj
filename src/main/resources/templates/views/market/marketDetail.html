@@ -16,38 +16,7 @@
     </head>
     <body>
         <!-- header -->
-        <header>
-            <div class="header">
-                <ul class="headerBtnWrap">
-                    <img class="headerBtn" src="./img/logo.png" alt="" height="80px" />
-                    <li class="menuWrap headerBtn">
-                        <div class="menuTitleWrap">
-                            <div class="menuText togetherBtn">함께하기</div>
-                            <div class="menuText protectBtn">지켜주기</div>
-                            <div class="menuText raiseBtn">같이키우기</div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="headerBtnWrap">
-                    <li>
-                        <img class="raiseToggle talkToggle" title="community" src="./img/toggleC.png" height="30px" />
-                        <img class="raiseToggle marketToggle" title="market" src="./img/toggleM.png" height="30px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/zzimBtn.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/me.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/loginBtn.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="logoutBtn rightHeaderBtn" src="./img/logoutBtn.png" height="35px" />
-                    </li>
-                </ul>
-            </div>
-        </header>
+        <th:block th:insert="~{fragment/header::header}"></th:block>
 
         <!-- main -->
         <div class="main">
@@ -135,11 +104,6 @@
         </div>
 
         <!-- footer -->
-        <footer class="footer">
-            <div class="footerBtn">이용약관</div>
-            <div>|</div>
-            <div class="footerBtn">개인정보 처리방침</div>
-            <div>ⓒ BasagHMPJ</div>
-        </footer>
+        <th:block th:insert="~{fragment/footer::footer}"></th:block>
     </body>
 </html>
