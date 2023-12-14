@@ -6,48 +6,17 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="./css/communityDetail.css" />
-        <link rel="stylesheet" href="./css/header.css" />
-        <link rel="stylesheet" href="./css/footer.css" />
-        <script defer src="./js/header.js"></script>
-        <script defer src="./js/communityDetail.js"></script>
+        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/header.css}" />
+        <link rel="stylesheet" th:href="@{/css/footer.css}" />
+        <link rel="stylesheet" th:href="@{/css/communityDetail.css}" />
+        <script defer th:src="@{/js/header.js}"></script>
+        <script defer th:src="@{/js/communityDetail.js}" ></script>
         <title>커뮤니티 상세</title>
     </head>
     <body>
         <!-- header -->
-        <header>
-            <div class="header">
-                <ul class="headerBtnWrap">
-                    <img class="headerBtn" src="./img/logo.png" alt="" height="80px" />
-                    <li class="menuWrap headerBtn">
-                        <div class="menuTitleWrap">
-                            <div class="menuText togetherBtn">함께하기</div>
-                            <div class="menuText protectBtn">지켜주기</div>
-                            <div class="menuText raiseBtn">같이키우기</div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="headerBtnWrap">
-                    <li>
-                        <img class="raiseToggle talkToggle" title="community" src="./img/toggleC.png" height="30px" />
-                        <img class="raiseToggle marketToggle" title="market" src="./img/toggleM.png" height="30px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/zzimBtn.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/me.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/loginBtn.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="logoutBtn rightHeaderBtn" src="./img/logoutBtn.png" height="35px" />
-                    </li>
-                </ul>
-            </div>
-        </header>
+        <th:block th:insert="~{fragment/header::header}"></th:block>
 
         <!-- main -->
         <div class="main">
@@ -55,7 +24,7 @@
                 <!-- community header -->
                 <div class="talk-header-wrap">
                     <div class="talk-header">
-                        <img src="./img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                        <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
                         <div class="talk-writer-nickname">바삭한 감자전</div>
                     </div>
                     <div class="talk-header">
@@ -94,7 +63,7 @@
                 <div class="talk-comment">
                     <div class="talk-comment-wrap">
                         <div class="talk-comment-content">
-                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">말랑한 고구마</div>
                             <div class="comment-writer-content">반갑습니다!</div>
                             <div class="comment-writer-time">23.12.05</div>
@@ -102,7 +71,7 @@
                     </div>
                     <div class="talk-comment-wrap">
                         <div class="talk-comment-content">
-                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">맑은아침햇살</div>
                             <div class="comment-writer-content">환영합니다!</div>
                             <div class="comment-writer-time">23.12.05</div>
@@ -110,7 +79,7 @@
                     </div>
                     <div class="talk-comment-wrap">
                         <div class="talk-comment-content">
-                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">마라탕먹고싶다</div>
                             <div class="comment-writer-content">안녕하세요!</div>
                             <div class="comment-writer-time">23.12.05</div>
@@ -118,14 +87,14 @@
                     </div>
                     <div class="talk-comment-wrap">
                         <div class="talk-comment-content">
-                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">솜사탕</div>
                             <div class="comment-writer-content">hello!</div>
                             <div class="comment-writer-time">23.12.05</div>
                         </div>
                     </div>
                     <form action="" class="talk-comment-content talk-comment-write-wrap">
-                        <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                        <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                         <div class="comment-writer-nickname">바삭한 감자전</div>
                         <input class="write-comment-input" type="text" placeholder="댓글을 입력하세요" />
                         <button type="button" class="talk-comment-write-btn">작성</button>
@@ -135,11 +104,6 @@
         </div>
 
         <!-- footer -->
-        <footer class="footer">
-            <div class="footerBtn">이용약관</div>
-            <div>|</div>
-            <div class="footerBtn">개인정보 처리방침</div>
-            <div>ⓒ BasagHMPJ</div>
-        </footer>
+        <th:block th:insert="~{fragment/footer::footer}"></th:block>
     </body>
 </html>

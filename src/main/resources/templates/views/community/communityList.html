@@ -6,55 +6,24 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
-        <link rel="stylesheet" href="./css/header.css" />
-        <link rel="stylesheet" href="./css/communityList.css" />
-        <link rel="stylesheet" href="./css/footer.css" />
+        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/header.css}" />
+        <link rel="stylesheet" th:href="@{/css/footer.css}" />
+        <link rel="stylesheet" th:href="@{/css/communityList.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-        <script defer src="./js/header.js"></script>
+        <script defer th:src="@{/js/header.js}"></script>
         <title>커뮤니티</title>
     </head>
     <body>
         <!-- header -->
-        <header>
-            <div class="header">
-                <ul class="headerBtnWrap">
-                    <img class="headerBtn" src="./img/logo.png" alt="" height="80px" />
-                    <li class="menuWrap headerBtn">
-                        <div class="menuTitleWrap">
-                            <div class="menuText togetherBtn">함께하기</div>
-                            <div class="menuText protectBtn">지켜주기</div>
-                            <div class="menuText raiseBtn">같이키우기</div>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="headerBtnWrap">
-                    <li>
-                        <img class="raiseToggle talkToggle" title="community" src="./img/toggleC.png" height="30px" />
-                        <img class="raiseToggle marketToggle" title="market" src="./img/toggleM.png" height="30px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/zzimBtn.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/me.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="rightHeaderBtn" src="./img/loginBtn.png" height="35px" />
-                    </li>
-                    <li>
-                        <img class="logoutBtn rightHeaderBtn" src="./img/logoutBtn.png" height="35px" />
-                    </li>
-                </ul>
-            </div>
-        </header>
+        <th:block th:insert="~{fragment/header::header}"></th:block>
 
         <!-- section -->
         <div id="communityList-wrap">
             <div id="txt-section">
                 질문하고 소통해요! &nbsp;
                 <span>커뮤니티</span>
-                <img src="./img/chat.png" height="30px" alt="" />
+                <img src="/img/chat.png" height="30px" />
             </div>
 
             <div id="list-section">
@@ -63,11 +32,6 @@
                         <a href="">작성하기</a>
                     </div>
                     <div id="frm-section">
-                        <!-- <form name="searchFrm" action="">
-                            <input type="text" placeholder="검색어를 입력하세요" />
-                            <button type="submit">검색</button>
-                        </form> -->
-
                         <form name="orderFrm" action="">
                             <input type="hidden" />
                             <select name="" id="orderWay">
@@ -143,24 +107,19 @@
                 </div>
                 <div id="pagination-wrap">
                     <ul id="pagination-content">
-                        <li><a href="#"><img src="./img/prev.png" height="12px"></a></li>
+                        <li><a href="#"><img src="/img/prev.png" height="12px"></a></li>
                         <li><a href="#">1</a></li>
                         <li><a href="#">2</a></li>
                         <li><a href="#">3</a></li>
                         <li><a href="#">4</a></li>
                         <li><a href="#">5</a></li>
-                        <li><a href="#"><img src="./img/next.png" height="12px"></a></li>
+                        <li><a href="#"><img src="/img/next.png" height="12px"></a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <!-- footer -->
-        <div class="footer">
-            <div class="footerBtn">이용약관</div>
-            <div>|</div>
-            <div class="footerBtn">개인정보 처리방침</div>
-            <div>ⓒ BasagHMPJ</div>
-        </div>
+        <th:block th:insert="~{fragment/footer::footer}"></th:block>
     </body>
 </html>
