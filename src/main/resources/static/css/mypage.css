@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+    --together-color: rgb(99, 218, 83);
+    --protect-color: rgb(255, 116, 139);
+    --raise-color: rgb(255, 196, 0);
+    --cloud-color: rgb(154, 216, 255);
+    --light-cloud: rgb(222, 241, 255);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+.main {
+    width: 1200px;
+    height: calc(898px - 300px);
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mypage-wrapper {
+    width: 40%;
+    height: 92%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mypage-title {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.mypage-content {
+    background-color: var(--light-cloud);
+    border-radius: 7px;
+    padding: 40px;
+    overflow-y: scroll;
+
+    height: 100%;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.mypage-profile {
+    margin-bottom: 20px;
+}
+.mypage-inform {
+    margin-top: 20px;
+}
+
+.mypage-content-content {
+    display: flex;
+    margin-bottom: 14px;
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.mypage-content-content > div:first-of-type {
+    width: 30%;
+    font-weight: 500;
+}
+
+/* 프사 변경 */
+.picture-change-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.picture-change-wrap > .picture-change-btn {
+    margin-top: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/* 닉네임 변경 */
+.nickname-change-wrap {
+    display: flex;
+}
+
+.nickname-change-btn {
+    margin: 0 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.nickname-change-input {
+    display: none;
+    padding-left: 5px;
+}
+
+.nickname-change-complete {
+    display: none;
+    font-size: 13px;
+    padding: 0 5px;
+    margin: 0 10px;
+}
+
+/* 비번 변경 */
+.password-wrap {
+    position: relative;
+}
+
+.mypage-content-content > .change-password-btn {
+    display: block;
+    background-color: var(--cloud-color);
+    width: 120px;
+    border: 1px solid #333;
+    border-radius: 2px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.change-pw-wrap {
+    display: none;
+    background-color: white;
+    font-size: 13px;
+    padding: 10px 13px;
+    width: 210px;
+    border: none;
+    border-radius: 3px;
+}
+.change-pw-content {
+    margin-bottom: 3px;
+}
+
+.change-pw-content > input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 3px;
+    border: none;
+    border-radius: 3px;
+    background-color: #e4e4e4;
+}
+
+.change-pw-complete {
+    width: 100%;
+    padding: 5px 0;
+    background-color: rgb(163, 220, 255);
+    border: none;
+    border-radius: 3px;
+    margin-top: 7px;
+
+    &:hover {
+        background-color: rgb(139, 209, 255);
+        cursor: pointer;
+    }
+}
+
+/* 회원 탈퇴 */
+.drop-user {
+    font-size: 13px;
+    color: #8e8e8e;
+    margin: 5px 0;
+    align-self: flex-end;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+.singup-wrapper {
+    height: 100vh;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* logo */
+.logo {
+    height: 150px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.signup-input-wrap {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.signup-input-wrap > input {
+    width: 400px;
+    height: 60px;
+    background-color: #ebebeb;
+    border: none;
+    border-radius: 3px;
+    margin-top: 15px;
+    padding-left: 20px;
+    font-size: 15px;
+    outline: none;
+
+    &::placeholder {
+        color: rgb(130, 130, 130);
+    }
+}
+
+/* signup btn */
+.signup-btn {
+    background-color: rgb(163, 220, 255);
+    color: white;
+    border-radius: 3px;
+    height: 60px;
+    margin: 15px 0 0;
+    font-weight: 700;
+    font-size: 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: rgb(139, 209, 255);
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .singup-wrapper {
+        height: inherit;
+        margin: 50px auto;
+    }
+}

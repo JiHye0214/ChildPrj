@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/marketList.css" />
+        <link rel="stylesheet" href="./css/footer.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script defer src="./js/header.js"></script>
+        <title>알뜰시장</title>
+    </head>
+    <body>
+        <!-- header -->
+        <header>
+            <div class="header">
+                <ul class="headerBtnWrap">
+                    <img class="headerBtn" src="./img/logo.png" alt="" height="80px" />
+                    <li class="menuWrap headerBtn">
+                        <div class="menuTitleWrap">
+                            <div class="menuText togetherBtn">함께하기</div>
+                            <div class="menuText protectBtn">지켜주기</div>
+                            <div class="menuText raiseBtn">같이키우기</div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="headerBtnWrap">
+                    <li>
+                        <img class="raiseToggle talkToggle" title="community" src="./img/toggleC.png" height="30px" />
+                        <img class="raiseToggle marketToggle" title="market" src="./img/toggleM.png" height="30px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/zzimBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/me.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/loginBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="logoutBtn rightHeaderBtn" src="./img/logoutBtn.png" height="35px" />
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- section -->
+        <div id="marketList-wrap">
+            <div id="txt-section">
+                공유하고 나눠써요! &nbsp;
+                <span>알뜰시장</span>
+                <img src="./img/shopping-cart.png" height="30px" alt="" />
+            </div>
+
+            <div id="list-section">
+                <div id="listHeader-wrap">
+                    <div id="writeBtn">
+                        <a href="">작성하기</a>
+                    </div>
+
+                    <div id="frm-section">
+                        <form name="searchFrm" action="">
+                            <input type="text" placeholder="검색어를 입력하세요" />
+                            <button type="submit"><img src="./img/search.png" height="25px" alt="" /></button>
+                        </form>
+
+                        <form name="orderFrm" action="">
+                            <input type="hidden" />
+                            <select name="" id="orderWay">
+                                <option value="최신순">최신순</option>
+                                <option value="가격순">가격순</option>
+                            </select>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="list-wrap">
+                    <div class="list-content">
+                        <a href="">
+                            <div class="product-img"></div>
+                            <div class="product-title">아기신발아기신발아기신발아기신발</div>
+                            <div class="product-price">나눔</div>
+                            <div class="product-region">강남구</div>
+                        </a>
+                    </div>
+                    <div class="list-content">
+                        <a href="">
+                            <div class="product-img"></div>
+                            <div class="product-title">아기 신발</div>
+                            <div class="product-price">20,000 원</div>
+                            <div class="product-region">강남구</div>
+                        </a>
+                    </div>
+                    <div class="list-content">
+                        <a href="">
+                            <div class="product-img"></div>
+                            <div class="product-title">아기 신발</div>
+                            <div class="product-price">나눔</div>
+                            <div class="product-region">강남구</div>
+                        </a>
+                    </div>
+                    <div class="list-content">
+                        <a href="">
+                            <div class="product-img"></div>
+                            <div class="product-title">아기 신발</div>
+                            <div class="product-price">나눔</div>
+                            <div class="product-region">강남구</div>
+                        </a>
+                    </div>
+                    <div class="list-content">
+                        <a href="">
+                            <div class="product-img"></div>
+                            <div class="product-title">아기 신발</div>
+                            <div class="product-price">나눔</div>
+                            <div class="product-region">강남구</div>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="pagination-wrap">
+                    <ul id="pagination-content">
+                        <li><a href="#"><img src="./img/prev.png" height="12px"></a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#"><img src="./img/next.png" height="12px"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="footer">
+            <div class="footerBtn">이용약관</div>
+            <div>|</div>
+            <div class="footerBtn">개인정보 처리방침</div>
+            <div>ⓒ BasagHMPJ</div>
+        </div>
+    </body>
+</html>

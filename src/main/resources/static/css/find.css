@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+    --cloud-color: rgb(163, 220, 255);
+    --light-cloud: rgb(210, 237, 255);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+.all-wrapper {
+    height: 100vh;
+    width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* logo */
+.logo {
+    margin-bottom: 40px;
+    height: 150px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/* 찾기 큰 네모 */
+.find-inform-wrap {
+    width: 500px;
+    height: 414px;
+    background-color: #ebebeb;
+    border-radius: 10px;
+    padding: 50px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* 아이디찾기 네모 */
+.find-wrap {
+    width: 400px;
+    display: table;
+
+    &:first-of-type {
+        margin-bottom: 50px;
+    }
+}
+
+.find-title {
+    background-color: white;
+    padding: 13px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 5px 5px 0 0;
+}
+
+/* ~ 로 찾기 네모 */
+.find-content-wrap {
+    background-color: var(--light-cloud);
+    border-top: none;
+    padding: 15px;
+    border-radius: 0 0 5px 5px;
+}
+
+.find-content-title {
+    display: flex;
+    justify-content: space-between;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.menu-close {
+    display: none;
+}
+
+/* 누르면 보는 메뉴 */
+.find-content-hidden {
+    display: none;
+}
+
+.find-input-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.find-input-wrap > input {
+    height: 45px;
+    padding-left: 13px;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    outline: none;
+    &:first-of-type {
+        margin-top: 15px;
+    }
+}
+
+.find-input-wrap > input:focus {
+    border: 2px solid rgb(142, 212, 255);
+}
+
+
+.find-btn {
+    background-color: rgb(163, 220, 255);
+    color: white;
+    border-radius: 3px;
+    height: 45px;
+    font-weight: 700;
+    font-size: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: rgb(139, 209, 255);
+        cursor: pointer;
+    }
+}

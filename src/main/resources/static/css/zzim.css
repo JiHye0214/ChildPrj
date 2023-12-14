@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+/* ------------------------------------------------------------ */
+
+#zzim-wrap {
+    margin: 30px auto;
+    width: 1200px;
+}
+
+#txt-section {
+    height: 100px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100px;
+    background-color: rgb(255, 209, 209);
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#txt-section > span {
+    color: rgb(255, 121, 121);
+    margin-right: 10px;
+}
+
+/* ------------------------------------------------------------ */
+
+#list-wrap {
+    margin: 40px auto;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 35px;
+    row-gap: 40px;
+}
+.list-content {
+    position: relative;
+}
+.list-content > a {
+    width: 212px;
+    height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 5px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    transition: 0.2s all;
+}
+.list-content > a:hover {
+    border: 1px solid #898989;
+}
+.content-img {
+    width: 160px;
+    height: 225px;
+    margin-bottom: 10px;
+    background: url(../img/imageSrc.png) no-repeat center / cover;
+    border-radius: 5px;
+}
+.content-zzimBtn {
+    position: absolute;
+    bottom: 77px;
+    right: 15px;
+}
+svg {
+    width: 35px;
+}
+#heart {
+    fill: rgb(255, 80, 80);
+    stroke: #333;
+    stroke-width: 60px;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+.content-title {
+    width: 160px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.content-period {
+    font-size: 15px;
+}

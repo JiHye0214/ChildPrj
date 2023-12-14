@@ -1,0 +1,29 @@
+.footer {
+    width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 50px;
+    background-color: rgb(240, 240, 240);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer > div {
+    margin: 7px;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.footer > div:last-of-type {
+    font-weight: 600;
+}
+
+.footerBtn {
+    cursor: pointer;
+}
+
+.footerBtn:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,71 @@
+.modal {
+    visibility: hidden;
+    background-color: rgba(210, 210, 210, 0.635);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    /* ▲ 창 크기 줄이면 모달이 이상하지 않게 하기 */
+    top: 0;
+    right: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropUserWrap {
+    width: 388px;
+    background-color: white;
+    border-radius: 7px;
+    padding: 25px;
+}
+
+.dropUserCloseBtn {
+    font-weight: 800;
+    font-size: 20px;
+    float: right;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.dropTitleWrap {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.dropTitleWrap > div {
+    text-align: center;
+    font-size: 12px;
+
+    &:first-of-type {
+        font-size: 20px;
+    }
+
+    &:nth-child(2) {
+        font-weight: 600;
+        font-size: 20px;
+        color: rgb(203, 34, 34);
+    }
+}
+
+.dropContentWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dropUserOk {
+    background-color: rgb(229, 99, 99);
+    width: 100%;
+    border: none;
+    padding: 10px;
+    margin-top: 20px;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgb(204, 51, 51);
+    }
+}

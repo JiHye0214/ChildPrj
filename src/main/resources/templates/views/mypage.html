@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="./css/modal.css" />
+        <link rel="stylesheet" href="./css/mypage.css" />
+        <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/footer.css" />
+        <script defer src="./js/mypage.js"></script>
+        <script defer src="./js/header.js"></script>
+        <script defer src="./js/modal.js"></script>
+        <title>마이페이지</title>
+    </head>
+    <body>
+        <div class="modal">
+            <div class="dropUserWrap">
+                <div class="dropTitleWrap">
+                    <div class="dropUserCloseBtn">X</div>
+                    <div class="dropTitle">탈퇴시겠습니까?</div>
+                    <div>당신의 모든 정보가 사라지며, 복구할 수 없습니다</div>
+                </div>
+                <div class="dropContentWrap">
+                    <form action="">
+                        <label>비밀번호를 입력하세요</label>
+                        <input type="text" />
+                    </form>
+                    <button class="dropUserOk">탈퇴하기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- header -->
+        <header>
+            <div class="header">
+                <ul class="headerBtnWrap">
+                    <img class="headerBtn" src="./img/logo.png" alt="" height="80px" />
+                    <li class="menuWrap headerBtn">
+                        <div class="menuTitleWrap">
+                            <div class="menuText togetherBtn">함께하기</div>
+                            <div class="menuText protectBtn">지켜주기</div>
+                            <div class="menuText raiseBtn">같이키우기</div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="headerBtnWrap">
+                    <li>
+                        <img class="raiseToggle talkToggle" title="community" src="./img/toggleC.png" height="30px" />
+                        <img class="raiseToggle marketToggle" title="market" src="./img/toggleM.png" height="30px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/zzimBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/me.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/loginBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="logoutBtn rightHeaderBtn" src="./img/logoutBtn.png" height="35px" />
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- main -->
+        <main class="main">
+            <div class="mypage-wrapper">
+                <div class="mypage-title">마이페이지</div>
+                <div class="mypage-content">
+                    <div class="mypage-profile">
+                        <div class="mypage-content-content">
+                            <div>프로필사진</div>
+                            <div class="picture-change-wrap">
+                                <img src="./img/핑구.jpg" width="80px" />
+                                <button type="button" class="picture-change-btn">변경하기</button>
+                            </div>
+                        </div>
+                        <div class="mypage-content-content">
+                            <div>닉네임</div>
+                            <div class="nickname-change-wrap">
+                                <div class="nickname">바삭한 감자전</div>
+                                <form action="">
+                                    <input type="text" class="nickname-change-input" placeholder="바삭한 감자전" />
+                                </form>
+                                <div class="nickname-change-btn">✏️</div>
+                                <button type="button" class="nickname-change-complete">완료</button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="mypage-inform">
+                        <div class="mypage-content-content">
+                            <div>이름</div>
+                            <div>홍길동</div>
+                        </div>
+                        <div class="mypage-content-content">
+                            <div>아이디</div>
+                            <div>hong_1234</div>
+                        </div>
+                        <div class="mypage-content-content password-wrap">
+                            <div>비밀번호</div>
+                            <button type="button" class="change-password-btn">비밀번호 변경하기</button>
+                            <form action="" class="change-pw-wrap">
+                                <div class="change-pw-content">
+                                    <label for="current-pw">현재 비밀번호</label>
+                                    <input type="text" id="current-pw" />
+                                </div>
+                                <div class="change-pw-content">
+                                    <label for="current-pw">신규 비밀번호</label>
+                                    <input type="text" id="current-pw" />
+                                </div>
+                                <div class="change-pw-content">
+                                    <label for="current-pw">비밀번호 확인</label>
+                                    <input type="text" id="current-pw" />
+                                </div>
+                                <button type="button" class="change-pw-complete">완료</button>
+                            </form>
+                        </div>
+
+                        <div class="mypage-content-content">
+                            <div>이메일</div>
+                            <div>gildong@naver.com</div>
+                        </div>
+                        <div class="mypage-content-content">
+                            <div>가입일</div>
+                            <div>2023.12.04</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="drop-user">회원 탈퇴</div>
+            </div>
+        </main>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footerBtn">이용약관</div>
+            <div>|</div>
+            <div class="footerBtn">개인정보 처리방침</div>
+            <div>ⓒ BasagHMPJ</div>
+        </footer>
+    </body>
+</html>

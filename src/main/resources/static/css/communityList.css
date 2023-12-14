@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+    --raise-color: rgb(255, 196, 0);
+    --light-raise: #ffe99f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+/* ------------------------------------------------------------ */
+
+#communityList-wrap {
+    margin: 30px auto;
+    width: 1200px;
+}
+
+#txt-section {
+    height: 100px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100px;
+    background-color: var(--light-raise);
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#txt-section > span {
+    color: rgb(255, 162, 0);
+    margin-right: 10px;
+}
+
+/* ------------------------------------------------------------ */
+
+#listHeader-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    height: 38px;
+}
+
+#writeBtn {
+    width: 75px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 38px;
+    text-align: center;
+    background-color: rgb(255, 204, 35);
+
+    &:hover {
+        background-color: rgb(255, 196, 0);
+        cursor: pointer;
+    }
+}
+
+#writeBtn > a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;    
+}
+
+#frm-section {
+    display: flex;
+    column-gap: 40px;
+}
+[name="searchFrm"] > *,
+[name="orderFrm"] > * {
+    height: 38px;
+    border-radius: 3px;
+}
+[name="searchFrm"] > input {
+    padding: 0 10px;
+    font-size: 15px;
+    outline: none;
+    border: 1px solid #d2d2d2;
+    background-color: #f2f5f8;
+}
+[name="searchFrm"] > input::placeholder {
+    color: rgb(190, 190, 190);
+}
+[name="searchFrm"] > input:focus {
+    border: 1px solid #8b8b8b;
+}
+[name="searchFrm"] > button {
+    margin-left: 5px;
+    padding: 0 12px 0 32px;
+    font-size: 16px;
+    border: 1px solid #d2d2d2;
+    background-color: #fff;
+    cursor: pointer;
+    transition: 0.2s all;
+    background: url(../img/search.png) no-repeat 20% 50%/13px auto;
+}
+[name="searchFrm"] > button:hover {
+    background-color: #ececec;
+}
+
+[name="orderFrm"] > select {
+    padding: 0 30px 0 10px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-appearance: none; /* for chrome */
+    -moz-appearance: none; /*for firefox*/
+    appearance: none;
+    background: url(../img/downArrow.png) no-repeat 90% 50%/13px auto;
+}
+
+/* ------------------------------------------------------------ */
+
+#list-wrap {
+    margin: 20px auto;
+    text-align: center;
+    font-size: 16px;
+}
+#thead {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    font-weight: 600;
+    border-radius: 5px 5px 0 0;
+    background-color: #f0f0f0;
+}
+#tbody {
+    margin: 0 auto;
+}
+.list-content {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    transition: 0.2s all;
+    border-bottom: 1.5px solid #e6e6e6;
+}
+.list-content > * {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.list-content > .post-title > a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+#list-wrap p:nth-of-type(1) {
+    width: 10%;
+}
+#list-wrap p:nth-of-type(2) {
+    width: 30%;
+}
+#list-wrap p:nth-of-type(3) {
+    width: 25%;
+}
+#list-wrap p:nth-of-type(4) {
+    width: 10%;
+}
+#list-wrap p:nth-of-type(5) {
+    width: 10%;
+}
+#list-wrap p:nth-of-type(6) {
+    width: 15%;
+}
+
+/* ------------------------------------------------------------ */
+
+#pagination-wrap {
+    margin: 30px 0 40px;
+    display: flex;
+    justify-content: center;
+}
+#pagination-content {
+    display: flex;
+    border-radius: 5px;
+}
+#pagination-content > li {
+    font-size: 16px;
+    line-height: 45px;
+    transition: 0.2s all;
+}
+#pagination-content > li > a:hover {
+    background-color: var(--light-raise);
+    border-radius: 50%;
+}
+
+#pagination-content > li > a {
+    display: block;
+    height: 35px;
+    width: 35px;
+    margin: 0 3px;
+    text-align: center;
+    line-height: 35px;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="./css/marketDetail.css" />
+        <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/footer.css" />
+        <script defer src="./js/header.js"></script>
+        <script defer src="./js/marketDetail.js"></script>
+        <title>알뜰시장 상세</title>
+    </head>
+    <body>
+        <!-- header -->
+        <header>
+            <div class="header">
+                <ul class="headerBtnWrap">
+                    <img class="headerBtn" src="./img/logo.png" alt="" height="80px" />
+                    <li class="menuWrap headerBtn">
+                        <div class="menuTitleWrap">
+                            <div class="menuText togetherBtn">함께하기</div>
+                            <div class="menuText protectBtn">지켜주기</div>
+                            <div class="menuText raiseBtn">같이키우기</div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="headerBtnWrap">
+                    <li>
+                        <img class="raiseToggle talkToggle" title="community" src="./img/toggleC.png" height="30px" />
+                        <img class="raiseToggle marketToggle" title="market" src="./img/toggleM.png" height="30px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/zzimBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/me.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/loginBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="logoutBtn rightHeaderBtn" src="./img/logoutBtn.png" height="35px" />
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- main -->
+        <div class="main">
+            <div class="market-wrapper">
+                <!-- community header -->
+                <div class="market-header-wrap">
+                    <div class="market-header">
+                        <img src="./img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                        <div class="talk-writer-nickname">바삭한 감자전</div>
+                    </div>
+                    <div class="market-header">
+                        <div class="talk-inform-look">
+                            <div>조회수</div>
+                            <div class="market-inform-lookCnt">13</div>
+                        </div>
+                        <div class="market-inform-date">
+                            <div>작성일</div>
+                            <div class="market-inform-date">2023.12.05</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- community main -->
+                <div class="market-main">
+                    <div class="market-main-title-wrap">
+                        <div class="market-writer-title-right">
+                            <div class="market-writer-price">나눔</div>
+                            <div>아기옷 나눔합니다</div>
+                        </div>
+                        <div class="market-writer-title-right">
+                            <img src="./img/place.png" height="33px" alt="" />
+                            <div class="market-writer-region">서울 강남구</div>
+                        </div>
+                    </div>
+                    <div class="market-main-content">아기가 커서 이제 못 입는 옷들 나눔합니다 댓글 주세요 ^^</div>
+                    <div class="market-main-btn">
+                        <button type="button">작성</button>
+                        <button type="button">수정</button>
+                        <button type="button">삭제</button>
+                        <button type="button">목록</button>
+                    </div>
+                </div>
+
+                <!-- community comment -->
+                <div class="market-comment">
+                    <div class="market-comment-wrap">
+                        <div class="market-comment-content">
+                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <div class="comment-writer-nickname">말랑한 고구마</div>
+                            <div class="comment-writer-content">1번 옷 거래하고 싶습니다 ~</div>
+                            <div class="comment-writer-time">23.12.05</div>
+                        </div>
+                    </div>
+                    <div class="market-comment-wrap">
+                        <div class="market-comment-content">
+                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <div class="comment-writer-nickname">맑은아침햇살</div>
+                            <div class="comment-writer-content">4번 옷 팔렸나요?</div>
+                            <div class="comment-writer-time">23.12.05</div>
+                        </div>
+                    </div>
+                    <div class="market-comment-wrap">
+                        <div class="market-comment-content">
+                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <div class="comment-writer-nickname">마라탕먹고싶다</div>
+                            <div class="comment-writer-content">옷들이 너무 귀엽네요 ㅎㅎ</div>
+                            <div class="comment-writer-time">23.12.05</div>
+                        </div>
+                    </div>
+                    <div class="market-comment-wrap">
+                        <div class="market-comment-content">
+                            <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                            <div class="comment-writer-nickname">솜사탕</div>
+                            <div class="comment-writer-content">2번 구매하고 싶습니다 ~!</div>
+                            <div class="comment-writer-time">23.12.05</div>
+                        </div>
+                    </div>
+                    <form action="" class="market-comment-content market-comment-write-wrap">
+                        <img class="comment-writer-pic" src="./img/핑구.jpg" height="40px" />
+                        <div class="comment-writer-nickname">바삭한 감자전</div>
+                        <input class="write-comment-input" type="text" placeholder="댓글을 입력하세요" />
+                        <button type="button" class="market-comment-write-btn">작성</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer class="footer">
+            <div class="footerBtn">이용약관</div>
+            <div>|</div>
+            <div class="footerBtn">개인정보 처리방침</div>
+            <div>ⓒ BasagHMPJ</div>
+        </footer>
+    </body>
+</html>

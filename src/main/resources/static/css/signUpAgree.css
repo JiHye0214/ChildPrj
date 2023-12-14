@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+.agree-wrapper {
+    height: 100vh;
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* logo */
+.logo {
+    height: 150px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.agree-content-wrapper {
+    width: 400px;
+    margin-top: 35px;
+}
+
+.agree-content {
+    font-size: 16px;
+    position: relative;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-bottom: 15px;
+}
+
+label {
+    position: absolute;
+    top: -3px;
+    left: 25px;
+}
+
+.agree-content-content {
+    height: 150px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+    background-color: #ededed;
+    padding: 15px;
+    border-radius: 3px;
+    color: #7e7e7e;
+}
+
+/* agree-next-btn */
+.agree-next-btn {
+    background-color: rgb(163, 220, 255);
+    color: white;
+    border-radius: 3px;
+    height: 60px;
+    font-size: 17px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: rgb(139, 209, 255);
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .agree-wrapper {
+        height: inherit;
+        margin: 50px auto;
+    }
+}

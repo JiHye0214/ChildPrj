@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+/* ------------------------------------------------------------ */
+
+#protectDetail-wrap {
+    margin: 30px auto;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    position: relative;
+}
+
+#route-wrap {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    font-size: 24px;
+}
+#route-wrap > img {
+    width: 20px;
+    height: 20px;
+}
+
+#detail-wrap {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+}
+#map {
+    width: 580px;
+    height: 460px;
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+#txt-wrap {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    overflow: hidden;
+}
+#txt-title {
+    font-size: 30px;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#txt-list {
+    display: flex;
+    column-gap: 50px;
+}
+#txt-list p {
+    height: 55px;
+    line-height: 55px;
+}
+#txt-list-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+#txt-list-title p {
+    width: 90px;
+}
+#txt-list-content {
+    font-size: 18px;
+    overflow: hidden;
+}
+#txt-list-content > p:first-child {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#txt-list-content > :last-child > a:hover {
+    text-decoration: underline;
+    text-underline-position: under;
+}

@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+    --raise-color: rgb(255, 196, 0);
+    --light-raise: #ffe99f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+/* ------------------------------------------------------------ */
+
+#marketList-wrap {
+    margin: 30px auto;
+    width: 1200px;
+}
+
+#txt-section {
+    height: 100px;
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100px;
+    background-color: var(--light-raise);
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#txt-section > span {
+    color: rgb(255, 162, 0);
+    margin-right: 10px;
+}
+
+/* ------------------------------------------------------------ */
+
+#listHeader-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    height: 38px;
+}
+
+#writeBtn {
+    width: 75px;
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 38px;
+    text-align: center;
+    background-color: rgb(255, 204, 35);
+
+    &:hover {
+        background-color: rgb(255, 196, 0);
+        cursor: pointer;
+    }
+}
+
+#writeBtn > a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;    
+}
+
+#frm-section {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+[name="searchFrm"] > *,
+[name="orderFrm"] > * {
+    height: 38px;
+    border-radius: 3px;
+}
+[name="searchFrm"] > input {
+    padding: 0 10px;
+    font-size: 15px;
+    outline: none;
+    border: 3px solid transparent;
+    background-color: #ececec;
+}
+
+[name="searchFrm"] > input:focus {
+    border: 3px solid rgb(255, 204, 35);
+}
+
+[name="searchFrm"] > input::placeholder {
+    color: rgb(190, 190, 190);
+}
+
+[name="searchFrm"] > button {
+    margin-left: 5px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+[name="orderFrm"] > select {
+    padding: 0 30px 0 10px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-appearance: none; /* for chrome */
+    -moz-appearance: none; /*for firefox*/
+    appearance: none;
+    background: url(../img/downArrow.png) no-repeat 90% 50%/13px auto;
+}
+
+/* ------------------------------------------------------------ */
+
+#list-wrap {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 36px;
+    row-gap: 40px;
+}
+.list-content > a {
+    width: 273px;
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5px;
+    border-radius: 10px;
+    transition: 0.2s all;
+    background-color: #f0f0f0;
+    border: 1px solid transparent;
+}
+.list-content > a:hover {
+    border: 1px solid #898989;
+}
+
+.product-title {
+    width: 160px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.product-img {
+    width: 100%;
+    height: 140px;
+    margin-bottom: 10px;
+    border-radius: 9px 9px 0 0;
+    background: url(../img/babyShoes.jpg) no-repeat center / cover;
+}
+.product-price,
+.product-region {
+    font-size: 15px;
+}
+
+/* ------------------------------------------------------------ */
+
+#pagination-wrap {
+    margin: 30px 0 40px;
+    display: flex;
+    justify-content: center;
+}
+#pagination-content {
+    display: flex;
+    border-radius: 5px;
+}
+#pagination-content > li {
+    font-size: 16px;
+    line-height: 45px;
+    transition: 0.2s all;
+}
+#pagination-content > li > a:hover {
+    background-color: var(--light-raise);
+    border-radius: 50%;
+}
+
+#pagination-content > li > a {
+    display: block;
+    height: 35px;
+    width: 35px;
+    margin: 0 3px;
+    text-align: center;
+    line-height: 35px;
+}

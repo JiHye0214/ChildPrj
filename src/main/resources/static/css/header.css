@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+    --together-color: #63da53;
+    --protect-color: #ff748b;
+    --raise-color: #ffc400;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+header img:hover {
+    cursor: pointer;
+}
+
+.header {
+    width: 1200px;
+    height: 120px;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerBtnWrap {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+/*--------- header right ---------*/
+.rightHeaderBtn {
+    margin-left: 10px;
+}
+
+.raiseToggle {
+    margin-right: 7px;
+    display: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+/*--------- header left ---------*/
+
+/* 메뉴 */
+.menuWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 40px;
+}
+
+.menuTitleWrap {
+    margin-right: 20px;
+    font-size: 28px;
+    display: flex;
+    letter-spacing: 0.5px;
+}
+
+.menuText {
+    font-weight: 800;
+    font-size: 22px;
+    margin-right: 25px;
+    color: #dbdbdb;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.togetherBtn:hover {
+    color: var(--together-color);
+}
+
+.protectBtn:hover {
+    color: var(--protect-color);
+}
+
+.raiseBtn:hover {
+    color: var(--raise-color);
+}
+
+/* 로그아웃 버튼은 나중에... */
+.logoutBtn {
+    display: none;
+}
