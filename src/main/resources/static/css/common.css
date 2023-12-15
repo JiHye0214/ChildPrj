@@ -71,7 +71,7 @@ img:hover {
     margin-left: 10px;
     background-color: var(--raise-btn);
 
-    &:first-of-type {
+    &:first-child {
         margin-left: 0;
     }
 
@@ -82,4 +82,10 @@ img:hover {
 
 .community-write-wrap > .attachment-btn {
     background-color: var(--light-raise);
+}
+
+.warn-message {
+    color: red;
+    font-size: 15px;
+    display: none;
 }

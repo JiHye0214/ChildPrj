@@ -32,29 +32,29 @@ public class UserController {
     public void test7(){
     }
     @RequestMapping("/market/marketDetail")
-    public void test77(){
+    public void test8(){
     }
 
     @RequestMapping("/together/zzim")
-    public void test8(){
-    }
-    @RequestMapping("/user/mypage")
     public void test9(){
     }
-    @RequestMapping("/user/signIn")
+    @RequestMapping("/user/mypage")
     public void test10(){
     }
-    @RequestMapping("/user/signUp")
+    @RequestMapping("/user/signIn")
     public void test11(){
     }
-    @RequestMapping("/user/signUpAgree")
-    public void test116(){
-    }
-    @RequestMapping("/user/find")
+    @RequestMapping("/user/signUp")
     public void test12(){
     }
+    @RequestMapping("/user/signUpAgree")
+    public void test13(){
+    }
+    @RequestMapping("/user/find")
+    public void test14(){
+    }
     @RequestMapping("/protect/protectDetail")
-    public void test121(){
+    public void test15(){
     }
 
 }

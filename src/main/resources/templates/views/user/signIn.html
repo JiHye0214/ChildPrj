@@ -17,9 +17,14 @@
             <a th:href="@{/home}"><img class="logo" src="/img/logo.png" /></a>
             <div class="login-input-wrap">
                 <form action="">
-                    <input type="text" placeholder="아이디" />
-                    <input type="password" placeholder="비밀번호" />
+                    <input  class="login-input" type="text" placeholder="아이디" />
+                    <input class="login-input" type="password" placeholder="비밀번호" />
                 </form>
+                <div class="login-validation">
+                    <div class="warn-message">아이디를 입력해 주세요</div>
+                    <div class="warn-message">비밀번호를 입력해 주세요</div>
+                    <div class="warn-message">아이디 또는 비밀번호가 맞지 않습니다</div>
+                </div>
                 <div class="login-btn">로그인</div>
                 <div class="login-menu-wrap">
                     <a th:href="@{/user/find}">아이디 / 비밀번호 찾기</a>

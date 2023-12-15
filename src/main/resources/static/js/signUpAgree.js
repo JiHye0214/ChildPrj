@@ -4,12 +4,14 @@ const agree2 = document.getElementById("check2");
 
 const $nextBtn = document.querySelector(".agree-next-btn");
 
+const agreeWarnArr = document.querySelectorAll(".warn-message");
+const agreeCheckArr = document.querySelectorAll(".agree-checkbox");
+
 $nextBtn.style.background = `rgb(197,197,197)`;
 $nextBtn.style.cursor = `default`;
 
 if (allAgree.checked || (agree1.checked && agree2.checked)) {
     $nextBtn.style.background = ``;
-    console.log("hi");
 }
 
 const clickAllCheckBox = () => {
@@ -41,3 +43,20 @@ const clickCheckBox = () => {
 allAgree.addEventListener("click", clickAllCheckBox);
 agree1.addEventListener("click", clickCheckBox);
 agree2.addEventListener("click", clickCheckBox);
+
+
+const agreeValidation = () => {
+    for(let i=1; i<3; i++){
+        if(!agreeCheckArr[i].checked){
+            agreeWarnArr[i-1].style.display = `block`;
+        } else {
+            agreeWarnArr[i-1].style.display = `none`;
+        }
+    }
+
+    if(allAgree.checked){
+        location.href = "/user/signUp"
+    }
+}
+
+$nextBtn.addEventListener("click", agreeValidation);

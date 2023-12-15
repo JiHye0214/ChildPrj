@@ -35,10 +35,12 @@
                 <!-- community write -->
                 <form action="">
                     <div class="community-write-wrap">
-                        <input id="title" type="text" class="write-title" placeholder="제목을 입력해 주세요"/>
+                        <div class="warn-message">제목을 입력해 주세요</div>
+                        <input id="title" type="text" class="write-title write-valid" placeholder="제목을 입력해 주세요"/>
                     </div>
                     <div class="community-write-wrap">
-                        <textarea class="content-box" rows="5" id="content" placeholder="내용을 입력하세요" name="content" th:utext="${content}"></textarea>
+                        <div class="warn-message">내용을 입력해 주세요</div>
+                        <textarea class="content-box write-valid" rows="5" id="content" placeholder="내용을 입력하세요" name="content" th:utext="${content}"></textarea>
                     </div>
 <!--                    혹시 몰라서 첨부파일 랩 만들어 놓기 -->
 <!--                    <div class="community-write-wrap">-->
@@ -58,7 +60,8 @@
 <!--                        </div>-->
 <!--                    </div>-->
                     <div class="write-btn-wrap">
-                        <a href="" class="write-btn">작성완료</a>
+                        <!--작성완료 버튼이 a라서 이거는 controller 에서 validation !! -->
+                        <button type="submit" class="write-btn">작성완료</button>
                         <a th:href="@{/community/communityList}" class="write-btn">목록</a>
                     </div>
                 </form>

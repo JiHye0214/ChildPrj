@@ -33,6 +33,11 @@
     }
 }
 
+/* login validation */
+.login-validation > .warn-message {
+    margin: 15px 0 0;
+}
+
 /* login btn */
 .login-btn {
     background-color: var(--cloud-color);
