@@ -9,7 +9,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class testController {
 
     @GetMapping("/communityList")
-    public void communityList() {
+    public void test1() {
     }
 
+    @GetMapping("/communityDetail")
+    public void test2() {
+    }
+
+    @GetMapping("/communityWrite")
+    public void test3() {
+    }
+
+    @GetMapping("/communityUpdate")
+    public void test4() {
+    }
 }

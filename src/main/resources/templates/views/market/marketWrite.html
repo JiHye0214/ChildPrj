@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+        <link rel="stylesheet" href="./css/header.css" />
+        <link rel="stylesheet" href="./css/marketWrite.css" />
+        <link rel="stylesheet" href="./css/footer.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script defer src="./js/header.js"></script>
+        <script defer src="./js/marketWrite.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+        <title>알뜰시장 작성</title>
+    </head>
+    <body>
+        <!-- header -->
+        <header>
+            <div class="header">
+                <ul class="headerBtnWrap">
+                    <img class="headerBtn" src="./img/logo.png" alt="" height="80px" />
+                    <li class="menuWrap headerBtn">
+                        <div class="menuTitleWrap">
+                            <div class="menuText togetherBtn">함께하기</div>
+                            <div class="menuText protectBtn">지켜주기</div>
+                            <div class="menuText raiseBtn">같이키우기</div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="headerBtnWrap">
+                    <li>
+                        <img class="raiseToggle talkToggle" title="community" src="./img/toggleC.png" height="30px" />
+                        <img class="raiseToggle marketToggle" title="market" src="./img/toggleM.png" height="30px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/zzimBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/me.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="rightHeaderBtn" src="./img/loginBtn.png" height="35px" />
+                    </li>
+                    <li>
+                        <img class="logoutBtn rightHeaderBtn" src="./img/logoutBtn.png" height="35px" />
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <!-- main -->
+        <div class="main">
+            <div class="talk-wrapper">
+                <!-- market header -->
+                <div class="market-write-wrap">
+                    <div class="talk-header">
+                        <img src="./img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                        <div class="talk-writer-nickname">바삭한 감자전</div>
+                    </div>
+                </div>
+
+                <!-- market write -->
+                <form name="market-write-form" action="" autocomplete="off">
+                    <div class="market-write-wrap write-info">
+                        <input type="text" id="price" placeholder="가격" name="price" />
+                        <input type="text" id="title" placeholder="제목을 입력해 주세요" name="title" />
+                        <div id="gu-select-wrap" class="gu-select-wrap">
+                            <input type="hidden" class="gu-input" value="" name="gu" />
+                            <div id="gu-select-btn">지역선택</div>
+                            <div id="gu-wrap" class="gu-wrap"></div>
+                        </div>
+                    </div>
+
+                    <div class="market-write-wrap">
+                        <textarea id="content" name="content"></textarea>
+                    </div>
+
+                    <!-- 혹시 몰라서 첨부파일 랩 만들어 놓기 -->
+                    <!-- <div class="market-write-wrap">
+                        <a href="" class="attachment-btn write-btn">첨부파일</a>
+                        <div class="attachment-file-wrap">
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                            <img src="/img/핑구.jpg" />
+                        </div>
+                    </div> -->
+
+                    <div class="write-btn-wrap">
+                        <button type="submit" class="write-btn">작성완료</button>
+                        <a href="" class="write-btn">목록</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <div class="footer">
+            <div class="footerBtn">이용약관</div>
+            <div>|</div>
+            <div class="footerBtn">개인정보 처리방침</div>
+            <div>ⓒ BasagHMPJ</div>
+        </div>
+    </body>
+</html>
