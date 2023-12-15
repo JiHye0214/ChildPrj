@@ -7,13 +7,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/signUpAgree.css}" />
         <script defer th:src="@{/js/signUpAgree.js}"></script>
         <title>회원가입 동의</title>
     </head>
     <body>
         <div class="agree-wrapper">
-            <img class="logo" src="/img/logo.png" />
+            <a th:href="@{/home}"><img class="logo" src="/img/logo.png" /></a>
             <form class="agree-content-wrapper">
                 <div class="agree-content">
                     <input type="checkbox" id="check0" class="agree-checkbox" />
@@ -38,7 +39,8 @@
                         자세히 읽은 후 동의하여 주시기 바랍니다.
                     </div>
                 </div>
-                <div class="agree-next-btn">다음</div>
+                <!-- if 걸어야 됨 -->
+                <a th:href="@{/user/signUp}" class="agree-next-btn">다음</a>
             </form>
         </div>
     </body>

@@ -6,6 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
     <link rel="stylesheet" th:href="@{/css/communityUpdate.css}" />
 
     <!-- 자유로운 컨텐트 -->
@@ -39,23 +40,23 @@
             <div class="community-write-wrap">
                 <textarea class="content-box" rows="5" id="content" placeholder="내용을 입력하세요" name="content" th:utext="${content}"></textarea>
             </div>
-            <!--                    혹시 몰라서 첨부파일 랩 만들어 놓기 -->
-            <!--                    <div class="community-write-wrap">-->
-            <!--                        <a href="" class="attachment-btn write-btn">첨부파일</a>-->
-            <!--                        <div class="attachment-file-wrap">-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                            <img src="/img/핑구.jpg"/>-->
-            <!--                        </div>-->
-            <!--                    </div>-->
+<!--            혹시 몰라서 첨부파일 랩 만들어 놓기-->
+<!--                <div class="community-write-wrap">-->
+<!--                    <a href="" class="attachment-btn write-btn">첨부파일</a>-->
+<!--                    <div class="attachment-file-wrap">-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                        <img src="/img/핑구.jpg"/>-->
+<!--                    </div>-->
+<!--                </div>-->
             <div class="write-btn-wrap">
                 <a th:href="@{/community/communityWrite}" class="write-btn">수정완료</a>
                 <a th:href="@{/community/communityList}" class="write-btn">목록</a>

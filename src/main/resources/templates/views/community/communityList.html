@@ -7,6 +7,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/communityList.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
         <title>커뮤니티</title>
@@ -29,6 +30,12 @@
                         <a th:href="@{/community/communityWrite}">작성하기</a>
                     </div>
                     <div id="frm-section">
+                        <form name="searchFrm" action="">
+                            <input type="text" placeholder="검색어를 입력하세요" />
+                            <button type="submit">
+                                <img src="/img/search.png" height="25px" />
+                            </button>
+                        </form>
                         <form name="orderFrm" action="">
                             <input type="hidden" />
                             <select name="" id="orderWay">

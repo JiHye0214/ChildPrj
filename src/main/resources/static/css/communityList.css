@@ -1,25 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-
-:root {
-    --raise-color: rgb(255, 196, 0);
-    --light-raise: #ffe99f;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    color: #333;
-}
-li {
-    list-style: none;
-}
-a {
-    text-decoration: none;
-}
-
-/* ------------------------------------------------------------ */
 
 #communityList-wrap {
     margin: 30px auto;
@@ -65,11 +43,10 @@ a {
     font-size: 15px;
     line-height: 38px;
     text-align: center;
-    background-color: rgb(255, 204, 35);
+    background-color: var(--raise-btn);
 
     &:hover {
-        background-color: rgb(255, 196, 0);
-        cursor: pointer;
+        background-color: var(--raise-color);
     }
 }
 
@@ -81,7 +58,7 @@ a {
 
 #frm-section {
     display: flex;
-    column-gap: 40px;
+    column-gap: 10px;
 }
 [name="searchFrm"] > *,
 [name="orderFrm"] > * {
@@ -92,27 +69,24 @@ a {
     padding: 0 10px;
     font-size: 15px;
     outline: none;
-    border: 1px solid #d2d2d2;
-    background-color: #f2f5f8;
+    border: 3px solid transparent;
+    background-color: var(--light-gray);
 }
-[name="searchFrm"] > input::placeholder {
-    color: rgb(190, 190, 190);
-}
+
 [name="searchFrm"] > input:focus {
-    border: 1px solid #8b8b8b;
+    border: 3px solid var(--raise-btn);
 }
+
+[name="searchFrm"] > input::placeholder {
+    color: var(--input-placeholder);
+}
+
 [name="searchFrm"] > button {
     margin-left: 5px;
-    padding: 0 12px 0 32px;
-    font-size: 16px;
-    border: 1px solid #d2d2d2;
-    background-color: #fff;
+    border: none;
+    background-color: white;
     cursor: pointer;
-    transition: 0.2s all;
-    background: url(../img/search.png) no-repeat 20% 50%/13px auto;
-}
-[name="searchFrm"] > button:hover {
-    background-color: #ececec;
+    vertical-align: middle;
 }
 
 [name="orderFrm"] > select {
@@ -120,7 +94,7 @@ a {
     font-size: 16px;
     outline: none;
     border: none;
-    background-color: #fff;
+    background-color: white;
     cursor: pointer;
     -webkit-appearance: none; /* for chrome */
     -moz-appearance: none; /*for firefox*/
@@ -141,7 +115,7 @@ a {
     height: 60px;
     font-weight: 600;
     border-radius: 5px 5px 0 0;
-    background-color: #f0f0f0;
+    background-color: var(--light-gray);
 }
 #tbody {
     margin: 0 auto;
@@ -151,7 +125,7 @@ a {
     display: flex;
     align-items: center;
     transition: 0.2s all;
-    border-bottom: 1.5px solid #e6e6e6;
+    border-bottom: 1.5px solid var(--border-color);
 }
 .list-content > * {
     overflow: hidden;

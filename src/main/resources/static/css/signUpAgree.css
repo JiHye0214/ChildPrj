@@ -1,12 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    color: #333;
-}
 
 .agree-wrapper {
     height: 100vh;
@@ -16,15 +7,6 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-}
-
-/* logo */
-.logo {
-    height: 150px;
-
-    &:hover {
-        cursor: pointer;
-    }
 }
 
 .agree-content-wrapper {
@@ -54,15 +36,15 @@ label {
     height: 150px;
     overflow-y: scroll;
     margin-bottom: 20px;
-    background-color: #ededed;
+    background-color: var(--light-gray);
     padding: 15px;
     border-radius: 3px;
-    color: #7e7e7e;
+    color: var(--input-placeholder);
 }
 
 /* agree-next-btn */
 .agree-next-btn {
-    background-color: rgb(163, 220, 255);
+    background-color: var(--cloud-color);
     color: white;
     border-radius: 3px;
     height: 60px;
@@ -74,7 +56,7 @@ label {
     justify-content: center;
 
     &:hover {
-        background-color: rgb(139, 209, 255);
+        background-color: var(--cloud-hover);
         cursor: pointer;
     }
 }

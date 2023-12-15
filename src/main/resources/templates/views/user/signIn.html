@@ -7,13 +7,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/signIn.css}" />
         <script defer th:src="@{/js/signIn.js}"></script>
         <title>로그인</title>
     </head>
     <body>
         <div class="login-wrapper">
-            <img class="logo" src="/img/logo.png" />
+            <a th:href="@{/home}"><img class="logo" src="/img/logo.png" /></a>
             <div class="login-input-wrap">
                 <form action="">
                     <input type="text" placeholder="아이디" />
@@ -21,8 +22,8 @@
                 </form>
                 <div class="login-btn">로그인</div>
                 <div class="login-menu-wrap">
-                    <div>아이디 / 비밀번호 찾기</div>
-                    <div>회원가입</div>
+                    <a th:href="@{/user/find}">아이디 / 비밀번호 찾기</a>
+                    <a th:href="@{/user/signUpAgree}">회원가입</a>
                 </div>
             </div>
         </div>

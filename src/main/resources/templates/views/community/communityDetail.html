@@ -7,6 +7,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/communityDetail.css}" />
         <script defer th:src="@{/js/communityDetail.js}" ></script>
         <title>커뮤니티 상세</title>
@@ -45,7 +46,7 @@
                     <div class="talk-main-content">안녕하세요 반갑습니다 바삭한 감자전입니다 :D</div>
                     <div class="talk-main-btn">
                         <div class="talk-left-btn-wrap">
-                            <a href="" class="recommend-btn talk-btn">추천</a>
+                            <a href="" class="raise-btn talk-btn">추천</a>
                         </div>
                         <div class="talk-right-btn-wrap">
                             <a th:href="@{/community/communityWrite}" class="talk-btn">작성</a>
@@ -94,7 +95,7 @@
                         <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                         <div class="comment-writer-nickname">바삭한 감자전</div>
                         <input class="write-comment-input" type="text" placeholder="댓글을 입력하세요" />
-                        <a href="" class="talk-comment-write-btn talk-btn">작성</a>
+                        <a href="" class="raise-btn talk-btn">작성</a>
                     </form>
                 </div>
             </div>

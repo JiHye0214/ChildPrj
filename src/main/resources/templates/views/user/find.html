@@ -7,13 +7,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/find.css}" />
         <script defer th:src="@{/js/find.js}"></script>
         <title>아이디/비밀번호 찾기</title>
     </head>
     <body>
         <div class="all-wrapper">
-            <img class="logo" src="/img/logo.png" />
+            <a th:href="@{/home}"><img class="logo" src="/img/logo.png" /></a>
             <div class="find-inform-wrap">
                 <div class="find-wrap">
                     <div class="find-title">1️⃣ 아이디 찾기</div>

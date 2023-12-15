@@ -1,23 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-
-:root {
-    --raise-color: rgb(255, 196, 0);
-    --light-raise: #ffe99f;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    color: #333;
-}
-li {
-    list-style: none;
-}
-a {
-    text-decoration: none;
-}
 
 /* ------------------------------------------------------------ */
 
@@ -65,10 +45,10 @@ a {
     font-size: 15px;
     line-height: 38px;
     text-align: center;
-    background-color: rgb(255, 204, 35);
+    background-color: var(--raise-btn);
 
     &:hover {
-        background-color: rgb(255, 196, 0);
+        background-color: var(--raise-color);
         cursor: pointer;
     }
 }
@@ -94,21 +74,21 @@ a {
     font-size: 15px;
     outline: none;
     border: 3px solid transparent;
-    background-color: #ececec;
+    background-color: var(--light-gray);
 }
 
 [name="searchFrm"] > input:focus {
-    border: 3px solid rgb(255, 204, 35);
+    border: 3px solid var(--raise-btn);
 }
 
 [name="searchFrm"] > input::placeholder {
-    color: rgb(190, 190, 190);
+    color: var(--input-placeholder);
 }
 
 [name="searchFrm"] > button {
     margin-left: 5px;
     border: none;
-    background-color: #fff;
+    background-color: white;
     cursor: pointer;
     vertical-align: middle;
 }
@@ -118,7 +98,7 @@ a {
     font-size: 16px;
     outline: none;
     border: none;
-    background-color: #fff;
+    background-color: white;
     cursor: pointer;
     -webkit-appearance: none; /* for chrome */
     -moz-appearance: none; /*for firefox*/
@@ -148,7 +128,7 @@ a {
     border: 1px solid transparent;
 }
 .list-content > a:hover {
-    border: 1px solid #898989;
+    border: 1px solid var(--input-placeholder);
 }
 
 .product-title {

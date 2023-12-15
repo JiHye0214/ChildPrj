@@ -1,12 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    color: #333;
-}
 
 .main {
     position: relative;
@@ -50,7 +41,7 @@
     justify-content: space-between;
     align-items: center;
 
-    border-top: 1.5px solid rgb(230, 230, 230);
+    border-top: 1.5px solid var(--border-color);
     padding-top: 20px;
 }
 
@@ -70,7 +61,7 @@
 
 .market-writer-price {
     margin-right: 15px;
-    background-color: #ffcc23;
+    background-color: var(--raise-color);
     border-radius: 10px;
     padding: 5px 10px;
     font-size: 30px;
@@ -83,28 +74,25 @@
 }
 
 .market-main-content {
-    border-top: 1.5px solid rgb(230, 230, 230);
-    border-bottom: 1.5px solid rgb(230, 230, 230);
+    border-top: 1.5px solid var(--border-color);
+    border-bottom: 1.5px solid var(--border-color);
     font-size: 18px;
     padding: 40px 0;
     margin: 20px 0;
 }
 
-button {
+.market-btn {
     border: none;
+    text-decoration: none;
     border-radius: 5px;
     padding: 5px 10px;
     font-weight: 500;
     font-size: 15px;
     margin-left: 10px;
-    background-color: #ffe99f;
+    background-color: var(--light-raise);
 
     &:first-of-type {
         margin-left: 0;
-    }
-
-    &:hover {
-        cursor: pointer;
     }
 }
 
@@ -119,7 +107,7 @@ button {
 }
 
 .market-comment-content {
-    background-color: rgb(244, 244, 244);
+    background-color: var(--comment-color);
     padding: 10px 15px;
     margin-top: 10px;
     border-radius: 5px;
@@ -132,7 +120,7 @@ button {
 .market-comment-write-wrap {
     display: flex;
     align-items: center;
-    background-color: #ffe99f;
+    background-color: var(--light-raise);
 }
 
 .market-comment-write-wrap> .comment-writer-nickname {
@@ -140,7 +128,7 @@ button {
 }
 
 .write-comment-input {
-    width: 70.3%;
+    width: 71.4%;
     margin-right: 15px;
     padding: 5px 10px;
     border: 2px solid transparent;
@@ -150,7 +138,7 @@ button {
 }
 
 .write-comment-input:focus {
-    border:2px solid rgb(255, 204, 35);
+    border:2px solid var(--raise-btn);
 }
 
 .comment-writer-pic {
@@ -165,9 +153,10 @@ button {
     width: 70%;
 }
 
-.market-comment-write-btn {
-    background-color: rgb(255, 204, 35);
+.raise-btn {
+    background-color: var(--raise-btn);
+
     &:hover {
-        background-color: rgb(255, 196, 0);
+        background-color: var(--raise-color);
     }
 }

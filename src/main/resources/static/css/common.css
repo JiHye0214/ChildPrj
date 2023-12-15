@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+:root {
+    --comment-color: rgb(244, 244, 244);
+    --light-gray: rgb(240, 240, 240);
+    --border-color: rgb(230, 230, 230);
+    --input-placeholder: rgb(190, 190, 190);
+
+    --cloud-color: rgb(163, 220, 255);
+    --light-cloud: rgb(210, 237, 255);
+    --cloud-hover: rgb(139, 209, 255);
+
+    --home-menu-btn: rgb(94, 193, 255);
+    --light-home-menu: rgb(209, 236, 255);
+
+    --find-input-focus: rgb(142, 212, 255);
+
+    --mypage-color: rgb(154, 216, 255);
+    --light-mypage-color: rgb(222, 241, 255);
+
+    --together-color: rgb(99, 218, 83);
+    --protect-color: rgb(255, 116, 139);
+    --raise-color: rgb(255, 196, 0);
+
+    --light-together: rgb(192, 238, 204);
+    --light-protect: rgb(255, 216, 230);
+    --light-raise: rgb(255, 233, 159);
+
+    --raise-btn: rgb(255, 204, 35);
+
+    --protect-hover : rgb(254, 178, 206);
+    --together-hover : rgb(140, 229, 148);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    color: #333;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+.logo {
+    height: 150px;
+}
+
+.write-btn {
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 5px 10px;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 10px;
+    background-color: var(--raise-btn);
+
+    &:first-of-type {
+        margin-left: 0;
+    }
+
+    &:hover {
+        background-color: var(--raise-color);
+    }
+}
+
+.community-write-wrap > .attachment-btn {
+    background-color: var(--light-raise);
+}

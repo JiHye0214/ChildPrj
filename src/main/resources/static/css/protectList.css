@@ -1,27 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-
-:root {
-    --together-color: #63da53;
-    --protect-color: #ff748b;
-    --light-protect : #ffd8e6;
-    --protect-hover : #feb2ce;
-    --raise-color: #ffc400;
-}
-
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    color: #333;
-}
-li {
-    list-style: none;
-}
-a {
-    text-decoration: none;
-}
 
 #img {
     position: absolute;
@@ -105,13 +81,14 @@ a {
     text-align: center;
     font-size: 16px;
 }
+
 #thead {
     display: flex;
     align-items: center;
     height: 60px;
     font-weight: 600;
     border-radius: 5px 5px 0 0;
-    background-color: #f0f0f0;
+    background-color: var(--light-gray);
 }
 #tbody {
     margin: 0 auto;
@@ -121,7 +98,7 @@ a {
     display: flex;
     align-items: center;
     transition: 0.2s all;
-    border-bottom: 1.5px solid #e6e6e6;
+    border-bottom: 1.5px solid var(--border-color);
 }
 .list-content > * {
     overflow: hidden;

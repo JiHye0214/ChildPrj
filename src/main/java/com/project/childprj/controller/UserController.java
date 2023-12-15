@@ -44,4 +44,17 @@ public class UserController {
     @RequestMapping("/user/signIn")
     public void test10(){
     }
+    @RequestMapping("/user/signUp")
+    public void test11(){
+    }
+    @RequestMapping("/user/signUpAgree")
+    public void test116(){
+    }
+    @RequestMapping("/user/find")
+    public void test12(){
+    }
+    @RequestMapping("/protect/protectDetail")
+    public void test121(){
+    }
+
 }

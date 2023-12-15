@@ -1,12 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Noto Sans KR", sans-serif;
-    color: #333;
-}
 
 .singup-wrapper {
     height: 100vh;
@@ -18,15 +9,6 @@
     flex-direction: column;
 }
 
-/* logo */
-.logo {
-    height: 150px;
-
-    &:hover {
-        cursor: pointer;
-    }
-}
-
 .signup-input-wrap {
     display: flex;
     flex-direction: column;
@@ -36,7 +18,7 @@
 .signup-input-wrap > input {
     width: 400px;
     height: 60px;
-    background-color: #ebebeb;
+    background-color: var(--light-gray);
     border: none;
     border-radius: 3px;
     margin-top: 15px;
@@ -45,13 +27,13 @@
     outline: none;
 
     &::placeholder {
-        color: rgb(130, 130, 130);
+        color: var(--input-placeholder);
     }
 }
 
 /* signup btn */
 .signup-btn {
-    background-color: rgb(163, 220, 255);
+    background-color: var(--cloud-color);
     color: white;
     border-radius: 3px;
     height: 60px;
@@ -64,7 +46,7 @@
     justify-content: center;
 
     &:hover {
-        background-color: rgb(139, 209, 255);
+        background-color: var(--cloud-hover);
         cursor: pointer;
     }
 }
