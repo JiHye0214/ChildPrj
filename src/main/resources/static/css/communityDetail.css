@@ -62,8 +62,9 @@
     justify-content: space-between;
 }
 
-button {
+.talk-btn {
     border: none;
+    text-decoration: none;
     border-radius: 5px;
     padding: 5px 10px;
     font-weight: 500;
@@ -80,15 +81,15 @@ button {
     }
 }
 
-.talk-left-btn-wrap > button {
+.talk-main-btn > div {
+    display: flex;
+}
+
+.recommend-btn {
     background-color: rgb(255, 204, 35);
     &:hover {
         background-color: rgb(255, 196, 0);
     }
-}
-
-.talk-right-btn-wrap {
-    display: flex;
 }
 
 /* community comment */
@@ -118,7 +119,7 @@ button {
 }
 
 .write-comment-input {
-    width: 70.3%;
+    width: 71.4%;
     margin-right: 15px;
     padding: 5px 10px;
     border: 2px solid transparent;

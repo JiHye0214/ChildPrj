@@ -4,15 +4,19 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
     <th:block th:fragment="header">
+        <head>
+            <link rel="stylesheet" th:href="@{/css/header.css}" />
+            <script defer th:src="@{/js/header.js}"></script>
+        </head>
         <header>
             <div class="header">
                 <ul class="headerBtnWrap">
-                    <img class="headerBtn" src="/img/logo.png" height="80px" />
+                    <a th:href="@{/home}"><img class="headerBtn" src="/img/logo.png" height="80px" /></a>
                     <li class="menuWrap headerBtn">
                         <div class="menuTitleWrap">
-                            <div class="menuText togetherBtn">함께하기</div>
-                            <div class="menuText protectBtn">지켜주기</div>
-                            <div class="menuText raiseBtn">같이키우기</div>
+                            <a th:href="@{/together/togetherList}" class="menuText togetherBtn">함께하기</a>
+                            <a th:href="@{/protect/protectList}" class="menuText protectBtn">지켜주기</a>
+                            <a th:href="@{/community/communityList}" class="menuText raiseBtn">같이키우기</a>
                         </div>
                     </li>
                 </ul>
@@ -23,13 +27,13 @@
                         <img class="raiseToggle marketToggle" title="market" src="/img/toggleM.png" height="30px" />
                     </li>
                     <li>
-                        <img class="rightHeaderBtn" src="/img/zzimBtn.png" height="35px" />
+                        <a th:href="@{/together/zzim}"><img class="rightHeaderBtn" src="/img/zzimBtn.png" height="35px" /></a>
                     </li>
                     <li>
-                        <img class="rightHeaderBtn" src="/img/me.png" height="35px" />
+                        <a th:href="@{/user/mypage}"><img class="rightHeaderBtn" src="/img/me.png" height="35px" /></a>
                     </li>
                     <li>
-                        <img class="rightHeaderBtn" src="/img/loginBtn.png" height="35px" />
+                        <a th:href="@{/user/signIn}"><img class="rightHeaderBtn" src="/img/loginBtn.png" height="35px" /></a>
                     </li>
                     <li>
                         <img class="logoutBtn rightHeaderBtn" src="/img/logoutBtn.png" height="35px" />

@@ -64,6 +64,8 @@ header img:hover {
 }
 
 .menuText {
+    display: inline-block;
+    text-decoration: none;
     font-weight: 800;
     font-size: 22px;
     margin-right: 25px;
@@ -76,14 +78,17 @@ header img:hover {
 
 .togetherBtn:hover {
     color: var(--together-color);
+    text-decoration: none;
 }
 
 .protectBtn:hover {
     color: var(--protect-color);
+    text-decoration: none;
 }
 
 .raiseBtn:hover {
     color: var(--raise-color);
+    text-decoration: none;
 }
 
 /* 로그아웃 버튼은 나중에... */
