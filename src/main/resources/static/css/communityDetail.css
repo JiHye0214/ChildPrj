@@ -131,3 +131,11 @@
         cursor : pointer;
     }
 }
+
+.talk-comment-content > .raise-btn {
+    background-color: var(--raise-btn);
+
+    &:hover {
+        background-color: var(--raise-color)
+    }
+}

@@ -56,6 +56,10 @@ img:hover {
     cursor: pointer;
 }
 
+#txt-section > img:hover, .talk-writer-pic:hover, .comment-writer-pic:hover {
+    cursor: default;
+}
+
 .logo {
     height: 150px;
 }
