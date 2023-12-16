@@ -89,6 +89,9 @@
 .nickname-change-input {
     display: none;
     padding-left: 5px;
+    outline: none;
+    border: 1px solid #333;
+    border-radius: 3px;
 }
 
 .nickname-change-complete {
@@ -108,7 +111,7 @@
     background-color: var(--mypage-color);
     width: 120px;
     border: 1px solid #333;
-    border-radius: 2px;
+    border-radius: 3px;
 
     &:hover {
         cursor: pointer;
@@ -132,6 +135,7 @@
     width: 100%;
     padding: 5px;
     margin-top: 3px;
+    outline: none;
     border: none;
     border-radius: 3px;
     background-color: #e4e4e4;

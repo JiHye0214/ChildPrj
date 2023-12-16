@@ -1,8 +1,7 @@
-const warnMsgArr = document.querySelectorAll(".warn-message");
 
-const inputArr = document.querySelectorAll(".signup-input")
-const $signupBtn = document.querySelector(".signup-btn")
+const inputArr = document.querySelectorAll(".signup-input-wrap > input")
 const warnMsgArr = document.querySelectorAll(".warn-message")
+const $signupBtn = document.querySelector(".signup-btn")
 
 const signUpValidation = () => {
     for(let i=0; i<2; i++) {
