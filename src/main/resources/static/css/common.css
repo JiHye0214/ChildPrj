@@ -52,7 +52,7 @@ a {
     }
 }
 
-img:hover {
+img:hover, button:hover {
     cursor: pointer;
 }
 
