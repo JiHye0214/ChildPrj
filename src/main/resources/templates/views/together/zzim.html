@@ -10,13 +10,14 @@
         <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/zzim.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script defer th:src="@{/js/zzim.js}"></script>
         <title>찜리스트</title>
     </head>
     <body>
-        <!-- header -->
+        <!--/* header */-->
         <th:block th:insert="~{fragment/header::header}"></th:block>
 
-        <!-- section -->
+        <!--/* section */-->
         <div id="zzim-wrap">
             <div id="txt-section">
                 찜하고 확인해요! &nbsp;
@@ -46,6 +47,7 @@
                                     fill="#231F20"
                                     p-id="2272"
                                     id="heart"
+                                    class="zzim"
                                 ></path>
                             </svg>
                         </div>
@@ -57,6 +59,24 @@
                             <div class="content-title">서울 도자기 체험</div>
                             <div class="content-period">23.11.30 ~ 23.12.15</div>
                         </a>
+                        <div class="content-zzimBtn">
+                            <svg
+                                    t="1689815540548"
+                                    class="icon"
+                                    viewBox="0 0 1024 1024"
+                                    version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    p-id="2271"
+                            >
+                                <path
+                                        d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
+                                        fill="#231F20"
+                                        p-id="2272"
+                                        id="heart"
+                                        class="zzim"
+                                ></path>
+                            </svg>
+                        </div>
                     </div>
                     <div class="list-content">
                         <a href="">
@@ -105,7 +125,7 @@
             </div>
         </div>
 
-        <!-- footer -->
+        <!--/* footer */-->
         <th:block th:insert="~{fragment/footer::footer}"></th:block>
     </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,14 +18,13 @@
         <title>알뜰시장 작성</title>
     </head>
     <body>
-        <!-- header -->
+        <!--/* header */-->
         <th:block th:insert="~{fragment/header::header}"></th:block>
 
-
-        <!-- main -->
+        <!--/* main */-->
         <div class="main">
             <div class="talk-wrapper">
-                <!-- market header -->
+                <!--/* market header */-->
                 <div class="market-write-wrap">
                     <div class="talk-header">
                         <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
@@ -32,14 +32,14 @@
                     </div>
                 </div>
 
-                <!-- market write -->
+                <!--/* market write */-->
                 <form name="market-write-form" action="" autocomplete="off">
                     <div class="market-write-wrap write-info">
                         <input type="text" id="price" placeholder="가격" name="price" />
                         <input type="text" id="title" placeholder="제목을 입력해 주세요" name="title" />
                         <div id="gu-select-wrap" class="gu-select-wrap">
                             <input type="hidden" class="gu-input" value="" name="gu" />
-                            <div id="gu-select-btn">지역선택</div>
+                            <div id="gu-select-btn" class="gu-select-btn">지역선택</div>
                             <div id="gu-wrap" class="gu-wrap"></div>
                         </div>
                     </div>
@@ -49,13 +49,13 @@
                     </div>
                     <div class="write-btn-wrap">
                         <button type="submit" class="write-btn">작성완료</button>
-                        <a th:href="@{/js/marketList}" class="write-btn">목록</a>
+                        <a th:href="@{/market/marketList}" class="write-btn">목록</a>
                     </div>
                 </form>
             </div>
         </div>
 
-        <!-- footer -->
+        <!--/* footer */-->
         <th:block th:insert="~{fragment/footer::footer}"></th:block>
     </body>
 </html>

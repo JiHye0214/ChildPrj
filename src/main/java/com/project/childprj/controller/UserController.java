@@ -13,54 +13,56 @@ public class UserController {
     @RequestMapping("/together/togetherList")
     public void test1(){
     }
-    @RequestMapping("/protect/protectList")
+    @RequestMapping("/together/togetherDetail")
     public void test2(){
     }
-    @RequestMapping("/community/communityList")
+    @RequestMapping("/protect/protectList")
     public void test3(){
     }
-    @RequestMapping("/community/communityDetail")
+    @RequestMapping("/protect/protectDetail")
     public void test4(){
     }
-    @RequestMapping("/community/communityWrite")
+    @RequestMapping("/community/communityList")
     public void test5(){
     }
-    @RequestMapping("/community/communityUpdate")
+    @RequestMapping("/community/communityDetail")
     public void test6(){
     }
-    @RequestMapping("/market/marketList")
+    @RequestMapping("/community/communityWrite")
     public void test7(){
     }
-    @RequestMapping("/market/marketDetail")
+    @RequestMapping("/community/communityUpdate")
     public void test8(){
     }
-    @RequestMapping("/market/marketWrite")
+    @RequestMapping("/market/marketList")
     public void test9(){
     }
-    @RequestMapping("/market/marketUpdate")
+    @RequestMapping("/market/marketDetail")
     public void test10(){
+    }
+    @RequestMapping("/market/marketWrite")
+    public void test11(){
+    }
+    @RequestMapping("/market/marketUpdate")
+    public void test12(){
     }
 
     @RequestMapping("/together/zzim")
-    public void test11(){
-    }
-    @RequestMapping("/user/mypage")
-    public void test12(){
-    }
-    @RequestMapping("/user/signIn")
     public void test13(){
     }
-    @RequestMapping("/user/signUp")
+    @RequestMapping("/user/mypage")
     public void test14(){
     }
-    @RequestMapping("/user/signUpAgree")
+    @RequestMapping("/user/signIn")
     public void test15(){
     }
-    @RequestMapping("/user/find")
+    @RequestMapping("/user/signUp")
     public void test16(){
     }
-    @RequestMapping("/protect/protectDetail")
+    @RequestMapping("/user/signUpAgree")
     public void test17(){
     }
-
+    @RequestMapping("/user/find")
+    public void test18(){
+    }
 }

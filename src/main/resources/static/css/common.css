@@ -76,6 +76,7 @@ img:hover {
     }
 
     &:hover {
+        cursor: pointer;
         background-color: var(--raise-color);
     }
 }

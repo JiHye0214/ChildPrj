@@ -2,7 +2,8 @@ $(function(){
     // Summernode 추가
     $('.content-box').summernote({
         width: 1200,
-        height: 300,
+        height: 350,
+        placeholder: "내용을 입력해 주세요",
     });
 
 });
@@ -22,4 +23,4 @@ const warnMsgArr = document.querySelectorAll(".warn-message");
 //    }
 //}
 
-$writeBtn.addEventListener("click", writeValidation);
+// $writeBtn.addEventListener("click", writeValidation);
