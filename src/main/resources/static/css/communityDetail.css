@@ -123,10 +123,11 @@
     width: 70%;
 }
 
-.raise-btn {
-    background-color: var(--raise-btn);
+.talk-left-btn-wrap > .raise-btn {
+    background-color: white;
+    border: 1.5px solid var(--raise-btn);
 
     &:hover {
-        background-color: var(--raise-color);
+        cursor : pointer;
     }
 }

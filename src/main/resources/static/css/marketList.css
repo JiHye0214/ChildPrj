@@ -123,12 +123,12 @@
     align-items: center;
     row-gap: 5px;
     border-radius: 10px;
-    transition: 0.2s all;
-    background-color: #f0f0f0;
+    background-color: var(--light-gray);
     border: 1px solid transparent;
 }
+
 .list-content > a:hover {
-    border: 1px solid var(--input-placeholder);
+    border: 1px solid #898989;
 }
 
 .product-title {

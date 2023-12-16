@@ -1,14 +1,15 @@
-const $recommendBtn = document.querySelector(".recommend-btn");
+const $recomBtn = document.querySelector(".talk-left-btn-wrap > .raise-btn");
 
-const $recommendCnt = document.querySelector(".talk-inform-recomCnt");
-let count = 0;
-$recommendCnt.value = count;
-$recommendCnt.innerText = count;
+let recomToggle = false;
 
 const clickRecommendBtn = () => {
-    console.log($recommendCnt.value);
-    $recommendCnt.innerText = $recommendCnt.value;
-    $recommendCnt.value += 1;
-};
+    if(!recomToggle){
+        $recomBtn.style.background = `var(--raise-btn)`;
+        recomToggle = true
+    } else {
+        $recomBtn.style.background = `white`;
+        recomToggle = false
+    }
+}
 
-$recommendBtn.addEventListener("click", clickRecommendBtn);
+$recomBtn.addEventListener("click", clickRecommendBtn);

@@ -69,7 +69,7 @@
 .type {
     width: 110px;
     height: 45px;
-    background-color: #f0f0f0;
+    background-color: var(--light-gray);
     text-align: center;
     line-height: 45px;
     border-radius: 5px;
@@ -102,9 +102,8 @@
     justify-content: center;
     align-items: center;
     row-gap: 5px;
-    background-color: #f0f0f0;
+    background-color: var(--light-gray);
     border-radius: 10px;
-    transition: 0.2s all;
 }
 .list-content > a:hover {
     border: 1px solid #898989;
