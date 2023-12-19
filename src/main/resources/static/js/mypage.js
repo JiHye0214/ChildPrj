@@ -7,6 +7,7 @@ const $completeBtn = document.querySelector(".nickname-change-complete");
 const $changePwBtn = document.querySelector(".mypage-content-content > .change-password-btn");
 const $changePwCompleteBtn = document.querySelector(".change-pw-complete");
 const $changePwWrap = document.querySelector(".change-pw-wrap");
+const pwInputArr = document.querySelectorAll(".change-pw-content > input");
 
 const $changePicBtn = document.querySelector(".picture-change-btn");
 
@@ -20,32 +21,54 @@ const clickNickNameChangeBtn = () => {
     $nicknameChangeBtn.style.display = `none`;
     $completeBtn.style.display = `block`;
     $nicknameInput.style.display = `block`;
+    $nicknameInput.placeholder = $nickname.innerText;
 };
 
 const clickNickNameChangeCompleteBtn = () => {
-    $nickname.style.display = `block`;
-    $nicknameChangeBtn.style.display = `block`;
-    $completeBtn.style.display = `none`;
-    $nicknameInput.style.display = `none`;
-
-    $nickname.innerHTML = $nicknameInput.value;
-    $nicknameInput.placeholder = $nicknameInput.value;
-
-    alert("닉네임 변경 완료");
+    if($nicknameInput.value == ""){
+       $nickname.style.display = `block`;
+       $nicknameChangeBtn.style.display = `block`;
+       $completeBtn.style.display = `none`;
+       $nicknameInput.style.display = `none`;
+       $nicknameInput.placeholder = $nickname.innerText;
+    }else {
+        document.forms["nickChange"].submit();
+    }
 };
 
 // 비밀번호 변경
 const clickPasswordChangeBtn = () => {
-    console.log("비밀번호 변경");
     $changePwBtn.style.display = `none`;
     $changePwWrap.style.display = `block`;
 };
 
 const clickPasswordChangeCompleteBtn = () => {
-    $changePwBtn.style.display = `block`;
-    $changePwWrap.style.display = `none`;
 
-    alert("비밀번호 변경 완료");
+    let count = 0;
+    let pwCheck = false;
+
+    // 모두 입력헀는지
+    for(let i=0; i<pwInputArr.length; i++){
+        let input = pwInputArr[i].value;
+        if(input == ""){
+            alert(`${pwInputArr[i].placeholder} 을(를) 입력해 주세요`);
+            return;
+        } else {
+            count++
+        }
+    }
+
+    // 비밀번호 일치 확인
+    if(pwInputArr[0].value == pwInputArr[1].value){
+        pwCheck = true;
+    } else {
+        alert("비밀번호가 일치하지 않습니다");
+    }
+
+    if(count == 2 && pwCheck == true) {
+        document.forms["pwChange"].submit();
+    }
+
 };
 
 // 프사 변경

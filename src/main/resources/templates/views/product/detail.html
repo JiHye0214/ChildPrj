@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<script th:unless="${product}">
+    alert("해당 정보가 삭제되거나 없습니다");
+    history.back();
+</script>
+
+<block th:if="${product}" th:with="logged_user=${#authentication.principal.user}">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+        <link rel="stylesheet" th:href="@{/css/common.css}" />
+        <link rel="stylesheet" th:href="@{/css/marketDetail.css}" />
+        <script defer th:src="@{/js/marketDetail.js}"></script>
+        <title>알뜰시장 상세</title>
+    </head>
+    <body >
+        <!--/* header */-->
+        <th:block th:insert="~{fragment/header::header}"></th:block>
+
+        <!--/* main */-->
+        <div class="main">
+            <div class="market-wrapper">
+                <!--/* market header */-->
+                <div class="market-header-wrap">
+                    <div class="market-header">
+                        <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                        <div class="talk-writer-nickname">[[${product.user.nickname}]]</div>
+                    </div>
+                    <div class="market-header">
+                        <div class="talk-inform-look">
+                            <div>조회수</div>
+                            <div class="market-inform-lookCnt">[[${product.viewCnt}]]</div>
+                        </div>
+                        <div class="market-inform-date">
+                            <div>작성일</div>
+                            <div class="market-inform-date">[[${#temporals.format(product.createDate, 'yyyy-MM-dd')}]]</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--/* market main */-->
+                <div class="market-main">
+                    <div class="market-main-title-wrap">
+                        <div class="market-writer-title-right">
+                            <div class="market-writer-price" th:text="${product.price}"></div>
+                            <div>[[${product.productName}]]</div>
+                        </div>
+                        <div class="market-writer-title-right">
+                            <img src="/img/place.png" height="33px" alt="" />
+                            <div class="market-writer-region">[[${product.region}]]</div>
+                        </div>
+                    </div>
+                    <div class="market-main-content">[[${product.content}]]</div>
+                    <div class="market-main-btn">
+                        <a th:href="@{/product/write}" class="market-btn">작성</a>
+                        <a th:href="@{/product/update}" class="market-btn">수정</a>
+                        <form method="POST" name="detailDelete" th:action="@{/product/detailDelete}">
+                            <input type="hidden" name="id" th:value="${product.id}">
+                            <input type="button" class="market-btn delBtn" value="삭제"/>
+                        </form>
+                        <a th:href="@{/product/list}" class="market-btn">목록</a>
+                    </div>
+                </div>
+
+                <!--/* market comment */-->
+                <th:block th:insert="~{product/comment::productComment}"></th:block>
+            </div>
+        </div>
+
+        <!--/* footer */-->
+        <th:block th:insert="~{fragment/footer::footer}"></th:block>
+    </body>
+</block>
+</html>

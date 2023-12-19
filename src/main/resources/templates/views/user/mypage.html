@@ -23,10 +23,12 @@
                     <div>당신의 모든 정보가 사라지며, 복구할 수 없습니다</div>
                 </div>
                 <div class="dropContentWrap">
-                    <form action="">
-                        <input type="text" placeholder="비밀번호를 입력하세요"/>
+                    <form name="drop" th:with="user=${#authentication.getPrincipal().getUser()}" th:action="@{/user/drop}" method="post" enctype="multipart/form-data" class="drop-content-wrap">
+                        <input type="hidden" name="loginId" th:value="${user.loginId}"/>
+                        <input type="text" name="password" class="drop-input" placeholder="비밀번호를 입력하세요"/>
+                        <div class="login-warn"></div>
+                        <input type="button" class="dropUserOk" value="탈퇴하기"/>
                     </form>
-                    <button class="dropUserOk">탈퇴하기</button>
                 </div>
             </div>
         </div>
@@ -38,7 +40,7 @@
         <main class="main">
             <div class="mypage-wrapper">
                 <div class="mypage-title">마이페이지</div>
-                <div class="mypage-content">
+                <div class="mypage-content" th:with="user=${#authentication.getPrincipal().getUser()}">
                     <div class="mypage-profile">
                         <div class="mypage-content-content">
                             <div>프로필사진</div>
@@ -49,53 +51,47 @@
                         </div>
                         <div class="mypage-content-content">
                             <div>닉네임</div>
-                            <div class="nickname-change-wrap">
-                                <div class="nickname">바삭한 감자전</div>
-                                <form action="">
-                                    <input type="text" class="nickname-change-input" placeholder="바삭한 감자전" />
-                                </form>
+                            <form name="nickChange" th:with="user=${#authentication.getPrincipal().getUser()}" th:action="@{/user/nickname}" method="post" enctype="multipart/form-data" class="nickname-change-wrap">
+                                <input type="hidden" name="loginId" th:value="${user.loginId}"/>
+                                <div class="nickname">[[${user.nickname}]]</div>
+                                <input type="text" name="nickname" class="nickname-change-input" />
                                 <div class="nickname-change-btn">✏️</div>
-                                <button type="button" class="nickname-change-complete">완료</button>
-                            </div>
+                                <input type="button" class="nickname-change-complete" value="완료" />
+                            </form>
                         </div>
                     </div>
                     <hr />
                     <div class="mypage-inform">
                         <div class="mypage-content-content">
                             <div>이름</div>
-                            <div>홍길동</div>
+                            <div>[[${user.name}]]</div>
                         </div>
                         <div class="mypage-content-content">
                             <div>아이디</div>
-                            <div>hong_1234</div>
+                            <div>[[${user.loginId}]]</div>
                         </div>
                         <div class="mypage-content-content password-wrap">
                             <div>비밀번호</div>
                             <button type="button" class="change-password-btn">비밀번호 변경하기</button>
-                            <form action="" class="change-pw-wrap">
+                            <form th:action="@{/user/password}" method="POST" name="pwChange" th:with="user=${#authentication.getPrincipal().getUser()}" class="change-pw-wrap">
+                                <input type="hidden" name="loginId" th:value="${user.loginId}"/>
                                 <div class="change-pw-content">
-                                    <label for="current-pw">현재 비밀번호</label>
-                                    <input type="text" id="current-pw" />
+                                    <input type="text" name="password" placeholder="신규 비밀번호"/>
                                 </div>
                                 <div class="change-pw-content">
-                                    <label for="new-pw">신규 비밀번호</label>
-                                    <input type="text" id="new-pw" />
+                                    <input type="text" name="rePassword" placeholder="비밀번호 확인"/>
                                 </div>
-                                <div class="change-pw-content">
-                                    <label for="new-re-pw">비밀번호 확인</label>
-                                    <input type="text" id="new-re-pw" />
-                                </div>
-                                <button type="button" class="change-pw-complete">완료</button>
+                                <input type="button" class="change-pw-complete" value="완료" />
                             </form>
                         </div>
 
                         <div class="mypage-content-content">
                             <div>이메일</div>
-                            <div>gildong@naver.com</div>
+                            <div>[[${user.email}]]</div>
                         </div>
                         <div class="mypage-content-content">
                             <div>가입일</div>
-                            <div>2023.12.04</div>
+                            <div>[[${#temporals.format(user.createDate, 'yyyy-MM-dd HH:mm:ss')}]]</div>
                         </div>
                     </div>
                 </div>

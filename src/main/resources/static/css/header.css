@@ -13,6 +13,15 @@
     list-style: none;
 }
 
+.headerBtn {
+    margin-left: 10px;
+}
+
+.logoutBtn {
+    border: none;
+    background-color: white;
+}
+
 /*--------- header right ---------*/
 .rightHeaderBtn {
     margin-left: 10px;
@@ -72,7 +81,3 @@
     text-decoration: none;
 }
 
-/* 로그아웃 버튼은 나중에... */
-.logoutBtn {
-    display: none;
-}

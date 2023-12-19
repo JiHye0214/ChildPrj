@@ -85,12 +85,25 @@ img:hover, button:hover {
     }
 }
 
-.community-write-wrap > .attachment-btn {
-    background-color: var(--light-raise);
-}
-
 .warn-message {
     color: red;
     font-size: 15px;
     display: none;
+}
+
+.login-warn, .errorMsg {
+    color: red;
+    font-size: 15px;
+}
+
+.valid {
+    color: red;
+    font-size: 15px;
+    display: none;
+}
+
+.sign-valid {
+    color: red;
+    font-size: 15px;
+    text-align: center;
 }

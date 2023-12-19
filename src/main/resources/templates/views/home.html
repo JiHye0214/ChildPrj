@@ -23,10 +23,12 @@
                         <a th:href="@{/user/mypage}"><img class="headerBtn" src="/img/me.png" height="35px" /></a>
                     </li>
                     <li>
-                        <a th:href="@{/user/signIn}"><img class="headerBtn" src="/img/loginBtn.png" height="35px" /></a>
+                        <a th:href="@{/user/logIn}"><img sec:authorize="isAnonymous()" class="headerBtn" src="/img/loginBtn.png" height="35px" /></a>
                     </li>
                     <li>
-                        <img class="headerBtn logoutBtn" src="/img/logoutBtn.png" height="35px" />
+                        <form th:action="@{/doLogout}" method="POST" sec:authorize="isAuthenticated()">
+                            <button type="submit" class="headerBtn logoutBtn"><img src="/img/logoutBtn.png" class="logoutBtn" height="35px"></button>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -36,15 +38,15 @@
                 </div>
                 <div class="home-main-menu">
                     <div class="main-menu-wrap">
-                        <a th:href="@{/together/togetherList}" class="main-menu together">함께하기</a>
+                        <a th:href="@{/together/list}" class="main-menu together">함께하기</a>
                         <div class="main-detail">체험, 축제, 공연 둘러보기</div>
                     </div>
                     <div class="main-menu-wrap">
-                        <a th:href="@{/protect/protectList}" class="main-menu protect">지켜주기</a>
+                        <a th:href="@{/protect/list}" class="main-menu protect">지켜주기</a>
                         <div class="main-detail">돌봄시설 살펴보기</div>
                     </div>
                     <div class="main-menu-wrap">
-                        <a th:href="@{/community/communityList}" class="main-menu raise">같이키우기</a>
+                        <a th:href="@{/post/list}" class="main-menu raise">같이키우기</a>
                         <div class="main-detail">커뮤니티, 알뜰시장 구경하기</div>
                     </div>
                 </div>

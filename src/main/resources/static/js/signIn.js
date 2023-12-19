@@ -1,16 +1,33 @@
-const inputArr = document.querySelectorAll(".login-input")
-const loginBtn = document.querySelector(".login-btn")
-const warnMsgArr = document.querySelectorAll(".warn-message")
+
+const inputArr = document.querySelectorAll(".login")
+const warnMsgArr = document.querySelectorAll(".login-warn")
+const $errorMsg = document.querySelector(".errorMsg")
+const $loginBtn = document.querySelector(".login-btn")
 
 const loginValidation = () => {
-    for(let i=0; i<2; i++) {
-        let inputText = inputArr[i].value;
-        if(inputText == "") {
-            warnMsgArr[i].style.display = `block`;
-        } else {
-            warnMsgArr[i].style.display = `none`;
-        }
+
+    $errorMsg.style.display = `none`;
+
+    let count = 0;
+
+    for(let i=0; i<inputArr.length; i++) {
+            let input = inputArr[i].value;
+            if(input == "") {
+                $loginBtn.style.marginTop = `0px`;
+                warnMsgArr[i].style.marginBottom = `15px`;
+                warnMsgArr[i].innerHTML = `${inputArr[i].placeholder} 을(를) 입력해 주세요`;
+            } else {
+                $loginBtn.style.marginTop = ``;
+                warnMsgArr[i].style.marginBottom = ``;
+                warnMsgArr[i].innerHTML = ``;
+                count++;
+            }
+    }
+
+    if(count == 2) {
+        $errorMsg.style.display = `block`;
+        document.forms["login"].submit();
     }
 }
 
-loginBtn.addEventListener("click", loginValidation)
+$loginBtn.addEventListener("click", loginValidation)

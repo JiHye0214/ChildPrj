@@ -15,7 +15,7 @@
         <script defer th:src="@{/js/marketWrite.js}"></script>
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-        <title>알뜰시장 수정</title>
+        <title>알뜰시장 작성</title>
     </head>
     <body>
         <!--/* header */-->
@@ -48,8 +48,8 @@
                         <textarea id="content" name="content"></textarea>
                     </div>
                     <div class="write-btn-wrap">
-                        <button type="submit" class="write-btn">수정완료</button>
-                        <a th:href="@{/market/marketList}" class="write-btn">목록</a>
+                        <button type="submit" class="write-btn">작성완료</button>
+                        <a th:href="@{/product/list}" class="write-btn">목록</a>
                     </div>
                 </form>
             </div>

@@ -16,22 +16,35 @@
         <div class="singup-wrapper">
             <a th:href="@{/home}"><img class="logo" src="/img/logo.png" /></a>
             <div class="signup-wrap">
-                <form action="" class="signup-input-wrap">
-                    <input type="text" placeholder="아이디" />
-                    <div class="warn-message"></div>
-                    <input type="text" placeholder="비밀번호" />
-                    <div class="warn-message"></div>
-                    <input type="text" placeholder="비밀번호 확인" />
-                    <div class="warn-message"></div>
-                    <input type="text" placeholder="이름" />
-                    <div class="warn-message"></div>
-                    <input type="text" placeholder="이메일" />
-                    <div class="warn-message"></div>
-                    <input type="text" placeholder="닉네임" />
-                    <div class="warn-message"></div>
+                <form method="POST" name="signup" th:action="@{/user/signUp}" class="signup-input-wrap">
+
+                    <input type="text" placeholder="아이디" th:value="${loginId}" name="loginId" class="new"/>
+                    <div class="login-warn" th:text="${error_loginId}"></div>
+
+                    <input type="text" placeholder="비밀번호" th:value="${password}" name="password" class="new"/>
+                    <div class="login-warn"></div>
+
+                    <input type="text" placeholder="비밀번호 확인" th:value="${repassword}" name="repassword" class="new"/>
+                    <div class="login-warn"></div>
+
+                    <input type="text" placeholder="이름" th:value="${name}" name="name" class="new"/>
+                    <div class="login-warn"></div>
+
+                    <input type="text" placeholder="이메일" th:value="${email}" name="email" class="new"/>
+                    <div class="login-warn" th:text="${error_email}"></div>
+
+                    <input type="text" placeholder="닉네임" th:value="${nickname}" name="nickname" class="new"/>
+                    <div class="login-warn" th:text="${error_nickname}"></div>
+
+                    <input type="button" class="signup-btn" value="회원가입"/>
                 </form>
-                <div class="signup-btn">회원가입</div>
             </div>
         </div>
     </body>
+
+    <script th:if="${idValid == true}">
+        const valid = document.querySelector(".valid");
+        valid.style.display = `block`;
+    </script>
+
 </html>

@@ -13,7 +13,6 @@
 .login-input-wrap > form {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 }
 
 .login-input-wrap > form > input {
@@ -31,22 +30,22 @@
         color: var(--input-placeholder);
         font-size: 15px;
     }
-}
 
-/* login validation */
-.login-validation > .warn-message {
-    margin: 15px 0 0;
+    &:nth-child(2) {
+        margin-bottom: 15px;
+    }
 }
 
 /* login btn */
-.login-btn {
+.login-input-wrap > form > .login-btn {
     background-color: var(--cloud-color);
     color: white;
     border-radius: 3px;
     height: 70px;
-    margin: 15px 0;
+    margin-bottom: 15px;
     font-weight: 700;
     font-size: 20px;
+    padding: 0;
 
     display: flex;
     align-items: center;

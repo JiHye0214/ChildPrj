@@ -14,9 +14,9 @@
                     <a th:href="@{/home}"><img class="headerBtn" src="/img/logo.png" height="80px" /></a>
                     <li class="menuWrap headerBtn">
                         <div class="menuTitleWrap">
-                            <a th:href="@{/together/togetherList}" class="menuText togetherBtn">함께하기</a>
-                            <a th:href="@{/protect/protectList}" class="menuText protectBtn">지켜주기</a>
-                            <a th:href="@{/community/communityList}" class="menuText raiseBtn">같이키우기</a>
+                            <a th:href="@{/together/list}" class="menuText togetherBtn">함께하기</a>
+                            <a th:href="@{/protect/list}" class="menuText protectBtn">지켜주기</a>
+                            <a th:href="@{/post/list}" class="menuText raiseBtn">같이키우기</a>
                         </div>
                     </li>
                 </ul>
@@ -33,10 +33,12 @@
                         <a th:href="@{/user/mypage}"><img class="rightHeaderBtn" src="/img/me.png" height="35px" /></a>
                     </li>
                     <li>
-                        <a th:href="@{/user/signIn}"><img class="rightHeaderBtn" src="/img/loginBtn.png" height="35px" /></a>
+                        <a th:href="@{/user/logIn}"><img class="rightHeaderBtn" sec:authorize="isAnonymous()" src="/img/loginBtn.png" height="35px" /></a>
                     </li>
                     <li>
-                        <img class="logoutBtn rightHeaderBtn" src="/img/logoutBtn.png" height="35px" />
+                        <form th:action="@{/doLogout}" method="POST" sec:authorize="isAuthenticated()">
+                            <button type="submit" class="headerBtn logoutBtn"><img src="/img/logoutBtn.png" class="logoutBtn" height="35px"></button>
+                        </form>
                     </li>
                 </ul>
             </div>

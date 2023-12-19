@@ -8,15 +8,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
         <link rel="stylesheet" th:href="@{/css/common.css}" />
-        <link rel="stylesheet" th:href="@{/css/communityWrite.css}" />
+        <link rel="stylesheet" th:href="@{/css/communityUpdate.css}" />
 
         <!--/* 자유로운 컨텐트 */-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
-        <script defer th:src="@{/js/communityWrite.js}" ></script>
-        <title>커뮤니티 작성</title>
+        <script defer th:src="@{/js/communityUpdate.js}" ></script>
+        <title>커뮤니티 수정</title>
     </head>
     <body>
         <!--/* header */-->
@@ -36,17 +36,14 @@
                 <!--/* community write */-->
                 <form action="" autocomplete="off">
                     <div class="community-write-wrap">
-                        <div class="warn-message">제목을 입력해 주세요</div>
-                        <input id="title" type="text" class="write-title write-valid" placeholder="제목을 입력해 주세요" name="title" />
+                        <input id="title" type="text" class="write-title" placeholder="제목을 입력해 주세요" name="title" />
                     </div>
                     <div class="community-write-wrap">
-                        <div class="warn-message">내용을 입력해 주세요</div>
-                        <textarea class="content-box write-valid" rows="5" id="content" placeholder="내용을 입력하세요" name="content" th:utext="${content}"></textarea>
+                        <textarea class="content-box" rows="5" id="content" placeholder="내용을 입력하세요" name="content" th:utext="${content}"></textarea>
                     </div>
                     <div class="write-btn-wrap">
-                        <!--/* 작성완료 버튼이 a라서 이거는 controller 에서 validation !! */-->
-                        <button type="submit" class="write-btn">작성완료</button>
-                        <a th:href="@{/community/communityList}" class="write-btn">목록</a>
+                        <button type="submit" class="write-btn">수정완료</button>
+                        <a th:href="@{/post/list}" class="write-btn">목록</a>
                     </div>
                 </form>
             </div>

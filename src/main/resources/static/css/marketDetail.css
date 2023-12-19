@@ -33,7 +33,7 @@
 
 /* market main */
 .market-main {
-    margin: 20px 0;
+    margin: 20px 0 80px;
 }
 
 .market-main-title-wrap {
@@ -98,6 +98,10 @@
     &:first-of-type {
         margin-left: 0;
     }
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .market-main-btn {
@@ -133,7 +137,6 @@
 
 .write-comment-input {
     width: 71.4%;
-    margin-right: 15px;
     padding: 5px 10px;
     border: 2px solid transparent;
     border-radius: 5px;
@@ -159,8 +162,27 @@
 
 .raise-btn {
     background-color: var(--raise-btn);
+    height: 35.33px;
+    width: 50px;
+    margin-left: 15px;
 
     &:hover {
         background-color: var(--raise-color);
+        cursor: pointer;
+    }
+}
+
+.comment-delete-btn {
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: salmon;
+    height: 35px;
+    width: 50px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
     }
 }

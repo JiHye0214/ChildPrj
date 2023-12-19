@@ -28,7 +28,7 @@
 
 /* community main */
 .talk-main {
-    margin: 20px 0;
+    margin: 20px 0 80px;
 }
 
 .talk-main-title {
@@ -99,7 +99,6 @@
 
 .write-comment-input {
     width: 71.4%;
-    margin-right: 15px;
     padding: 5px 10px;
     border: 2px solid transparent;
     border-radius: 5px;
@@ -134,8 +133,12 @@
 
 .talk-comment-content > .raise-btn {
     background-color: var(--raise-btn);
+    height: 35.33px;
+    width: 50px;
+    margin-left: 15px;
 
     &:hover {
         background-color: var(--raise-color)
+        cursor: pointer;
     }
 }

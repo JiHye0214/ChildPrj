@@ -1,6 +1,5 @@
 package com.project.childprj.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,15 +8,13 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class User {
-    private Long id;
-    private String loginId;
-    private String password;
-    private String name;
-    private String nickname;
-    private String email;
+public class ProductComment {
+    private Long productId; // 어느 글의 댓글
+    private Long id; // 댓글 id
+    private User user; // 댓글 작성자는 user에서
+    private String content;
     private LocalDateTime createDate;
 }

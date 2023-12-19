@@ -29,7 +29,8 @@
 }
 
 .logoutBtn {
-    display: none;
+    border: none;
+    background-color: white;
 }
 
 /* main-logo */

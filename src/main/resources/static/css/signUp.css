@@ -12,12 +12,11 @@
 .signup-input-wrap {
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
 }
 
 .signup-input-wrap > input {
     width: 400px;
-    height: 60px;
+    height: 50px;
     background-color: var(--light-gray);
     border: none;
     border-radius: 3px;
@@ -32,14 +31,15 @@
 }
 
 /* signup btn */
-.signup-btn {
+.signup-input-wrap > .signup-btn {
     background-color: var(--cloud-color);
     color: white;
     border-radius: 3px;
-    height: 60px;
+    height: 50px;
     margin: 15px 0 0;
     font-weight: 700;
     font-size: 17px;
+    padding: 0;
 
     display: flex;
     align-items: center;
@@ -57,3 +57,4 @@
         margin: 50px auto;
     }
 }
+

@@ -3,6 +3,60 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.lec.spring.repository.UserRepository">
+<mapper namespace="com.project.childprj.repository.UserRepository">
+    <sql id="SELECT_BASE">
+        SELECT
+            id "id"
+            , loginId "loginId"
+            , password "password"
+            , name "name"
+            , nickName "nickName"
+            , email "email"
+            , createDate "createDate"
+        FROM user
+        WHERE 1 = 1
+    </sql>
 
+    <select id="findUserById" resultType="com.project.childprj.domain.User">
+        <include refid="SELECT_BASE"></include>
+        AND id = #{id}
+    </select>
+
+    <select id="findUserByLogId" resultType="com.project.childprj.domain.User">
+        <include refid="SELECT_BASE"></include>
+        AND loginId = #{loginId}
+    </select>
+
+    <select id="findUserByNickname" resultType="com.project.childprj.domain.User">
+        <include refid="SELECT_BASE"></include>
+        AND nickName = #{nickname}
+    </select>
+
+    <select id="findUserByEmail" resultType="com.project.childprj.domain.User">
+        <include refid="SELECT_BASE"></include>
+        AND email = #{email}
+    </select>
+
+    <insert id="newUser" flushCache="true" parameterType="com.project.childprj.domain.User"
+        useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO user (loginId, password, email, name, nickName)
+        VALUES (#{loginId}, #{password}, #{email}, #{name}, #{nickname})
+    </insert>
+
+    <update id="fixNickname" flushCache="true" parameterType="com.project.childprj.domain.User">
+        UPDATE user
+        SET nickName = #{nickname}
+        WHERE loginId = #{loginId}
+    </update>
+
+    <update id="fixPassword" flushCache="true" parameterType="com.project.childprj.domain.User">
+        UPDATE user
+        SET password = #{password}
+        WHERE loginId = #{loginId}
+    </update>
+
+    <delete id="dropUser" flushCache="true" parameterType="com.project.childprj.domain.User">
+        DELETE FROM user
+        WHERE loginId = #{loginId}
+    </delete>
 </mapper>

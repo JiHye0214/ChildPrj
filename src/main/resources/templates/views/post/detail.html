@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
         <link rel="stylesheet" th:href="@{/css/common.css}" />
-        <link rel="stylesheet" th:href="@{/css/marketDetail.css}" />
-        <script defer th:src="@{/js/marketDetail.js}"></script>
-        <title>알뜰시장 상세</title>
+        <link rel="stylesheet" th:href="@{/css/communityDetail.css}" />
+        <script defer th:src="@{/js/communityDetail.js}" ></script>
+        <title>커뮤니티 상세</title>
     </head>
     <body>
         <!--/* header */-->
@@ -18,85 +18,85 @@
 
         <!--/* main */-->
         <div class="main">
-            <div class="market-wrapper">
-                <!--/* market header */-->
-                <div class="market-header-wrap">
-                    <div class="market-header">
+            <div class="talk-wrapper">
+                <!--/* community header */-->
+                <div class="talk-header-wrap">
+                    <div class="talk-header">
                         <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
                         <div class="talk-writer-nickname">바삭한 감자전</div>
                     </div>
-                    <div class="market-header">
+                    <div class="talk-header">
                         <div class="talk-inform-look">
                             <div>조회수</div>
-                            <div class="market-inform-lookCnt">13</div>
+                            <div class="talk-inform-lookCnt">13</div>
                         </div>
-                        <div class="market-inform-date">
+                        <div class="talk-inform-recom">
+                            <div>추천수</div>
+                            <div class="talk-inform-recomCnt"></div>
+                        </div>
+                        <div class="talk-inform-date">
                             <div>작성일</div>
-                            <div class="market-inform-date">2023.12.05</div>
+                            <div class="talk-inform-date">2023.12.05</div>
                         </div>
                     </div>
                 </div>
 
-                <!--/* market main */-->
-                <div class="market-main">
-                    <div class="market-main-title-wrap">
-                        <div class="market-writer-title-right">
-                            <div class="market-writer-price">나눔</div>
-                            <div>아기옷 나눔합니다</div>
+                <!--/* community main */-->
+                <div class="talk-main">
+                    <div class="talk-main-title">안녕하세요!</div>
+                    <div class="talk-main-content">안녕하세요 반갑습니다 바삭한 감자전입니다 :D</div>
+                    <div class="talk-main-btn">
+                        <div class="talk-left-btn-wrap">
+                            <div class="raise-btn talk-btn">추천</div>
                         </div>
-                        <div class="market-writer-title-right">
-                            <img src="/img/place.png" height="33px" alt="" />
-                            <div class="market-writer-region">서울 강남구</div>
+                        <div class="talk-right-btn-wrap">
+                            <a th:href="@{/post/write}" class="talk-btn">작성</a>
+                            <a th:href="@{/post/update}" class="talk-btn">수정</a>
+                            <a href="" class="talk-btn">삭제</a>
+                            <a th:href="@{/post/list}" class="talk-btn">목록</a>
                         </div>
-                    </div>
-                    <div class="market-main-content">아기가 커서 이제 못 입는 옷들 나눔합니다 댓글 주세요 ^^</div>
-                    <div class="market-main-btn">
-                        <a th:href="@{/market/marketWrite}" class="market-btn">작성</a>
-                        <a th:href="@{/market/marketUpdate}" class="market-btn">수정</a>
-                        <a href="" class="market-btn">삭제</a>
-                        <a th:href="@{/market/marketList}" class="market-btn">목록</a>
                     </div>
                 </div>
 
-                <!--/* market comment */-->
-                <div class="market-comment">
-                    <div class="market-comment-wrap">
-                        <div class="market-comment-content">
+                <!--/* community comment */-->
+                <div class="talk-comment">
+                    <div class="talk-comment-wrap">
+                        <div class="talk-comment-content">
                             <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">말랑한 고구마</div>
-                            <div class="comment-writer-content">1번 옷 거래하고 싶습니다 ~</div>
+                            <div class="comment-writer-content">반갑습니다!</div>
                             <div class="comment-writer-time">23.12.05</div>
                         </div>
                     </div>
-                    <div class="market-comment-wrap">
-                        <div class="market-comment-content">
+                    <div class="talk-comment-wrap">
+                        <div class="talk-comment-content">
                             <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">맑은아침햇살</div>
-                            <div class="comment-writer-content">4번 옷 팔렸나요?</div>
+                            <div class="comment-writer-content">환영합니다!</div>
                             <div class="comment-writer-time">23.12.05</div>
                         </div>
                     </div>
-                    <div class="market-comment-wrap">
-                        <div class="market-comment-content">
+                    <div class="talk-comment-wrap">
+                        <div class="talk-comment-content">
                             <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">마라탕먹고싶다</div>
-                            <div class="comment-writer-content">옷들이 너무 귀엽네요 ㅎㅎ</div>
+                            <div class="comment-writer-content">안녕하세요!</div>
                             <div class="comment-writer-time">23.12.05</div>
                         </div>
                     </div>
-                    <div class="market-comment-wrap">
-                        <div class="market-comment-content">
+                    <div class="talk-comment-wrap">
+                        <div class="talk-comment-content">
                             <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                             <div class="comment-writer-nickname">솜사탕</div>
-                            <div class="comment-writer-content">2번 구매하고 싶습니다 ~!</div>
+                            <div class="comment-writer-content">hello!</div>
                             <div class="comment-writer-time">23.12.05</div>
                         </div>
                     </div>
-                    <form action="" class="market-comment-content market-comment-write-wrap">
+                    <form action="" class="talk-comment-content talk-comment-write-wrap">
                         <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
                         <div class="comment-writer-nickname">바삭한 감자전</div>
                         <input class="write-comment-input" type="text" placeholder="댓글을 입력하세요" />
-                        <button type="button" class="raise-btn market-btn">작성</button>
+                        <input type="button" class="raise-btn talk-btn" value="작성"/>
                     </form>
                 </div>
             </div>
