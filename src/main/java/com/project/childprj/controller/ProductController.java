@@ -36,6 +36,7 @@ public class ProductController {
     @Autowired
     private ProductCommentService productCommentService;
 
+    // 글 목록
     @GetMapping("/list")
     public void list(Integer page, String searchTxt, Model model, HttpServletRequest request) {
         String uri = U.getRequest().getRequestURI();
@@ -44,6 +45,7 @@ public class ProductController {
         productService.list(page, searchTxt, model);
     }
 
+    // 글 상세
     @GetMapping("/detail/{id}")
     public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
         List<ProductComment> list = productCommentService.cmtList(id);
@@ -52,15 +54,20 @@ public class ProductController {
         return "product/detail";
     }
 
+    // 글 작성 페이지
     @GetMapping("/write")
     public void write() {
     }
 
-    @GetMapping("/update")
-    public void update() {
+    // 글 수정 페이지
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable Long id, Model model) {
+        Product product = productService.productDetail(id);
+        model.addAttribute("product", product);
+        return "product/update";
     }
 
-    // 정렬
+    // 글 목록 정렬
     @PostMapping("/orderWay")
     public String orderWay(String orderWay, String searchTxt, RedirectAttributes redirectAttrs) {
         U.getSession().setAttribute("orderWay", orderWay);
@@ -69,7 +76,7 @@ public class ProductController {
         return "redirect:/product/list";
     }
 
-    // 검색
+    // 글 목록 검색
     @PostMapping("/search")
     public String search(String searchTxt, RedirectAttributes redirectAttrs) {
         redirectAttrs.addAttribute("searchTxt", searchTxt);
@@ -77,7 +84,7 @@ public class ProductController {
         return "redirect:/product/list";
     }
 
-    // 작성
+    // 글 작성
     @PostMapping("/write")
     public String writeOk(
             @Valid Product product
@@ -101,6 +108,32 @@ public class ProductController {
 
         model.addAttribute("result", productService.write(product));
         return "/product/writeOk";
+    }
+
+    // 글 수정
+    @PostMapping("/update")
+    public String updateOk(
+            @Valid Product product
+            , BindingResult result
+            , Model model
+            , RedirectAttributes redirectAttrs
+    ) {
+        if (result.hasErrors()) {
+            redirectAttrs.addFlashAttribute("price", product.getPrice());
+            redirectAttrs.addFlashAttribute("productName", product.getProductName());
+            redirectAttrs.addFlashAttribute("region", product.getRegion());
+            redirectAttrs.addFlashAttribute("content", product.getContent());
+
+            List<FieldError> errList = result.getFieldErrors();
+            for (FieldError err : errList) {
+                redirectAttrs.addFlashAttribute("err_" + err.getField(), err.getCode());
+            }
+
+            return "redirect:/product/update/" + product.getId();
+        }
+
+        model.addAttribute("result", productService.update(product));
+        return "product/updateOk";
     }
 
     // 댓글 작성

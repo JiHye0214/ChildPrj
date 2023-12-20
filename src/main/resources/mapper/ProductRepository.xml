@@ -94,4 +94,13 @@
          WHERE id = #{id}
     </delete>
 
+    <update id="update" flushCache="true" parameterType="com.project.childprj.domain.Product">
+        UPDATE product
+           SET price       = #{price}
+             , productName = #{productName}
+             , region      = #{region}
+             , content     = #{content}
+         WHERE id = #{id}
+    </update>
+
 </mapper>

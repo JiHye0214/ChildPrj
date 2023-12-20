@@ -17,4 +17,7 @@ public interface ProductService {
 
     // 글 삭제
     int detailDelete(Long id);
+
+    // 글 수정
+    int update(Product product);
 }
