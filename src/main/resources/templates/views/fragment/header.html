@@ -23,11 +23,11 @@
 
                 <ul class="headerBtnWrap">
                     <li>
-                        <img class="raiseToggle talkToggle" title="community" src="/img/toggleC.png" height="30px" />
-                        <img class="raiseToggle marketToggle" title="market" src="/img/toggleM.png" height="30px" />
+                        <a th:href="@{/product/list}"><img class="raiseToggle talkToggle" title="community" src="/img/toggleC.png" height="30px" /></a>
+                        <a th:href="@{/post/list}"><img class="raiseToggle marketToggle" title="market" src="/img/toggleM.png" height="30px" /></a>
                     </li>
                     <li>
-                        <a th:href="@{/together/zzim}"><img class="rightHeaderBtn" src="/img/zzimBtn.png" height="35px" /></a>
+                        <a th:href="@{/user/zzim}"><img class="rightHeaderBtn" src="/img/zzimBtn.png" height="35px" /></a>
                     </li>
                     <li>
                         <a th:href="@{/user/mypage}"><img class="rightHeaderBtn" src="/img/me.png" height="35px" /></a>

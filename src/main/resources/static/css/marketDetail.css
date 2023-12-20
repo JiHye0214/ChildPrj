@@ -81,8 +81,9 @@
     border-top: 1.5px solid var(--border-color);
     border-bottom: 1.5px solid var(--border-color);
     font-size: 18px;
-    padding: 40px 0;
+    padding: 20px 0;
     margin: 20px 0;
+    height: 200px;
 }
 
 .market-btn {

@@ -11,18 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TogetherController {
 
     @GetMapping("/list")
-    public String test1(HttpServletRequest request){
+    public void togetherList(HttpServletRequest request){
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
-
-        return "/together/list";
-    }
-    @RequestMapping("/detail")
-    public void test2(){
     }
 
-    @RequestMapping("/zzim")
-    public void test13(){
+    @GetMapping("/detail")
+    public void togetherDetail(HttpServletRequest request){
+        String uri = U.getRequest().getRequestURI();
+        request.getSession().setAttribute("prevPage", uri);
     }
 
 }

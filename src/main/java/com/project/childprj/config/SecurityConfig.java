@@ -35,14 +35,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // 로그인만 하면 들어갈 수 있도록 !
                         .requestMatchers("/user/signIn").authenticated()
-                        .requestMatchers("/post/detail").authenticated()
                         .requestMatchers("/post/detail/*").authenticated()
                         .requestMatchers("/post/write").authenticated()
-                        .requestMatchers("/product/detail").authenticated()
                         .requestMatchers("/product/detail/*").authenticated()
                         .requestMatchers("/product/write").authenticated()
                         .requestMatchers("/user/mypage").authenticated()
-                        .requestMatchers("/together/zzim").authenticated()
+                        .requestMatchers("/user/zzim").authenticated()
                         .anyRequest().permitAll()
                 )
 

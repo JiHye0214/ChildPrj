@@ -1,47 +1,32 @@
 const textColor = ["#63da53", "#ff748b", "#ffc400", "#dbdbdb"];
 const menuArr = document.querySelectorAll(".menuText");
 const $menuWrap = document.querySelector("menuTitleWrap");
-
 const toggleArr = document.querySelectorAll(".raiseToggle");
 
-// 메뉴
-const clickMenu = (index) => {
-    for (let i = 0; i < menuArr.length; i++) {
-        if (i == index) {
-            // 누르면 색 바뀜
-            menuArr[i].style.color = textColor[i];
-            // 같이키우기 누르면 토글 생성
-            if (i == 2) {
-                toggleArr[0].style.display = `block`;
-            } else {
-                toggleArr[0].style.display = `none`;
-                toggleArr[1].style.display = `none`;
-            }
-        } else {
-            menuArr[i].style.color = ""; // 설정 초기화!
-        }
-    }
-};
+// 어느 페이지인지 알아야지요
+let link = document.location.href;
+const linkArr = link.split("/");
+console.log(linkArr);
 
 // 토글 제어
-const clickToggle = (index) => {
-    for (let i = 0; i < toggleArr.length; i++) {
-        if (i == index) {
-            toggleArr[i].style.display = `none`;
-        } else {
-            toggleArr[i].style.display = `block`;
-        }
+if(linkArr[3] == "post"){
+    toggleArr[0].style.display = `block`;
+    toggleArr[1].style.display = `none`;
+} else if(linkArr[3] == "product"){
+    toggleArr[0].style.display = `none`;
+    toggleArr[1].style.display = `block`;
+}
+
+// 메뉴
+for(let i=0; i<menuArr.length; i++){
+    if(linkArr[3] == "together"){
+        menuArr[0].style.color = textColor[0];
+    } else if(linkArr[3] == "protect"){
+        menuArr[1].style.color = textColor[1];
+    } else if((linkArr[3] == "post") || (linkArr[3] == "product")){
+        menuArr[2].style.color = textColor[2];
+    } else {
+        menuArr[i].style.color = textColor[3];
     }
-};
-
-for (let i = 0; i < 3; i++) {
-    menuArr[i].onclick = function () {
-        clickMenu(i);
-    };
 }
 
-for (let i = 0; i < 2; i++) {
-    toggleArr[i].onclick = function () {
-        clickToggle(i);
-    };
-}

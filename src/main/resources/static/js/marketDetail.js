@@ -54,7 +54,6 @@ const clickDetailDelBtn = () => {
 }
 
 $commentWriteBtn.addEventListener("click", clickMarketCommentWriteBtn);
-$detailDelBtn.addEventListener("click", clickDetailDelBtn);
 
 for(let i=0; i<cmtDelBtnArr.length; i++){
     cmtDelBtnArr[i].onclick = function () {

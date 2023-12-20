@@ -50,25 +50,25 @@
 
     <select id="selectFromCntOrderByDate" resultMap="mapProduct">
         <include refid="SELECT_BASE"/>
-        AND (p.productName LIKE concat('%', #{searchTxt}, '%')
-        OR p.region LIKE concat('%', #{searchTxt}, '%'))
+          AND (p.productName LIKE concat('%', #{searchTxt}, '%')
+           OR p.region LIKE concat('%', #{searchTxt}, '%'))
         ORDER BY p.createDate DESC
         LIMIT #{from}, #{cnts}
     </select>
 
     <select id="selectFromCntOrderByPrice" resultMap="mapProduct">
         <include refid="SELECT_BASE"/>
-        AND (p.productName LIKE concat('%', #{searchTxt}, '%')
-        OR p.region LIKE concat('%', #{searchTxt}, '%'))
+          AND (p.productName LIKE concat('%', #{searchTxt}, '%')
+           OR p.region LIKE concat('%', #{searchTxt}, '%'))
         ORDER BY p.price
         LIMIT #{from}, #{cnts}
     </select>
 
     <select id="selectCountAll" resultType="int">
         SELECT Count(*)
-        FROM product
-        WHERE productName LIKE concat('%', #{searchTxt}, '%')
-           OR region LIKE concat('%', #{searchTxt}, '%')
+          FROM product
+         WHERE productName LIKE concat('%', #{searchTxt}, '%')
+            OR region LIKE concat('%', #{searchTxt}, '%')
     </select>
 
     <insert id="insert" flushCache="true" parameterType="com.project.childprj.domain.Product"
@@ -89,7 +89,8 @@
     </update>
 
     <delete id="detailDelete" flushCache="true">
-        DELETE FROM product
+        DELETE
+          FROM product
          WHERE id = #{id}
     </delete>
 

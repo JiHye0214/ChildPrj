@@ -8,6 +8,7 @@ import com.project.childprj.service.ProductCommentService;
 import com.project.childprj.service.ProductService;
 import com.project.childprj.service.UserService;
 import com.project.childprj.util.U;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
@@ -35,12 +36,31 @@ public class ProductController {
     @Autowired
     private ProductCommentService productCommentService;
 
-    // 글 목록 조회
     @GetMapping("/list")
-    public void list(Integer page, String searchTxt, Model model) {
+    public void list(Integer page, String searchTxt, Model model, HttpServletRequest request) {
+        String uri = U.getRequest().getRequestURI();
+        request.getSession().setAttribute("prevPage", uri);
+
         productService.list(page, searchTxt, model);
     }
 
+    @GetMapping("/detail/{id}")
+    public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
+        List<ProductComment> list = productCommentService.cmtList(id);
+        model.addAttribute("productCmt", list); // 특정 글의 댓글 모음
+        model.addAttribute("product", productService.productDetail(id)); // 특정 글
+        return "product/detail";
+    }
+
+    @GetMapping("/write")
+    public void write() {
+    }
+
+    @GetMapping("/update")
+    public void update() {
+    }
+
+    // 정렬
     @PostMapping("/orderWay")
     public String orderWay(String orderWay, String searchTxt, RedirectAttributes redirectAttrs) {
         U.getSession().setAttribute("orderWay", orderWay);
@@ -49,6 +69,7 @@ public class ProductController {
         return "redirect:/product/list";
     }
 
+    // 검색
     @PostMapping("/search")
     public String search(String searchTxt, RedirectAttributes redirectAttrs) {
         redirectAttrs.addAttribute("searchTxt", searchTxt);
@@ -56,11 +77,7 @@ public class ProductController {
         return "redirect:/product/list";
     }
 
-    // 글 작성
-    @GetMapping("/write")
-    public void write() {
-    }
-
+    // 작성
     @PostMapping("/write")
     public String writeOk(
             @Valid Product product
@@ -84,15 +101,6 @@ public class ProductController {
 
         model.addAttribute("result", productService.write(product));
         return "/product/writeOk";
-    }
-
-    // 글 상세
-    @GetMapping("/detail/{id}")
-    public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
-        List<ProductComment> list = productCommentService.cmtList(id);
-        model.addAttribute("productCmt", list); // 특정 글의 댓글 모음
-        model.addAttribute("product", productService.productDetail(id)); // 특정 글
-        return "product/detail";
     }
 
     // 댓글 작성
@@ -122,11 +130,7 @@ public class ProductController {
         return "/product/success";
     }
 
-    // 글 수정
-    @GetMapping("/update")
-    public void update() {
-
-    }
+    // ------------------validator--------------------
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {

@@ -3,10 +3,9 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <script th:unless="${product}">
-        alert("해당 정보가 삭제되거나 없습니다");
-        history.back();
-    </script>
+<script th:unless="${product}" th:inline="javascript">
+    location.href = "/product/list";
+</script>
 
     <block th:if="${product}" th:with="logged_user=${#authentication.principal.user}">
         <head>
@@ -48,23 +47,20 @@
                         <div class="market-main-title-wrap">
                             <div class="market-writer-title-right">
                                 <div class="market-writer-price" th:text="${product.price}"></div>
-<!--                                <div>[[${product.productName}]]</div>-->
                                 <div th:text="${product.productName}"></div>
                             </div>
                             <div class="market-writer-title-right">
                                 <img src="/img/place.png" height="33px" alt="" />
-<!--                                <div class="market-writer-region">[[${product.region}]]</div>-->
                                 <div class="market-writer-region" th:text="${product.region}"></div>
                             </div>
                         </div>
-<!--                        <div class="market-main-content">[[${product.content}]]</div>-->
                         <div class="market-main-content" th:utext="${product.content}"></div>
                         <div class="market-main-btn">
                             <a th:href="@{/product/write}" class="market-btn">작성</a>
-                            <a th:href="@{/product/update}" class="market-btn">수정</a>
-                            <form method="POST" name="detailDelete" th:action="@{/product/detailDelete}">
+                            <a th:href="@{/product/update}" class="market-btn" th:if="${logged_user.id == product.user.id}">수정</a>
+                            <form method="POST" name="detailDelete" th:action="@{/product/detailDelete}" th:if="${logged_user.id == product.user.id}">
                                 <input type="hidden" name="id" th:value="${product.id}">
-                                <input type="button" class="market-btn delBtn" value="삭제"/>
+                                <input type="button" class="market-btn delBtn" onclick="clickDetailDelBtn()" value="삭제"/>
                             </form>
                             <a th:href="@{/product/list}" class="market-btn">목록</a>
                         </div>

@@ -38,6 +38,10 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @GetMapping("/zzim")
+    public void togetherZzim(HttpServletRequest request){
+    }
+
     @GetMapping("/logIn")
     public void logIn(){};
 
@@ -101,7 +105,7 @@ public class UserController {
 
         U.getLoggedUser().setNickname(user.getNickname());
         model.addAttribute("change", userService.modifyNickname(user));
-        return "user/changeOk";
+        return "/user/changeOk";
     }
 
     // 비번 변경
@@ -109,7 +113,7 @@ public class UserController {
     public String fixPassword(User user, Model model){
 
         model.addAttribute("change", userService.modifyPassword(user));
-        return "user/changeOk";
+        return "/user/changeOk";
     }
 
     // 회원 탈퇴
@@ -126,7 +130,7 @@ public class UserController {
             }
             return "redirect:/home";
         }
-        return "user/dropFail";
+        return "/user/dropFail";
     }
 
 // ------------------validator--------------------
@@ -136,16 +140,7 @@ public class UserController {
 
     @InitBinder
     public void intiBinder(WebDataBinder binder) {
+
         binder.setValidator(userValidator);
     }
-
-// ------------------test--------------------
-
-//    @GetMapping ("/together/togetherList")
-//    public String test1(HttpServletRequest request){
-//        String uri = U.getRequest().getRequestURI();
-//        request.getSession().setAttribute("prevPage", uri);
-//
-//        return "/together/togetherList";
-//    }
 }
