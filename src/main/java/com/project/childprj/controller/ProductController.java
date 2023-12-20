@@ -49,7 +49,7 @@ public class ProductController {
         List<ProductComment> list = productCommentService.cmtList(id);
         model.addAttribute("productCmt", list); // 특정 글의 댓글 모음
         model.addAttribute("product", productService.productDetail(id)); // 특정 글
-        return "product/detail";
+        return "/product/detail";
     }
 
     @GetMapping("/write")

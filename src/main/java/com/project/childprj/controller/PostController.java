@@ -27,7 +27,7 @@ public class PostController {
     @Autowired
     private PostCommentService postCommentService;
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public void postList(HttpServletRequest request){
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
@@ -36,14 +36,15 @@ public class PostController {
     @GetMapping("/detail/{id}")
     public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
 
+
         return "/post/detail";
     }
 
-    @RequestMapping("/write")
+    @GetMapping("/write")
     public void postWrite(){
     }
 
-    @RequestMapping("/update")
+    @GetMapping("/update")
     public void postUpdate(){
     }
 
