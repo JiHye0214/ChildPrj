@@ -8,13 +8,13 @@ import java.util.List;
 @Repository
 public interface ProductRepository {
     // from 부터 cnts 개 글 최신순 조회 (페이징 + 검색어)
-    List<Product> selectFromCntOrderByDate(int from, int cnts, String searchTxt);
+    List<Product> selectFromCntOrderByDate(int from, int cnts, String sq);
 
     // from 부터 cnts 개 글 가격순 조회 (페이징 + 검색어)
-    List<Product> selectFromCntOrderByPrice(int from, int cnts, String searchTxt);
+    List<Product> selectFromCntOrderByPrice(int from, int cnts, String sq);
 
     // 글 개수 조회 (검색어)
-    int selectCountAll(String searchTxt);
+    int selectCountAll(String sq);
 
     // 글 작성
     int insert(Product product);

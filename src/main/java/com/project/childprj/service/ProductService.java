@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductService {
     // 글 목록 조회 (페이징 + 검색어)
-    List<Product> list(Integer page, String searchTxt, Model model);
+    List<Product> list(Integer page, String sq, Model model);
 
     // 글 작성
     int write(Product product);

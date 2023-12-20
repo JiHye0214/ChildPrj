@@ -50,16 +50,16 @@
 
     <select id="selectFromCntOrderByDate" resultMap="mapProduct">
         <include refid="SELECT_BASE"/>
-          AND (p.productName LIKE concat('%', #{searchTxt}, '%')
-           OR p.region LIKE concat('%', #{searchTxt}, '%'))
+          AND (p.productName LIKE concat('%', #{sq}, '%')
+           OR p.region LIKE concat('%', #{sq}, '%'))
         ORDER BY p.createDate DESC
         LIMIT #{from}, #{cnts}
     </select>
 
     <select id="selectFromCntOrderByPrice" resultMap="mapProduct">
         <include refid="SELECT_BASE"/>
-          AND (p.productName LIKE concat('%', #{searchTxt}, '%')
-           OR p.region LIKE concat('%', #{searchTxt}, '%'))
+          AND (p.productName LIKE concat('%', #{sq}, '%')
+           OR p.region LIKE concat('%', #{sq}, '%'))
         ORDER BY p.price
         LIMIT #{from}, #{cnts}
     </select>
@@ -67,8 +67,8 @@
     <select id="selectCountAll" resultType="int">
         SELECT Count(*)
           FROM product
-         WHERE productName LIKE concat('%', #{searchTxt}, '%')
-            OR region LIKE concat('%', #{searchTxt}, '%')
+         WHERE productName LIKE concat('%', #{sq}, '%')
+            OR region LIKE concat('%', #{sq}, '%')
     </select>
 
     <insert id="insert" flushCache="true" parameterType="com.project.childprj.domain.Product"

@@ -30,13 +30,13 @@ public class ProductServiceImpl implements ProductService {
 
     // 글 목록 조회 (페이징 + 검색어)
     @Override
-    public List<Product> list(Integer page, String searchTxt, Model model) {
+    public List<Product> list(Integer page, String sq, Model model) {
         HttpSession session = U.getSession();
 
         if (page == null) page = 1;
         if (page < 1) page = 1;
 
-        if (searchTxt == null) searchTxt = "";
+        if (sq == null) sq = "";
 
         String orderWay = (String) session.getAttribute("orderWay");
         if (orderWay == null) orderWay = "최신순";
@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
         Integer pagesPerSection = 5;
         Integer rowsPerPage = 8;
 
-        int totalLength = productRepository.selectCountAll(searchTxt);
+        int totalLength = productRepository.selectCountAll(sq);
         int totalPage = (int) Math.ceil(totalLength / (double) rowsPerPage);
 
         int startPage = 0;
@@ -62,9 +62,9 @@ public class ProductServiceImpl implements ProductService {
             if (endPage > totalPage) endPage = totalPage;
 
             if (orderWay.equals("최신순")) {
-                products = productRepository.selectFromCntOrderByDate(fromRow, rowsPerPage, searchTxt);
+                products = productRepository.selectFromCntOrderByDate(fromRow, rowsPerPage, sq);
             } else if (orderWay.equals("가격순")) {
-                products = productRepository.selectFromCntOrderByPrice(fromRow, rowsPerPage, searchTxt);
+                products = productRepository.selectFromCntOrderByPrice(fromRow, rowsPerPage, sq);
             }
             model.addAttribute("products", products);
         } else {
@@ -75,7 +75,7 @@ public class ProductServiceImpl implements ProductService {
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("rowsPerPage", rowsPerPage);
         model.addAttribute("orderWay", orderWay);
-        model.addAttribute("searchTxt", searchTxt);
+        model.addAttribute("sq", sq);
 
         model.addAttribute("url", U.getRequest().getRequestURI());
         model.addAttribute("startPage", startPage);

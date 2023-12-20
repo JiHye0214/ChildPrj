@@ -34,14 +34,14 @@
                     <div id="frm-section">
                         <form name="searchFrm" autocomplete="off" th:action="@{/product/search}" method="post">
                             <button type="button" id="initial-btn">초기화</button>
-                            <input type="text" id="search-input" placeholder="상품명이나 지역을 입력하세요" name="searchTxt" th:value="${searchTxt}" />
+                            <input type="text" id="search-input" placeholder="상품명이나 지역을 입력하세요" name="sq" th:value="${sq}" />
                             <button type="submit">
                                 <img src="/img/search.png" height="25px" />
                             </button>
                         </form>
 
                         <form name="orderFrm">
-                            <input type="hidden" id="search-input-val" name="searchTxt" />
+                            <input type="hidden" id="search-input-val" name="sq" />
                             <select id="orderWay" name="orderWay">
                                 <option value="최신순" th:selected="${orderWay == '최신순'}">최신순</option>
                                 <option value="가격순" th:selected="${orderWay == '가격순'}">가격순</option>

@@ -38,11 +38,11 @@ public class ProductController {
 
     // 글 목록
     @GetMapping("/list")
-    public void list(Integer page, String searchTxt, Model model, HttpServletRequest request) {
+    public void list(Integer page, String sq, Model model, HttpServletRequest request) {
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
 
-        productService.list(page, searchTxt, model);
+        productService.list(page, sq, model);
     }
 
     // 글 상세
@@ -69,17 +69,17 @@ public class ProductController {
 
     // 글 목록 정렬
     @PostMapping("/orderWay")
-    public String orderWay(String orderWay, String searchTxt, RedirectAttributes redirectAttrs) {
+    public String orderWay(String orderWay, String sq, RedirectAttributes redirectAttrs) {
         U.getSession().setAttribute("orderWay", orderWay);
-        redirectAttrs.addAttribute("searchTxt", searchTxt);
+        redirectAttrs.addAttribute("sq", sq);
 
         return "redirect:/product/list";
     }
 
     // 글 목록 검색
     @PostMapping("/search")
-    public String search(String searchTxt, RedirectAttributes redirectAttrs) {
-        redirectAttrs.addAttribute("searchTxt", searchTxt);
+    public String search(String sq, RedirectAttributes redirectAttrs) {
+        redirectAttrs.addAttribute("sq", sq);
 
         return "redirect:/product/list";
     }
