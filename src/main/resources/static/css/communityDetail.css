@@ -43,8 +43,9 @@
     border-top: 1.5px solid var(--border-color);
     border-bottom: 1.5px solid var(--border-color);
     font-size: 18px;
-    padding: 40px 0;
+    padding: 20px 0;
     margin: 20px 0;
+    height: 200px;
 }
 
 .talk-main-btn {
@@ -64,6 +65,10 @@
 
     &:first-of-type {
         margin-left: 0;
+    }
+
+    &:hover {
+        cursor: pointer;
     }
 }
 
@@ -138,7 +143,7 @@
     margin-left: 15px;
 
     &:hover {
-        background-color: var(--raise-color)
+        background-color: var(--raise-color);
         cursor: pointer;
     }
 }

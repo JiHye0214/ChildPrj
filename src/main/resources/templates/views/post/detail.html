@@ -3,11 +3,11 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<!--<script th:unless="${post}" th:inline="javascript">-->
-<!--    location.href = "/post/list";-->
-<!--</script>-->
+<script th:unless="${post}" th:inline="javascript">
+    location.href = "/post/list";
+</script>
 
-<block th:with="logged_user=${#authentication.principal.user}">
+<block th:if="${post}" th:with="logged_user=${#authentication.principal.user}">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -56,8 +56,11 @@
                         </div>
                         <div class="talk-right-btn-wrap">
                             <a th:href="@{/post/write}" class="talk-btn">작성</a>
-                            <a th:href="@{/post/update}" class="talk-btn">수정</a>
-                            <a href="" class="talk-btn">삭제</a>
+                            <a th:href="@{/post/update}" class="talk-btn" th:if="${logged_user.id == post.user.id}">수정</a>
+                            <form method="POST" name="detailDelete" th:action="@{/post/detailDelete}" th:if="${logged_user.id == post.user.id}">
+                                <input type="hidden" name="id" th:value="${post.id}">
+                                <input type="button" class="talk-btn delBtn" onclick="clickDetailDelBtn()" value="삭제"/>
+                            </form>
                             <a th:href="@{/post/list}" class="talk-btn">목록</a>
                         </div>
                     </div>

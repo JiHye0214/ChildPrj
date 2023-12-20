@@ -6,7 +6,6 @@ const toggleArr = document.querySelectorAll(".raiseToggle");
 // 어느 페이지인지 알아야지요
 let link = document.location.href;
 const linkArr = link.split("/");
-console.log(linkArr);
 
 // 토글 제어
 if(linkArr[3] == "post"){

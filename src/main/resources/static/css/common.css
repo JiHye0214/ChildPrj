@@ -81,7 +81,6 @@ img:hover, button:hover {
 
     &:hover {
         cursor: pointer;
-        background-color: var(--raise-color);
     }
 }
 

@@ -1,6 +1,8 @@
 package com.project.childprj.controller;
 
+import com.project.childprj.domain.Post;
 import com.project.childprj.domain.PostComment;
+import com.project.childprj.domain.Product;
 import com.project.childprj.service.PostCommentService;
 import com.project.childprj.service.PostService;
 import com.project.childprj.service.UserService;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -48,6 +51,14 @@ public class PostController {
 
     @GetMapping("/update")
     public void postUpdate(){
+    }
+
+    // 글 삭제
+    @PostMapping("/detailDelete")
+    public String detailDelete(Post post, Model model) {
+        Long postId = post.getId();
+        model.addAttribute("change", postService.detailDelete(postId));
+        return "/post/success";
     }
 
 }

@@ -35,7 +35,5 @@ public class PostServiceImpl implements PostService{
 
     // 특정 글 삭제
     @Override
-    public int detailDelete(Long id) {
-        return 0;
-    }
+    public int detailDelete(Long id) { return postRepository.detailDelete(id); }
 }
