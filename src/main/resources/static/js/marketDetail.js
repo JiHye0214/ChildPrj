@@ -1,7 +1,6 @@
 const $commentWriteBtn = document.querySelector(".market-comment-content > .market-btn");
 const $commentInput = document.querySelector(".market-comment-content > .write-comment-input");
 const $price = document.querySelector(".market-writer-price");
-const $detailDelBtn = document.querySelector(".delBtn");
 
 const cmtDelBtnArr = document.querySelectorAll(".comment-delete-btn");
 const cmtFormArr = document.querySelectorAll(".product-comment-content");
@@ -18,6 +17,8 @@ const clickMarketCommentWriteBtn = () => {
         $commentInput.value = "";
     }
 }
+
+$commentWriteBtn.addEventListener("click", clickMarketCommentWriteBtn);
 
 // 댓글 삭제 (onclick)
 // form이 댓글 개수만큼 있을거라고.
@@ -36,11 +37,15 @@ for(let i=0; i<cmtFormArr.length; i++){
     }
 }
 
+for(let i=0; i<cmtDelBtnArr.length; i++){
+    cmtDelBtnArr[i].onclick = function () {
+        clickCmtDelBtn(i);
+    };
+}
+
 const clickCmtDelBtn = (i) => { // index : 내가 누른 버튼
     let del = confirm("댓글을 삭제하시겠습니까?");
     if(del){
-        console.log(formWithBtn[i]);
-        console.log(formWithBtn[i].name);
         formWithBtn[i].submit();
     }
 }
@@ -51,12 +56,4 @@ const clickDetailDelBtn = () => {
     if(del){
         document.forms["detailDelete"].submit();
     }
-}
-
-$commentWriteBtn.addEventListener("click", clickMarketCommentWriteBtn);
-
-for(let i=0; i<cmtDelBtnArr.length; i++){
-    cmtDelBtnArr[i].onclick = function () {
-        clickCmtDelBtn(i);
-    };
 }

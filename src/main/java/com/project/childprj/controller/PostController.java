@@ -3,6 +3,7 @@ package com.project.childprj.controller;
 import com.project.childprj.domain.Post;
 import com.project.childprj.domain.PostComment;
 import com.project.childprj.domain.Product;
+import com.project.childprj.domain.ProductComment;
 import com.project.childprj.service.PostCommentService;
 import com.project.childprj.service.PostService;
 import com.project.childprj.service.UserService;
@@ -53,6 +54,26 @@ public class PostController {
     public void postUpdate(){
     }
 
+    // 댓글 작성
+    @PostMapping("/cmtWrite")
+    public String marketCmtWrite(PostComment postComment, Model model) {
+        System.out.println("------------------" + postComment);
+        Long postId = postComment.getPostId();
+        Long userId = U.getLoggedUser().getId();  // 세션 너란 녀석...
+        String content = postComment.getContent();
+
+        model.addAttribute("change", postCommentService.cmtWrite(userId, postId, content));
+        return "/post/success";
+    }
+
+    // 댓글 삭제
+    @PostMapping("/cmtDelete")
+    public String marketCmtDel(PostComment postComment, Model model) {
+        Long cmtId = postComment.getId();
+        model.addAttribute("change", postCommentService.cmtRemove(cmtId));
+        return "/post/success";
+    }
+
     // 글 삭제
     @PostMapping("/detailDelete")
     public String detailDelete(Post post, Model model) {
@@ -60,5 +81,4 @@ public class PostController {
         model.addAttribute("change", postService.detailDelete(postId));
         return "/post/success";
     }
-
 }

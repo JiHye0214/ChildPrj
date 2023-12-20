@@ -147,3 +147,18 @@
         cursor: pointer;
     }
 }
+
+.comment-delete-btn {
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: salmon;
+    height: 35px;
+    width: 50px;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

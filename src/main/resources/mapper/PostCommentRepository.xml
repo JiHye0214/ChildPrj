@@ -38,12 +38,14 @@
             u.nickName    "u_nickName",
             u.email       "u_email",
             u.createDate  "u_createDate"
-
         FROM
             post_comment p , user u
-
         WHERE
             p.userId = u.id
+        AND
+            p.postId = #{postId}
+        ORDER BY
+            p.id ASC
     </select>
 
     <insert id="cmtWrite" flushCache="true">
