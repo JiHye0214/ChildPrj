@@ -1,8 +1,11 @@
 package com.project.childprj.controller;
 
-import com.project.childprj.domain.ProductComment;
+import com.project.childprj.service.PostCommentService;
+import com.project.childprj.service.PostService;
+import com.project.childprj.service.UserService;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,15 @@ import java.util.List;
 @Controller
 @RequestMapping("/post")
 public class PostController {
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private PostService postService;
+
+    @Autowired
+    private PostCommentService postCommentService;
 
     @RequestMapping("/list")
     public void postList(HttpServletRequest request){
