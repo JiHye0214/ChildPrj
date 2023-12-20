@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.childprj.repository.PostRecommendRepository">
+
+    <insert id="recommend" flushCache="true">
+        INSERT INTO recommend (userId, postId)
+        VALUES (#{userId}, #{postId})
+    </insert>
+
+    <delete id="opposite" flushCache="true">
+        DELETE from recommend
+        WHERE userId = #{userId} AND postId = #{post};
+    </delete>
+
+</mapper>

@@ -49,7 +49,7 @@
     </select>
 
     <insert id="cmtWrite" flushCache="true">
-        INSERT INTO post_comment(userId, postId, content)
+        INSERT INTO post_comment (userId, postId, content)
         VALUES (#{userId}, #{postId}, #{content})
     </insert>
 
