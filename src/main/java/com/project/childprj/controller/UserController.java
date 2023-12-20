@@ -48,16 +48,16 @@ public class UserController {
     @GetMapping("/signUp")
     public void signUp(){};
 
-    @RequestMapping("/mypage")
+    @GetMapping("/mypage")
     public void mypage(){
         System.out.println(U.getLoggedUser().getPassword());
     }
 
-    @RequestMapping("/signUpAgree")
+    @GetMapping("/signUpAgree")
     public void signUpAgree(){
     }
 
-    @RequestMapping("/find")
+    @GetMapping("/find")
     public void find(){
     }
 
