@@ -25,39 +25,37 @@ DROP TABLE IF EXISTS user_authority;
 
 CREATE TABLE child_house
 (
-	id int NOT NULL,
+	id int NOT NULL AUTO_INCREMENT,
 	SIGUNNAME varchar(255),
 	CRNAME varchar(255),
 	CRTYPENAME varchar(255),
-	CRSTATUSNAME varchar(255),
 	CRADDR varchar(255),
 	CRTELNO varchar(255),
-	CRHOME varchar(255),
+	CRHOME varchar(1000),
 	NRTRROOMCNT int,
-	PLGRDCO int,
-	CCTVINSTLCNT int,
-	CHCRTESCNT int,
 	CRCAPAT int,
 	CRCHCNT int,
 	LA decimal(65,20),
 	LO decimal(65,20),
 	CRCARGBNAME varchar(255),
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (CRNAME)
 );
 
 
 CREATE TABLE kindergarden
 (
-	id int NOT NULL,
+	id int NOT NULL AUTO_INCREMENT,
 	KINDERNAME varchar(255),
 	ESTABLISH varchar(255),
 	LDGRNAME varchar(255),
 	ODATE date,
 	ADDR varchar(255),
 	TELNO varchar(20),
-	HPADDR varchar(255),
+	HPADDR varchar(1000),
 	OPERTIME varchar(255),
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	UNIQUE (KINDERNAME)
 );
 
 
@@ -138,29 +136,21 @@ CREATE TABLE recommend
 
 CREATE TABLE together
 (
-	id int NOT NULL,
+	id int NOT NULL AUTO_INCREMENT,
 	CODENAME varchar(255),
 	GUNAME varchar(255),
 	TITLE varchar(255),
-	DATE date,
+	DATE varchar(255),
 	PLACE varchar(255),
 	ORG_NAME varchar(255),
 	USE_TRGT varchar(255),
 	USE_FEE varchar(255),
-	PLAYER varchar(255),
-	PROGRAM text,
-	ETC_DESC text,
-	ORG_LINK varchar(255),
+	ORG_LINK varchar(1000),
 	MAIN_IMG varchar(255),
-	RGSTDATE date,
-	TICKET varchar(255),
-	STRTDATE date,
-	END_DATE date,
-	THEMECODE varchar(255),
+	STRTDATE varchar(255),
+	END_DATE varchar(255),
 	LOT decimal(65,20),
 	LAT decimal(65,20),
-	IS_FREE boolean,
-	HMPG_ADDR varchar(255),
 	zzimCnt int DEFAULT 0,
 	PRIMARY KEY (id)
 );

@@ -4,16 +4,16 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.childprj.repository.UserRepository">
+
     <sql id="SELECT_BASE">
-        SELECT
-            id "id"
-            , loginId "loginId"
-            , password "password"
-            , name "name"
-            , nickName "nickName"
-            , email "email"
-            , createDate "createDate"
-        FROM user
+        SELECT id         "id"
+             , loginId    "loginId"
+             , password   "password"
+             , name       "name"
+             , nickName   "nickName"
+             , email      "email"
+             , createDate "createDate"
+         FROM user
         WHERE 1 = 1
     </sql>
 
@@ -45,18 +45,19 @@
 
     <update id="fixNickname" flushCache="true" parameterType="com.project.childprj.domain.User">
         UPDATE user
-        SET nickName = #{nickname}
-        WHERE loginId = #{loginId}
+           SET nickName = #{nickname}
+         WHERE loginId = #{loginId}
     </update>
 
     <update id="fixPassword" flushCache="true" parameterType="com.project.childprj.domain.User">
         UPDATE user
-        SET password = #{password}
-        WHERE loginId = #{loginId}
+           SET password = #{password}
+         WHERE loginId = #{loginId}
     </update>
 
     <delete id="dropUser" flushCache="true" parameterType="com.project.childprj.domain.User">
         DELETE FROM user
-        WHERE loginId = #{loginId}
+         WHERE loginId = #{loginId}
     </delete>
+
 </mapper>

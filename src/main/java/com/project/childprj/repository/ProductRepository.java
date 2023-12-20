@@ -3,11 +3,21 @@ package com.project.childprj.repository;
 import com.project.childprj.domain.Product;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository {
+    // from 부터 cnts 개 글 최신순 조회 (페이징 + 검색어)
+    List<Product> selectFromCntOrderByDate(int from, int cnts, String searchTxt);
 
-    // 글쓰기
-    int write(Product product);
+    // from 부터 cnts 개 글 가격순 조회 (페이징 + 검색어)
+    List<Product> selectFromCntOrderByPrice(int from, int cnts, String searchTxt);
+
+    // 글 개수 조회 (검색어)
+    int selectCountAll(String searchTxt);
+
+    // 글 작성
+    int insert(Product product);
 
     // 특정 id 글 내용 읽어오기
     Product findProductById(Long id);

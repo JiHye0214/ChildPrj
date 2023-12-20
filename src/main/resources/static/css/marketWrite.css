@@ -70,8 +70,8 @@
     cursor: pointer;
 
     &:hover {
-        color: #333;
-    }
+         color: #333;
+     }
 }
 #gu-wrap {
     display: none;
@@ -86,8 +86,8 @@
     z-index: 10;
 
     &::-webkit-scrollbar {
-        display: none;
-    }
+         display: none;
+     }
 }
 
 #gu-wrap > .gu {
@@ -105,6 +105,34 @@
 }
 #gu-wrap > .gu.clicked {
     background-color: var(--raise-btn);
+}
+
+.err-wrap {
+    display: flex;
+    column-gap: 30px;
+    margin-top: -15px;
+}
+.err-wrap p {
+    font-size: 14px;
+    color: red;
+}
+.err-wrap > :nth-child(1) {
+    width: 15%;
+}
+.err-wrap > :nth-child(2) {
+    width: 71%;
+}
+.err-wrap > :nth-child(3) {
+    width: 14%;
+}
+
+.content-wrap {
+    display: block;
+}
+.content-wrap > p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: red;
 }
 
 .attachment-file-wrap {

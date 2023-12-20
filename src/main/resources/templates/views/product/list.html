@@ -10,6 +10,7 @@
         <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/marketList.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script defer th:src="@{/js/marketList.js}"></script>
         <title>알뜰시장</title>
     </head>
     <body>
@@ -31,77 +32,36 @@
                     </div>
 
                     <div id="frm-section">
-                        <form name="searchFrm" action="">
-                            <input type="text" placeholder="검색어를 입력하세요" />
+                        <form name="searchFrm" autocomplete="off" th:action="@{/product/search}" method="post">
+                            <button type="button" id="initial-btn">초기화</button>
+                            <input type="text" id="search-input" placeholder="상품명이나 지역을 입력하세요" name="searchTxt" th:value="${searchTxt}" />
                             <button type="submit">
                                 <img src="/img/search.png" height="25px" />
                             </button>
                         </form>
 
-                        <form name="orderFrm" action="">
-                            <input type="hidden" />
-                            <select name="" id="orderWay">
-                                <option value="최신순">최신순</option>
-                                <option value="가격순">가격순</option>
+                        <form name="orderFrm">
+                            <input type="hidden" id="search-input-val" name="searchTxt" />
+                            <select id="orderWay" name="orderWay">
+                                <option value="최신순" th:selected="${orderWay == '최신순'}">최신순</option>
+                                <option value="가격순" th:selected="${orderWay == '가격순'}">가격순</option>
                             </select>
                         </form>
                     </div>
                 </div>
 
                 <div id="list-wrap">
-                    <div class="list-content">
-                        <a href="">
+                    <div class="list-content" th:each="product, iterState : ${products}">
+                        <a th:href="@{'/product/detail/' + ${product.id}}">
                             <div class="product-img"></div>
-                            <div class="product-title">아기신발아기신발아기신발아기신발</div>
-                            <div class="product-price">나눔</div>
-                            <div class="product-region">강남구</div>
-                        </a>
-                    </div>
-                    <div class="list-content">
-                        <a href="">
-                            <div class="product-img"></div>
-                            <div class="product-title">아기 신발</div>
-                            <div class="product-price">20,000 원</div>
-                            <div class="product-region">강남구</div>
-                        </a>
-                    </div>
-                    <div class="list-content">
-                        <a href="">
-                            <div class="product-img"></div>
-                            <div class="product-title">아기 신발</div>
-                            <div class="product-price">나눔</div>
-                            <div class="product-region">강남구</div>
-                        </a>
-                    </div>
-                    <div class="list-content">
-                        <a href="">
-                            <div class="product-img"></div>
-                            <div class="product-title">아기 신발</div>
-                            <div class="product-price">나눔</div>
-                            <div class="product-region">강남구</div>
-                        </a>
-                    </div>
-                    <div class="list-content">
-                        <a href="">
-                            <div class="product-img"></div>
-                            <div class="product-title">아기 신발</div>
-                            <div class="product-price">나눔</div>
-                            <div class="product-region">강남구</div>
+                            <div class="product-title" th:text="${(page - 1) * rowsPerPage + (iterState.index + 1) + '. ' + product.productName}"></div>
+                            <div class="product-price" th:text="${product.price} == 0 ? '나눔' : ${product.price} + '원'"></div>
+                            <div class="product-region" th:text="${product.region}"></div>
                         </a>
                     </div>
                 </div>
 
-                <div id="pagination-wrap">
-                    <ul id="pagination-content">
-                        <li><a href="#"><img src="/img/prev.png" height="12px"></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#"><img src="/img/next.png" height="12px"></a></li>
-                    </ul>
-                </div>
+                <th:block th:insert="~{fragment/pagination::pagination}"></th:block>
             </div>
         </div>
 

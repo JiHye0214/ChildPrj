@@ -63,9 +63,22 @@ guDiv.forEach((gu) => {
             guSelectBtn.textContent = gu.textContent;
         }
 
-        guInput.value = gu.textContent;
+        // guInput.value = gu.textContent;
+        guInput.value = guSelectBtn.textContent;
     });
 });
+
+if (guSelectBtn.textContent != "지역선택") {
+    guSelectBtn.classList.add("clicked");
+    guDiv.forEach((gu) => {
+        if (gu.textContent == guSelectBtn.textContent) {
+            gu.classList.add("clicked");
+        }
+    })
+    guInput.value = guSelectBtn.textContent;
+} else {
+    guInput.value = guSelectBtn.textContent;
+}
 
 guSelectBtn.addEventListener("click", () => {
     // 구 선택창 닫혀있었다면

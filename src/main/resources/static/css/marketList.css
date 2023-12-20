@@ -47,16 +47,16 @@
     text-align: center;
     background-color: var(--raise-btn);
 
-    &:hover {
-        background-color: var(--raise-color);
-        cursor: pointer;
-    }
+&:hover {
+     background-color: var(--raise-color);
+     cursor: pointer;
+ }
 }
 
 #writeBtn > a {
     display: inline-block;
     width: 100%;
-    height: 100%;    
+    height: 100%;
 }
 
 #frm-section {
@@ -85,12 +85,24 @@
     color: var(--input-placeholder);
 }
 
-[name="searchFrm"] > button {
+[name="searchFrm"] > button:last-child {
     margin-left: 5px;
     border: none;
     background-color: white;
     cursor: pointer;
     vertical-align: middle;
+}
+[name="searchFrm"] > #initial-btn {
+    margin-right: 8px;
+    padding: 0 10px;
+    border: none;
+    font-size: 15px;
+    background-color: #ececec;
+    cursor: pointer;
+
+    &:hover {
+         background-color: #e2e2e2;
+     }
 }
 
 [name="orderFrm"] > select {
@@ -168,11 +180,6 @@
     line-height: 45px;
     transition: 0.2s all;
 }
-#pagination-content > li > a:hover {
-    background-color: var(--light-raise);
-    border-radius: 50%;
-}
-
 #pagination-content > li > a {
     display: block;
     height: 35px;
@@ -180,4 +187,11 @@
     margin: 0 3px;
     text-align: center;
     line-height: 35px;
+    border-radius: 50%;
+}
+#pagination-content > li > a:hover {
+    background-color: var(--light-raise);
+}
+#pagination-content > li > a.active {
+    background-color: var(--light-raise);
 }
