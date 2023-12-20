@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.childprj.repository.PostRepository">
+
+    <resultMap id="mapUser" type="com.project.childprj.domain.User">
+        <result column="u_id" property="id"/>
+        <result column="u_loginId" property="loginId"/>
+        <result column="u_password" property="password"/>
+        <result column="u_name" property="name"/>
+        <result column="u_nickName" property="nickname"/>
+        <result column="u_email" property="email"/>
+        <result column="u_createDate" property="createDate"/>
+    </resultMap>
+
+    <resultMap id="mapPost" type="com.project.childprj.domain.Post">
+        <result column="p_id" property="id"/>
+        <result column="p_title" property="title"/>
+        <result column="p_content" property="content"/>
+        <result column="p_viewCnt" property="viewCnt"/>
+        <result column="p_createDate" property="createDate"/>
+        <collection resultMap="mapUser" property="user"/>
+    </resultMap>
+
+    <!-- 특정 글 -->
+    <sql id="SELECT_BASE">
+        SELECT
+            p.id "p_id",
+            p.title "p_title",
+            p.content "p_content",
+            p.viewCnt     "p_viewCnt",
+            p.createDate "p_createDate",
+
+            u.id          "u_id",
+            u.loginId     "u_loginId",
+            u.password    "u_password",
+            u.name        "u_name",
+            u.nickName    "u_nickName",
+            u.email       "u_email",
+            u.createDate  "u_createDate"
+
+        FROM
+            post p , user u
+
+        WHERE
+            p.userId = u.id
+    </sql>
+
+    <!-- 특정 글 내용 -->
+    <select id="findPostById" resultMap="mapPost">
+        <include refid="SELECT_BASE"></include>
+        AND p.id = #{id}
+    </select>
+
+    <!-- 특정 글 조회수 -->
+    <update id="incViewCnt" flushCache="true">
+        UPDATE post
+        SET viewCnt = viewCnt + 1
+        WHERE id = #{id}
+    </update>
+
+    <!-- 특정 글 추천수 -->
+
+    <!-- 특정 글 삭제 -->
+    <delete id="detailDelete" flushCache="true">
+        DELETE
+        FROM post
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

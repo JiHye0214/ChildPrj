@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.childprj.repository.PostCommentRepository">
+
+    <resultMap id="mapUser" type="com.project.childprj.domain.User">
+        <result column="u_id" property="id"/>
+        <result column="u_loginId" property="loginId"/>
+        <result column="u_password" property="password"/>
+        <result column="u_name" property="name"/>
+        <result column="u_nickName" property="nickname"/>
+        <result column="u_email" property="email"/>
+        <result column="u_createDate" property="createDate"/>
+    </resultMap>
+
+    <resultMap id="mapComment" type="com.project.childprj.domain.PostComment">
+        <result column="p_id" property="id"/>
+        <result column="p_content" property="content"/>
+        <result column="p_createDate" property="createDate"/>
+        <result column="p_postId" property="postId"/>
+        <collection resultMap="mapUser" property="user"/>
+    </resultMap>
+
+    <!-- 특정 글 -->
+    <select id="findCommentById" resultMap="mapComment">
+        SELECT
+            p.id "p_id",
+            p.content "p_content",
+            p.createDate "p_createDate",
+            p.postId "p_postId",
+
+            u.id          "u_id",
+            u.loginId     "u_loginId",
+            u.password    "u_password",
+            u.name        "u_name",
+            u.nickName    "u_nickName",
+            u.email       "u_email",
+            u.createDate  "u_createDate"
+
+        FROM
+            post_comment p , user u
+
+        WHERE
+            p.userId = u.id
+    </select>
+
+    <insert id="cmtWrite" flushCache="true">
+        INSERT INTO post_comment(userId, postId, content)
+        VALUES (#{userId}, #{postId}, #{content})
+    </insert>
+
+    <delete id="cmtRemove" flushCache="true">
+        DELETE from post_comment
+        WHERE id = #{id};
+    </delete>
+
+</mapper>

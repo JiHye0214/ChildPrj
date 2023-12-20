@@ -1,5 +1,14 @@
 SELECT *
   FROM user;
+ 
+SELECT *
+  FROM post;
+ 
+SELECT *
+  FROM post_comment;
+ 
+SELECT *
+  FROM recommend;
 
 SELECT *
   FROM product;
