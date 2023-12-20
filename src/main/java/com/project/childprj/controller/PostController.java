@@ -1,5 +1,6 @@
 package com.project.childprj.controller;
 
+import com.project.childprj.domain.PostComment;
 import com.project.childprj.service.PostCommentService;
 import com.project.childprj.service.PostService;
 import com.project.childprj.service.UserService;
@@ -35,9 +36,10 @@ public class PostController {
 
     @GetMapping("/detail/{id}")
     public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
-
-
-        return "/post/detail";
+        List<PostComment> list = postCommentService.cmtList(id);
+        model.addAttribute("postCmt", list); // 특정 글의 댓글
+        model.addAttribute("post", postService.postDetail(id));
+        return "post/detail";
     }
 
     @GetMapping("/write")

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<th:block th:fragment="productComment">
+    <!--/* market comment */-->
+    <div class="market-comment">
+        <div class="market-comment-wrap">
+            <form method="POST" th:action="@{/post/cmtDelete}" th:each="cmt : ${postCmt}" class="post-comment-content market-comment-content" >
+                <input type="hidden" name="id" th:value="${cmt.id}"/>
+                <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
+                <div class="comment-writer-nickname" th:text="${cmt.user.nickname}"></div>
+                <div class="comment-writer-content" th:text="${cmt.content}"></div>
+                <div class="comment-writer-time">[[${#temporals.format(cmt.createDate, 'yy.MM.dd')}]]</div>
+                <input type="button" class="comment-delete-btn" th:if="${logged_user.id == cmt.user.id}" onclick="clickCmtDelBtn()" value="삭제" />
+            </form>
+        </div>
+        <form name="writeComment" autocomplete="off" method="POST" th:action="@{/post/cmtWrite}" class="talk-comment-content talk-comment-write-wrap">
+            <input type="hidden" name="postId" th:value="${postId}"/>
+            <input type="hidden" name="userId" th:value="${logged_user.id}"/>
+            <img class="comment-writer-pic" src="/img/핑구.jpg" height="40px" />
+            <div class="comment-writer-nickname">[[${logged_user.nickname}]]</div>
+            <input class="write-comment-input" name="content" type="text" placeholder="댓글을 입력하세요" />
+            <input type="button" class="raise-btn talk-btn" value="작성"/>
+        </form>
+    </div>
+</th:block>
+</html>
