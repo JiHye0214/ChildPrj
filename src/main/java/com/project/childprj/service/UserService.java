@@ -16,6 +16,12 @@ public interface UserService {
     // 등록된 이메일인지 확인
     boolean isExistEm(String email);
 
+    // 아이디 찾기 & 비번 찾기 (이름, 이메일)
+    boolean findIdPwByEmail(String name, String email);
+
+    // 비번 찾기 (아이디)
+    boolean findPwById(String name, String loginId);
+
     // 회원 등록
     int signUp(User user);
 
@@ -25,10 +31,6 @@ public interface UserService {
     // 비번 수정
     int modifyPassword(User user);
 
-    // 비번 확인
-    boolean confirmPw(User user, String password);
-
     // 회원 탈퇴
     int dropUser(User user);
-
 }

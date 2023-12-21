@@ -27,11 +27,12 @@
                             </div>
                         </div>
                         <div class="find-content-hidden">
-                            <form class="find-input-wrap" action="">
-                                <input type="text" placeholder="이름을 입력하세요" />
-                                <input type="text" placeholder="이메일을 입력하세요" />
+                            <form method="POST" class="find-input-wrap" th:action="@{/user/findId}">
+                                <input class="find-input" name="name" type="text" placeholder="이름" />
+                                <input class="find-input" name="email" type="text" placeholder="이메일" />
+                                <div class="login-warn errorMsg"></div>
+                                <input type="button" class="find-btn" th:value="확인"/>
                             </form>
-                            <div class="find-btn">확인</div>
                         </div>
                     </div>
                 </div>
@@ -47,11 +48,12 @@
                                 </div>
                             </div>
                             <div class="find-content-hidden">
-                                <form class="find-input-wrap" action="">
-                                    <input type="text" placeholder="이름을 입력하세요" />
-                                    <input type="text" placeholder="아이디를 입력하세요" />
+                                <form method="POST" class="find-input-wrap" th:action="@{/user/findPwById}">
+                                    <input class="find-input" name="name" type="text" placeholder="이름" />
+                                    <input class="find-input" name="id" type="text" placeholder="아이디" />
+                                    <div class="login-warn errorMsg"></div>
+                                    <input type="button" class="find-btn" th:value="확인"/>
                                 </form>
-                                <div class="find-btn">확인</div>
                             </div>
                         </div>
                         <div class="find-content-wrap">
@@ -63,11 +65,12 @@
                                 </div>
                             </div>
                             <div class="find-content-hidden">
-                                <form class="find-input-wrap" action="">
-                                    <input type="text" placeholder="이름을 입력하세요" />
-                                    <input type="text" placeholder="이메일을 입력하세요" />
+                                <form method="POST" class="find-input-wrap" th:action="@{/user/findPwByEmail}">
+                                    <input class="find-input" name="name" type="text" placeholder="이름" />
+                                    <input class="find-input" name="email" type="text" placeholder="이메일" />
+                                    <div class="login-warn errorMsg"></div>
+                                    <input type="button" class="find-btn" th:value="확인"/>
                                 </form>
-                                <div class="find-btn">확인</div>
                             </div>
                         </div>
                     </div>

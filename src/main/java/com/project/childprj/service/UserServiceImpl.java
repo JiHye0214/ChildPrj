@@ -49,6 +49,20 @@ public class UserServiceImpl implements UserService {
         return (user != null);
     }
 
+    // 아이디 & 비번 찾기 (이름, 이메일)
+    @Override
+    public boolean findIdPwByEmail(String name, String email) {
+        User user = userRepository.findIdPwByEmail(name, email);
+        return (user != null);
+    }
+
+    // 비번 찾기 (이름, 아이디)
+    @Override
+    public boolean findPwById(String name, String loginId) {
+        User user = userRepository.findPwById(name, loginId);
+        return (user != null);
+    }
+
     @Override
     public int signUp(User user) {
         // password encode
@@ -70,11 +84,6 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         int change = userRepository.fixPassword(user);
         return change;
-    }
-
-    @Override
-    public boolean confirmPw(User user, String inputPw) {
-        return passwordEncoder.matches(inputPw, user.getPassword());
     }
 
     @Override

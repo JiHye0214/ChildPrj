@@ -1,4 +1,3 @@
-const $recomBtn = document.querySelector(".talk-left-btn-wrap > .raise-btn");
 const $commentInput = document.querySelector(".talk-comment-content > .write-comment-input");
 const $commentWriteBtn = document.querySelector(".talk-comment-content > .talk-btn");
 
@@ -6,20 +5,15 @@ const $writeForm = document.querySelector(".talk-comment-content");
 const cmtDelBtnArr = document.querySelectorAll(".comment-delete-btn");
 const cmtFormArr = document.querySelectorAll(".post-comment-content");
 
-let recomToggle = false;
-
-// 추천
-const clickRecommendBtn = () => {
-    if(!recomToggle){
-        $recomBtn.style.background = `var(--raise-btn)`;
-        recomToggle = true
-    } else {
-        $recomBtn.style.background = `white`;
-        recomToggle = false
-    }
+// 추 -> 비추
+const clickOpposite = () => {
+    document.forms["opposite"].submit();
 }
 
-$recomBtn.addEventListener("click", clickRecommendBtn);
+// 비추 -> 추
+const clickRecommend = () => {
+    document.forms["recommend"].submit();
+}
 
 // 댓글 작성
 const clickMarketCommentWriteBtn = () => {

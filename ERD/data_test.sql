@@ -9,6 +9,10 @@ SELECT *
  
 SELECT *
   FROM recommend;
+ 
+SELECT Count(*)
+  FROM recommend 
+ WHERE postId = 3;
 
 SELECT *
   FROM product;

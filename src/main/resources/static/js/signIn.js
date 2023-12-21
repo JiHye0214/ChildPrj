@@ -1,4 +1,3 @@
-
 const inputArr = document.querySelectorAll(".login")
 const warnMsgArr = document.querySelectorAll(".login-warn")
 const $errorMsg = document.querySelector(".errorMsg")
@@ -30,4 +29,16 @@ const loginValidation = () => {
     }
 }
 
-$loginBtn.addEventListener("click", loginValidation)
+$loginBtn.addEventListener("click", loginValidation);
+inputArr[0].addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        $loginBtn.click();
+    }
+});
+inputArr[1].addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        $loginBtn.click();
+    }
+});

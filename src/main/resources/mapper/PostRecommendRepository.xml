@@ -5,6 +5,18 @@
 
 <mapper namespace="com.project.childprj.repository.PostRecommendRepository">
 
+    <select id="clickCheck" resultType="com.project.childprj.domain.PostRecommend">
+        SELECT *
+        FROM recommend
+        WHERE userId = #{userId} AND postId = #{postId};
+    </select>
+
+    <select id="recomCnt">
+        SELECT Count(*)
+        FROM recommend
+        WHERE postId = #{postId};
+    </select>
+
     <insert id="recommend" flushCache="true">
         INSERT INTO recommend (userId, postId)
         VALUES (#{userId}, #{postId})
@@ -12,7 +24,7 @@
 
     <delete id="opposite" flushCache="true">
         DELETE from recommend
-        WHERE userId = #{userId} AND postId = #{post};
+        WHERE userId = #{userId} AND postId = #{postId};
     </delete>
 
 </mapper>

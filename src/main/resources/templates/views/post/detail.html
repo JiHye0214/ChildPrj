@@ -37,7 +37,7 @@
                         </div>
                         <div class="talk-inform-recom">
                             <div>추천수</div>
-                            <div class="talk-inform-recomCnt">???</div>
+                            <div class="talk-inform-recomCnt" th:text="${recommend}"></div>
                         </div>
                         <div class="talk-inform-date">
                             <div>작성일</div>
@@ -51,9 +51,16 @@
                     <div class="talk-main-title" th:text="${post.title}"></div>
                     <div class="talk-main-content" th:text="${post.content}"></div>
                     <div class="talk-main-btn">
-                        <div class="talk-left-btn-wrap">
-                            <div class="raise-btn talk-btn">추천</div>
-                        </div>
+                        <!-- 추 -> 비추 -->
+                        <form method="POST" name="opposite" th:action="@{/post/opposite}" th:if="${check}" class="talk-left-btn-wrap recommend">
+                            <input type="hidden" name="id" th:value="${post.id}">
+                            <input type="button" class="raise-btn talk-btn" onclick="clickOpposite()" th:value="추천"/>
+                        </form>
+                        <!-- 비추 -> 추 -->
+                        <form method="POST" name="recommend" th:action="@{/post/recommend}" th:unless="${check}" class="talk-left-btn-wrap opposite">
+                            <input type="hidden" name="id" th:value="${post.id}">
+                            <input type="button" class="raise-btn talk-btn" onclick="clickRecommend()" th:value="추천"/>
+                        </form>
                         <div class="talk-right-btn-wrap">
                             <a th:href="@{/post/write}" class="talk-btn">작성</a>
                             <a th:href="@{/post/update}" class="talk-btn" th:if="${logged_user.id == post.user.id}">수정</a>

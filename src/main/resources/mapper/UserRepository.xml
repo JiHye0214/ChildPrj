@@ -18,23 +18,37 @@
     </sql>
 
     <select id="findUserById" resultType="com.project.childprj.domain.User">
-        <include refid="SELECT_BASE"></include>
+        <include refid="SELECT_BASE"/>
         AND id = #{id}
     </select>
 
     <select id="findUserByLogId" resultType="com.project.childprj.domain.User">
-        <include refid="SELECT_BASE"></include>
+        <include refid="SELECT_BASE"/>
         AND loginId = #{loginId}
     </select>
 
     <select id="findUserByNickname" resultType="com.project.childprj.domain.User">
-        <include refid="SELECT_BASE"></include>
+        <include refid="SELECT_BASE"/>
         AND nickName = #{nickname}
     </select>
 
     <select id="findUserByEmail" resultType="com.project.childprj.domain.User">
-        <include refid="SELECT_BASE"></include>
+        <include refid="SELECT_BASE"/>
         AND email = #{email}
+    </select>
+
+    <!--아이디 찾기 & 비번 찾기(이메일)-->
+    <select id="findIdPwByEmail" resultType="com.project.childprj.domain.User">
+        <include refid="SELECT_BASE"/>
+        AND name = #{name}
+        AND email = #{email}
+    </select>
+
+    <!--비밀번호 찾기(아이디)-->
+    <select id="findPwById" resultType="com.project.childprj.domain.User">
+        <include refid="SELECT_BASE"/>
+        AND name = #{name}
+        AND loginId = #{loginId}
     </select>
 
     <insert id="newUser" flushCache="true" parameterType="com.project.childprj.domain.User"

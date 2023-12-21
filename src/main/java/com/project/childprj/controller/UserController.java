@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -58,7 +57,8 @@ public class UserController {
     }
 
     @GetMapping("/find")
-    public void find(){
+    public void find(User user, Model model){
+        model.addAttribute("user", user);
     }
 
     // 로그인
@@ -69,6 +69,33 @@ public class UserController {
     @PostMapping("/loginError")
     public String loginError(){
         return "user/login";
+    }
+
+    // 아이디 찾기 (이메일)
+    @PostMapping("/findId")
+    public String findId(User user, Model model){
+        String findName = user.getName();
+        String findEmail = user.getEmail();
+        model.addAttribute("findId", userService.findIdPwByEmail(findName, findEmail));
+        return "/user/findId";
+    }
+
+    // 비번 찾기 (아이디)
+    @PostMapping("/findPwById")
+    public String findPwById(User user, Model model){
+        String findName = user.getName();
+        String findId = user.getLoginId();
+        model.addAttribute("findPwById", userService.findPwById(findName, findId));
+        return "/user/findPw";
+    }
+
+    // 비번 찾기 (이메일)
+    @PostMapping("/findPwByEmail")
+    public String findPwByEmail(User user, Model model){
+        String findName = user.getName();
+        String findEmail = user.getEmail();
+        model.addAttribute("findPwById", userService.findIdPwByEmail(findName, findEmail));
+        return "/user/findPw";
     }
 
     // 회원가입
@@ -83,8 +110,8 @@ public class UserController {
             redirectAttributes.addFlashAttribute("loginId", user.getLoginId());
             redirectAttributes.addFlashAttribute("email", user.getEmail());
             redirectAttributes.addFlashAttribute("nickname", user.getNickname());
-            redirectAttributes.addFlashAttribute("password", user.getNickname());
-            redirectAttributes.addFlashAttribute("name", user.getNickname());
+            redirectAttributes.addFlashAttribute("password", user.getPassword());
+            redirectAttributes.addFlashAttribute("name", user.getName());
 
             List<FieldError> errList = result.getFieldErrors();
             for(FieldError err : errList){
