@@ -36,6 +36,7 @@ let index = 0;
 
 for(let i=0; i<cmtFormArr.length; i++){
     if(cmtFormArr[i].childElementCount == 6){ // js 너란 녀석..
+        console.log(cmtFormArr[i].children[3].style.width = `730px`);
         formWithBtn[index] = cmtFormArr[i];
         formWithBtn[index].name = index; // 해당 폼 이름 바꾸기
         index++;

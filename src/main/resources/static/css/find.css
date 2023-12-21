@@ -184,7 +184,6 @@
 .change-pw-wrap .change-pw-complete {
     border: 1.5px solid var(--cloud-hover);
     background-color: var(--cloud-color);
-    font-weight:
 
     &:hover {
         background-color: var(--cloud-hover);

@@ -89,10 +89,10 @@
     padding: 10px 15px;
     margin-top: 10px;
     border-radius: 5px;
-
     display: flex;
     align-items: center;
     font-size: 15px;
+    column-gap: 15px;
 }
 
 .talk-comment-write-wrap> .comment-writer-nickname {
@@ -118,23 +118,19 @@
     border:2px solid var(--raise-btn);
 }
 
-.comment-writer-pic {
-    margin-right: 10px;
-}
-
 .comment-writer-nickname {
-    width: 20%;
+    width: 230px;
 }
 
 .comment-writer-content {
-    width: 70%;
+    width: 795px;
 }
 
 .talk-comment-content > .raise-btn {
     background-color: var(--raise-btn);
     height: 35.33px;
     width: 50px;
-    margin-left: 15px;
+    margin: 0;
 
     &:hover {
         background-color: var(--raise-color);
@@ -145,7 +141,6 @@
 .comment-delete-btn {
     border: none;
     border-radius: 5px;
-    margin-left: 10px;
     padding: 5px 10px;
     background: salmon;
     height: 35px;
