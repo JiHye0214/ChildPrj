@@ -36,7 +36,7 @@ public class LoginFailure implements AuthenticationFailureHandler {
         String errorMessage = null;
 
         if(exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException){
-            errorMessage = "아이디나 비밀번호가 맞지 않습니다. 다시 확인해주세요";
+            errorMessage = "아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요";
         }
         //< account is disabled
         else if(exception instanceof DisabledException) {

@@ -56,6 +56,11 @@ public class UserServiceImpl implements UserService {
         return (user != null);
     }
 
+    @Override
+    public User userIdIs(String email) {
+        return userRepository.findUserByEmail(email);
+    }
+
     // 비번 찾기 (이름, 아이디)
     @Override
     public boolean findPwById(String name, String loginId) {

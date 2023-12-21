@@ -16,46 +16,39 @@
         <div class="all-wrapper">
             <a th:href="@{/home}"><img class="logo" src="/img/logo.png" /></a>
             <div class="find-inform-wrap">
-                <div class="find-wrap">
-                    <div class="find-title">1️⃣ 아이디 찾기</div>
-                    <div class="find-content-wrap">
-                        <div class="find-content-title">
-                            <div>이메일로 찾기</div>
-                            <div>
-                                <div class="menu-open">▼</div>
-                                <div class="menu-close">▲</div>
+                <!-- 정보 맞을 때 (아이디) -->
+                <div th:if="${findId}" class="giveIdWrap">
+                    <div class="option">
+                        <a th:href="@{/user/find}">뒤로가기</a>
+                        <a th:href="@{/user/logIn}">로그인하기</a>
+                    </div>
+                    <div class="give-title">당신의 아이디는 <span>[[${user.loginId}]]</span> 입니다</div>
+                </div>
+
+                <!-- 정보 맞을 때 (비번 - id) -->
+                <div th:if="${findPwId} or ${findPwEmail}" class="giveIdWrap">
+                    <a th:href="@{/user/find}">뒤로가기</a>
+                    <div class="changePw">
+                        <div class="change-title">비밀번호 변경</div>
+                        <form name="change" th:action="@{/user/password}" method="POST" class="change-pw-wrap">
+                            <input type="hidden" name="loginId" th:value="${user.loginId}"/>
+                            <div class="change-pw-content">
+                                <input type="text" name="password" placeholder="신규 비밀번호"/>
                             </div>
-                        </div>
-                        <div class="find-content-hidden">
-                            <form method="POST" class="find-input-wrap" th:action="@{/user/findId}">
-                                <input class="find-input" name="name" type="text" placeholder="이름" />
-                                <input class="find-input" name="email" type="text" placeholder="이메일" />
-                                <div class="login-warn errorMsg"></div>
-                                <input type="button" class="find-btn" th:value="확인"/>
-                            </form>
-                        </div>
+                            <div class="change-pw-content">
+                                <input type="text" name="rePassword" placeholder="비밀번호 확인"/>
+                            </div>
+                            <div class="login-warn errorMsg"></div>
+                            <div class="login-warn errorMsg"></div>
+                            <input type="button" class="change-pw-complete" value="완료"/>
+                        </form>
                     </div>
                 </div>
-                <div class="find-wrap">
-                    <div class="find-title">2️⃣ 비밀번호 찾기</div>
-                    <div class="find-content-all">
-                        <div class="find-content-wrap">
-                            <div class="find-content-title">
-                                <div>아이디로 찾기</div>
-                                <div>
-                                    <div class="menu-open">▼</div>
-                                    <div class="menu-close">▲</div>
-                                </div>
-                            </div>
-                            <div class="find-content-hidden">
-                                <form method="POST" class="find-input-wrap" th:action="@{/user/findPwById}">
-                                    <input class="find-input" name="name" type="text" placeholder="이름" />
-                                    <input class="find-input" name="id" type="text" placeholder="아이디" />
-                                    <div class="login-warn errorMsg"></div>
-                                    <input type="button" class="find-btn" th:value="확인"/>
-                                </form>
-                            </div>
-                        </div>
+
+                <!-- 입력 -->
+                <div th:unless="${findId} or ${findPwId} or ${findPwEmail}" class="findWrap">
+                    <div class="find-wrap">
+                        <div class="find-title">1️⃣ 아이디 찾기</div>
                         <div class="find-content-wrap">
                             <div class="find-content-title">
                                 <div>이메일로 찾기</div>
@@ -65,12 +58,51 @@
                                 </div>
                             </div>
                             <div class="find-content-hidden">
-                                <form method="POST" class="find-input-wrap" th:action="@{/user/findPwByEmail}">
+                                <form method="POST" class="find-input-wrap" th:action="@{/user/findId}">
                                     <input class="find-input" name="name" type="text" placeholder="이름" />
                                     <input class="find-input" name="email" type="text" placeholder="이메일" />
                                     <div class="login-warn errorMsg"></div>
                                     <input type="button" class="find-btn" th:value="확인"/>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="find-wrap">
+                        <div class="find-title">2️⃣ 비밀번호 찾기</div>
+                        <div class="find-content-all">
+                            <div class="find-content-wrap">
+                                <div class="find-content-title">
+                                    <div>아이디로 찾기</div>
+                                    <div>
+                                        <div class="menu-open">▼</div>
+                                        <div class="menu-close">▲</div>
+                                    </div>
+                                </div>
+                                <div class="find-content-hidden">
+                                    <form method="POST" class="find-input-wrap" th:action="@{/user/findPwById}">
+                                        <input class="find-input" name="name" type="text" placeholder="이름" />
+                                        <input class="find-input" name="loginId" type="text" placeholder="아이디" />
+                                        <div class="login-warn errorMsg"></div>
+                                        <input type="button" class="find-btn" th:value="확인"/>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="find-content-wrap">
+                                <div class="find-content-title">
+                                    <div>이메일로 찾기</div>
+                                    <div>
+                                        <div class="menu-open">▼</div>
+                                        <div class="menu-close">▲</div>
+                                    </div>
+                                </div>
+                                <div class="find-content-hidden">
+                                    <form method="POST" class="find-input-wrap" th:action="@{/user/findPwByEmail}">
+                                        <input class="find-input" name="name" type="text" placeholder="이름" />
+                                        <input class="find-input" name="email" type="text" placeholder="이메일" />
+                                        <div class="login-warn errorMsg"></div>
+                                        <input type="button" class="find-btn" th:value="확인"/>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>

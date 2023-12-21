@@ -57,8 +57,9 @@ public class UserController {
     }
 
     @GetMapping("/find")
-    public void find(User user, Model model){
+    public String find(User user, Model model){
         model.addAttribute("user", user);
+        return "/user/find";
     }
 
     // 로그인
@@ -76,8 +77,9 @@ public class UserController {
     public String findId(User user, Model model){
         String findName = user.getName();
         String findEmail = user.getEmail();
-        model.addAttribute("findId", userService.findIdPwByEmail(findName, findEmail));
-        return "/user/findId";
+        model.addAttribute("findId", userService.findIdPwByEmail(findName, findEmail)); // boolean
+        model.addAttribute("user", userService.userIdIs(findEmail));
+        return "/user/find";
     }
 
     // 비번 찾기 (아이디)
@@ -85,17 +87,19 @@ public class UserController {
     public String findPwById(User user, Model model){
         String findName = user.getName();
         String findId = user.getLoginId();
-        model.addAttribute("findPwById", userService.findPwById(findName, findId));
-        return "/user/findPw";
+        model.addAttribute("findPwId", userService.findPwById(findName, findId));
+        return "user/find";
     }
 
     // 비번 찾기 (이메일)
     @PostMapping("/findPwByEmail")
     public String findPwByEmail(User user, Model model){
+        System.out.println("_______________________________" + user);
         String findName = user.getName();
         String findEmail = user.getEmail();
-        model.addAttribute("findPwById", userService.findIdPwByEmail(findName, findEmail));
-        return "/user/findPw";
+        System.out.println("+++++++++++++++++++++++++++++++" + userService.findPwById(findName, findEmail));
+        model.addAttribute("findPwEmail", userService.findIdPwByEmail(findName, findEmail));
+        return "user/find";
     }
 
     // 회원가입
@@ -139,6 +143,7 @@ public class UserController {
     @PostMapping("/password")
     public String fixPassword(User user, Model model){
 
+        System.out.println("---------------------" + user);
         model.addAttribute("change", userService.modifyPassword(user));
         return "/user/changeOk";
     }

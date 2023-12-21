@@ -19,6 +19,9 @@ public interface UserService {
     // 아이디 찾기 & 비번 찾기 (이름, 이메일)
     boolean findIdPwByEmail(String name, String email);
 
+    // 아이디 보여주기
+    User userIdIs(String email);
+
     // 비번 찾기 (아이디)
     boolean findPwById(String name, String loginId);
 

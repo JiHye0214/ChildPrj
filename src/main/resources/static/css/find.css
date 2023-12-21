@@ -83,12 +83,9 @@
     padding-left: 13px;
     border: 2px solid transparent;
     border-radius: 3px;
-    margin-bottom: 10px;
+    margin-top: 15px;
     outline: none;
     font-size: 15px;
-    &:first-of-type {
-        margin-top: 15px;
-    }
 }
 
 .find-input-wrap > input:focus {
@@ -104,11 +101,90 @@
     font-weight: 700;
     font-size: 13px;
     padding: 0px;
-    margin: 0px;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:hover {
+        background-color: var(--cloud-hover);
+        cursor: pointer;
+    }
+}
+
+/* 아이디 알려주기 */
+.giveIdWrap {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.give-title {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.give-title > span {
+    color: salmon;
+}
+
+.option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+/* 비번 변경 */
+.giveIdWrap a {
+    width: 71.6px;
+    font-size: 14px;
+    color: gray;
+    &:hover {
+        text-decoration : underline;
+    }
+}
+
+.changePw {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.change-title {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.change-pw-content {
+    width: 100%;
+}
+
+.change-pw-wrap input {
+    width: 400px;
+    height: 50px;
+    padding-left: 13px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    outline: none;
+    border: 1.5px solid var(--border-color);
+    border-radius: 5px;
+
+    &::focus {
+        border: none;
+    }
+}
+
+.change-pw-wrap .change-pw-complete {
+    border: 1.5px solid var(--cloud-hover);
+    background-color: var(--cloud-color);
+    font-weight:
 
     &:hover {
         background-color: var(--cloud-hover);

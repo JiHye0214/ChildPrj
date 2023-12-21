@@ -1,3 +1,4 @@
+
 .main img {
     border-radius: 50%;
 }
@@ -54,6 +55,8 @@
 }
 
 .talk-btn {
+    height: 35px;
+    width: 50px;
     border: none;
     text-decoration: none;
     border-radius: 5px;
@@ -63,9 +66,9 @@
     margin-left: 10px;
     background-color: var(--light-raise);
 
-    &:last-of-type {
-        margin-left: 10px;
-    }
+    display: flex;
+        justify-content: center;
+        align-items: center;
 
     &:hover {
         cursor: pointer;
@@ -148,6 +151,8 @@
     height: 35px;
     width: 50px;
     text-align: center;
+    font-weight: 500;
+    font-size: 15px;
 
     &:hover {
         cursor: pointer;
