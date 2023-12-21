@@ -21,32 +21,71 @@
         <result column="p_content" property="content"/>
         <result column="p_viewCnt" property="viewCnt"/>
         <result column="p_createDate" property="createDate"/>
+        <result column="p_recommendCnt"  property="recommendCnt"/>
         <collection resultMap="mapUser" property="user"/>
     </resultMap>
 
     <!-- 특정 글 -->
     <sql id="SELECT_BASE">
-        SELECT
-            p.id "p_id",
-            p.title "p_title",
-            p.content "p_content",
-            p.viewCnt     "p_viewCnt",
-            p.createDate "p_createDate",
-
-            u.id          "u_id",
-            u.loginId     "u_loginId",
-            u.password    "u_password",
-            u.name        "u_name",
-            u.nickName    "u_nickName",
-            u.email       "u_email",
-            u.createDate  "u_createDate"
-
-        FROM
-            post p , user u
-
-        WHERE
-            p.userId = u.id
+        SELECT p.id         "p_id"
+             , p.title      "p_title"
+             , p.content    "p_content"
+             , p.viewCnt    "p_viewCnt"
+             , p.createDate "p_createDate"
+             , u.id         "u_id"
+             , u.loginId    "u_loginId"
+             , u.password   "u_password"
+             , u.name       "u_name"
+             , u.nickName   "u_nickName"
+             , u.email      "u_email"
+             , u.createDate "u_createDate"
+             , ifnull(r.p_recommendCnt, 0) "p_recommendCnt"
+          FROM post p
+               LEFT JOIN
+                   (SELECT p.id "p_id", COUNT(*) "p_recommendCnt"
+                      FROM post p
+                         , recommend r
+                     WHERE r.postId = p.id
+                     GROUP BY p.id) r
+               ON r.p_id = p.id
+               LEFT JOIN user u
+               ON p.userId = u.id
+        WHERE p.userId = u.id
     </sql>
+
+    <!-- 최신순 조회 -->
+    <select id="selectFromCntOrderByDate" resultMap="mapPost">
+        <include refid="SELECT_BASE"/>
+          AND (p.title LIKE concat('%', #{sq}, '%')
+           OR u.nickName LIKE concat('%', #{sq}, '%'))
+        ORDER BY p.createDate DESC
+        LIMIT #{from}, #{cnts}
+    </select>
+
+    <!-- 추천순 조회 -->
+    <select id="selectFromCntOrderByRcmCnt" resultMap="mapPost">
+        <include refid="SELECT_BASE"/>
+          AND (p.title LIKE concat('%', #{sq}, '%')
+           OR u.nickName LIKE concat('%', #{sq}, '%'))
+        ORDER BY r.p_recommendCnt DESC
+        LIMIT #{from}, #{cnts}
+    </select>
+
+    <!-- 글 개수 조회 -->
+    <select id="selectCountAll" resultType="int">
+        SELECT Count(*)
+          FROM post p, user u
+         WHERE p.userId = u.id
+           AND (p.title LIKE concat('%', #{sq}, '%')
+            OR u.nickName LIKE concat('%', #{sq}, '%'))
+    </select>
+
+    <!-- 글 작성 -->
+    <insert id="insert" flushCache="true" parameterType="com.project.childprj.domain.Post"
+            useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        INSERT INTO post(title, content, userId)
+        VALUES (#{title}, #{content}, #{user.id})
+    </insert>
 
     <!-- 특정 글 내용 -->
     <select id="findPostById" resultMap="mapPost">
@@ -61,13 +100,19 @@
         WHERE id = #{id}
     </update>
 
-    <!-- 특정 글 추천수 -->
-
     <!-- 특정 글 삭제 -->
     <delete id="detailDelete" flushCache="true">
         DELETE
         FROM post
         WHERE id = #{id}
     </delete>
+
+    <!-- 글 수정 -->
+    <update id="update" flushCache="true" parameterType="com.project.childprj.domain.Post">
+        UPDATE post
+           SET title   = #{title}
+             , content = #{content}
+         WHERE id = #{id}
+    </update>
 
 </mapper>

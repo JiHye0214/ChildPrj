@@ -35,7 +35,6 @@
              , p.content     "p_content"
              , p.viewCnt     "p_viewCnt"
              , p.createDate  "p_createDate"
-
              , u.id          "u_id"
              , u.loginId     "u_loginId"
              , u.password    "u_password"

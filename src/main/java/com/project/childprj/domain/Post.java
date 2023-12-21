@@ -12,10 +12,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class Post {
-    private Long id; // 글 아이디
+    private Long id;
     private String title;
     private String content;
     private Long viewCnt;
     private LocalDateTime createDate;
     private User user;
+    private Long recommendCnt;
 }

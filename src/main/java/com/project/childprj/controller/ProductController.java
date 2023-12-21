@@ -2,7 +2,6 @@ package com.project.childprj.controller;
 
 import com.project.childprj.domain.Product;
 import com.project.childprj.domain.ProductComment;
-import com.project.childprj.domain.ProductValidator;
 import com.project.childprj.domain.User;
 import com.project.childprj.service.ProductCommentService;
 import com.project.childprj.service.ProductService;
@@ -67,16 +66,16 @@ public class ProductController {
         return "product/update";
     }
 
-    // 글 목록 정렬
+    // 글 목록 - 정렬
     @PostMapping("/orderWay")
-    public String orderWay(String orderWay, String sq, RedirectAttributes redirectAttrs) {
-        U.getSession().setAttribute("orderWay", orderWay);
+    public String orderWay(String productOrderWay, String sq, RedirectAttributes redirectAttrs) {
+        U.getSession().setAttribute("productOrderWay", productOrderWay);
         redirectAttrs.addAttribute("sq", sq);
 
         return "redirect:/product/list";
     }
 
-    // 글 목록 검색
+    // 글 목록 - 검색
     @PostMapping("/search")
     public String search(String sq, RedirectAttributes redirectAttrs) {
         redirectAttrs.addAttribute("sq", sq);
@@ -87,7 +86,7 @@ public class ProductController {
     // 글 작성
     @PostMapping("/write")
     public String writeOk(
-            @Valid Product product
+            Product product
             , BindingResult result
             , Model model
             , RedirectAttributes redirectAttrs
@@ -97,11 +96,6 @@ public class ProductController {
             redirectAttrs.addFlashAttribute("productName", product.getProductName());
             redirectAttrs.addFlashAttribute("region", product.getRegion());
             redirectAttrs.addFlashAttribute("content", product.getContent());
-
-            List<FieldError> errList = result.getFieldErrors();
-            for (FieldError err : errList) {
-                redirectAttrs.addFlashAttribute("err_" + err.getField(), err.getCode());
-            }
 
             return "redirect:/product/write";
         }
@@ -113,7 +107,7 @@ public class ProductController {
     // 글 수정
     @PostMapping("/update")
     public String updateOk(
-            @Valid Product product
+            Product product
             , BindingResult result
             , Model model
             , RedirectAttributes redirectAttrs
@@ -123,11 +117,6 @@ public class ProductController {
             redirectAttrs.addFlashAttribute("productName", product.getProductName());
             redirectAttrs.addFlashAttribute("region", product.getRegion());
             redirectAttrs.addFlashAttribute("content", product.getContent());
-
-            List<FieldError> errList = result.getFieldErrors();
-            for (FieldError err : errList) {
-                redirectAttrs.addFlashAttribute("err_" + err.getField(), err.getCode());
-            }
 
             return "redirect:/product/update/" + product.getId();
         }
@@ -163,10 +152,4 @@ public class ProductController {
         return "/product/success";
     }
 
-    // ------------------validator--------------------
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        binder.setValidator(new ProductValidator());
-    }
 }

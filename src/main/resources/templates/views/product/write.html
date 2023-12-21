@@ -3,75 +3,75 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
-        <link rel="stylesheet" th:href="@{/css/common.css}" />
-        <link rel="stylesheet" th:href="@{/css/header.css}" />
-        <link rel="stylesheet" th:href="@{/css/marketWrite.css}" />
-        <link rel="stylesheet" th:href="@{/css/footer.css}" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-        <script defer th:src="@{/js/marketWrite.js}"></script>
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-        <title>알뜰시장 작성</title>
-    </head>
-    <body>
-        <!--/* header */-->
-        <th:block th:insert="~{fragment/header::header}"></th:block>
+    <th:block th:with="logged_user=${#authentication.principal.user}">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+            <link rel="stylesheet" th:href="@{/css/common.css}" />
+            <link rel="stylesheet" th:href="@{/css/marketWrite.css}" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+            <script defer th:src="@{/js/marketWrite.js}"></script>
+            <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+            <title>알뜰시장 작성</title>
+        </head>
+        <body>
+            <!--/* header */-->
+            <th:block th:insert="~{fragment/header::header}"></th:block>
 
-        <!--/* main */-->
-        <div class="main" th:with="logged_user=${#authentication.principal.user}">
-            <div class="talk-wrapper">
-                <!--/* market header */-->
-                <div class="market-write-wrap">
-                    <div class="talk-header">
-                        <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
-                        <div class="talk-writer-nickname" th:text="${logged_user.nickname}"></div>
+            <!--/* main */-->
+            <div class="main">
+                <div class="talk-wrapper">
+                    <!--/* market header */-->
+                    <div class="market-write-wrap">
+                        <div class="talk-header">
+                            <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                            <div class="talk-writer-nickname" th:text="${logged_user.nickname}"></div>
+                        </div>
                     </div>
+
+                    <!--/* market write */-->
+                    <form name="market-write-form" autocomplete="off" th:action="@{/product/write}" method="post">
+                        <div class="market-write-wrap write-info">
+                            <input type="text" id="price" placeholder="가격" name="price" th:value="${price}" />
+
+                            <input type="text" id="productName" placeholder="상품명을 입력해 주세요" name="productName" th:value="${productName}" />
+
+                            <div id="gu-select-wrap" class="gu-select-wrap">
+                                <input type="hidden" class="gu-input" name="region" />
+                                <div id="gu-select-btn" class="gu-select-btn" th:text="${region} ? ${region} : '지역선택'"></div>
+                                <div id="gu-wrap" class="gu-wrap"></div>
+                            </div>
+                        </div>
+
+                        <div class="err-wrap">
+                            <div>
+                                <p class="err-msg"></p>
+                            </div>
+                            <div>
+                                <p class="err-msg"></p>
+                            </div>
+                            <div>
+                                <p class="err-msg"></p>
+                            </div>
+                        </div>
+
+                        <div class="market-write-wrap content-wrap">
+                            <textarea id="content" name="content" th:utext="${content}"></textarea>
+                            <p class="err-msg"></p>
+                        </div>
+
+                        <div class="write-btn-wrap">
+                            <button type="button" class="write-btn" id="submit-btn">작성완료</button>
+                            <a th:href="@{/product/list}" class="write-btn">목록</a>
+                        </div>
+                    </form>
                 </div>
-
-                <!--/* market write */-->
-                <form name="market-write-form" autocomplete="off" th:action="@{/product/write}" method="post">
-                    <div class="market-write-wrap write-info">
-                        <input type="text" id="price" placeholder="가격" name="price" th:value="${price}" />
-
-                        <input type="text" id="title" placeholder="상품명을 입력해 주세요" name="productName" th:value="${productName}" />
-
-                        <div id="gu-select-wrap" class="gu-select-wrap">
-                            <input type="hidden" class="gu-input" name="region" />
-                            <div id="gu-select-btn" class="gu-select-btn" th:text="${region} ? ${region} : '지역선택'"></div>
-                            <div id="gu-wrap" class="gu-wrap"></div>
-                        </div>
-                    </div>
-
-                    <div class="err-wrap">
-                        <div>
-                            <p th:if="${err_price}" th:utext="${err_price}"></p>
-                        </div>
-                        <div>
-                            <p th:if="${err_productName}" th:utext="${err_productName}"></p>
-                        </div>
-                        <div>
-                            <p th:if="${err_region}" th:utext="${err_region}"></p>
-                        </div>
-                    </div>
-
-                    <div class="market-write-wrap content-wrap">
-                        <textarea id="content" name="content" th:utext="${content}"></textarea>
-                        <p th:if="${err_content}" th:utext="${err_content}"></p>
-                    </div>
-
-                    <div class="write-btn-wrap">
-                        <button type="submit" class="write-btn">작성완료</button>
-                        <a th:href="@{/product/list}" class="write-btn">목록</a>
-                    </div>
-                </form>
             </div>
-        </div>
 
-        <!--/* footer */-->
-        <th:block th:insert="~{fragment/footer::footer}"></th:block>
-    </body>
+            <!--/* footer */-->
+            <th:block th:insert="~{fragment/footer::footer}"></th:block>
+        </body>
+    </th:block>
 </html>

@@ -3,84 +3,83 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<script th:unless="${post}" th:inline="javascript">
-    location.href = "/post/list";
-</script>
+    <script th:unless="${post}" th:inline="javascript">
+        location.href = "/post/list";
+    </script>
 
-<block th:if="${post}" th:with="logged_user=${#authentication.principal.user}">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
-        <link rel="stylesheet" th:href="@{/css/common.css}" />
-        <link rel="stylesheet" th:href="@{/css/communityDetail.css}" />
-        <script defer th:src="@{/js/communityDetail.js}" ></script>
-        <title>커뮤니티 상세</title>
-    </head>
-    <body>
-        <!--/* header */-->
-        <th:block th:insert="~{fragment/header::header}"></th:block>
+    <th:block th:if="${post}" th:with="logged_user=${#authentication.principal.user}">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+            <link rel="stylesheet" th:href="@{/css/common.css}" />
+            <link rel="stylesheet" th:href="@{/css/communityDetail.css}" />
+            <script defer th:src="@{/js/communityDetail.js}" ></script>
+            <title>커뮤니티 상세</title>
+        </head>
+        <body>
+            <!--/* header */-->
+            <th:block th:insert="~{fragment/header::header}"></th:block>
 
-        <!--/* main */-->
-        <div class="main">
-            <div class="talk-wrapper">
-                <!--/* community header */-->
-                <div class="talk-header-wrap">
-                    <div class="talk-header">
-                        <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
-                        <div class="talk-writer-nickname" th:text="${post.user.nickname}"></div>
+            <!--/* main */-->
+            <div class="main">
+                <div class="talk-wrapper">
+                    <!--/* community header */-->
+                    <div class="talk-header-wrap">
+                        <div class="talk-header">
+                            <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                            <div class="talk-writer-nickname" th:text="${post.user.nickname}"></div>
+                        </div>
+                        <div class="talk-header">
+                            <div class="talk-inform-look">
+                                <div>조회수</div>
+                                <div class="talk-inform-lookCnt" th:text="${post.viewCnt}"></div>
+                            </div>
+                            <div class="talk-inform-recom">
+                                <div>추천수</div>
+                                <div class="talk-inform-recomCnt" th:text="${recommend}"></div>
+                            </div>
+                            <div class="talk-inform-date">
+                                <div>작성일</div>
+                                <div class="talk-inform-date">[[${#temporals.format(post.createDate, 'yyyy-MM-dd')}]]</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="talk-header">
-                        <div class="talk-inform-look">
-                            <div>조회수</div>
-                            <div class="talk-inform-lookCnt" th:text="${post.viewCnt}"></div>
-                        </div>
-                        <div class="talk-inform-recom">
-                            <div>추천수</div>
-                            <div class="talk-inform-recomCnt" th:text="${recommend}"></div>
-                        </div>
-                        <div class="talk-inform-date">
-                            <div>작성일</div>
-                            <div class="talk-inform-date">[[${#temporals.format(post.createDate, 'yyyy-MM-dd')}]]</div>
-                        </div>
-                    </div>
-                </div>
 
-                <!--/* community main */-->
-                <div class="talk-main">
-                    <div class="talk-main-title" th:text="${post.title}"></div>
-                    <div class="talk-main-content" th:text="${post.content}"></div>
-                    <div class="talk-main-btn">
-                        <!-- 추 -> 비추 -->
-                        <form method="POST" name="opposite" th:action="@{/post/opposite}" th:if="${check}" class="talk-left-btn-wrap recommend">
-                            <input type="hidden" name="id" th:value="${post.id}">
-                            <input type="button" class="raise-btn talk-btn" onclick="clickOpposite()" th:value="추천"/>
-                        </form>
-                        <!-- 비추 -> 추 -->
-                        <form method="POST" name="recommend" th:action="@{/post/recommend}" th:unless="${check}" class="talk-left-btn-wrap opposite">
-                            <input type="hidden" name="id" th:value="${post.id}">
-                            <input type="button" class="raise-btn talk-btn" onclick="clickRecommend()" th:value="추천"/>
-                        </form>
-                        <div class="talk-right-btn-wrap">
-                            <a th:href="@{/post/write}" class="talk-btn">작성</a>
-                            <a th:href="@{/post/update}" class="talk-btn" th:if="${logged_user.id == post.user.id}">수정</a>
-                            <form method="POST" name="detailDelete" th:action="@{/post/detailDelete}" th:if="${logged_user.id == post.user.id}">
+                    <!--/* community main */-->
+                    <div class="talk-main">
+                        <div class="talk-main-title" th:text="${post.title}"></div>
+                        <div class="talk-main-content" th:utext="${post.content}"></div>
+                        <div class="talk-main-btn">
+                            <!-- 추 -> 비추 -->
+                            <form method="POST" name="opposite" th:action="@{/post/opposite}" th:if="${check}" class="talk-left-btn-wrap recommend">
                                 <input type="hidden" name="id" th:value="${post.id}">
-                                <input type="button" class="talk-btn delBtn" onclick="clickDetailDelBtn()" value="삭제"/>
+                                <input type="button" class="raise-btn talk-btn" onclick="clickOpposite()" th:value="추천"/>
                             </form>
-                            <a th:href="@{/post/list}" class="talk-btn">목록</a>
+                            <!-- 비추 -> 추 -->
+                            <form method="POST" name="recommend" th:action="@{/post/recommend}" th:unless="${check}" class="talk-left-btn-wrap opposite">
+                                <input type="hidden" name="id" th:value="${post.id}">
+                                <input type="button" class="raise-btn talk-btn" onclick="clickRecommend()" th:value="추천"/>
+                            </form>
+                            <div class="talk-right-btn-wrap">
+                                <a th:href="@{/post/write}" class="talk-btn">작성</a>
+                                <a th:href="@{'/post/update/' + ${post.id}}" class="talk-btn" th:if="${logged_user.id == post.user.id}">수정</a>
+                                <form method="POST" name="detailDelete" th:action="@{/post/detailDelete}" th:if="${logged_user.id == post.user.id}">
+                                    <input type="hidden" name="id" th:value="${post.id}">
+                                    <input type="button" class="talk-btn delBtn" onclick="clickDetailDelBtn()" value="삭제"/>
+                                </form>
+                                <a th:href="@{/post/list}" class="talk-btn">목록</a>
+                            </div>
                         </div>
                     </div>
+
+                    <!--/* community comment */-->
+                    <th:block th:insert="~{post/comment::postComment}"></th:block>
                 </div>
-
-                <!--/* community comment */-->
-                <th:block th:insert="~{post/comment::postComment}"></th:block>
             </div>
-        </div>
 
-        <!--/* footer */-->
-        <th:block th:insert="~{fragment/footer::footer}"></th:block>
-    </body>
-</block>
-
+            <!--/* footer */-->
+            <th:block th:insert="~{fragment/footer::footer}"></th:block>
+        </body>
+    </th:block>
 </html>

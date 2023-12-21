@@ -1,9 +1,13 @@
 package com.project.childprj.service;
 
-
 import com.project.childprj.domain.Post;
+import org.springframework.ui.Model;
+
+import java.util.List;
 
 public interface PostService {
+    // 글 목록 조회 (페이징 + 검색어)
+    List<Post> list(Integer page, String sq, Model model);
 
     // 글 작성
     int write(Post post);
@@ -25,4 +29,7 @@ public interface PostService {
 
     // 비추천
     int opposite(Long userId, Long postId);
+
+    // 글 수정
+    int update(Post post);
 }

@@ -38,8 +38,8 @@ public class ProductServiceImpl implements ProductService {
 
         if (sq == null) sq = "";
 
-        String orderWay = (String) session.getAttribute("orderWay");
-        if (orderWay == null) orderWay = "최신순";
+        String productOrderWay = (String) session.getAttribute("productOrderWay");
+        if (productOrderWay == null) productOrderWay = "최신순";
 
         Integer pagesPerSection = 5;
         Integer rowsPerPage = 8;
@@ -61,9 +61,9 @@ public class ProductServiceImpl implements ProductService {
             endPage = startPage + pagesPerSection - 1;
             if (endPage > totalPage) endPage = totalPage;
 
-            if (orderWay.equals("최신순")) {
+            if (productOrderWay.equals("최신순")) {
                 products = productRepository.selectFromCntOrderByDate(fromRow, rowsPerPage, sq);
-            } else if (orderWay.equals("가격순")) {
+            } else if (productOrderWay.equals("가격순")) {
                 products = productRepository.selectFromCntOrderByPrice(fromRow, rowsPerPage, sq);
             }
             model.addAttribute("products", products);
@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
         model.addAttribute("page", page);
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("rowsPerPage", rowsPerPage);
-        model.addAttribute("orderWay", orderWay);
+        model.addAttribute("productOrderWay", productOrderWay);
         model.addAttribute("sq", sq);
 
         model.addAttribute("url", U.getRequest().getRequestURI());

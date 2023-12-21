@@ -13,9 +13,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
             <link rel="stylesheet" th:href="@{/css/common.css}" />
-            <link rel="stylesheet" th:href="@{/css/header.css}" />
             <link rel="stylesheet" th:href="@{/css/marketWrite.css}" />
-            <link rel="stylesheet" th:href="@{/css/footer.css}" />
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
             <script defer th:src="@{/js/marketWrite.js}"></script>
             <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet" />
@@ -27,7 +25,7 @@
             <th:block th:insert="~{fragment/header::header}"></th:block>
 
             <!--/* main */-->
-            <div class="main" th:with="logged_user=${#authentication.principal.user}">
+            <div class="main">
                 <div class="talk-wrapper">
                     <!--/* market header */-->
                     <div class="market-write-wrap">
@@ -44,7 +42,7 @@
                         <div class="market-write-wrap write-info">
                             <input type="text" id="price" placeholder="가격" name="price" th:value="${price} ? ${price} : ${product.price}" />
 
-                            <input type="text" id="title" placeholder="상품명을 입력해 주세요" name="productName" th:value="${productName} ? ${productName} : ${product.productName}" />
+                            <input type="text" id="productName" placeholder="상품명을 입력해 주세요" name="productName" th:value="${productName} ? ${productName} : ${product.productName}" />
 
                             <div id="gu-select-wrap" class="gu-select-wrap">
                                 <input type="hidden" class="gu-input" name="region" />
@@ -55,23 +53,23 @@
 
                         <div class="err-wrap">
                             <div>
-                                <p th:if="${err_price}" th:utext="${err_price}"></p>
+                                <p class="err-msg"></p>
                             </div>
                             <div>
-                                <p th:if="${err_productName}" th:utext="${err_productName}"></p>
+                                <p class="err-msg"></p>
                             </div>
                             <div>
-                                <p th:if="${err_region}" th:utext="${err_region}"></p>
+                                <p class="err-msg"></p>
                             </div>
                         </div>
 
                         <div class="market-write-wrap content-wrap">
                             <textarea id="content" name="content" th:utext="${content} ? ${content} : ${product.content}"></textarea>
-                            <p th:if="${err_content}" th:utext="${err_content}"></p>
+                            <p class="err-msg"></p>
                         </div>
 
                         <div class="write-btn-wrap">
-                            <button type="submit" class="write-btn">수정완료</button>
+                            <button type="button" class="write-btn" id="submit-btn">수정완료</button>
                             <a th:href="@{/product/list}" class="write-btn">목록</a>
                         </div>
                     </form>

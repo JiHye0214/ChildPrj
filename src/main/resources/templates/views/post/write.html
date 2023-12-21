@@ -3,56 +3,60 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
-        <link rel="stylesheet" th:href="@{/css/common.css}" />
-        <link rel="stylesheet" th:href="@{/css/communityWrite.css}" />
+    <th:block th:with="logged_user=${#authentication.principal.user}">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <link rel="shortcut icon" th:href="@{/img/favicon.png}" type="image/x-icon" />
+            <link rel="stylesheet" th:href="@{/css/common.css}" />
+            <link rel="stylesheet" th:href="@{/css/communityWrite.css}" />
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+            <script defer th:src="@{/js/communityWrite.js}" ></script>
+            <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+            <title>커뮤니티 작성</title>
+        </head>
+        <body>
+            <!--/* header */-->
+            <th:block th:insert="~{fragment/header::header}"></th:block>
 
-        <!--/* 자유로운 컨텐트 */-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-
-        <script defer th:src="@{/js/communityWrite.js}" ></script>
-        <title>커뮤니티 작성</title>
-    </head>
-    <body>
-        <!--/* header */-->
-        <th:block th:insert="~{fragment/header::header}"></th:block>
-
-        <!--/* main */-->
-        <div class="main">
-            <div class="talk-wrapper">
-                <!--/* community header */-->
-                <div class="community-write-wrap">
-                    <div class="talk-header">
-                        <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
-                        <div class="talk-writer-nickname">바삭한 감자전</div>
+            <!--/* main */-->
+            <div class="main">
+                <div class="talk-wrapper">
+                    <!--/* community header */-->
+                    <div class="community-write-wrap">
+                        <div class="talk-header">
+                            <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                            <div class="talk-writer-nickname" th:text="${logged_user.nickname}"></div>
+                        </div>
                     </div>
+
+                    <!--/* community write */-->
+                    <form name="community-write-form" autocomplete="off" th:action="@{/post/write}" method="post">
+                        <div class="community-write-wrap">
+                            <input type="text" id="title" placeholder="제목을 입력해 주세요" name="title" th:value="${title}" />
+                        </div>
+                        <div class="err-wrap">
+                            <div>
+                                <p class="err-msg"></p>
+                            </div>
+                        </div>
+
+                        <div class="community-write-wrap">
+                            <textarea id="content" name="content" th:utext="${content}"></textarea>
+                            <p class="err-msg"></p>
+                        </div>
+
+                        <div class="write-btn-wrap">
+                            <button type="button" class="write-btn" id="submit-btn">작성완료</button>
+                            <a th:href="@{/post/list}" class="write-btn">목록</a>
+                        </div>
+                    </form>
                 </div>
-
-                <!--/* community write */-->
-                <form action="" autocomplete="off">
-                    <div class="community-write-wrap">
-                        <div class="warn-message">제목을 입력해 주세요</div>
-                        <input id="title" type="text" class="write-title write-valid" placeholder="제목을 입력해 주세요" name="title" />
-                    </div>
-                    <div class="community-write-wrap">
-                        <div class="warn-message">내용을 입력해 주세요</div>
-                        <textarea class="content-box write-valid" rows="5" id="content" placeholder="내용을 입력하세요" name="content" th:utext="${content}"></textarea>
-                    </div>
-                    <div class="write-btn-wrap">
-                        <!--/* 작성완료 버튼이 a라서 이거는 controller 에서 validation !! */-->
-                        <button type="submit" class="write-btn">작성완료</button>
-                        <a th:href="@{/post/list}" class="write-btn">목록</a>
-                    </div>
-                </form>
             </div>
-        </div>
 
-        <!--/* footer */-->
-        <th:block th:insert="~{fragment/footer::footer}"></th:block>
-    </body>
+            <!--/* footer */-->
+            <th:block th:insert="~{fragment/footer::footer}"></th:block>
+        </body>
+    </th:block>
 </html>

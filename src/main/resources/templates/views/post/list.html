@@ -10,6 +10,7 @@
         <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/communityList.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script defer th:src="@{/js/communityList.js}"></script>
         <title>커뮤니티</title>
     </head>
     <body>
@@ -30,17 +31,19 @@
                         <a th:href="@{/post/write}">작성하기</a>
                     </div>
                     <div id="frm-section">
-                        <form name="searchFrm" action="">
-                            <input type="text" placeholder="검색어를 입력하세요" />
+                        <form name="searchFrm" autocomplete="off" th:action="@{/post/search}" method="post">
+                            <button type="button" id="initial-btn">초기화</button>
+                            <input type="text" id="search-input" placeholder="제목이나 작성자를 입력하세요" name="sq" th:value="${sq}" />
                             <button type="submit">
                                 <img src="/img/search.png" height="25px" />
                             </button>
                         </form>
-                        <form name="orderFrm" action="">
-                            <input type="hidden" />
-                            <select name="" id="orderWay">
-                                <option value="최신순">최신순</option>
-                                <option value="추천순">추천순</option>
+
+                        <form name="orderFrm">
+                            <input type="hidden" id="search-input-val" name="sq" />
+                            <select name="postOrderWay" id="postOrderWay">
+                                <option value="최신순" th:selected="${postOrderWay == '최신순'}">최신순</option>
+                                <option value="추천순" th:selected="${postOrderWay == '추천순'}">추천순</option>
                             </select>
                         </form>
                     </div>
@@ -57,69 +60,20 @@
                     </div>
 
                     <ul id="tbody">
-                        <li class="list-content">
-                            <p class="post-no">1</p>
+                        <li class="list-content" th:each="post, iterState : ${posts}">
+                            <p class="post-no" th:text="${(page - 1) * rowsPerPage + (iterState.index + 1)}"></p>
                             <p class="post-title">
-                                <a href="">안녕하세요!안녕하세요!안녕하세요!안녕하세요!</a>
+                                <a th:href="@{'/post/detail/' + ${post.id}}" th:text="${post.title}"></a>
                             </p>
-                            <p class="post-writer">뽀로로맘</p>
-                            <p class="post-viewCnt">13</p>
-                            <p class="post-rcmCnt">3</p>
-                            <p class="post-date">23.11.30</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="post-no">1</p>
-                            <p class="post-title">
-                                <a href="">안녕하세요!</a>
-                            </p>
-                            <p class="post-writer">뽀로로맘뽀로로맘뽀로로맘</p>
-                            <p class="post-viewCnt">13</p>
-                            <p class="post-rcmCnt">3</p>
-                            <p class="post-date">23.11.30</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="post-no">1</p>
-                            <p class="post-title">
-                                <a href="">안녕하세요!</a>
-                            </p>
-                            <p class="post-writer">뽀로로맘</p>
-                            <p class="post-viewCnt">13</p>
-                            <p class="post-rcmCnt">3</p>
-                            <p class="post-date">23.11.30</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="post-no">1</p>
-                            <p class="post-title">
-                                <a href="">안녕하세요!</a>
-                            </p>
-                            <p class="post-writer">뽀로로맘</p>
-                            <p class="post-viewCnt">13</p>
-                            <p class="post-rcmCnt">3</p>
-                            <p class="post-date">23.11.30</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="post-no">1</p>
-                            <p class="post-title">
-                                <a href="">안녕하세요!</a>
-                            </p>
-                            <p class="post-writer">뽀로로맘</p>
-                            <p class="post-viewCnt">13</p>
-                            <p class="post-rcmCnt">3</p>
-                            <p class="post-date">23.11.30</p>
+                            <p class="post-writer" th:text="${post.user.nickname}"></p>
+                            <p class="post-viewCnt" th:text="${post.viewCnt}"></p>
+                            <p class="post-rcmCnt" th:text="${post.recommendCnt}"></p>
+                            <p class="post-date" th:text="${#temporals.format(post.createDate, 'yy.MM.dd')}"></p>
                         </li>
                     </ul>
                 </div>
-                <div id="pagination-wrap">
-                    <ul id="pagination-content">
-                        <li><a href="#"><img src="/img/prev.png" height="12px"></a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#"><img src="/img/next.png" height="12px"></a></li>
-                    </ul>
-                </div>
+
+                <th:block th:insert="~{fragment/pagination::pagination}"></th:block>
             </div>
         </div>
 

@@ -7,13 +7,15 @@ import com.project.childprj.service.PostService;
 import com.project.childprj.service.UserService;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -30,12 +32,16 @@ public class PostController {
     @Autowired
     private PostCommentService postCommentService;
 
+    // 글 목록
     @GetMapping("/list")
-    public void postList(HttpServletRequest request){
+    public void postList(Integer page, String sq, Model model, HttpServletRequest request){
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
+
+        postService.list(page, sq, model);
     }
 
+    // 글 상세
     @GetMapping("/detail/{id}")
     public String marketDetail(@PathVariable(name = "id") Long id, PostRecommend postRecommend, Model model) {
         List<PostComment> list = postCommentService.cmtList(id);
@@ -48,12 +54,72 @@ public class PostController {
         return "post/detail";
     }
 
+    // 글 작성 페이지
     @GetMapping("/write")
     public void postWrite(){
     }
 
-    @GetMapping("/update")
-    public void postUpdate(){
+    // 글 수정 페이지
+    @GetMapping("/update/{id}")
+    public String postUpdate(@PathVariable Long id, Model model) {
+        Post post = postService.postDetail(id);
+        model.addAttribute("post", post);
+        return "post/update";
+    }
+
+    // 글 목록 - 정렬
+    @PostMapping("/orderWay")
+    public String orderWay(String postOrderWay, String sq, RedirectAttributes redirectAttrs) {
+        U.getSession().setAttribute("postOrderWay", postOrderWay);
+        redirectAttrs.addAttribute("sq", sq);
+
+        return "redirect:/post/list";
+    }
+
+    // 글 목록 - 검색
+    @PostMapping("/search")
+    public String search(String sq, RedirectAttributes redirectAttrs) {
+        redirectAttrs.addAttribute("sq", sq);
+
+        return "redirect:/post/list";
+    }
+
+    // 글 작성
+    @PostMapping("/write")
+    public String postWriteOk(
+            Post post
+            , BindingResult result
+            , Model model
+            , RedirectAttributes redirectAttrs
+    ) {
+        if (result.hasErrors()) {
+            redirectAttrs.addFlashAttribute("title", post.getTitle());
+            redirectAttrs.addFlashAttribute("content", post.getContent());
+
+            return "redirect:/post/write";
+        }
+
+        model.addAttribute("result", postService.write(post));
+        return "/post/writeOk";
+    }
+
+    // 글 수정
+    @PostMapping("/update")
+    public String postUpdateOk(
+            Post post
+            , BindingResult result
+            , Model model
+            , RedirectAttributes redirectAttrs
+    ) {
+        if (result.hasErrors()) {
+            redirectAttrs.addFlashAttribute("title", post.getTitle());
+            redirectAttrs.addFlashAttribute("content", post.getContent());
+
+            return "redirect:/post/update/" + post.getId();
+        }
+
+        model.addAttribute("result", postService.update(post));
+        return "post/updateOk";
     }
 
     // 댓글 작성
@@ -100,4 +166,5 @@ public class PostController {
         postService.opposite(userId, postId);
         return "/post/success";
     }
+
 }

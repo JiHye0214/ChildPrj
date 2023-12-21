@@ -42,9 +42,9 @@
 
                         <form name="orderFrm">
                             <input type="hidden" id="search-input-val" name="sq" />
-                            <select id="orderWay" name="orderWay">
-                                <option value="최신순" th:selected="${orderWay == '최신순'}">최신순</option>
-                                <option value="가격순" th:selected="${orderWay == '가격순'}">가격순</option>
+                            <select id="productOrderWay" name="productOrderWay">
+                                <option value="최신순" th:selected="${productOrderWay == '최신순'}">최신순</option>
+                                <option value="가격순" th:selected="${productOrderWay == '가격순'}">가격순</option>
                             </select>
                         </form>
                     </div>
@@ -54,7 +54,7 @@
                     <div class="list-content" th:each="product, iterState : ${products}">
                         <a th:href="@{'/product/detail/' + ${product.id}}">
                             <div class="product-img"></div>
-                            <div class="product-title" th:text="${(page - 1) * rowsPerPage + (iterState.index + 1) + '. ' + product.productName}"></div>
+                            <div class="product-title" th:text="${product.productName}"></div>
                             <div class="product-price" th:text="${product.price} == 0 ? '나눔' : ${product.price} + '원'"></div>
                             <div class="product-region" th:text="${product.region}"></div>
                         </a>

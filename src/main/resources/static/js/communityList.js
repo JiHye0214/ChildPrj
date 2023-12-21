@@ -18,7 +18,7 @@ initialBtn.onclick = () => {
     }
 }
 
-$("[name='productOrderWay']").change(() => {
+$("[name='postOrderWay']").change(() => {
     $("[name='orderFrm']").attr({
         "method": "POST",
         "action": "orderWay"

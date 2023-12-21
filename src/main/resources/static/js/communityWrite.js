@@ -1,26 +1,46 @@
-$(function(){
-    // Summernode 추가
-    $('.content-box').summernote({
-        width: 1200,
-        height: 350,
-        placeholder: "내용을 입력해 주세요",
-    });
-
+$("#content").summernote({
+    width: 1200,
+    height: 350,
+    placeholder: "내용을 입력해 주세요",
 });
+$(".note-placeholder")[0].style.color = "rgb(190, 190, 190)";
 
-const $writeBtn = document.querySelector(".write-btn");
-const writeArr = document.querySelectorAll(".write-valid");
-const warnMsgArr = document.querySelectorAll(".warn-message");
+// validation
 
-//const writeValidation = () => {
-//    for(let i=0; i<2; i++) {
-//        let inputText = writeArr[i].value;
-//        if(inputText == "") {
-//            warnMsgArr[i].style.display = `block`;
-//        } else {
-//            warnMsgArr[i].style.display = `none`;
-//        }
-//    }
-//}
+const titleInput = document.querySelector("#title");
+const writeBtn = document.querySelector("#submit-btn");
+const errMsgs = document.querySelectorAll(".err-msg");
 
-// $writeBtn.addEventListener("click", writeValidation);
+const scroll = (topVal) => {
+    window.scrollTo({
+        top: topVal,
+        left: 0,
+        behavior: "smooth",
+    });
+};
+
+writeBtn.addEventListener("click", () => {
+    let cnt = 0;
+
+    if ($(".note-editable")[0].textContent == "") {
+        errMsgs[1].innerHTML = "내용을 입력해 주세요";
+        errMsgs[1].style.display = "block";
+        scroll(330);
+    } else {
+        errMsgs[1].style.display = "none";
+        cnt++;
+    }
+
+    if (titleInput.value == "") {
+        errMsgs[0].innerHTML = "제목을 입력해 주세요";
+        errMsgs[0].style.display = "block";
+        titleInput.focus();
+    } else {
+        errMsgs[0].style.display = "none";
+        cnt++;
+    }
+
+    if (cnt == 2) {
+        document.forms["community-write-form"].submit();
+    }
+});

@@ -112,9 +112,10 @@
     column-gap: 30px;
     margin-top: -15px;
 }
-.err-wrap p {
+.err-msg {
     font-size: 14px;
     color: red;
+    display: none;
 }
 .err-wrap > :nth-child(1) {
     width: 15%;
@@ -131,8 +132,6 @@
 }
 .content-wrap > p {
     margin-top: 6px;
-    font-size: 14px;
-    color: red;
 }
 
 .attachment-file-wrap {

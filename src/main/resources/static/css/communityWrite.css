@@ -40,6 +40,19 @@
     }
 }
 
+.err-wrap {
+    display: flex;
+    margin-top: -15px;
+}
+.err-msg {
+    font-size: 14px;
+    color: red;
+    display: none;
+}
+.err-msg:last-child {
+    margin-top: 6px;
+}
+
 .attachment-file-wrap {
     display: flex;
     flex-wrap: wrap;

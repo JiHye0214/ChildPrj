@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <script th:if="${result > 0}" th:inline="javascript">
+        location.href = "detail/[[${post.id}]]";
+    </script>
+
+    <script th:unless="${result > 0}">
+        alert("수정 실패했습니다. 다시 수정해 주세요.");
+        history.back();
+    </script>
+</html>
