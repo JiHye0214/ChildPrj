@@ -26,7 +26,7 @@
                 </div>
 
                 <!-- 정보 맞을 때 (비번 - id) -->
-                <div th:if="${findPwId} or ${findPwEmail}" class="giveIdWrap">
+                <div th:if="${findPwId} or ${findPwEmail}" id="changePw" class="giveIdWrap">
                     <a th:href="@{/user/find}">뒤로가기</a>
                     <div class="changePw">
                         <div class="change-title">비밀번호 변경</div>

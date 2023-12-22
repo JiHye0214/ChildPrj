@@ -123,6 +123,9 @@
 .give-title {
     font-weight: 600;
     font-size: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .give-title > span {
@@ -134,12 +137,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 /* 비번 변경 */
 .giveIdWrap a {
-    width: 71.6px;
     font-size: 14px;
     color: gray;
     &:hover {
@@ -173,7 +175,7 @@
     font-size: 15px;
     margin-bottom: 10px;
     outline: none;
-    border: 1.5px solid var(--border-color);
+    border: none;
     border-radius: 5px;
 
     &::focus {
@@ -182,8 +184,9 @@
 }
 
 .change-pw-wrap .change-pw-complete {
-    border: 1.5px solid var(--cloud-hover);
+    border: none;
     background-color: var(--cloud-color);
+    color: white;
 
     &:hover {
         background-color: var(--cloud-hover);

@@ -74,13 +74,14 @@ if(writeWrap != null){
 }
 
 // change pw valid---------------------------------------------------
-const changeWrap = document.querySelector(".giveIdWrap");
+const changeWrap = document.querySelector("#changePw");
 const errMsgArr2 = document.querySelectorAll(".giveIdWrap .login-warn");
 const $complete = document.querySelector(".change-pw-complete");
 const inputArr = document.querySelectorAll(".change-pw-content > input");
 const changeForm = document.querySelector(".change-pw-wrap");
 
 if(changeWrap != null){
+    console.log(changeWrap)
     const changePwValid = () => {
 
         let count = 0;
