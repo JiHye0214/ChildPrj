@@ -220,5 +220,23 @@ SELECT p.id 		  "p_id"
  LIMIT 0, 5;
 
 
+SELECT *
+  FROM kindergarden;
+
+SELECT COUNT(*)
+  FROM kindergarden;
+
+SELECT *
+  FROM kindergarden
+ LIMIT 0, 5;
+ 
+SELECT id, KINDERNAME
+  FROM kindergarden
+ WHERE KINDERNAME LIKE "%영은%";
+
+
+
+
+
 
 
