@@ -15,8 +15,12 @@ SELECT *
  
 SELECT *
   FROM product_comment;
+ 
+SELECT *
+  FROM user_img;
 
-
+ SELECT *
+ FROM user_img;
 
 SELECT *
   FROM product

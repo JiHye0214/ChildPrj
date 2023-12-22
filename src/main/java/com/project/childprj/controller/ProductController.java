@@ -3,6 +3,7 @@ package com.project.childprj.controller;
 import com.project.childprj.domain.Product;
 import com.project.childprj.domain.ProductComment;
 import com.project.childprj.domain.User;
+import com.project.childprj.domain.UserImg;
 import com.project.childprj.service.ProductCommentService;
 import com.project.childprj.service.ProductService;
 import com.project.childprj.service.UserService;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -50,12 +52,16 @@ public class ProductController {
         List<ProductComment> list = productCommentService.cmtList(id);
         model.addAttribute("productCmt", list); // 특정 글의 댓글 모음
         model.addAttribute("product", productService.productDetail(id)); // 특정 글
+        model.addAttribute("writerImg", userService.findUserImg(productService.productDetail(id).getUser().getId())); // 글 작성자 img
+        model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
+
         return "product/detail";
     }
 
     // 글 작성 페이지
     @GetMapping("/write")
-    public void write() {
+    public void write(Model model) {
+        model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
     }
 
     // 글 수정 페이지
@@ -63,6 +69,7 @@ public class ProductController {
     public String update(@PathVariable Long id, Model model) {
         Product product = productService.productDetail(id);
         model.addAttribute("product", product);
+        model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
         return "product/update";
     }
 

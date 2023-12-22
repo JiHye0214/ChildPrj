@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<script th:unless="${change}" th:inline="javascript">
+    alert("변경 실패");
+    history.back();
+</script>
+<script th:if="${change}" th:inline="javascript">
+    location.href = "/user/mypage";
+</script>
+</html>

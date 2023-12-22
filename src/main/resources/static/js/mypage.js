@@ -10,6 +10,7 @@ const $changePwWrap = document.querySelector(".change-pw-wrap");
 const pwInputArr = document.querySelectorAll(".change-pw-content > input");
 
 const $changePicBtn = document.querySelector(".picture-change-btn");
+const $changePic = document.querySelector(".profile-pic");
 
 const $dropUser = document.querySelector(".drop-user");
 
@@ -72,8 +73,9 @@ const clickPasswordChangeCompleteBtn = () => {
 };
 
 // 프사 변경
+
 const clickChangePicBtn = () => {
-    alert("프사 변경하기!!");
+    console.log($changePic.value);
 };
 
 // 회원 탈퇴
@@ -84,6 +86,7 @@ const clickDropUserBtn = () => {
         $body.style.overflow = "hidden";
     }
 };
+
 
 $nicknameChangeBtn.addEventListener("click", clickNickNameChangeBtn);
 $nicknameChangeCompleteBtn.addEventListener("click", clickNickNameChangeCompleteBtn);

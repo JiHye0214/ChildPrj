@@ -1,6 +1,7 @@
 package com.project.childprj.repository;
 
 import com.project.childprj.domain.User;
+import com.project.childprj.domain.UserImg;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -35,4 +36,5 @@ public interface UserRepository {
 
     // 마이페이지 - 회원 탈퇴
     int dropUser(User user);
+
 }

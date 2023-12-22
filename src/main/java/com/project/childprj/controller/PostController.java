@@ -17,6 +17,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -43,20 +44,25 @@ public class PostController {
 
     // 글 상세
     @GetMapping("/detail/{id}")
-    public String marketDetail(@PathVariable(name = "id") Long id, PostRecommend postRecommend, Model model) {
+    public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
         List<PostComment> list = postCommentService.cmtList(id);
         int recomCnt = postService.recomCnt(id); // 추천수
         boolean check = postService.clickCheck(U.getLoggedUser().getId(), id);
+
         model.addAttribute("check", check); // 추천 눌렀나?
-        model.addAttribute("recommend", recomCnt);
-        model.addAttribute("postCmt", list); // 특정 글의 댓글
-        model.addAttribute("post", postService.postDetail(id));
+        model.addAttribute("recommend", recomCnt); // 추천수
+        model.addAttribute("postCmt", list); // 특정 글의 댓글 모음
+        model.addAttribute("post", postService.postDetail(id)); // 특정 글
+        model.addAttribute("writerImg", userService.findUserImg(postService.postDetail(id).getUser().getId())); // 글 작성자 img
+        model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
+
         return "post/detail";
     }
 
     // 글 작성 페이지
     @GetMapping("/write")
-    public void postWrite(){
+    public void postWrite(Model model){
+        model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
     }
 
     // 글 수정 페이지
@@ -64,6 +70,7 @@ public class PostController {
     public String postUpdate(@PathVariable Long id, Model model) {
         Post post = postService.postDetail(id);
         model.addAttribute("post", post);
+        model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
         return "post/update";
     }
 

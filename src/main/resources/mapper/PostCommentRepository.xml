@@ -5,6 +5,13 @@
 
 <mapper namespace="com.project.childprj.repository.PostCommentRepository">
 
+    <resultMap id="mapImg" type="com.project.childprj.domain.UserImg">
+        <result column="i_id" property="id"/>
+        <result column="i_fileName" property="fileName"/>
+        <result column="i_sourceName" property="sourceName"/>
+        <result column="i_userId" property="userId"/>
+    </resultMap>
+
     <resultMap id="mapUser" type="com.project.childprj.domain.User">
         <result column="u_id" property="id"/>
         <result column="u_loginId" property="loginId"/>
@@ -21,6 +28,7 @@
         <result column="p_createDate" property="createDate"/>
         <result column="p_postId" property="postId"/>
         <collection resultMap="mapUser" property="user"/>
+        <collection resultMap="mapImg" property="userImg"/>
     </resultMap>
 
     <!-- 특정 글 -->
@@ -37,11 +45,15 @@
             u.name        "u_name",
             u.nickName    "u_nickName",
             u.email       "u_email",
-            u.createDate  "u_createDate"
+            u.createDate  "u_createDate",
+
+            i.id "i_id",
+            i.fileName "i_fileName",
+            i.sourceName "i_sourceName"
         FROM
-            post_comment p , user u
+            post_comment p , user u, user_img i
         WHERE
-            p.userId = u.id
+            p.userId = u.id AND u.id = i.userId
         AND
             p.postId = #{postId}
         ORDER BY

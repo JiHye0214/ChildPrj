@@ -27,7 +27,7 @@
                     <!--/* market header */-->
                     <div class="market-header-wrap">
                         <div class="market-header">
-                            <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                            <img th:src="@{'/upload/' + ${writerImg.fileName}}" height="40px" width="40px" class="talk-writer-pic" />
                             <div class="talk-writer-nickname">[[${product.user.nickname}]]</div>
                         </div>
                         <div class="market-header">

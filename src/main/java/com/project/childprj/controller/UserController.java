@@ -1,6 +1,7 @@
 package com.project.childprj.controller;
 
 import com.project.childprj.domain.User;
+import com.project.childprj.domain.UserImg;
 import com.project.childprj.domain.UserValidator;
 import com.project.childprj.service.UserService;
 import com.project.childprj.util.U;
@@ -17,13 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/user")
@@ -42,14 +42,18 @@ public class UserController {
     }
 
     @GetMapping("/logIn")
-    public void logIn(){};
+    public String logIn(){
+        return "/user/logIn";
+    };
 
     @GetMapping("/signUp")
     public void signUp(){};
 
     @GetMapping("/mypage")
-    public void mypage(){
-        System.out.println(U.getLoggedUser().getPassword());
+    public void mypage(Model model){
+
+        System.out.println("-----------changeUser------------" + userService.findUserImg(U.getLoggedUser().getId()));
+        model.addAttribute("userImg", userService.findUserImg(U.getLoggedUser().getId()));
     }
 
     @GetMapping("/signUpAgree")
@@ -72,7 +76,7 @@ public class UserController {
         return "user/login";
     }
 
-    // 아이디 찾기 (이메일)
+    // 찾기 - 아이디 (이메일)
     @PostMapping("/findId")
     public String findId(User user, Model model){
         String findName = user.getName();
@@ -82,7 +86,7 @@ public class UserController {
         return "/user/find";
     }
 
-    // 비번 찾기 (아이디)
+    // 찾기 - 비번 (아이디)
     @PostMapping("/findPwById")
     public String findPwById(User user, Model model){
         String findName = user.getName();
@@ -91,13 +95,11 @@ public class UserController {
         return "user/find";
     }
 
-    // 비번 찾기 (이메일)
+    // 찾기 - 비번 (이메일)
     @PostMapping("/findPwByEmail")
     public String findPwByEmail(User user, Model model){
-        System.out.println("_______________________________" + user);
         String findName = user.getName();
         String findEmail = user.getEmail();
-        System.out.println("+++++++++++++++++++++++++++++++" + userService.findPwById(findName, findEmail));
         model.addAttribute("findPwEmail", userService.findIdPwByEmail(findName, findEmail));
         return "user/find";
     }
@@ -130,7 +132,14 @@ public class UserController {
         return "/user/signUpOk";
     }
 
-    // 닉네임 변경
+    // 마이페이지 - 프사 변경
+    @PostMapping("/userImg") // @RequestParam : 얘는 name 값을 가져온다!!
+    public String fixUserImg(@RequestParam Map<String, MultipartFile> file, Model model){
+        model.addAttribute("change", userService.insertImg(file));
+        return "user/changeSuccess";
+    }
+
+    // 마이페이지 - 닉네임 변경
     @PostMapping("/nickname")
     public String fixNickname(User user, Model model){
 
@@ -139,16 +148,15 @@ public class UserController {
         return "/user/changeOk";
     }
 
-    // 비번 변경
+    // 마이페이지 - 비번 변경
     @PostMapping("/password")
     public String fixPassword(User user, Model model){
 
-        System.out.println("---------------------" + user);
         model.addAttribute("change", userService.modifyPassword(user));
         return "/user/changeOk";
     }
 
-    // 회원 탈퇴
+    // 마이페이지 - 회원 탈퇴
     @PostMapping("/drop")
     public String dropUser(User user, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -170,7 +178,7 @@ public class UserController {
     @Autowired
     UserValidator userValidator;
 
-    @InitBinder
+    @InitBinder("User")
     public void intiBinder(WebDataBinder binder) {
 
         binder.setValidator(userValidator);
