@@ -38,8 +38,7 @@ CREATE TABLE child_house
 	LA decimal(65,20),
 	LO decimal(65,20),
 	CRCARGBNAME varchar(255),
-	PRIMARY KEY (id),
-	UNIQUE (CRNAME)
+	PRIMARY KEY (id)
 );
 
 
@@ -54,8 +53,7 @@ CREATE TABLE kindergarden
 	TELNO varchar(20),
 	HPADDR varchar(1000),
 	OPERTIME varchar(255),
-	PRIMARY KEY (id),
-	UNIQUE (KINDERNAME)
+	PRIMARY KEY (id)
 );
 
 
@@ -65,6 +63,7 @@ CREATE TABLE post
 	title varchar(50) NOT NULL,
 	content longtext NOT NULL,
 	viewCnt int DEFAULT 0 DEFAULT 0,
+	recommendCnt int DEFAULT 0,
 	createDate datetime DEFAULT now(),
 	userId int NOT NULL,
 	PRIMARY KEY (id)
@@ -331,6 +330,16 @@ ALTER TABLE user_authorities
 	ON UPDATE RESTRICT
 	ON DELETE CASCADE
 ;
+
+ALTER TABLE kindergarden
+ADD CONSTRAINT UC_kindergarden UNIQUE (KINDERNAME, LDGRNAME, ADDR);
+
+ALTER TABLE child_house
+ADD CONSTRAINT UC_child_house UNIQUE (CRNAME, CRADDR, CRTELNO);
+
+ALTER TABLE together
+ADD CONSTRAINT UC_together UNIQUE (TITLE, DATE, PLACE);
+
 
 
 

@@ -38,13 +38,11 @@
             u.email       "u_email",
             u.createDate  "u_createDate"
         FROM
-            post_comment p , user u
+            user_img i , user u
         WHERE
-            p.userId = u.id
+            i.userId = u.id
         AND
-            p.postId = #{postId}
-        ORDER BY
-            p.id ASC
+            u.loginId = #{loginId}
     </select>
 
     <!--프사 넣기-->

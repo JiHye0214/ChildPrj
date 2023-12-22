@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.childprj.repository.KindergardenRepository">
+
+    <resultMap id="kindergardenResultMap" type="com.project.childprj.domain.Kindergarden">
+        <id property="id" column="id" />
+        <result property="KINDERNAME" column="KINDERNAME" />
+        <result property="ESTABLISH" column="ESTABLISH" />
+        <result property="LDGRNAME" column="LDGRNAME" />
+        <result property="ODATE" column="ODATE" />
+        <result property="ADDR" column="ADDR" />
+        <result property="TELNO" column="TELNO" />
+        <result property="HPADDR" column="HPADDR" />
+        <result property="OPERTIME" column="OPERTIME" />
+    </resultMap>
+
+    <delete id="deleteAllKindergarden" flushCache="true">
+        DELETE
+        FROM Kindergarden
+    </delete>
+
+    <update id="resetAutoIncrement" flushCache="true">
+        ALTER TABLE Kindergarden AUTO_INCREMENT = 1
+    </update>
+
+    <insert id="insertKindergarden" flushCache="true" parameterType="com.project.childprj.domain.Kindergarden">
+        INSERT INTO kindergarden (KINDERNAME, ESTABLISH, LDGRNAME, ODATE, ADDR, TELNO, HPADDR, OPERTIME)
+        VALUES (#{KINDERNAME}, #{ESTABLISH}, #{LDGRNAME}, NOW(), #{ADDR}, #{TELNO}, #{HPADDR}, #{OPERTIME})
+    </insert>
+
+    <select id="selectAllKindergarden" resultType="com.project.childprj.domain.Kindergarden">
+        SELECT *
+          FROM kindergarden;
+    </select>
+
+    <select id="selectFromCnt" resultType="com.project.childprj.domain.Kindergarden">
+        SELECT *
+          FROM kindergarden
+        LIMIT #{from}, #{cnts}
+    </select>
+
+    <select id="selectCountAll" resultType="int">
+        SELECT COUNT(*)
+          FROM kindergarden
+    </select>
+
+    <select id="selectKindergarden" resultType="com.project.childprj.domain.Kindergarden">
+        SELECT *
+          FROM kindergarden
+         WHERE id = #{id}
+    </select>
+
+</mapper>

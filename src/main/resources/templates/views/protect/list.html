@@ -10,6 +10,7 @@
         <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/protectList.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script defer th:src="@{/js/protectList.js}"></script>
         <title>지켜주기</title>
     </head>
     <body>
@@ -21,7 +22,9 @@
             <div id="txt-section">
                 <img id="img" src="/img/ribbon-pink.png" height="190px">
                 <div id="txt-title">지켜주기</div>
-                <div id="banner-section">
+                <form id="banner-section" name="typeFrm">
+                    <input type="hidden" id="type-val-input" name="type" />
+
                     <div class="type-outline">
                         <div class="type active">유치원</div>
                     </div>
@@ -31,7 +34,7 @@
                     <div class="type-outline">
                         <div class="type">아동센터</div>
                     </div>
-                </div>
+                </form>
             </div>
 
             <div id="list-section">
@@ -43,61 +46,19 @@
                         <p>연락처</p>
                     </div>
 
-                    <ul id="tbody">
-                        <li class="list-content">
-                            <p class="content-no">1</p>
+                    <ul id="tbody" th:if="${kindergardens}">
+                        <li class="list-content" th:each="kindergarden, iterState : ${kindergardens}">
+                            <p class="content-no" th:text="${(page - 1) * rowsPerPage + (iterState.index + 1)}"></p>
                             <p class="content-title">
-                                <a href="">무지개 유치원</a>
+                                <a  th:href="@{'/protect/detail/' + ${type} + '/' + ${kindergarden.id}}" th:text="${kindergarden.KINDERNAME}"></a>
                             </p>
-                            <p class="content-address">서울특별시 금천구 독산로78다길 89dfdfdfdfdfdfdfdf</p>
-                            <p class="content-number">02-851-7792</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="content-no">2</p>
-                            <p class="content-title">
-                                <a href="">무지개 유치원무지개 유치원무지개 유치원</a>
-                            </p>
-                            <p class="content-address">서울특별시 금천구 독산로78다길 89</p>
-                            <p class="content-number">02-851-7792</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="content-no">2</p>
-                            <p class="content-title">
-                                <a href="">무지개 유치원</a>
-                            </p>
-                            <p class="content-address">서울특별시 금천구 독산로78다길 89</p>
-                            <p class="content-number">02-851-7792</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="content-no">2</p>
-                            <p class="content-title">
-                                <a href="">무지개 유치원</a>
-                            </p>
-                            <p class="content-address">서울특별시 금천구 독산로78다길 89</p>
-                            <p class="content-number">02-851-7792</p>
-                        </li>
-                        <li class="list-content">
-                            <p class="content-no">2</p>
-                            <p class="content-title">
-                                <a href="">무지개 유치원</a>
-                            </p>
-                            <p class="content-address">서울특별시 금천구 독산로78다길 89</p>
-                            <p class="content-number">02-851-7792</p>
+                            <p class="content-address" th:text="${kindergarden.ADDR}"></p>
+                            <p class="content-number" th:text="${kindergarden.TELNO}"></p>
                         </li>
                     </ul>
                 </div>
 
-                <div id="pagination-wrap">
-                    <ul id="pagination-content">
-                        <li><a href="#">&lt;</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li>
-                    </ul>
-                </div>
+                <th:block th:insert="~{fragment/protectPagination::protectPagination}"></th:block>
             </div>
         </div>
 
