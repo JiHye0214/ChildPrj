@@ -23,6 +23,12 @@ INSERT INTO user(loginId, nickname, name, password, email) VALUES
 ('cherry1234', '마라탕먹고싶다', '이체리', '$2a$10$53OEi/JukSMPr3z5RQBFH.z0TCYSUDPtxf1/8caRyRVdDNdHA9QHi', 'cherry@mail.com')
 ;
 
+INSERT INTO user_img(sourceName , fileName , userId) VALUES
+('양파쿵야.jpg', '양파쿵야.jpg', 1),
+('핑구1.jpg', '핑구1.jpg', 2),
+('핑구2.jpg', '핑구2.jpg', 3)
+;
+
 -- 샘플 상품 글
 INSERT INTO product(productName, region, price, content, viewCnt, userId) VALUES
 ('아기 신발', '강남구', 5000, '아기 신발 팔아요~ ', 11,  1),

@@ -30,7 +30,7 @@
                     <!--/* market header */-->
                     <div class="market-write-wrap">
                         <div class="talk-header">
-                            <img src="/img/핑구.jpg" width="40px" class="talk-writer-pic" />
+                            <img th:src="@{'/upload/' + ${writerImg.fileName}}" height="40px" width="40px" class="talk-writer-pic" />
                             <div class="talk-writer-nickname" th:text="${logged_user.nickname}"></div>
                         </div>
                     </div>

@@ -5,56 +5,23 @@
 
 <mapper namespace="com.project.childprj.repository.UserImgRepository">
 
-    <resultMap id="mapUser" type="com.project.childprj.domain.User">
-        <result column="u_id" property="id"/>
-        <result column="u_loginId" property="loginId"/>
-        <result column="u_password" property="password"/>
-        <result column="u_name" property="name"/>
-        <result column="u_nickName" property="nickname"/>
-        <result column="u_email" property="email"/>
-        <result column="u_createDate" property="createDate"/>
-    </resultMap>
-
-    <resultMap id="mapImg" type="com.project.childprj.domain.UserImg">
-        <result column="p_id" property="id"/>
-        <result column="p_content" property="content"/>
-        <result column="p_createDate" property="createDate"/>
-        <result column="p_postId" property="postId"/>
-        <collection resultMap="mapUser" property="user"/>
-    </resultMap>
-
-    <!-- 특정 글 -->
-    <select id="findByUserId" resultMap="mapImg">
-        SELECT
-            i.id "i_id",
-            i.sourceName "i_sourceName",
-            i.fileName "i_fileName",
-
-            u.id          "u_id",
-            u.loginId     "u_loginId",
-            u.password    "u_password",
-            u.name        "u_name",
-            u.nickName    "u_nickName",
-            u.email       "u_email",
-            u.createDate  "u_createDate"
-        FROM
-            user_img i , user u
-        WHERE
-            i.userId = u.id
-        AND
-            u.loginId = #{loginId}
+    <!-- 특정 유저 프사 가져오기 -->
+    <select id="findUserImg" resultType="com.project.childprj.domain.UserImg">
+        SELECT *
+        FROM user_img
+        WHERE userId = #{userId}
     </select>
 
     <!--프사 넣기-->
-    <insert id="imgInsert" flushCache="true">
+    <insert id="imgInsert" flushCache="true" parameterType="com.project.childprj.domain.UserImg">
         INSERT INTO user_img (userId, sourceName, fileName)
         VALUES (#{userId}, #{sourceName}, #{fileName})
     </insert>
 
     <!--프사 지우기-->
-    <delete id="imgDelete" flushCache="true">
+    <delete id="imgDelete" flushCache="true" parameterType="com.project.childprj.domain.UserImg">
         DELETE from user_img
-        WHERE id = #{id};
+        WHERE userId = #{userId}
     </delete>
 
 </mapper>

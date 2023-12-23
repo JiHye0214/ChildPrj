@@ -10,6 +10,9 @@ const $changePwWrap = document.querySelector(".change-pw-wrap");
 const pwInputArr = document.querySelectorAll(".change-pw-content > input");
 
 const $changePicBtn = document.querySelector(".picture-change-btn");
+const $resetPicBtn = document.querySelector(".picture-reset-btn");
+const $changePic = document.querySelector(".profile-pic");
+const $changePicForm = document.querySelector(".picture-change-wrap > form");
 
 const $dropUser = document.querySelector(".drop-user");
 
@@ -73,8 +76,17 @@ const clickPasswordChangeCompleteBtn = () => {
 
 // 프사 변경
 const clickChangePicBtn = () => {
-    alert("프사 변경하기!!");
+    if($changePic.value == ""){
+        alert("이미지 파일을 선택해 주세요")
+    } else {
+        $changePicForm.submit();
+    }
 };
+
+// 프사 초기화
+const clickResetPicBtn = () => {
+    $changePicForm.submit();
+}
 
 // 회원 탈퇴
 const clickDropUserBtn = () => {
@@ -85,6 +97,7 @@ const clickDropUserBtn = () => {
     }
 };
 
+
 $nicknameChangeBtn.addEventListener("click", clickNickNameChangeBtn);
 $nicknameChangeCompleteBtn.addEventListener("click", clickNickNameChangeCompleteBtn);
 
@@ -92,5 +105,6 @@ $changePwBtn.addEventListener("click", clickPasswordChangeBtn);
 $changePwCompleteBtn.addEventListener("click", clickPasswordChangeCompleteBtn);
 
 $changePicBtn.addEventListener("click", clickChangePicBtn);
+$resetPicBtn.addEventListener("click", clickResetPicBtn);
 
 $dropUser.addEventListener("click", clickDropUserBtn);

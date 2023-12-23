@@ -45,8 +45,16 @@
                         <div class="mypage-content-content">
                             <div>프로필사진</div>
                             <div class="picture-change-wrap">
-                                <img id="profile-pic" src="/img/핑구.jpg" width="80px" />
-                                <button type="button" class="picture-change-btn">변경하기</button>
+                                <img style="border-radius:50%;" th:src="@{'/upload/'} + ${userImg.fileName}" width="80px" height="80px"/>
+                                <!--프사 변경-->
+                                <form method="POST" th:action="@{/user/userImg}" enctype="multipart/form-data">
+                                    <label for="file" class="picture-btn">
+                                        변경
+                                    </label>
+                                    <input style="display:none" accept="image/*" id="file" class="profile-pic" name="userImg" type="file"/>
+                                    <input type="button" class="picture-change-btn picture-btn" value="저장" />
+                                    <input type="button" class="picture-reset-btn picture-btn" value="초기화" />
+                                </form>
                             </div>
                         </div>
                         <div class="mypage-content-content">

@@ -14,7 +14,8 @@ import java.time.LocalDateTime;
 public class ProductComment {
     private Long productId; // 어느 글의 댓글
     private Long id; // 댓글 id
-    private User user; // 댓글 작성자는 user에서
+    private User user; // 댓글 작성자
+    private UserImg userImg; // 작성자 이미지
     private String content;
     private LocalDateTime createDate;
 }

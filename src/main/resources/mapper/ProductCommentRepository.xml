@@ -5,6 +5,13 @@
 
 <mapper namespace="com.project.childprj.repository.ProductCommentRepository">
 
+    <resultMap id="mapImg" type="com.project.childprj.domain.UserImg">
+        <result column="i_id" property="id"/>
+        <result column="i_fileName" property="fileName"/>
+        <result column="i_sourceName" property="sourceName"/>
+        <result column="i_userId" property="userId"/>
+    </resultMap>
+
     <!-- 댓글 쓴 사람은 user객체에서 가져와야 함! -->
     <resultMap id="mapUser" type="com.project.childprj.domain.User">
         <result column="u_id" property="id"/>
@@ -21,7 +28,8 @@
         <result column="p_content" property="content"/>
         <result column="p_createDate" property="createDate"/>
         <result column="p_productId" property="productId"/>
-        <collection property="user" resultMap="mapUser"/>
+        <collection resultMap="mapUser" property="user"/>
+        <collection resultMap="mapImg" property="userImg"/>
     </resultMap>
 
     <!-- 특정 글에 대한 댓글 -->
@@ -39,13 +47,15 @@
             u.name "u_name",
             u.nickName "u_nickName",
             u.email "u_email",
-            u.createDate "u_createDate"
+            u.createDate "u_createDate",
 
+            i.id "i_id",
+            i.fileName "i_fileName",
+            i.sourceName "i_sourceName"
         FROM
-            product_comment p,
-            user u
+            product_comment p , user u, user_img i
         WHERE
-            p.userId = u.id
+            p.userId = u.id AND u.id = i.userId
         AND
             p.productId = #{productId}
         ORDER BY

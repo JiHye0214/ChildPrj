@@ -16,6 +16,7 @@ public class PostComment {
     private Long id;
     private Long postId;
     private User user; // 작성자
+    private UserImg userImg; // 작성자 이미지
     private String content;
     private LocalDateTime createDate;
 }
