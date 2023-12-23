@@ -227,9 +227,23 @@ SELECT COUNT(*)
   FROM kindergarden;
 
 SELECT *
+  FROM child_house;
+
+SELECT COUNT(*)
+  FROM child_house;
+
+SELECT *
   FROM kindergarden
  LIMIT 0, 5;
  
 SELECT id, KINDERNAME
   FROM kindergarden
  WHERE KINDERNAME LIKE "%영은%";
+
+SELECT *
+  FROM kindergarden
+ WHERE LDGRNAME = '';
+
+
+
+

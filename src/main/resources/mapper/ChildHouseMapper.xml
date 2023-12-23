@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.childprj.repository.ChildHouseRepository">
+
+<!--    <resultMap id="childHouseResultMap" type="com.project.childprj.domain.ChildHouse">-->
+<!--        <id property="id" column="id"/>-->
+<!--        <result property="CRNAME" column="CRNAME"/>-->
+<!--        <result property="CRTYPENAME" column="CRTYPENAME"/>-->
+<!--        <result property="CRADDR" column="CRADDR"/>-->
+<!--        <result property="CRTELNO" column="CRTELNO"/>-->
+<!--        <result property="CRHOME" column="CRHOME"/>-->
+<!--        <result property="NRTRROOMCNT" column="NRTRROOMCNT"/>-->
+<!--        <result property="CRCAPAT" column="CRCAPAT"/>-->
+<!--        <result property="CRCHCNT" column="CRCHCNT"/>-->
+<!--        <result property="LA" column="LA"/>-->
+<!--        <result property="LO" column="LO"/>-->
+<!--        <result property="CRCARGBNAME" column="CRCARGBNAME"/>-->
+<!--    </resultMap>-->
+
+    <insert id="insertChildHouse" parameterType="com.project.childprj.domain.ChildHouse">
+        INSERT INTO child_house (CRNAME, CRTYPENAME, CRADDR, CRTELNO, CRHOME,
+                                 NRTRROOMCNT, CRCAPAT, CRCHCNT, LA, LO, CRCARGBNAME)
+        VALUES (#{CRNAME}, #{CRTYPENAME}, #{CRADDR}, #{CRTELNO}, #{CRHOME},
+                #{NRTRROOMCNT}, #{CRCAPAT}, #{CRCHCNT}, #{LA}, #{LO}, #{CRCARGBNAME})
+    </insert>
+
+    <select id="selectFromCnt" resultType="com.project.childprj.domain.ChildHouse">
+        SELECT *
+        FROM child_house LIMIT #{from}, #{cnts}
+    </select>
+
+    <select id="selectCountAll" resultType="int">
+        SELECT COUNT(*)
+        FROM child_house
+    </select>
+
+    <select id="selectChildHouse" resultType="com.project.childprj.domain.ChildHouse">
+        SELECT *
+        FROM child_house
+        WHERE id = #{id}
+    </select>
+
+</mapper>

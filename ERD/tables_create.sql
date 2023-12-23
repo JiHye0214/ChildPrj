@@ -26,7 +26,6 @@ DROP TABLE IF EXISTS user_authority;
 CREATE TABLE child_house
 (
 	id int NOT NULL AUTO_INCREMENT,
-	SIGUNNAME varchar(255),
 	CRNAME varchar(255),
 	CRTYPENAME varchar(255),
 	CRADDR varchar(255),
@@ -48,7 +47,7 @@ CREATE TABLE kindergarden
 	KINDERNAME varchar(255),
 	ESTABLISH varchar(255),
 	LDGRNAME varchar(255),
-	ODATE date,
+	ODATE datetime,
 	ADDR varchar(255),
 	TELNO varchar(20),
 	HPADDR varchar(1000),

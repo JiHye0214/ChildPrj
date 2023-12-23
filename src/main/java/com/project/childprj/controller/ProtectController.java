@@ -1,6 +1,8 @@
 package com.project.childprj.controller;
 
 import com.project.childprj.domain.Kindergarden;
+import com.project.childprj.service.ChildCenterService;
+import com.project.childprj.service.ChildHouseService;
 import com.project.childprj.service.KindergardenService;
 import jakarta.servlet.http.HttpServletRequest;
 import com.project.childprj.util.U;
@@ -19,45 +21,66 @@ public class ProtectController {
     @Autowired
     private KindergardenService kindergardenService;
 
+    @Autowired
+    private ChildHouseService childHouseService;
+
+    @Autowired
+    private ChildCenterService childCenterService;
+
     @GetMapping("/list")
-    public void protectList(Integer page, String type, Model model, HttpServletRequest request){
+    public String protectList(
+            Integer page
+            , String type
+            , Model model
+            , HttpServletRequest request
+            , RedirectAttributes redirectAttrs
+    ) {
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
 
-//        String type = (String) U.getSession().getAttribute("type");
         if (type == null) type = "유치원";
+
         if (type.equals("유치원")) {
             kindergardenService.kindergardenList(page, type, model);
+            return "protect/list";
+        } else if (type.equals("어린이집")) {
+            childHouseService.childHouseList(page, type, model);
+            return "protect/list";
+        } else if (type.equals("아동센터")) {
+            childCenterService.childCenterList(page, type, model);
+            return "protect/list";
+        } else {
+            redirectAttrs.addAttribute("type", "유치원");
+            return "redirect:/protect/list";
         }
     }
 
     @PostMapping("/typeSelect")
     public String typeSelect(String type, RedirectAttributes redirectAttrs) {
         redirectAttrs.addAttribute("type", type);
-
         return "redirect:/protect/list";
     }
 
-    @GetMapping("/list2")
-    @ResponseBody
-    public List<Kindergarden> protectList2(Model model, HttpServletRequest request){
-        String uri = U.getRequest().getRequestURI();
-        request.getSession().setAttribute("prevPage", uri);
-
-        List<Kindergarden> kindergarden = kindergardenService.getAllKindergarden();
-        model.addAttribute("kindergarden", kindergarden);
-
-        return kindergarden;
-    }
-
     @GetMapping("/detail/{type}/{id}")
-    public String protectDetail(@PathVariable String type, @PathVariable Long id, Model model, HttpServletRequest request){
+    public String protectDetail(
+            @PathVariable String type
+            , @PathVariable Long id
+            , Model model
+            , HttpServletRequest request
+            , RedirectAttributes redirectAttrs
+    ) {
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
 
         if (type.equals("유치원")) {
             model.addAttribute("type", type);
             model.addAttribute("kindergarden", kindergardenService.getKindergarden(id));
+        } else if (type.equals("어린이집")) {
+            model.addAttribute("type", type);
+            model.addAttribute("childHouse", childHouseService.getChildHouse(id));
+        } else {
+            redirectAttrs.addAttribute("type", "유치원");
+            return "redirect:/protect/list";
         }
 
         return "protect/detail";

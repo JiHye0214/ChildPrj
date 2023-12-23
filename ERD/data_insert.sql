@@ -5,6 +5,7 @@ DELETE FROM product;
 DELETE FROM user;
 DELETE FROM recommend;
 DELETE FROM kindergarden;
+DELETE FROM child_house ;
 
 ALTER TABLE user AUTO_INCREMENT = 1;
 ALTER TABLE post AUTO_INCREMENT = 1;
@@ -13,6 +14,7 @@ ALTER TABLE product AUTO_INCREMENT = 1;
 ALTER TABLE product_comment AUTO_INCREMENT = 1;
 ALTER TABLE recommend AUTO_INCREMENT = 1;
 ALTER TABLE kindergarden AUTO_INCREMENT = 1;
+ALTER TABLE child_house AUTO_INCREMENT = 1;
 
 -- 샘플 사용자
 INSERT INTO user(loginId, nickname, name, password, email) VALUES

@@ -24,9 +24,10 @@
                 <div id="txt-title">지켜주기</div>
                 <form id="banner-section" name="typeFrm">
                     <input type="hidden" id="type-val-input" name="type" />
+                    <div id="type-val" th:text="${type}"></div>
 
                     <div class="type-outline">
-                        <div class="type active">유치원</div>
+                        <div class="type">유치원</div>
                     </div>
                     <div class="type-outline">
                         <div class="type">어린이집</div>
@@ -43,17 +44,40 @@
                         <p>NO</p>
                         <p>시설명</p>
                         <p>주소</p>
-                        <p>연락처</p>
+                        <p th:if="${kindergardens} or ${childHouses}">연락처</p>
+                        <p th:if="${childCenters}">토요일운영여부</p>
                     </div>
 
                     <ul id="tbody" th:if="${kindergardens}">
                         <li class="list-content" th:each="kindergarden, iterState : ${kindergardens}">
                             <p class="content-no" th:text="${(page - 1) * rowsPerPage + (iterState.index + 1)}"></p>
                             <p class="content-title">
-                                <a  th:href="@{'/protect/detail/' + ${type} + '/' + ${kindergarden.id}}" th:text="${kindergarden.KINDERNAME}"></a>
+                                <a th:href="@{'/protect/detail/' + ${type} + '/' + ${kindergarden.id}}" th:text="${kindergarden.KINDERNAME}"></a>
                             </p>
-                            <p class="content-address" th:text="${kindergarden.ADDR}"></p>
-                            <p class="content-number" th:text="${kindergarden.TELNO}"></p>
+                            <p class="content-address" th:text="${#strings.isEmpty(kindergarden.ADDR)} ? '-' : ${kindergarden.ADDR}"></p>
+                            <p class="content-number" th:text="${#strings.isEmpty(kindergarden.TELNO)} ? '-' : ${kindergarden.TELNO}"></p>
+                        </li>
+                    </ul>
+
+                    <ul id="tbody" th:if="${childHouses}">
+                        <li class="list-content" th:each="childHouse, iterState : ${childHouses}">
+                            <p class="content-no" th:text="${(page - 1) * rowsPerPage + (iterState.index + 1)}"></p>
+                            <p class="content-title">
+                                <a th:href="@{'/protect/detail/' + ${type} + '/' + ${childHouse.id}}" th:text="${childHouse.CRNAME}"></a>
+                            </p>
+                            <p class="content-address" th:text="${#strings.isEmpty(childHouse.CRADDR)} ? '-' : ${childHouse.CRADDR}"></p>
+                            <p class="content-number" th:text="${#strings.isEmpty(childHouse.CRTELNO)} ? '-' : ${childHouse.CRTELNO}"></p>
+                        </li>
+                    </ul>
+
+                    <ul id="tbody" th:if="${childCenters}">
+                        <li class="list-content" th:each="childCenter, iterState : ${childCenters}">
+                            <p class="content-no" th:text="${(page - 1) * rowsPerPage + (iterState.index + 1)}"></p>
+                            <p class="content-title">
+                                <span th:text="${childCenter.FCLTY_NM}"></span>
+                            </p>
+                            <p class="content-address" th:text="${#strings.isEmpty(childCenter.BASS_ADRES)} ? '-' : ${childCenter.BASS_ADRES}"></p>
+                            <p class="content-number" th:text="${#strings.isEmpty(childCenter.SAT_OPER_AT)} ? '-' : ${childCenter.SAT_OPER_AT}"></p>
                         </li>
                     </ul>
                 </div>

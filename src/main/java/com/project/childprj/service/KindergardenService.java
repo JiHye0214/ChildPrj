@@ -7,12 +7,6 @@ import org.springframework.ui.Model;
 import java.util.List;
 
 public interface KindergardenService {
-    // 모든 데이터 삭제
-    int deleteAllKindergarden();
-
-    // auto-increment 초기화
-    int resetAutoIncrement();
-
     // 유치원 데이터 1개 추가
     int insertKindergarden(Kindergarden kindergarden);
 
@@ -21,9 +15,6 @@ public interface KindergardenService {
 
     // 유치원 페이징 목록 조회
     List<Kindergarden> kindergardenList(Integer page, String type, Model model);
-
-    // 유치원 전체 목록 조회
-    List<Kindergarden> getAllKindergarden();
 
     // 특정 id 유치원 조회
     Kindergarden getKindergarden(Long id);

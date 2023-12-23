@@ -7,11 +7,11 @@ import java.util.List;
 
 @Repository
 public interface KindergardenRepository {
-    // 모든 데이터 삭제
-    int deleteAllKindergarden();
-
-    // auto-increment 초기화
-    int resetAutoIncrement();
+//    // 모든 데이터 삭제
+//    int deleteAllKindergarden();
+//
+//    // auto-increment 초기화
+//    int resetAutoIncrement();
 
     // 유치원 데이터 1개 추가
     int insertKindergarden(Kindergarden kindergarden);

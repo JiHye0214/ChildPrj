@@ -2,46 +2,46 @@ package com.project.childprj.service;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.project.childprj.DTO.ChildHouseDTO;
+import com.project.childprj.domain.ChildHouse;
 import com.project.childprj.domain.Kindergarden;
-import com.project.childprj.repository.KindergardenRepository;
+import com.project.childprj.repository.ChildHouseRepository;
 import com.project.childprj.util.U;
-import jakarta.servlet.http.HttpSession;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Service
-public class KindergardenServiceImpl implements KindergardenService {
+public class ChildHouseServiceImpl implements ChildHouseService {
 
     @Value("${app.api.kinderKey}")
-    private String kinderKey;
+    private String childHouseKey;
 
-    private KindergardenRepository kindergardenRepository;
+    private ChildHouseRepository childHouseRepository;
 
     @Autowired
-    public KindergardenServiceImpl(SqlSession sqlSession) {
-        kindergardenRepository = sqlSession.getMapper(KindergardenRepository.class);
+    public ChildHouseServiceImpl(SqlSession sqlSession) {
+        childHouseRepository = sqlSession.getMapper(ChildHouseRepository.class);
     }
 
     @Override
-    public int insertKindergarden(Kindergarden kindergarden) {
-        return kindergardenRepository.insertKindergarden(kindergarden);
+    public int insertChildHouse(ChildHouse childHouse) {
+        return childHouseRepository.insertChildHouse(childHouse);
     }
 
     @Override
-    public ResponseEntity<Integer> saveKindergarden(Integer startIndex, Integer endIndex) {
+    public ResponseEntity<Integer> saveChildHouse(Integer startIndex, Integer endIndex) {
         String type = "json"; // 요청 파일 타입
-        String service = "childSchoolInfo"; // 서비스명
+        String service = "ChildCareInfo"; // 서비스명
 
         String uri = String.format("http://openapi.seoul.go.kr:8088/%s/%s/%s/%d/%d",
-                kinderKey, type, service, startIndex, endIndex);
+                childHouseKey, type, service, startIndex, endIndex);
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);
@@ -55,10 +55,10 @@ public class KindergardenServiceImpl implements KindergardenService {
                     JsonNode rootNode = U.jsonToJsonNode(jsonData);
 
                     // childSchoolInfo > row 데이터를 꺼냄
-                    ArrayNode rows = (ArrayNode) rootNode.get("childSchoolInfo").get("row");
+                    ArrayNode rows = (ArrayNode) rootNode.get("ChildCareInfo").get("row");
                     for (JsonNode row : rows) {
-                        Kindergarden kindergarden = Kindergarden.fromJson(row);
-                        result += this.insertKindergarden(kindergarden);
+                        ChildHouse childHouse = ChildHouse.fromJson(row);
+                        result += this.insertChildHouse(childHouse);
                     }
 
                     return ResponseEntity.ok(result);
@@ -78,20 +78,20 @@ public class KindergardenServiceImpl implements KindergardenService {
     }
 
     @Override
-    public List<Kindergarden> kindergardenList(Integer page, String type, Model model) {
+    public List<ChildHouse> childHouseList(Integer page, String type, Model model) {
         if (page == null) page = 1;
         if (page < 1) page = 1;
 
         Integer pagesPerSection = 5;
         Integer rowsPerPage = 10;
 
-        int totalLength = kindergardenRepository.selectCountAll();
+        int totalLength = childHouseRepository.selectCountAll();
         int totalPage = (int) Math.ceil(totalLength / (double) rowsPerPage);
 
         int startPage = 0;
         int endPage = 0;
 
-        List<Kindergarden> kindergardens = null;
+        List<ChildHouse> childHouses = null;
 
         if (totalLength > 0) {
             if (page > totalPage) page = totalPage;
@@ -102,8 +102,8 @@ public class KindergardenServiceImpl implements KindergardenService {
             endPage = startPage + pagesPerSection - 1;
             if (endPage > totalPage) endPage = totalPage;
 
-            kindergardens = kindergardenRepository.selectFromCnt(fromRow, rowsPerPage);
-            model.addAttribute("kindergardens", kindergardens);
+            childHouses = childHouseRepository.selectFromCnt(fromRow, rowsPerPage);
+            model.addAttribute("childHouses", childHouses);
         } else {
             page = 0;
         }
@@ -117,12 +117,12 @@ public class KindergardenServiceImpl implements KindergardenService {
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
 
-        return kindergardens;
+        return childHouses;
     }
 
     @Override
-    public Kindergarden getKindergarden(Long id) {
-        return kindergardenRepository.selectKindergarden(id);
+    public ChildHouse getChildHouse(Long id) {
+        return childHouseRepository.selectChildHouse(id);
     }
 
 }

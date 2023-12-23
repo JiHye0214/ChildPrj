@@ -48,6 +48,9 @@
     border-bottom: none;
     border-radius: 5px 5px 0 0;
 }
+#type-val {
+    display: none;
+}
 .type-outline {
     margin-left: 20px;
     display: flex;
