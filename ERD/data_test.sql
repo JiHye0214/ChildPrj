@@ -19,9 +19,6 @@ SELECT *
 SELECT *
   FROM user_img;
 
- SELECT *
- FROM user_img;
-
 SELECT *
   FROM product
  ORDER BY createDate DESC;

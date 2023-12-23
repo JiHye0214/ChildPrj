@@ -52,7 +52,6 @@ public class UserController {
     @GetMapping("/mypage")
     public void mypage(Model model){
 
-        System.out.println("-----------changeUser------------" + userService.findUserImg(U.getLoggedUser().getId()));
         model.addAttribute("userImg", userService.findUserImg(U.getLoggedUser().getId()));
     }
 
@@ -135,7 +134,6 @@ public class UserController {
     // 마이페이지 - 프사 변경
     @PostMapping("/userImg") // @RequestParam : 얘는 name 값을 가져온다!!
     public String fixUserImg(@RequestParam Map<String, MultipartFile> file, Model model){
-        System.out.println("----------file-------------- : " + file);
         model.addAttribute("change", userService.insertImg(file));
         return "user/changeSuccess";
     }
