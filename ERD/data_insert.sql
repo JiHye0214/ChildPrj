@@ -1,11 +1,11 @@
-DELETE FROM post_comment ;
+DELETE FROM post_comment;
 DELETE FROM post;
-DELETE FROM product_comment ;
+DELETE FROM product_comment;
 DELETE FROM product;
 DELETE FROM user;
 DELETE FROM recommend;
 DELETE FROM kindergarden;
-DELETE FROM child_house ;
+DELETE FROM child_house;
 
 ALTER TABLE user AUTO_INCREMENT = 1;
 ALTER TABLE post AUTO_INCREMENT = 1;
@@ -29,7 +29,6 @@ INSERT INTO user_img(sourceName , fileName , userId) VALUES
 ('핑구2.jpg', '핑구2.jpg', 3)
 ;
 
--- 샘플 상품 글
 INSERT INTO product(productName, region, price, content, viewCnt, userId) VALUES
 ('아기 신발', '강남구', 5000, '아기 신발 팔아요~ ', 11,  1),
 ('패딩 강', '용산구', 20000, '패딩 팔아요~ ', 12, 2),
