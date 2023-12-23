@@ -135,6 +135,7 @@ public class UserController {
     // 마이페이지 - 프사 변경
     @PostMapping("/userImg") // @RequestParam : 얘는 name 값을 가져온다!!
     public String fixUserImg(@RequestParam Map<String, MultipartFile> file, Model model){
+        System.out.println("----------file-------------- : " + file);
         model.addAttribute("change", userService.insertImg(file));
         return "user/changeSuccess";
     }

@@ -92,6 +92,15 @@ public class UserServiceImpl implements UserService {
         // password encode
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.newUser(user);
+
+        // default img setting
+        UserImg userImg = UserImg.builder()
+                        .userId(user.getId())
+                        .sourceName("default.jpg")
+                        .fileName("default.jpg")
+                        .build();
+
+        userImgRepository.imgInsert(userImg);
         return 1;
     }
 
@@ -134,9 +143,8 @@ public class UserServiceImpl implements UserService {
 
     private void changeImg(Map<String, MultipartFile> files, Long userId) {
 
-        if(userImgRepository.findUserImg(userId) == null){
-            System.out.println("NO!!!=====================");
-        } else {
+        // 프사 있으면 먼저 삭제
+        if(userImgRepository.findUserImg(userId) != null){
             int result = userImgRepository.imgDelete(userId);
         }
 
@@ -163,46 +171,56 @@ public class UserServiceImpl implements UserService {
 
         // 리턴할 객체 선언
         UserImg userImg = null;
+        String sourceName = null;
+        String fileName = null;
 
         String originalFilename = multipartFile.getOriginalFilename(); // 원본파일명
-        if(originalFilename == null && originalFilename.length() == 0) return null; // 원본 없음 말고
 
-        String sourceName = StringUtils.cleanPath(originalFilename); // 경로 깨끗?
+        // 초기화 눌렀을 때
+        if(originalFilename.isEmpty()) {
+            sourceName = "default.jpg";
 
-        // 저장될 파일명
-        String fileName = sourceName; // 일단 같은 이름으로 저장
+            // 저장될 파일명
+            fileName = sourceName; // 일단 같은 이름으로 저장
 
-        File file = new File(uploadDir, fileName); // 중복 확인
+        } else {
+            sourceName = StringUtils.cleanPath(originalFilename); // 경로 깨끗?
 
-        if(file.exists()){  // 이미 존재하는 파일명,  중복된다면 다른 이름은 변경하여 파일 저장
-            // a.txt => a_2378142783946.txt  : time stamp 값을 활용할 거다!
-            // "a" => "a_2378142783946" : 확장자 없는 경우
+            // 저장될 파일명
+            fileName = sourceName; // 일단 같은 이름으로 저장
 
-            int pos = fileName.lastIndexOf(".");
-            if(pos > -1){  // 확장자 있는 경우
-                String name = fileName.substring(0, pos);   // 파일 '이름'
-                String ext = fileName.substring(pos + 1);  // 파일 '확장자'
+            File file = new File(uploadDir, fileName); // 중복 확인
 
-                fileName = name + "_" + System.currentTimeMillis() + "." + ext;
-            } else {  // 확장자 없는 경우
-                fileName += "_" + System.currentTimeMillis();
+            if(file.exists()){  // 이미 존재하는 파일명,  중복된다면 다른 이름은 변경하여 파일 저장
+                // a.txt => a_2378142783946.txt  : time stamp 값을 활용할 거다!
+                // "a" => "a_2378142783946" : 확장자 없는 경우
+
+                int pos = fileName.lastIndexOf(".");
+                if(pos > -1){  // 확장자 있는 경우
+                    String name = fileName.substring(0, pos);   // 파일 '이름'
+                    String ext = fileName.substring(pos + 1);  // 파일 '확장자'
+
+                    fileName = name + "_" + System.currentTimeMillis() + "." + ext;
+                } else {  // 확장자 없는 경우
+                    fileName += "_" + System.currentTimeMillis();
+                }
             }
-        }
 
-        // 파일 절대경로
-        Path copyOfLocation = Paths.get(new File(uploadDir, fileName).getAbsolutePath());
+            // 파일 절대경로
+            Path copyOfLocation = Paths.get(new File(uploadDir, fileName).getAbsolutePath());
 
-        try {
-            // inputStream을 가져와서
-            // copyOfLocation (저장위치)로 파일을 쓴다.
-            // copy의 옵션은 기존에 존재하면 REPLACE(대체한다), 오버라이딩 한다
-            Files.copy(
-                    multipartFile.getInputStream(),
-                    copyOfLocation,
-                    StandardCopyOption.REPLACE_EXISTING
-            );
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            try {
+                // inputStream을 가져와서
+                // copyOfLocation (저장위치)로 파일을 쓴다.
+                // copy의 옵션은 기존에 존재하면 REPLACE(대체한다), 오버라이딩 한다
+                Files.copy(
+                        multipartFile.getInputStream(),
+                        copyOfLocation,
+                        StandardCopyOption.REPLACE_EXISTING
+                );
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
 
         userImg = UserImg.builder()

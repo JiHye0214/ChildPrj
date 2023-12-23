@@ -22,9 +22,9 @@ INSERT INTO user(loginId, nickname, name, password, email) VALUES
 ;
 
 INSERT INTO user_img(sourceName , fileName , userId) VALUES
-('face01.png', 'face01.png', 1),
-('face02.png', 'face02.png', 2),
-('face03.png', 'face03.png', 3)
+('양파쿵야.jpg', '양파쿵야.jpg', 1),
+('핑구1.jpg', '핑구1.jpg', 2),
+('핑구2.jpg', '핑구2.jpg', 3)
 ;
 
 -- 샘플 상품 글
