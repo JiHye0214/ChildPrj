@@ -5,6 +5,7 @@
     history.back();
 </script>
 <script th:if="${change > 0}" th:inline="javascript">
+    alert("변경 완료");
     location.href = "/user/mypage";
 </script>
 </html>

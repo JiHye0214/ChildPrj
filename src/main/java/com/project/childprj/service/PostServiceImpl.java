@@ -5,7 +5,6 @@ import com.project.childprj.domain.PostRecommend;
 import com.project.childprj.domain.User;
 import com.project.childprj.repository.PostRecommendRepository;
 import com.project.childprj.repository.PostRepository;
-import com.project.childprj.repository.ProductRepository;
 import com.project.childprj.repository.UserRepository;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpSession;
@@ -102,6 +101,8 @@ public class PostServiceImpl implements PostService{
     // 특정 글 가져오기
     @Override
     public Post postDetail(Long id) {
+
+
         postRepository.incViewCnt(id);
         return postRepository.findPostById(id);
     }
@@ -117,21 +118,17 @@ public class PostServiceImpl implements PostService{
         return (postRecommend != null);
     }
 
-    // 추천수
-    @Override
-    public int recomCnt(Long postId) {
-        return postRecommendRepository.recomCnt(postId);
-    }
-
     // 추천
     @Override
     public int recommend(Long userId, Long postId) {
+        postRepository.incRecomCnt(postId);
         return postRecommendRepository.recommend(userId, postId);
     }
 
     // 비추천
     @Override
     public int opposite(Long userId, Long postId) {
+        postRepository.decRecomCnt(postId);
         return postRecommendRepository.opposite(userId, postId);
     }
 
@@ -140,6 +137,12 @@ public class PostServiceImpl implements PostService{
     public int update(Post post) {
         int result = postRepository.update(post);
         return result;
+    }
+
+    // home -- hot five
+    @Override
+    public List<Post> selectFive() {
+        return postRepository.selectFive();
     }
 
 }

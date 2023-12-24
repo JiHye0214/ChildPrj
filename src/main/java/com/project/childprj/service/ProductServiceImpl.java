@@ -1,6 +1,7 @@
 package com.project.childprj.service;
 
 
+import com.project.childprj.domain.Post;
 import com.project.childprj.domain.Product;
 import com.project.childprj.domain.User;
 import com.project.childprj.repository.ProductCommentRepository;
@@ -114,6 +115,12 @@ public class ProductServiceImpl implements ProductService {
     public int update(Product product) {
         int result = productRepository.update(product);
         return result;
+    }
+
+    // home -- hot five
+    @Override
+    public List<Product> selectFive() {
+        return productRepository.selectFive();
     }
 }
 

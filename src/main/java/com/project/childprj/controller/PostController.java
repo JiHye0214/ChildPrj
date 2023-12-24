@@ -7,6 +7,7 @@ import com.project.childprj.service.PostService;
 import com.project.childprj.service.UserService;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,16 +46,19 @@ public class PostController {
     // 글 상세
     @GetMapping("/detail/{id}")
     public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
-        List<PostComment> list = postCommentService.cmtList(id);
-        int recomCnt = postService.recomCnt(id); // 추천수
-        boolean check = postService.clickCheck(U.getLoggedUser().getId(), id);
 
-        model.addAttribute("check", check); // 추천 눌렀나?
-        model.addAttribute("recommend", recomCnt); // 추천수
-        model.addAttribute("postCmt", list); // 특정 글의 댓글 모음
+        // 일단 얘가 null이면 나머지가 전달 안 됨 --> 글만 먼저 전달해야 unleaa/if가 작동하네 깐깐한 자식
         model.addAttribute("post", postService.postDetail(id)); // 특정 글
-        model.addAttribute("writerImg", userService.findUserImg(postService.postDetail(id).getUser().getId())); // 글 작성자 img
-        model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
+
+        if(postService.postDetail(id) != null){
+            List<PostComment> list = postCommentService.cmtList(id);
+            boolean check = postService.clickCheck(U.getLoggedUser().getId(), id);
+
+            model.addAttribute("check", check); // 추천 눌렀나?
+            model.addAttribute("postCmt", list); // 특정 글의 댓글 모음
+            model.addAttribute("writerImg", userService.findUserImg(postService.postDetail(id).getUser().getId())); // 글 작성자 img
+            model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
+        }
 
         return "post/detail";
     }
@@ -152,8 +156,8 @@ public class PostController {
     @PostMapping("/detailDelete")
     public String detailDelete(Post post, Model model) {
         Long postId = post.getId();
-        model.addAttribute("change", postService.detailDelete(postId));
-        return "/post/success";
+        model.addAttribute("delete", postService.detailDelete(postId));
+        return "/post/deleteOk";
     }
 
     // 추천

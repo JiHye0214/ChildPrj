@@ -100,6 +100,20 @@
         WHERE id = #{id}
     </update>
 
+    <!-- 추천 수 올리기 -->
+    <update id="incRecomCnt" flushCache="true">
+        UPDATE post
+        SET recommendCnt = recommendCnt + 1
+        WHERE id = #{id}
+    </update>
+
+    <!-- 추천 수 내리기 -->
+    <update id="decRecomCnt" flushCache="true">
+        UPDATE post
+        SET recommendCnt = recommendCnt - 1
+        WHERE id = #{id}
+    </update>
+
     <!-- 특정 글 삭제 -->
     <delete id="detailDelete" flushCache="true">
         DELETE
@@ -115,4 +129,10 @@
          WHERE id = #{id}
     </update>
 
+    <!--home 추천순 5-->
+    <select id="selectFive" resultMap="mapPost">
+        <include refid="SELECT_BASE"/>
+        ORDER BY recommendCnt DESC
+        LIMIT 5
+    </select>
 </mapper>

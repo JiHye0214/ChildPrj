@@ -1,15 +1,20 @@
 package com.project.childprj.service;
 
 import com.project.childprj.domain.User;
+import com.project.childprj.domain.UserAuthority;
 import com.project.childprj.domain.UserImg;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
 import java.util.Map;
 
 public interface UserService {
 
     // 아이디(loginId)로 정보 찾기
     User findByLogId(String loginId);
+
+    // 유저 권한 가져오기
+    UserAuthority selectUserAuth(Long userId);
 
     // 회원가입 - 등록된 아이디(loginId)인지 확인
     boolean isExistId(String loginId);

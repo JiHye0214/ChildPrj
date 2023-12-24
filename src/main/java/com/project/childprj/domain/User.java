@@ -1,12 +1,15 @@
 package com.project.childprj.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.project.childprj.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +23,6 @@ public class User {
     private String nickname;
     private String email;
     private LocalDateTime createDate;
+
+    private UserAuthority authority;
 }

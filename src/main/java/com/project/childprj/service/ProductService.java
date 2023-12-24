@@ -20,4 +20,7 @@ public interface ProductService {
 
     // 글 수정
     int update(Product product);
+
+    // home -- hot five
+    List<Product> selectFive();
 }

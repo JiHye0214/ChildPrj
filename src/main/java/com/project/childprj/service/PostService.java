@@ -21,9 +21,6 @@ public interface PostService {
     // 추천 눌렀나?
     boolean clickCheck(Long userId, Long postId);
 
-    // 추천수
-    int recomCnt(Long postId);
-
     // 추천
     int recommend(Long userId, Long postId);
 
@@ -32,4 +29,7 @@ public interface PostService {
 
     // 글 수정
     int update(Post post);
+
+    // home -- hot five
+    List<Post> selectFive();
 }

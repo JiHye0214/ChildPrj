@@ -18,6 +18,12 @@ SELECT *
  
 SELECT *
   FROM user_img;
+ 
+SELECT *
+  FROM user_authority;
+
+SELECT *
+ FROM user_authorities;
 
 SELECT *
   FROM product
@@ -91,10 +97,6 @@ SELECT *
 
 SELECT *
   FROM recommend;
- 
-SELECT COUNT(*)
-  FROM recommend
- WHERE postId = 1;
 
 
 SELECT p.id         "p_id"

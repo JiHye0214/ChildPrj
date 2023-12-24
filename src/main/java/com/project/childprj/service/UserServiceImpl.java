@@ -1,7 +1,9 @@
 package com.project.childprj.service;
 
 import com.project.childprj.domain.User;
+import com.project.childprj.domain.UserAuthority;
 import com.project.childprj.domain.UserImg;
+import com.project.childprj.repository.UserAuthorityRepository;
 import com.project.childprj.repository.UserImgRepository;
 import com.project.childprj.repository.UserRepository;
 import com.project.childprj.util.U;
@@ -21,6 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -35,18 +38,26 @@ public class UserServiceImpl implements UserService {
 
     UserImgRepository userImgRepository;
     UserRepository userRepository;
+    UserAuthorityRepository userAuthorityRepository;
 
     // SqlSession : transaction 관리
     @Autowired
     public UserServiceImpl(SqlSession sqlSession){
         userImgRepository = sqlSession.getMapper(UserImgRepository.class);
         userRepository = sqlSession.getMapper(UserRepository.class); // repository/UserRepository --> 인터페이스는 만들었지만 구현하지 않음 --> sql이 만들어줌
+        userAuthorityRepository = sqlSession.getMapper(UserAuthorityRepository.class);
         System.out.println("UserRepository is created()");
     }
 
     @Override
     public User findByLogId(String loginId) {
         return userRepository.findUserByLogId(loginId);
+    }
+
+    @Override
+    public UserAuthority selectUserAuth(Long userId) {
+        User user = userRepository.findUserById(userId);
+        return userAuthorityRepository.findByUser(user.getId());
     }
 
     @Override
@@ -91,7 +102,10 @@ public class UserServiceImpl implements UserService {
     public int signUp(User user) {
         // password encode
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // sign up
         userRepository.newUser(user);
+        // authority setting
+        userAuthorityRepository.addAuthority(user.getId(), 1L);
 
         // default img setting
         UserImg userImg = UserImg.builder()

@@ -11,12 +11,6 @@
         WHERE userId = #{userId} AND postId = #{postId};
     </select>
 
-    <select id="recomCnt">
-        SELECT Count(*)
-        FROM recommend
-        WHERE postId = #{postId};
-    </select>
-
     <insert id="recommend" flushCache="true">
         INSERT INTO recommend (userId, postId)
         VALUES (#{userId}, #{postId})

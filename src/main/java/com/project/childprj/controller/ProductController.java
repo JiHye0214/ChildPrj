@@ -49,11 +49,16 @@ public class ProductController {
     // 글 상세
     @GetMapping("/detail/{id}")
     public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
-        List<ProductComment> list = productCommentService.cmtList(id);
-        model.addAttribute("productCmt", list); // 특정 글의 댓글 모음
+
+        // 일단 얘가 null이면 나머지가 전달 안 됨 --> 글만 먼저 전달해야 unleaa/if가 작동하네 깐깐한 자식
         model.addAttribute("product", productService.productDetail(id)); // 특정 글
-        model.addAttribute("writerImg", userService.findUserImg(productService.productDetail(id).getUser().getId())); // 글 작성자 img
-        model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
+
+        if(productService.productDetail(id) != null){
+            List<ProductComment> list = productCommentService.cmtList(id);
+            model.addAttribute("productCmt", list); // 특정 글의 댓글 모음
+            model.addAttribute("writerImg", userService.findUserImg(productService.productDetail(id).getUser().getId())); // 글 작성자 img
+            model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
+        }
 
         return "product/detail";
     }
@@ -155,8 +160,8 @@ public class ProductController {
     @PostMapping("/detailDelete")
     public String detailDelete(Product product, Model model) {
         Long productId = product.getId();
-        model.addAttribute("change", productService.detailDelete(productId));
-        return "/product/success";
+        model.addAttribute("delete", productService.detailDelete(productId));
+        return "/product/deleteOk";
     }
 
 }

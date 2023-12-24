@@ -3,9 +3,10 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-    <script th:unless="${product}" th:inline="javascript">
-        location.href = "/product/list";
-    </script>
+<script th:unless="${product}" th:inline="javascript">
+    alert("페이지가 존재하지 않습니다");
+    location.href = "/product/list";
+</script>
 
     <th:block th:if="${product}" th:with="logged_user=${#authentication.principal.user}">
         <head>
@@ -28,12 +29,12 @@
                     <div class="market-header-wrap">
                         <div class="market-header">
                             <img th:src="@{'/upload/' + ${writerImg.fileName}}" height="40px" width="40px" class="talk-writer-pic" />
-                            <div class="talk-writer-nickname">[[${product.user.nickname}]]</div>
+                            <div class="talk-writer-nickname" th:text="${product.user.nickname}"></div>
                         </div>
                         <div class="market-header">
                             <div class="talk-inform-look">
                                 <div>조회수</div>
-                                <div class="market-inform-lookCnt">[[${product.viewCnt}]]</div>
+                                <div class="market-inform-lookCnt" th:text="${product.viewCnt}"></div>
                             </div>
                             <div class="market-inform-date">
                                 <div>작성일</div>

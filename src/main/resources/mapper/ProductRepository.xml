@@ -102,4 +102,11 @@
          WHERE id = #{id}
     </update>
 
+    <!--home 추천순 5-->
+    <select id="selectFive" resultMap="mapProduct">
+        <include refid="SELECT_BASE"/>
+        ORDER BY viewCnt DESC
+        LIMIT 5
+    </select>
+
 </mapper>

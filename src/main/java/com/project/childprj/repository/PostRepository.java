@@ -26,9 +26,19 @@ public interface PostRepository {
     // 특정 id 글 조회수 +1
     int incViewCnt(Long id);
 
+    // 특정 id 글 추천수 +1
+    int incRecomCnt(Long id);
+
+    // 특정 id 글 추천수 -1
+    int decRecomCnt(Long id);
+
     // 특정 글 삭제
     int detailDelete(Long id);
 
     // 글 수정
     int update(Post post);
+
+    // home ---- hot five
+    List<Post> selectFive();
+
 }

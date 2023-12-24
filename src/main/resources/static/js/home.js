@@ -36,3 +36,13 @@ $raiseTitle.addEventListener("mouseover", addClassRaiseDetail);
 $togetherTitle.addEventListener("mouseout", mouseOut);
 $protectTitle.addEventListener("mouseout", mouseOut);
 $raiseTitle.addEventListener("mouseout", mouseOut);
+
+// graph
+const graphGrade = document.querySelectorAll(".grade");
+
+let i=1;
+for(e of graphGrade){
+    e.innerText = i;
+    i++;
+    if(i == 6) i = 1;
+}
