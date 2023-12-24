@@ -330,6 +330,7 @@ ALTER TABLE user_authorities
 	ON DELETE CASCADE
 ;
 
+
 ALTER TABLE kindergarden
 ADD CONSTRAINT UC_kindergarden UNIQUE (KINDERNAME, LDGRNAME, ADDR);
 

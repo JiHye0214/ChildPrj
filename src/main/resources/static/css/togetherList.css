@@ -1,13 +1,3 @@
-
-:root {
-    --light-together : #c0eecc;
-    --together-hover : #8CE594;
-    --together-color: #63da53;
-
-}
-
-/* ------------------------------------------------------------ */
-
 #communityList-wrap {
     margin: 30px auto;
     width: 1200px;
@@ -56,6 +46,9 @@
     border-bottom: none;
     border-radius: 5px 5px 0 0;
 }
+#type-val {
+    display: none;
+}
 .type-outline {
     margin-left: 20px;
     display: flex;
@@ -77,6 +70,9 @@
     font-size: 18px;
     transition: 0.2s all;
     cursor: pointer;
+}
+.type.active {
+    background-color: var(--together-hover);
 }
 .type:hover {
     background-color: var(--together-hover);
@@ -158,11 +154,6 @@ svg {
     line-height: 45px;
     transition: 0.2s all;
 }
-#pagination-content > li > a:hover {
-    background-color: var(--light-together);
-    border-radius: 50%;
-}
-
 #pagination-content > li > a {
     display: block;
     height: 35px;
@@ -170,4 +161,12 @@ svg {
     margin: 0 3px;
     text-align: center;
     line-height: 35px;
+    border-radius: 50%;
 }
+#pagination-content > li > a:hover {
+    background-color: var(--light-together);
+}
+#pagination-content > li > a.active {
+    background-color: var(--light-together);
+}
+

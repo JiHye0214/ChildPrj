@@ -8,14 +8,12 @@ searchInput.oninput = (e) => {
 }
 
 initialBtn.onclick = () => {
-    if (searchInputVal.value) {
-        searchInputVal.value = "";
+    searchInputVal.value = "";
 
-        $("[name='orderFrm']").attr({
-            "method": "POST",
-            "action": "orderWay"
-        }).submit();
-    }
+    $("[name='orderFrm']").attr({
+        "method": "POST",
+        "action": "orderWay"
+    }).submit();
 }
 
 $("[name='productOrderWay']").change(() => {
