@@ -188,3 +188,14 @@ writeBtn.addEventListener("click", () => {
         document.forms["market-write-form"].submit();
     }
 });
+
+// 대표 이미지
+const productPic = document.querySelector(".product-pic");
+const confirm = document.querySelector(".confirmBox");
+
+productPic.onchange = function() {
+
+    const splitPic = productPic.value.split("");
+    const joinPic = splitPic.slice(12).join("");
+    confirm.innerText = joinPic;
+};

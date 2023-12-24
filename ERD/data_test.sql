@@ -29,7 +29,8 @@ SELECT *
   FROM child_house;
 
 SELECT *
-  FROM post;
+  FROM post
+ ORDER BY recommendCnt desc;
 
 SELECT *
   FROM post_comment;

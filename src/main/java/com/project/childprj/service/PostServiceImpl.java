@@ -101,10 +101,13 @@ public class PostServiceImpl implements PostService{
     // 특정 글 가져오기
     @Override
     public Post postDetail(Long id) {
-
-
-        postRepository.incViewCnt(id);
         return postRepository.findPostById(id);
+    }
+
+    // 조회수 올리기
+    @Override
+    public void incViewCnt(Long id) {
+        postRepository.incViewCnt(id);
     }
 
     // 특정 글 삭제

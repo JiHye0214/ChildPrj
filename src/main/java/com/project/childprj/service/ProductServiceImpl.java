@@ -100,8 +100,12 @@ public class ProductServiceImpl implements ProductService {
     // 특정 글 가져오기
     @Override
     public Product productDetail(Long id) {
-        productRepository.incViewCnt(id);
         return productRepository.findProductById(id);
+    }
+
+    @Override
+    public void incViewCnt(Long id) {
+        productRepository.incViewCnt(id);
     }
 
     // 특정 글 삭제

@@ -49,6 +49,7 @@ public class PostController {
 
         // 일단 얘가 null이면 나머지가 전달 안 됨 --> 글만 먼저 전달해야 unleaa/if가 작동하네 깐깐한 자식
         model.addAttribute("post", postService.postDetail(id)); // 특정 글
+        postService.incViewCnt(id); // 랜더함수랑 조회수 같이 두니까 뭐 할 때마다 세 번씩 올라가는 거 너무 킹받
 
         if(postService.postDetail(id) != null){
             List<PostComment> list = postCommentService.cmtList(id);

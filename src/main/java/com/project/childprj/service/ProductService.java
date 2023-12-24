@@ -15,6 +15,9 @@ public interface ProductService {
     // 특정 글 상세
     Product productDetail(Long id);
 
+    // 조회수 올리기
+    void incViewCnt(Long id);
+
     // 글 삭제
     int detailDelete(Long id);
 

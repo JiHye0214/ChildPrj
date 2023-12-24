@@ -52,6 +52,7 @@ public class ProductController {
 
         // 일단 얘가 null이면 나머지가 전달 안 됨 --> 글만 먼저 전달해야 unleaa/if가 작동하네 깐깐한 자식
         model.addAttribute("product", productService.productDetail(id)); // 특정 글
+        productService.incViewCnt(id);
 
         if(productService.productDetail(id) != null){
             List<ProductComment> list = productCommentService.cmtList(id);
