@@ -247,7 +247,7 @@
 .postTopWrap:nth-child(2) > li {
     background-color: var(--protect-color);
     font-weight: 600;
-    animation: colorChange 0.1s linear infinite alternate;
+    animation: colorChange 0.5s linear infinite alternate;
 }
 
 @keyframes colorChange {
