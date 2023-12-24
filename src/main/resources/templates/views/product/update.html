@@ -68,6 +68,15 @@
                             <p class="err-msg"></p>
                         </div>
 
+                        <div class="market-write-wrap fileBox">
+                            <div>대표 이미지🖼️</div>
+                            <label for="file" class="picture-btn">
+                                파일 선택
+                            </label>
+                            <input style="display:none;" accept="image/*" id="file" class="product-pic" name="productImg" type="file"/>
+                            <div class="confirmBox" th:text="${product.productImg.fileName}"></div>
+                        </div>
+
                         <div class="write-btn-wrap">
                             <button type="button" class="write-btn" id="submit-btn">수정완료</button>
                             <a th:href="@{/product/list}" class="write-btn">목록</a>

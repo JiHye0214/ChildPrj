@@ -50,6 +50,6 @@ public interface UserService {
     UserImg findUserImg (Long userId);
 
     // 마이페이지 - 프사 등록
-    boolean insertImg (Map<String, MultipartFile> files);
+    boolean insertImg (Map<String, MultipartFile> file);
 
 }

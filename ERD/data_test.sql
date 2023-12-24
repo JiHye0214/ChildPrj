@@ -29,8 +29,7 @@ SELECT *
   FROM child_house;
 
 SELECT *
-  FROM post
- ORDER BY recommendCnt desc;
+  FROM post;
 
 SELECT *
   FROM post_comment;
@@ -40,6 +39,9 @@ SELECT *
 
 SELECT *
   FROM product;
+ 
+SELECT *
+  FROM product_img ;
 
 SELECT *
   FROM product_comment;

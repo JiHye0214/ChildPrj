@@ -19,10 +19,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/product")
@@ -103,18 +105,21 @@ public class ProductController {
             , BindingResult result
             , Model model
             , RedirectAttributes redirectAttrs
+            ,@RequestParam Map<String, MultipartFile> file
     ) {
-        if (result.hasErrors()) {
-            redirectAttrs.addFlashAttribute("price", product.getPrice());
-            redirectAttrs.addFlashAttribute("productName", product.getProductName());
-            redirectAttrs.addFlashAttribute("region", product.getRegion());
-            redirectAttrs.addFlashAttribute("content", product.getContent());
 
-            return "redirect:/product/write";
-        }
+//        if (result.hasErrors()) {
+//            redirectAttrs.addFlashAttribute("price", product.getPrice());
+//            redirectAttrs.addFlashAttribute("productName", product.getProductName());
+//            redirectAttrs.addFlashAttribute("region", product.getRegion());
+//            redirectAttrs.addFlashAttribute("content", product.getContent());
+//
+//            return "redirect:/product/write";
+//        }
 
         model.addAttribute("result", productService.write(product));
-        return "/product/writeOk";
+        model.addAttribute("insert", productService.imgInsert(file, product.getId()));
+        return "product/writeOk";
     }
 
     // 글 수정

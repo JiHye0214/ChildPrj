@@ -128,6 +128,7 @@ const priceInput = document.querySelector("#price");
 const productNameInput = document.querySelector("#productName");
 const writeBtn = document.querySelector("#submit-btn");
 const errMsgs = document.querySelectorAll(".err-msg");
+const writeForm = document.querySelector(".talk-wrapper > form");
 
 const scroll = (topVal) => {
     window.scrollTo({
