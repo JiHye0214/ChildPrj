@@ -1,6 +1,5 @@
 package com.project.childprj.controller;
 
-import com.project.childprj.repository.PostRepository;
 import com.project.childprj.service.*;
 import com.project.childprj.util.U;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 @RequestMapping("/")
 public class HomeController {
+
+    @Autowired
+    private TogetherService togetherService;
 
     @Autowired
     private KindergardenService kindergardenService;
@@ -36,6 +38,7 @@ public class HomeController {
         int startIndex = 1;
         int endIndex = 200;
 
+        togetherService.saveTogether(startIndex, 500);
         kindergardenService.saveKindergarden(startIndex, endIndex);
         childHouseService.saveChildHouse(startIndex, endIndex);
         U.getSession().setAttribute("childCenter", childCenterService.getChildCenter(startIndex, endIndex));

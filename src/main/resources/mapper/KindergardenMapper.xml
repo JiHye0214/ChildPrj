@@ -25,7 +25,7 @@
     <select id="selectFromCnt" resultType="com.project.childprj.domain.Kindergarden">
         SELECT *
           FROM kindergarden
-        LIMIT #{from}, #{cnts}
+         LIMIT #{from}, #{cnts}
     </select>
 
     <select id="selectCountAll" resultType="int">

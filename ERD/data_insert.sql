@@ -1,20 +1,34 @@
+DELETE FROM recommend;
 DELETE FROM post_comment;
+DELETE FROM post_img;
 DELETE FROM post;
 DELETE FROM product_comment;
+DELETE FROM product_img;
 DELETE FROM product;
-DELETE FROM user;
-DELETE FROM recommend;
+DELETE FROM zzim;
+DELETE FROM together;
 DELETE FROM kindergarden;
 DELETE FROM child_house;
+DELETE FROM user_img;
+DELETE FROM user_authorities;
+DELETE FROM user_authority;
+DELETE FROM `user`;
 
-ALTER TABLE user AUTO_INCREMENT = 1;
-ALTER TABLE post AUTO_INCREMENT = 1;
-ALTER TABLE post_comment AUTO_INCREMENT = 1;
-ALTER TABLE product AUTO_INCREMENT = 1;
-ALTER TABLE product_comment AUTO_INCREMENT = 1;
 ALTER TABLE recommend AUTO_INCREMENT = 1;
+ALTER TABLE post_comment AUTO_INCREMENT = 1;
+ALTER TABLE post_img AUTO_INCREMENT = 1;
+ALTER TABLE post AUTO_INCREMENT = 1;
+ALTER TABLE product_comment AUTO_INCREMENT = 1;
+ALTER TABLE product_img AUTO_INCREMENT = 1;
+ALTER TABLE product AUTO_INCREMENT = 1;
+ALTER TABLE zzim AUTO_INCREMENT = 1;
+ALTER TABLE together AUTO_INCREMENT = 1;
 ALTER TABLE kindergarden AUTO_INCREMENT = 1;
 ALTER TABLE child_house AUTO_INCREMENT = 1;
+ALTER TABLE user_img AUTO_INCREMENT = 1;
+ALTER TABLE user_authorities AUTO_INCREMENT = 1;
+ALTER TABLE user_authority AUTO_INCREMENT = 1;
+ALTER TABLE `user` AUTO_INCREMENT = 1;
 
 -- 샘플 사용자
 INSERT INTO user(loginId, nickname, name, password, email) VALUES
@@ -36,13 +50,15 @@ INSERT INTO user_authorities (userId, authorityId) VALUES
 (4, 1)
 ;
 
-
+-- 샘플 사용자 프로필 이미지
 INSERT INTO user_img(sourceName , fileName , userId) VALUES
 ('양파쿵야.jpg', '양파쿵야.jpg', 2),
 ('핑구1.jpg', '핑구1.jpg', 3),
 ('핑구2.jpg', '핑구2.jpg', 4)
 ;
 
+
+-- 샘플 상품 글
 INSERT INTO product(productName, region, price, content, viewCnt, userId) VALUES
 ('아기 신발', '강남구', 5000, '아기 신발 팔아요~ ', 11,  4),
 ('패딩 강', '용산구', 20000, '패딩 팔아요~ ', 12, 2),
@@ -129,43 +145,6 @@ INSERT INTO product_comment(content, userId, productId) VALUES
 ;
 
 -- 샘플 커뮤니티 글 
--- INSERT INTO post(title, content, viewCnt, recommendCnt, userId) VALUES
--- ('안녕', '아기신발', 11, 4, 1),
--- ('질문', '패딩', 12, 6, 2),
--- ('안녕하세요', '장난감', 13, 2, 3),
--- ('반갑습니다', '아기조끼', 14, 4, 1),
--- ('메롱', '메론', 13, 6, 2),
--- ('안녕', '아기신발', 11, 8, 1),
--- ('질문', '패딩', 12, 7, 2),
--- ('안녕하세요', '장난감', 13, 3, 3),
--- ('반갑습니다', '아기조끼', 14, 10, 1),
--- ('메롱', '메론', 13, 6, 2),
--- ('안녕', '아기신발', 11, 8, 1),
--- ('질문', '패딩', 12, 9, 2),
--- ('안녕하세요', '장난감', 13, 11, 3),
--- ('반갑습니다', '아기조끼', 14, 12, 1),
--- ('메롱', '메론', 13, 15, 2),
--- ('안녕', '아기신발', 11, 12, 1),
--- ('질문', '패딩', 12, 7, 2),
--- ('안녕하세요', '장난감', 13, 14, 3),
--- ('반갑습니다', '아기조끼', 14, 5, 1),
--- ('메롱', '메론', 13, 7, 2),
--- ('안녕', '아기신발', 11, 5, 1),
--- ('질문', '패딩', 12, 3, 2),
--- ('안녕하세요', '장난감', 13, 8, 3),
--- ('반갑습니다', '아기조끼', 14, 3, 1),
--- ('메롱', '메론', 13, 6, 2),
--- ('안녕', '아기신발', 11, 12, 1),
--- ('질문', '패딩', 12, 14, 2),
--- ('안녕하세요', '장난감', 13, 7, 3),
--- ('반갑습니다', '아기조끼', 14, 4, 1),
--- ('메롱', '메론', 13, 8, 2),
--- ('안녕', '아기신발', 11, 15,  1),
--- ('질문', '패딩', 12, 9, 2),
--- ('안녕하세요', '장난감', 13, 5, 3)
-;
-
--- 샘플 커뮤니티 글 
 INSERT INTO post(title, content, viewCnt, userId) VALUES
 ('안녕', '아기신발', 11, 4),
 ('질문', '패딩', 12, 2),
@@ -230,15 +209,15 @@ INSERT INTO post_comment(content, userId, postId) VALUES
 ('마라탕먹고싶다가 5번 글에 댓글 작성', 3, 5)
 ;
 
--- 추천
--- INSERT INTO recommend(userId, postId) VALUES
--- (1, 1),
--- (1, 2),
--- (2, 2),
--- (3, 2),
--- (1, 3),
--- (3, 3)
--- ;
+-- 샘플 추천
+INSERT INTO recommend(userId, postId) VALUES
+(1, 1),
+(1, 2),
+(2, 2),
+(3, 2),
+(1, 3),
+(3, 3)
+;
 
 
 

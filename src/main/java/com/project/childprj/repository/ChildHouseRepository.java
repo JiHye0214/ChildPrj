@@ -11,9 +11,6 @@ public interface ChildHouseRepository {
     // 어린이집 데이터 1개 추가
     int insertChildHouse(ChildHouse childHouse);
 
-    // 어린이집 전체 조회
-    List<ChildHouse> selectAllChildHouse();
-
     // from 부터 cnts 개 글 조회
     List<ChildHouse> selectFromCnt(int from, int cnts);
 

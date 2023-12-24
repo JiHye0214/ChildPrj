@@ -14,150 +14,23 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @Builder
 public class Together {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String CODENAME;
-
-    private String GUNAME;
-
-    private String TITLE;
-
-    private String DATE;
-
-    private String PLACE;
-
-    private String ORG_NAME;
-
-    private String USE_TRGT;
-
-    private String USE_FEE;
-
-    private String ORG_LINK;
-
-    private String MAIN_IMG;
-
-    private String STRTDATE;
-
-    private String END_DATE;
-
-    private double LOT;
-
-    private double LAT;
-
-    public String getCODENAME() {
-        return CODENAME;
-    }
-
-    public void setCODENAME(String CODENAME) {
-        this.CODENAME = CODENAME;
-    }
-
-    public String getGUNAME() {
-        return GUNAME;
-    }
-
-    public void setGUNAME(String GUNAME) {
-        this.GUNAME = GUNAME;
-    }
-
-    public String getTITLE() {
-        return TITLE;
-    }
-
-    public void setTITLE(String TITLE) {
-        this.TITLE = TITLE;
-    }
-
-    public String getDATE() {
-        return DATE;
-    }
-
-    public void setDATE(String DATE) {
-        this.DATE = DATE;
-    }
-
-    public String getPLACE() {
-        return PLACE;
-    }
-
-    public void setPLACE(String PLACE) {
-        this.PLACE = PLACE;
-    }
-
-    public String getORG_NAME() {
-        return ORG_NAME;
-    }
-
-    public void setORG_NAME(String ORG_NAME) {
-        this.ORG_NAME = ORG_NAME;
-    }
-
-    public String getUSE_TRGT() {
-        return USE_TRGT;
-    }
-
-    public void setUSE_TRGT(String USE_TRGT) {
-        this.USE_TRGT = USE_TRGT;
-    }
-
-    public String getUSE_FEE() {
-        return USE_FEE;
-    }
-
-    public void setUSE_FEE(String USE_FEE) {
-        this.USE_FEE = USE_FEE;
-    }
-
-    public String getORG_LINK() {
-        return ORG_LINK;
-    }
-
-    public void setORG_LINK(String ORG_LINK) {
-        this.ORG_LINK = ORG_LINK;
-    }
-
-    public String getMAIN_IMG() {
-        return MAIN_IMG;
-    }
-
-    public void setMAIN_IMG(String MAIN_IMG) {
-        this.MAIN_IMG = MAIN_IMG;
-    }
-
-    public String getSTRTDATE() {
-        return STRTDATE;
-    }
-
-    public void setSTRTDATE(String STRTDATE) {
-        this.STRTDATE = STRTDATE;
-    }
-
-    public String getEND_DATE() {
-        return END_DATE;
-    }
-
-    public void setEND_DATE(String END_DATE) {
-        this.END_DATE = END_DATE;
-    }
-
-    public double getLOT() {
-        return LOT;
-    }
-
-    public void setLOT(double LOT) {
-        this.LOT = LOT;
-    }
-
-    public double getLAT() {
-        return LAT;
-    }
-
-    public void setLAT(double LAT) {
-        this.LAT = LAT;
-    }
+    private String CODENAME;  // 분류
+    private String GUNAME;    // 자치구
+    private String TITLE;     // 공연/행사명
+    private String DATE;      // 날짜/시간
+    private String PLACE;     // 장소
+    private String ORG_NAME;  // 기관명
+    private String USE_TRGT;  // 이용대상
+    private String USE_FEE;   // 이용요금
+    private String ORG_LINK;  // 홈페이지 주소
+    private String MAIN_IMG;  // 대표이미지
+    private String STRTDATE;  // 시작일
+    private String END_DATE;  // 종료일
+    private double LOT;       // 위도(X좌표)
+    private double LAT;       // 경도(Y좌표)
 
     public static Together fromJson(JsonNode row) {
         Together together = new Together();
@@ -190,15 +63,14 @@ public class Together {
         return (node != null && !node.isNull()) ? node.asDouble() : 0.0;
     }
 
-    @Override
-    public String toString() {
-        return "Together [id=" + id + ", CODENAME=" + CODENAME + ", GUNAME=" + GUNAME + ", TITLE="
-                + TITLE + ", DATE=" + DATE + ",  PLACE=" + PLACE + ", ORG_NAME=" + ORG_NAME
-                + ", USE_TRGT=" + USE_TRGT + ", ORG_LINK=" + ORG_LINK + ", MAIN_IMG=" + MAIN_IMG
-                + ", STRTDATE=" + STRTDATE + ", END_DATE=" + END_DATE
-                + ", LOT=" + LOT + ", LAT=" + LAT
-                + "]";
-    }
-
+//    @Override
+//    public String toString() {
+//        return "Together [id=" + id + ", CODENAME=" + CODENAME + ", GUNAME=" + GUNAME + ", TITLE="
+//                + TITLE + ", DATE=" + DATE + ",  PLACE=" + PLACE + ", ORG_NAME=" + ORG_NAME
+//                + ", USE_TRGT=" + USE_TRGT + ", ORG_LINK=" + ORG_LINK + ", MAIN_IMG=" + MAIN_IMG
+//                + ", STRTDATE=" + STRTDATE + ", END_DATE=" + END_DATE
+//                + ", LOT=" + LOT + ", LAT=" + LAT
+//                + "]";
+//    }
 
 }

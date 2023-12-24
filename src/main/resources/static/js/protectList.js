@@ -28,7 +28,9 @@ types.forEach((type) => {
     })
 })
 
+// --------------------------------------------------
 // tell setting
+
 const $protectTell = document.querySelectorAll(".content-number");
 
 for(e of $protectTell){

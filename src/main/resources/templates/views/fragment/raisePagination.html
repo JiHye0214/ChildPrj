@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-    <th:block th:fragment="protectPagination">
+    <th:block th:fragment="raisePagination">
         <div id="pagination-wrap">
             <ul id="pagination-content">
                 <li th:if="${startPage > 1}">
-                    <a th:href="@{${url}(page=${startPage - 1}, type=${type})}">
+                    <a th:href="@{${url}(page=${startPage - 1}, sq=${sq})}">
                         <img src="/img/prev.png" height="12px">
                     </a>
                 </li>
@@ -15,13 +15,13 @@
                             <a class="active" href="javascript:void(0)" th:text="${num}"></a>
                         </li>
                         <li th:unless="${num == page}">
-                            <a th:href="@{${url}(page=${num}, type=${type})}" th:text="${num}"></a>
+                            <a th:href="@{${url}(page=${num}, sq=${sq})}" th:text="${num}"></a>
                         </li>
                     </th:block>
                 </th:block>
 
                 <li th:if="${endPage < totalPage}">
-                    <a th:href="@{${url}(page=${endPage + 1}, type=${type})}">
+                    <a th:href="@{${url}(page=${endPage + 1}, sq=${sq})}">
                         <img src="/img/next.png" height="12px">
                     </a>
                 </li>

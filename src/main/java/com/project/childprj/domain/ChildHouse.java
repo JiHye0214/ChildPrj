@@ -9,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 
-//어린이집
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -32,6 +31,7 @@ public class ChildHouse {
 
     public static ChildHouse fromJson(JsonNode row){
         ChildHouse childHouse = new ChildHouse();
+
         childHouse.setCRNAME(row.get("CRNAME").asText());
         childHouse.setCRTYPENAME(row.get("CRTYPENAME").asText());
         childHouse.setCRADDR(row.get("CRADDR").asText());

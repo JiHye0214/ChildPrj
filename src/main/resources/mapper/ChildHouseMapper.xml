@@ -20,7 +20,7 @@
 <!--        <result property="CRCARGBNAME" column="CRCARGBNAME"/>-->
 <!--    </resultMap>-->
 
-    <insert id="insertChildHouse" parameterType="com.project.childprj.domain.ChildHouse">
+    <insert id="insertChildHouse" flushCache="true" parameterType="com.project.childprj.domain.ChildHouse">
         INSERT INTO child_house (CRNAME, CRTYPENAME, CRADDR, CRTELNO, CRHOME,
                                  NRTRROOMCNT, CRCAPAT, CRCHCNT, LA, LO, CRCARGBNAME)
         VALUES (#{CRNAME}, #{CRTYPENAME}, #{CRADDR}, #{CRTELNO}, #{CRHOME},
@@ -29,18 +29,19 @@
 
     <select id="selectFromCnt" resultType="com.project.childprj.domain.ChildHouse">
         SELECT *
-        FROM child_house LIMIT #{from}, #{cnts}
+          FROM child_house
+         LIMIT #{from}, #{cnts}
     </select>
 
     <select id="selectCountAll" resultType="int">
         SELECT COUNT(*)
-        FROM child_house
+          FROM child_house
     </select>
 
     <select id="selectChildHouse" resultType="com.project.childprj.domain.ChildHouse">
         SELECT *
-        FROM child_house
-        WHERE id = #{id}
+          FROM child_house
+         WHERE id = #{id}
     </select>
 
 </mapper>

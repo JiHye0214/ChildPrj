@@ -1,11 +1,6 @@
 package com.project.childprj.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
@@ -13,8 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -36,6 +29,7 @@ public class Kindergarden {
     // api의 row에서 객체의 각각 필드에 설정
     public static Kindergarden fromJson(JsonNode row) {
         Kindergarden kindergarden = new Kindergarden();
+
         kindergarden.setKINDERNAME(row.get("KINDERNAME").asText());
         kindergarden.setESTABLISH(row.get("ESTABLISH").asText());
         kindergarden.setLDGRNAME(row.get("LDGRNAME").asText());
