@@ -16,7 +16,7 @@ public class Post {
     private String title;
     private String content;
     private Long viewCnt;
+    private Long recommendCnt;
     private LocalDateTime createDate;
     private User user;
-    private Long recommendCnt;
 }
