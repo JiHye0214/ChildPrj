@@ -74,8 +74,9 @@ public class ProductController {
 
     // 글 수정 페이지
     @GetMapping("/update/{id}")
-    public String update(@PathVariable Long id, Model model) {
+    public String update(@PathVariable(name = "id") Long id, Model model) {
         Product product = productService.productDetail(id);
+        product.setProductImg(productService.findByProduct(id));
         model.addAttribute("product", product);
         model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
         return "product/update";
@@ -129,17 +130,19 @@ public class ProductController {
             , BindingResult result
             , Model model
             , RedirectAttributes redirectAttrs
+            ,@RequestParam Map<String, MultipartFile> file
     ) {
-        if (result.hasErrors()) {
-            redirectAttrs.addFlashAttribute("price", product.getPrice());
-            redirectAttrs.addFlashAttribute("productName", product.getProductName());
-            redirectAttrs.addFlashAttribute("region", product.getRegion());
-            redirectAttrs.addFlashAttribute("content", product.getContent());
-
-            return "redirect:/product/update/" + product.getId();
-        }
+//        if (result.hasErrors()) {
+//            redirectAttrs.addFlashAttribute("price", product.getPrice());
+//            redirectAttrs.addFlashAttribute("productName", product.getProductName());
+//            redirectAttrs.addFlashAttribute("region", product.getRegion());
+//            redirectAttrs.addFlashAttribute("content", product.getContent());
+//
+//            return "redirect:/product/update/" + product.getId();
+//        }
 
         model.addAttribute("result", productService.update(product));
+        model.addAttribute("insert", productService.imgInsert(file, product.getId()));
         return "product/updateOk";
     }
 

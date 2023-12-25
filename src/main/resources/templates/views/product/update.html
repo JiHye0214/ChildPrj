@@ -36,7 +36,7 @@
                     </div>
 
                     <!--/* market write */-->
-                    <form name="market-write-form" autocomplete="off" th:action="@{/product/update}" method="post">
+                    <form name="market-write-form" autocomplete="off" enctype="multipart/form-data" th:action="@{/product/update}" method="post">
                         <input type="hidden" name="id" th:value="${product.id}"/>
 
                         <div class="market-write-wrap write-info">

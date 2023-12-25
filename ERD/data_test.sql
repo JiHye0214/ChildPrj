@@ -47,9 +47,6 @@ SELECT *
   FROM product_comment;
 
 SELECT *
-  FROM product_img;
-
-SELECT *
   FROM recommend;
 
 -- ----------------------------------------
