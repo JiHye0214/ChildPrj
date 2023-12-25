@@ -78,7 +78,9 @@ public class ProductController {
         Product product = productService.productDetail(id);
         product.setProductImg(productService.findByProduct(id));
         model.addAttribute("product", product);
-        model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
+        model.addAttribute("writerImg", userService.findUserImg(productService.productDetail(id).getUser().getId())); // 글 작성자 img
+
+        model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
         return "product/update";
     }
 

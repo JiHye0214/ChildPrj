@@ -52,6 +52,7 @@ INSERT INTO user_authorities (userId, authorityId) VALUES
 
 -- 샘플 사용자 프로필 이미지
 INSERT INTO user_img(sourceName , fileName , userId) VALUES
+('default.jpg', 'default.jpg', 1),
 ('양파쿵야.jpg', '양파쿵야.jpg', 2),
 ('핑구1.jpg', '핑구1.jpg', 3),
 ('핑구2.jpg', '핑구2.jpg', 4)

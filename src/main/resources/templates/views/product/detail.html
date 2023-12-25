@@ -59,7 +59,7 @@
                         <div class="market-main-btn">
                             <a th:href="@{/product/write}" class="market-btn">작성</a>
                             <a th:href="@{'/product/update/' + ${product.id}}" class="market-btn" th:if="${logged_user.id == product.user.id}">수정</a>
-                            <form method="POST" name="detailDelete" th:action="@{/product/detailDelete}" th:if="${logged_user.id == product.user.id}">
+                            <form method="POST" name="detailDelete" th:action="@{/product/detailDelete}" th:if="${logged_user.id == product.user.id} or ${logged_user.authority.authName == 'ADMIN'}">
                                 <input type="hidden" name="id" th:value="${product.id}">
                                 <input type="button" class="market-btn delBtn" onclick="clickDetailDelBtn()" value="삭제"/>
                             </form>

@@ -13,14 +13,14 @@
                     <div class="comment-writer-nickname" th:text="${cmt.user.nickname}"></div>
                     <div class="comment-writer-content" th:text="${cmt.content}"></div>
                     <div class="comment-writer-time">[[${#temporals.format(cmt.createDate, 'yy.MM.dd')}]]</div>
-                    <input type="button" class="comment-delete-btn" th:if="${logged_user.id == cmt.user.id}" onclick="clickCmtDelBtn()" value="삭제" />
+                    <input type="button" class="comment-delete-btn" th:if="${logged_user.id == cmt.user.id} or ${logged_user.authority.authName == 'ADMIN'}" onclick="clickCmtDelBtn()" value="삭제" />
                 </form>
             </div>
             <form name="writeComment" autocomplete="off" method="POST" th:action="@{/product/cmtWrite}" class="market-comment-content market-comment-write-wrap">
                 <input type="hidden" name="productId" th:value="${product.id}"/>
                 <input type="hidden" name="userId" th:value="${logged_user.id}"/>
                 <img class="comment-writer-pic" th:src="@{'/upload/' + ${cmtWriterImg.fileName}}" width="40px" height="40px" />
-                <div class="comment-writer-nickname">[[${logged_user.nickname}]]</div>
+                <div class="comment-writer-nickname" th:text="${logged_user.nickname}"></div>
                 <input class="write-comment-input" name="content" type="text" placeholder="댓글을 입력하세요" />
                 <input type="button" class="raise-btn market-btn" value="작성" />
             </form>
