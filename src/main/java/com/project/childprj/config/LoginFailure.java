@@ -36,18 +36,18 @@ public class LoginFailure implements AuthenticationFailureHandler {
         String errorMessage = null;
 
         if(exception instanceof BadCredentialsException || exception instanceof InternalAuthenticationServiceException){
-            errorMessage = "아이디 또는 비밀번호가 맞지 않습니다. 다시 확인해주세요";
+            errorMessage = "아이디 또는 비밀번호가 맞지 않습니다";
         }
         //< account is disabled
         else if(exception instanceof DisabledException) {
-            errorMessage = "계정이 비활성화 되었습니다. 관리자에게 문의하세요.";
+            errorMessage = "계정이 비활성화 되었습니다. 관리자에게 문의하세요";
         }
         //< expired the credential
         else if(exception instanceof CredentialsExpiredException) {
-            errorMessage = "비밀번호 유효기간이 만료 되었습니다. 관리자에게 문의하세요.";
+            errorMessage = "비밀번호 유효기간이 만료 되었습니다. 관리자에게 문의하세요";
         }
         else {
-            errorMessage = "알수 없는 이유로 로그인에 실패하였습니다. 관리자에게 문의하세요.";
+            errorMessage = "알수 없는 이유로 로그인에 실패하였습니다. 관리자에게 문의하세요";
         }
 
         // request.setAttibute에 적어주고 html에 바로 넣을 수 있음

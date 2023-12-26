@@ -1,0 +1,75 @@
+/* raise comment */
+
+.raise-comment {
+    margin-top: 50px;
+}
+
+.raise-comment-content {
+    background-color: var(--comment-color);
+    padding: 10px 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    column-gap: 15px;
+}
+
+.raise-comment-write-wrap > .comment-writer-nickname {
+    width: 18.6%;
+}
+
+.raise-comment-write-wrap {
+    display: flex;
+    align-items: center;
+    background-color: var(--light-raise);
+}
+
+.write-comment-input {
+    width: 69.3%;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+}
+
+.write-comment-input:focus {
+    border:2px solid var(--raise-btn);
+}
+
+.comment-writer-nickname {
+    width: 230px;
+}
+
+.comment-writer-content {
+    width: 795px;
+}
+
+.raise-comment-content > .raise-btn {
+    background-color: var(--raise-btn);
+    height: 35.33px;
+    width: 50px;
+    margin: 0;
+
+    &:hover {
+        background-color: var(--raise-color);
+        cursor: pointer;
+    }
+}
+
+.comment-delete-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background: salmon;
+    height: 35px;
+    width: 50px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

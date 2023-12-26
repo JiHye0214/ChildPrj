@@ -27,6 +27,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -49,28 +50,25 @@ public class ProductServiceImpl implements ProductService {
 
     // 글 목록 조회 (페이징 + 검색어)
     @Override
-    public List<Product> list(Integer page, String sq, Model model) {
-        HttpSession session = U.getSession();
+    public List<Product> list(Integer page, String sq, String productOrderWay, Model model) {
 
-        if (page == null) page = 1;
+        // 검색결과 없을 때 정렬 --> 전체 보여주기 방지
+        String validSq = sq;
+
         if (page < 1) page = 1;
-
-        if (sq == null) sq = "";
-
-        String productOrderWay = (String) session.getAttribute("productOrderWay");
-        if (productOrderWay == null) productOrderWay = "최신순";
 
         Integer pagesPerSection = 5;
         Integer rowsPerPage = 8;
 
         int totalLength = productRepository.selectCountAll(sq);
+        if(totalLength == 0) validSq = "";
         int totalPage = (int) Math.ceil(totalLength / (double) rowsPerPage);
 
         int startPage = 0;
         int endPage = 0;
 
-        List<Product> products = null;
-        List<ProductImg> productImgs = null;
+        // null --> 서치 시 없으면 에러남
+        List<Product> products = new ArrayList<>();
 
         if (totalLength > 0) {
             if (page > totalPage) page = totalPage;
@@ -82,9 +80,9 @@ public class ProductServiceImpl implements ProductService {
             if (endPage > totalPage) endPage = totalPage;
 
             if (productOrderWay.equals("최신순")) {
-                products = productRepository.selectFromCntOrderByDate(fromRow, rowsPerPage, sq);
+                products = productRepository.selectFromCntOrderByDate(fromRow, rowsPerPage, validSq);
             } else if (productOrderWay.equals("가격순")) {
-                products = productRepository.selectFromCntOrderByPrice(fromRow, rowsPerPage, sq);
+                products = productRepository.selectFromCntOrderByPrice(fromRow, rowsPerPage, validSq);
             }
             model.addAttribute("products", products);
         } else {
@@ -102,7 +100,6 @@ public class ProductServiceImpl implements ProductService {
         model.addAttribute("endPage", endPage);
 
         // 이미지 나열
-        // 아니 리스트놈이 안 나와서 볼 수가 없어
         for(Product e : products){
             e.setProductImg(productImgRepository.findByProduct(e.getId())); // 아이디로 이미지 찾아서 객체 세팅
         }

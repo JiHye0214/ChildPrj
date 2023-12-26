@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostService {
     // 글 목록 조회 (페이징 + 검색어)
-    List<Post> list(Integer page, String sq, Model model);
+    List<Post> list(Integer page, String sq, String postOrderWay, Model model);
 
     // 글 작성
     int write(Post post);

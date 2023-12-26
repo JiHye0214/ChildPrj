@@ -56,12 +56,16 @@ img:hover, button:hover {
     cursor: pointer;
 }
 
-#txt-section > img:hover, .talk-writer-pic:hover, .comment-writer-pic:hover {
+#txt-section > img:hover,
+.talk-writer-pic:hover,
+.comment-writer-pic:hover,
+#product-region-mark:hover {
     cursor: default;
 }
 
 .logo {
     height: 150px;
+    margin-bottom: 40px;
 }
 
 .write-btn {
@@ -93,6 +97,10 @@ img:hover, button:hover {
 .login-warn, .errorMsg {
     color: red;
     font-size: 15px;
+}
+
+.errorMsg {
+    margin-bottom: 15px;
 }
 
 .valid {

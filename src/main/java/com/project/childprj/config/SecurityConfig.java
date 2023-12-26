@@ -34,7 +34,6 @@ public class SecurityConfig {
                 // authority setting
                 .authorizeHttpRequests(auth -> auth
                         // 로그인만 하면 들어갈 수 있도록 !
-                        .requestMatchers("/user/signIn").authenticated()
                         .requestMatchers("/post/detail/*").authenticated()
                         .requestMatchers("/post/write").authenticated()
                         .requestMatchers("/product/detail/*").authenticated()

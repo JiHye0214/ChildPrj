@@ -136,10 +136,10 @@
     display: none;
     background-color: white;
     font-size: 13px;
-    padding: 15px 13px;
+    padding: 6px;
     width: 210px;
     border: none;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 .change-pw-content {
     margin-bottom: 3px;

@@ -1,7 +1,46 @@
 
+.raise-alert-modal {
+    width: 200px;
+    height: 150px;
+    background-image: url(../img/alertModal.png);
+    background-size: 200px 150px;
+    position: absolute;
+    right: 140px;
+    top: -80px;
+}
+
+.modal-wrap {
+    position: absolute;
+    top: 53px;
+    left: 13px;
+}
+
+.modal-close-btn {
+    float: right;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.modal-text {
+    font-size: 15px;
+    text-align: center;
+    margin-top: 23px;
+    color: white;
+}
+
+.modal-text > span {
+    font-weight: 700;
+    color: white;
+}
+
+/* ------------------------------------------------------------ */
+
 #communityList-wrap {
     margin: 30px auto;
     width: 1200px;
+    position: relative;
 }
 
 #txt-section {
