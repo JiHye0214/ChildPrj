@@ -28,7 +28,7 @@
             <div id="list-section">
                 <div id="list-wrap">
                     <div class="list-content" th:each="zzim : ${zzims}">
-                        <a th:href="@{'/together/detail/' + ${type} + '/' + ${zzim.together.id}}">
+                        <a th:href="@{'/together/detail?type=' + ${type} + '/id=' + ${zzim.together.id}}">
                             <div class="content-img" th:style="'background-image: url(' + ${zzim.together.MAIN_IMG} + ')'"></div>
                             <div class="content-title" th:text="${zzim.together.TITLE}"></div>
                             <div class="content-period" th:text="${zzim.together.DATE}"></div>
