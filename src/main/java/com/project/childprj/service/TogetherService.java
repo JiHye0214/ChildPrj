@@ -18,4 +18,7 @@ public interface TogetherService {
 
     // 특정 id 함께하기 조회
     Together getTogether(Long id);
+
+    // 특정 id 함께하기 찜 카운트 변경 (찜 추가 시 num : 1 / 찜 해제 시 num : -1)
+    int changeZzimCnt(Long num, Long id);
 }

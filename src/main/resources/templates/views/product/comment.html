@@ -12,7 +12,7 @@
                     <img class="comment-writer-pic" th:src="@{'/upload/' + ${cmt.userImg.fileName}}" width="40px" height="40px" />
                     <div class="comment-writer-nickname" th:text="${cmt.user.nickname}"></div>
                     <div class="comment-writer-content" th:text="${cmt.content}"></div>
-                    <div class="comment-writer-time">[[${#temporals.format(cmt.createDate, 'yy.MM.dd')}]]</div>
+                    <div claass="comment-writer-time">[[${#temporals.format(cmt.createDate, 'yy.MM.dd')}]]</div>
                     <input type="button" class="comment-delete-btn" th:if="${logged_user.id == cmt.user.id} or ${logged_user.authority.authName == 'ADMIN'}" onclick="clickCmtDelBtn()" value="삭제" />
                 </form>
             </div>

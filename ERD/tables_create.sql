@@ -150,6 +150,7 @@ CREATE TABLE together
 	LOT decimal(65,20),
 	LAT decimal(65,20),
 	zzimCnt int DEFAULT 0,
+	isZzimClicked varchar(10),
 	PRIMARY KEY (id)
 );
 
@@ -199,9 +200,9 @@ CREATE TABLE user_img
 CREATE TABLE zzim
 (
 	id int NOT NULL AUTO_INCREMENT,
-	title varchar(255) NOT NULL,
-	imgURL varchar(255),
-	period varchar(255) NOT NULL,
+-- 	title varchar(255) NOT NULL,
+-- 	imgURL varchar(255),
+-- 	period varchar(255) NOT NULL,
 	userId int NOT NULL,
 	togetherId int NOT NULL,
 	PRIMARY KEY (id)

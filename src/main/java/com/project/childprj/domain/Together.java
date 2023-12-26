@@ -31,6 +31,8 @@ public class Together {
     private String END_DATE;  // 종료일
     private double LOT;       // 위도(X좌표)
     private double LAT;       // 경도(Y좌표)
+    private Long zzimCnt;     // 찜 카운트
+    private String isZzimClicked;  // 찜 클릭 여부
 
     public static Together fromJson(JsonNode row) {
         Together together = new Together();

@@ -43,6 +43,8 @@ public class HomeController {
         childHouseService.saveChildHouse(startIndex, endIndex);
         U.getSession().setAttribute("childCenter", childCenterService.getChildCenter(startIndex, endIndex));
 
+
+
         // graph
         model.addAttribute("productHotFive", productService.selectFive());
         model.addAttribute("postHotFive", postService.selectFive());

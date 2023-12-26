@@ -1,14 +1,25 @@
-const heartsBtn = document.querySelectorAll("#heart");
+const zzimForms = document.querySelectorAll(".content-zzimBtn");
+const heartsBtns = document.querySelectorAll("#heart");
+const isZzimClicked = document.querySelectorAll(".isZzimClicked");
 
-heartsBtn.forEach((heart) => {
+heartsBtns.forEach((heart, i) => {
+    if (isZzimClicked[i].value == true) {
+        heart.style.fill = "rgb(255, 80, 80)";
+    } else {
+        heart.style.fill = "#fff";
+    }
+
     heart.addEventListener("click", () => {
-        if (heart.classList.contains("zzim")) {
-            heart.classList.remove("zzim");
-            heart.style.fill = "#fff";
-        } else {
-            heart.classList.add("zzim");
-            heart.style.fill = "rgb(255, 80, 80)";
-        }
+        // if (isZzimClicked.value == false) {
+        //     isZzimClicked.value = true;
+        //     heart.style.fill = "rgb(255, 80, 80)";
+        // } else {
+        //     isZzimClicked.value == false
+        //     heart.style.fill = "#fff";
+        // }
+
+        zzimForms[i].name = "zzimFrm_" + i;
+        zzimForms[i].submit();
     });
 });
 
