@@ -53,7 +53,7 @@ public class TogetherController {
         return "redirect:/together/list";
     }
 
-    @GetMapping("/detail/{type}/{id}")
+    @GetMapping("/detail")
     public String protectDetail(
             @RequestParam(name = "type", required = false, defaultValue = "체험") String type
             , @RequestParam(name = "id", required = false, defaultValue = "1") Long id
