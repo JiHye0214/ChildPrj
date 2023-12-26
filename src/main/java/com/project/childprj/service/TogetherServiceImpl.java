@@ -3,6 +3,7 @@ package com.project.childprj.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.project.childprj.domain.Together;
+import com.project.childprj.domain.User;
 import com.project.childprj.domain.Zzim;
 import com.project.childprj.repository.TogetherRepository;
 import com.project.childprj.repository.ZzimRepository;
@@ -24,6 +25,9 @@ public class TogetherServiceImpl implements TogetherService {
 
     @Value("${app.api.SeoulDataKey}")
     private String SeoulDataKey;
+
+    @Autowired
+    private ZzimService zzimService;
 
     private TogetherRepository togetherRepository;
     private ZzimRepository zzimRepository;
@@ -83,10 +87,11 @@ public class TogetherServiceImpl implements TogetherService {
 
     @Override
     public List<Together> togetherList(Integer page, String type, Model model) {
-        if (page == null) page = 1;
+        Long userId = U.getLoggedUser().getId();
+
         if (page < 1) page = 1;
 
-        Integer pagesPerSection = 5;
+        Integer pagesPerSection = 10;
         Integer rowsPerPage = 10;
 
         int totalLength = 0;
@@ -100,6 +105,22 @@ public class TogetherServiceImpl implements TogetherService {
 
         int startPage = 0;
         int endPage = 0;
+
+        // 전체 isZzimClicked "false" 로 변경
+        togetherRepository.changeAllZzimClicked();
+        int allTogetherLen = togetherRepository.countAllTogether();
+        List<Together> allTogether = togetherRepository.selectAllTogether();
+
+        if (allTogetherLen > 0 && userId != 0) {
+            for (var together : allTogether) {
+                boolean isZzimChecked = zzimService.isZzimChecked(userId, together.getId());
+
+                // 찜 되어있는 together 는 "true" 로 변경
+                if (isZzimChecked) {
+                    togetherRepository.changeIsZzimClicked("true", together.getId());
+                }
+            }
+        }
 
         List<Together> togethers = null;
 
@@ -133,8 +154,6 @@ public class TogetherServiceImpl implements TogetherService {
         model.addAttribute("endPage", endPage);
 
         return togethers;
-
-
     }
 
     @Override
@@ -145,6 +164,11 @@ public class TogetherServiceImpl implements TogetherService {
     @Override
     public int changeZzimCnt(Long num, Long id) {
         return togetherRepository.changeZzimCnt(num, id);
+    }
+
+    @Override
+    public int changeIsZzimClicked(String bool, Long id) {
+        return togetherRepository.changeIsZzimClicked(bool, id);
     }
 
 }

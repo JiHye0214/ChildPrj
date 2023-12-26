@@ -45,6 +45,11 @@
          LIMIT #{from}, #{cnts}
     </select>
 
+    <select id="selectAllTogether" resultType="com.project.childprj.domain.Together">
+        SELECT *
+          FROM together
+    </select>
+
     <select id="selectCountType12" resultType="int">
         SELECT COUNT(*)
           FROM together
@@ -58,6 +63,11 @@
            AND CODENAME NOT LIKE '%축제%';
     </select>
 
+    <select id="countAllTogether" resultType="int">
+        SELECT COUNT(*)
+          FROM together
+    </select>
+
     <select id="selectTogether" resultType="com.project.childprj.domain.Together">
         SELECT *
           FROM together
@@ -68,6 +78,17 @@
         UPDATE together
            SET zzimCnt = zzimCnt + #{num}
          WHERE id = #{id}
+    </update>
+
+    <update id="changeIsZzimClicked" flushCache="true">
+        UPDATE together
+           SET isZzimClicked = #{bool}
+         WHERE id = #{id}
+    </update>
+
+    <update id="changeAllZzimClicked" flushCache="true">
+        UPDATE together
+           SET isZzimClicked = "false"
     </update>
 
 </mapper>

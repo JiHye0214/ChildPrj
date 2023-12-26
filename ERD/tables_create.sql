@@ -150,7 +150,7 @@ CREATE TABLE together
 	LOT double(65,20),
 	LAT double(65,20),
 	zzimCnt int DEFAULT 0,
-	isZzimClicked varchar(10),
+	isZzimClicked varchar(10) DEFAULT "false",
 	PRIMARY KEY (id)
 );
 
@@ -203,6 +203,7 @@ CREATE TABLE zzim
 -- 	title varchar(255) NOT NULL,
 -- 	imgURL varchar(255),
 -- 	period varchar(255) NOT NULL,
+	type varchar(10),
 	userId int NOT NULL,
 	togetherId int NOT NULL,
 	PRIMARY KEY (id)

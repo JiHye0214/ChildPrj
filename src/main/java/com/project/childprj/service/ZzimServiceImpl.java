@@ -57,7 +57,7 @@ public class ZzimServiceImpl implements ZzimService {
             page = 0;
         }
 
-        System.out.println("===================================" + zzims);
+//        System.out.println("===================================" + zzims);
 
         model.addAttribute("page", page);
         model.addAttribute("totalPage", totalPage);
@@ -77,14 +77,16 @@ public class ZzimServiceImpl implements ZzimService {
     }
 
     @Override
-    public int insertZzim(Long userId, Long togetherId, String type) {
+    public int insertZzim(String type, Long userId, Long togetherId) {
         Together together = togetherRepository.selectTogether(togetherId);
         together.setIsZzimClicked("true");
 
         Zzim zzim = new Zzim();
+        zzim.setType(type);
         zzim.setUserId(userId);
         zzim.setTogether(together);
-        zzim.setType(type);
+
+//        System.out.println(zzim);
 
         int cnt = zzimRepository.insertZzim(zzim);
 

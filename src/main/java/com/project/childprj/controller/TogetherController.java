@@ -53,10 +53,10 @@ public class TogetherController {
         return "redirect:/together/list";
     }
 
-    @GetMapping("/detail")
+    @GetMapping("/detail/{type}/{id}")
     public String protectDetail(
-            @RequestParam(name = "type", required = false, defaultValue = "체험") String type
-            , @RequestParam(name = "id", required = false, defaultValue = "1") Long id
+            @PathVariable String type
+            , @PathVariable Long id
             , Model model
             , HttpServletRequest request
             , RedirectAttributes redirectAttrs
@@ -78,19 +78,23 @@ public class TogetherController {
 
     // 찜 추가 & 해제
     @PostMapping("/toggleZzim")
-    public String addZzim(Long togetherId, Long page, String type, RedirectAttributes redirectAttrs) {
+    public String addZzim(
+            @RequestParam(name = "togetherId", required = false) Long togetherId
+            , @RequestParam(name = "page", required = false) Long page
+            , @RequestParam(name = "type", required = false) String type
+            , RedirectAttributes redirectAttrs
+    ) {
         Long userId = U.getLoggedUser().getId();
         boolean isZzimChecked = zzimService.isZzimChecked(userId, togetherId);
 
-//        System.out.println(togetherId);
-//        System.out.println(isZzimChecked);
-
         if (!isZzimChecked) {
-            zzimService.insertZzim(userId, togetherId, type); // zzim 테이블에 데이터 추가 or 삭제
+            zzimService.insertZzim(type, userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
             togetherService.changeZzimCnt(1L, togetherId); // together 테이블의 zzimCnt +1 or -1 (home 의 그래프 hot 5 정렬 위해)
+            togetherService.changeIsZzimClicked("true", togetherId); // together 테이블의 isZzimClicked "true" or "false" (유저당 찜 하트 기록 위해)
         } else {
             zzimService.deleteZzim(userId, togetherId);
             togetherService.changeZzimCnt(-1L, togetherId);
+            togetherService.changeIsZzimClicked("false", togetherId);
         }
 
         redirectAttrs.addAttribute("page", page);

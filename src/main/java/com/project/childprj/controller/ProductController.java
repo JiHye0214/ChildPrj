@@ -91,9 +91,10 @@ public class ProductController {
 
     // 글 목록 - 정렬
     @PostMapping("/orderWay")
-    public String orderWay(@RequestParam(name = "productOrderWay", required = false, defaultValue = "최신순") String productOrderWay,
-                           @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
-                           RedirectAttributes redirectAttrs
+    public String orderWay(
+            @RequestParam(name = "productOrderWay", required = false, defaultValue = "최신순") String productOrderWay
+            , @RequestParam(name = "sq", required = false, defaultValue = "") String sq
+            , RedirectAttributes redirectAttrs
     ) {
         redirectAttrs.addAttribute("productOrderWay", productOrderWay);
         redirectAttrs.addAttribute("sq", sq);

@@ -13,7 +13,7 @@ public interface ZzimService {
     boolean isZzimChecked(Long userId, Long togetherId);
 
     // 찜 추가
-    int insertZzim(Long userId, Long togetherId, String type);
+    int insertZzim(String type, Long userId, Long togetherId);
 
     // 찜 취소
     int deleteZzim(Long userId, Long togetherId);

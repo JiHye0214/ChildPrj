@@ -3,21 +3,13 @@ const heartsBtns = document.querySelectorAll("#heart");
 const isZzimClicked = document.querySelectorAll(".isZzimClicked");
 
 heartsBtns.forEach((heart, i) => {
-    if (isZzimClicked[i].value == true) {
+    if (isZzimClicked[i].value == "true") {
         heart.style.fill = "rgb(255, 80, 80)";
     } else {
         heart.style.fill = "#fff";
     }
 
     heart.addEventListener("click", () => {
-        // if (isZzimClicked.value == false) {
-        //     isZzimClicked.value = true;
-        //     heart.style.fill = "rgb(255, 80, 80)";
-        // } else {
-        //     isZzimClicked.value == false
-        //     heart.style.fill = "#fff";
-        // }
-
         zzimForms[i].name = "zzimFrm_" + i;
         zzimForms[i].submit();
     });

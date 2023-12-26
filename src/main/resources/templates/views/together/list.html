@@ -49,8 +49,8 @@
                         </a>
                         <form class="content-zzimBtn" th:action="@{/together/toggleZzim}" method="POST">
                             <input type="hidden" th:value="${together.id}" name="togetherId" />
-                            <input type="hidden" th:value="${page}" name="page" />
                             <input type="hidden" th:value="${type}" name="type" />
+                            <input type="hidden" th:value="${page}" name="page" />
                             <input type="hidden" th:value="${together.isZzimClicked}" class="isZzimClicked" >
                             <svg
                                 t="1689815540548"
