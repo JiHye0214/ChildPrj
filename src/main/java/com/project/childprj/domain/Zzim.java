@@ -13,4 +13,5 @@ public class Zzim {
     private Long id;
     private Long userId;
     private Together together;
+    private String type;
 }

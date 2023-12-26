@@ -68,6 +68,14 @@ public class UserController {
         return "/user/find";
     }
 
+    // 찜리스트
+    @GetMapping("/zzim")
+    public void togetherZzim(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
+                             Model model
+    ) {
+        zzimService.zzimList(page, model);
+    }
+
     // 로그인
     @PostMapping("/logIn")
     public void logInPost(){};
@@ -175,28 +183,24 @@ public class UserController {
         return "/user/dropFail";
     }
 
-    // 찜리스트
-    @GetMapping("/zzim")
-    public void togetherZzim(Integer page, Model model) {
-        zzimService.zzimList(page, model);
-    }
-
     // 찜 해제
-//    @PostMapping("/deleteZzim")
-//    public String deleteZzim(Zzim zzim, Long togetherId) {
-//        // zzim 테이블에서 데이터 삭제
-//        zzimService.deleteZzim(zzim, togetherId);
-//
-//        // together 테이블의 zzimCnt 변경
+    @PostMapping("/deleteZzim")
+    public String deleteZzim(Long userId, Long togetherId) {
+
+        // zzim 테이블에서 데이터 삭제
+        zzimService.deleteZzim(userId, togetherId);
+
+        // together 테이블의 zzimCnt 변경
 //        boolean isZzimCilked = togetherService.isZzimCheck(togetherId);
+
 //        if (!isZzimCilked) {
 //            togetherService.changeZzimCnt(1L, togetherId);
 //        } else {
 //            togetherService.changeZzimCnt(-1L, togetherId);
 //        }
-//
-//        return "redirect:/user/zzim";
-//    }
+
+        return "redirect:/user/zzim";
+    }
 
 // ------------------validator--------------------
 

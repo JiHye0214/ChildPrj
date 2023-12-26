@@ -1,14 +1,14 @@
 const heartsBtns = document.querySelectorAll("#heart");
+const heartForm = document.querySelectorAll(".content-zzimBtn");
 
 heartsBtns.forEach((heart, i) => {
     heart.addEventListener("click", () => {
 
+        heartForm[i].name = i;
+
         heart.style.fill = "#fff";
         // $(".list-content").eq(i).fadeToggle("200");
-        $("[name='zzimFrm']").attr({
-            "method": "POST",
-            "action": "deleteZzim"
-        }).submit();
+        heartForm[i].submit();
 
         // if (heart.classList.contains("zzim")) {
         //     heart.classList.remove("zzim");

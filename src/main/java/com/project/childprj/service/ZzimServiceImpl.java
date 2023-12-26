@@ -28,7 +28,6 @@ public class ZzimServiceImpl implements ZzimService {
     public List<Zzim> zzimList(Integer page, Model model) {
         Long userId = U.getLoggedUser().getId();
 
-        if (page == null) page = 1;
         if (page < 1) page = 1;
 
         Integer pagesPerSection = 5;
@@ -58,6 +57,8 @@ public class ZzimServiceImpl implements ZzimService {
             page = 0;
         }
 
+        System.out.println("===================================" + zzims);
+
         model.addAttribute("page", page);
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("rowsPerPage", rowsPerPage);
@@ -76,13 +77,14 @@ public class ZzimServiceImpl implements ZzimService {
     }
 
     @Override
-    public int insertZzim(Long userId, Long togetherId) {
+    public int insertZzim(Long userId, Long togetherId, String type) {
         Together together = togetherRepository.selectTogether(togetherId);
         together.setIsZzimClicked("true");
 
         Zzim zzim = new Zzim();
         zzim.setUserId(userId);
         zzim.setTogether(together);
+        zzim.setType(type);
 
         int cnt = zzimRepository.insertZzim(zzim);
 

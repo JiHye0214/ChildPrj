@@ -5,54 +5,22 @@
 
 <mapper namespace="com.project.childprj.repository.ZzimRepository">
 
-<!--    <resultMap id="mapTogether" type="com.project.childprj.domain.Together">-->
-<!--        <result column="t_id" property="id"/>-->
-<!--        <result column="t_CODENAME" property="CODENAME"/>-->
-<!--        <result column="t_GUNAME" property="GUNAME"/>-->
-<!--        <result column="t_TITLE" property="TITLE"/>-->
-<!--        <result column="t_DATE" property="DATE"/>-->
-<!--        <result column="t_PLACE" property="PLACE"/>-->
-<!--        <result column="t_ORG_NAME" property="ORG_NAME"/>-->
-<!--        <result column="t_USE_TRGT" property="USE_TRGT"/>-->
-<!--        <result column="t_USE_FEE" property="USE_FEE"/>-->
-<!--        <result column="t_ORG_LINK" property="ORG_LINK"/>-->
-<!--        <result column="t_MAIN_IMG" property="MAIN_IMG"/>-->
-<!--        <result column="t_STRTDATE" property="STRTDATE"/>-->
-<!--        <result column="t_END_DATE" property="END_DATE"/>-->
-<!--        <result column="t_LOT" property="LOT"/>-->
-<!--        <result column="t_LAT" property="LAT"/>-->
-<!--        <result column="t_zzimCnt" property="zzimCnt"/>-->
-<!--    </resultMap>-->
-
-<!--    <sql id="SELECT_BASE">-->
-<!--        SELECT z.id       "z_id"-->
-<!--             , z.userId   "z_userId"-->
-<!--             , t.id       "t_id"-->
-<!--             , t.CODENAME "t_CODENAME"-->
-<!--             , t.GUNAME   "t_GUNAME"-->
-<!--             , t.TITLE    "t_TITLE"-->
-<!--             , t.DATE     "t_DATE"-->
-<!--             , t.PLACE    "t_PLACE"-->
-<!--             , t.ORG_NAME "t_ORG_NAME"-->
-<!--             , t.USE_TRGT "t_USE_TRGT"-->
-<!--             , t.USE_FEE  "t_USE_FEE"-->
-<!--             , t.ORG_LINK "t_ORG_LINK"-->
-<!--             , t.MAIN_IMG "t_MAIN_IMG"-->
-<!--             , t.STRTDATE "t_STRTDATE"-->
-<!--             , t.END_DATE "t_END_DATE"-->
-<!--             , t.LOT      "t_LOT"-->
-<!--             , t.LAT      "t_LAT"-->
-<!--             , t.zzimCnt  "t_zzimCnt"-->
-<!--          FROM zzim z-->
-<!--             , together t-->
-<!--         WHERE z.togetherId = t.id-->
-<!--    </sql>-->
-
     <resultMap id="mapTogether" type="com.project.childprj.domain.Together">
         <result column="t_id" property="id"/>
+        <result column="t_CODENAME" property="CODENAME"/>
+        <result column="t_GUNAME" property="GUNAME"/>
         <result column="t_TITLE" property="TITLE"/>
         <result column="t_DATE" property="DATE"/>
+        <result column="t_PLACE" property="PLACE"/>
+        <result column="t_ORG_NAME" property="ORG_NAME"/>
+        <result column="t_USE_TRGT" property="USE_TRGT"/>
+        <result column="t_USE_FEE" property="USE_FEE"/>
+        <result column="t_ORG_LINK" property="ORG_LINK"/>
         <result column="t_MAIN_IMG" property="MAIN_IMG"/>
+        <result column="t_STRTDATE" property="STRTDATE"/>
+        <result column="t_END_DATE" property="END_DATE"/>
+        <result column="t_LOT" property="LOT"/>
+        <result column="t_LAT" property="LAT"/>
         <result column="t_zzimCnt" property="zzimCnt"/>
     </resultMap>
 
@@ -63,17 +31,60 @@
     </resultMap>
 
     <sql id="SELECT_BASE">
-        SELECT z.id       "z_id"
+        SELECT
+             z.id       "z_id"
              , z.userId   "z_userId"
+
              , t.id       "t_id"
+             , t.CODENAME "t_CODENAME"
+             , t.GUNAME   "t_GUNAME"
              , t.TITLE    "t_TITLE"
              , t.DATE     "t_DATE"
+             , t.PLACE    "t_PLACE"
+             , t.ORG_NAME "t_ORG_NAME"
+             , t.USE_TRGT "t_USE_TRGT"
+             , t.USE_FEE  "t_USE_FEE"
+             , t.ORG_LINK "t_ORG_LINK"
              , t.MAIN_IMG "t_MAIN_IMG"
+             , t.STRTDATE "t_STRTDATE"
+             , t.END_DATE "t_END_DATE"
+             , t.LOT      "t_LOT"
+             , t.LAT      "t_LAT"
              , t.zzimCnt  "t_zzimCnt"
-          FROM zzim z
-             , together t
+          FROM
+             zzim z , together t
          WHERE z.togetherId = t.id
     </sql>
+
+<!--    <resultMap id="mapTogether" type="com.project.childprj.domain.Together">-->
+<!--        <result column="t_id" property="id"/>-->
+<!--        <result column="t_TITLE" property="TITLE"/>-->
+<!--        <result column="t_DATE" property="DATE"/>-->
+<!--        <result column="t_MAIN_IMG" property="MAIN_IMG"/>-->
+<!--        <result column="t_zzimCnt" property="zzimCnt"/>-->
+<!--    </resultMap>-->
+
+<!--    <resultMap id="mapZzim" type="com.project.childprj.domain.Zzim">-->
+<!--        <result column="z_id" property="id"/>-->
+<!--        <result column="z_userId" property="userId"/>-->
+<!--        <collection resultMap="mapTogether" property="together"/>-->
+<!--    </resultMap>-->
+
+<!--    <sql id="SELECT_BASE">-->
+<!--        SELECT-->
+<!--             z.id       "z_id"-->
+<!--             , z.userId   "z_userId"-->
+
+<!--             , t.id       "t_id"-->
+<!--             , t.TITLE    "t_TITLE"-->
+<!--             , t.DATE     "t_DATE"-->
+<!--             , t.MAIN_IMG "t_MAIN_IMG"-->
+<!--             , t.zzimCnt  "t_zzimCnt"-->
+<!--          FROM zzim z-->
+<!--             , together t-->
+<!--         WHERE z.togetherId = t.id-->
+<!--    </sql>-->
+
 
     <select id="selectFromCnt" resultMap="mapZzim">
         <include refid="SELECT_BASE"/>
@@ -82,7 +93,7 @@
         LIMIT #{from}, #{cnts}
     </select>
 
-    <select id="selectCountAll" resultType="int">
+    <select id="selectCountAll">
         SELECT COUNT(*)
           FROM zzim
          WHERE userId = #{userId}

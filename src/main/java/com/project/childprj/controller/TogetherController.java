@@ -8,10 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -26,16 +23,14 @@ public class TogetherController {
 
     @GetMapping("/list")
     public String togetherList(
-            Integer page
-            , String type
+            @RequestParam(name = "page", required = false, defaultValue = "1") Integer page
+            , @RequestParam(name = "type", required = false, defaultValue = "체험") String type
             , Model model
             , HttpServletRequest request
             , RedirectAttributes redirectAttrs
     ) {
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
-
-        if (type == null) type = "체험";
 
         if (type.equals("체험") || type.equals("축제") || type.equals("공연ㆍ예술")) {
             togetherService.togetherList(page, type, model);
@@ -55,8 +50,8 @@ public class TogetherController {
 
     @GetMapping("/detail/{type}/{id}")
     public String protectDetail(
-            @PathVariable String type
-            , @PathVariable Long id
+            @RequestParam(name = "type", required = false, defaultValue = "체험") String type
+            , @RequestParam(name = "id", required = false, defaultValue = "1") Long id
             , Model model
             , HttpServletRequest request
             , RedirectAttributes redirectAttrs
@@ -85,7 +80,7 @@ public class TogetherController {
 //        System.out.println(isZzimChecked);
 
         if (!isZzimChecked) {
-            zzimService.insertZzim(userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
+            zzimService.insertZzim(userId, togetherId, type); // zzim 테이블에 데이터 추가 or 삭제
             togetherService.changeZzimCnt(1L, togetherId); // together 테이블의 zzimCnt +1 or -1 (home 의 그래프 hot 5 정렬 위해)
         } else {
             zzimService.deleteZzim(userId, togetherId);
