@@ -10,24 +10,26 @@
         <link rel="stylesheet" th:href="@{/css/common.css}" />
         <link rel="stylesheet" th:href="@{/css/togetherDetail.css}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+        <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9638f43646a317af3a05dcb6d3223205" ></script>
         <script defer th:src="@{/js/togetherDetail.js}"></script>
         <title>함께하기 상세</title>
     </head>
-    <body>
+    <body >
         <!--/* header */-->
         <th:block th:insert="~{fragment/header::header}"></th:block>
 
         <!--/* section */-->
         <div id="togetherDetail-wrap">
             <div id="route-wrap">
-                <p>체험</p>
+                <p th:text="${type}">체험</p>
                 <img src="/img/rightArrow.png" />
-                <p>마포아트센터 M 레트로 시리즈 2024 신년맞이 어떤가요 #7</p> <!--/* TITLE */-->
+                <p th:text="${together.TITLE}"></p> <!--/* TITLE */-->
             </div>
 
             <div id="detail-wrap">
                 <div id="img-wrap">
-                    <div id="img"></div> <!--/* MAIN_IMG */-->
+
+                    <div id="img" th:style="'background-image: url(' + ${together.MAIN_IMG} + ')'"></div> <!--/* MAIN_IMG */-->
                     <div id="zzimBtn">
                         <svg
                             t="1689815540548"
@@ -48,7 +50,8 @@
                 </div>
 
                 <div id="txt-wrap">
-                    <div id="txt-title">마포아트센터 M 레트로 시리즈 2024 신년맞이 어떤가요 #7 sdfssfdsfsdfsfd</div> <!--/* TITLE */-->
+
+                    <div id="txt-title" th:text="${together.TITLE}"></div> <!--/* TITLE */-->
                     <div id="txt-list">
                         <div id="txt-list-title">
                             <p>장소</p>
@@ -60,26 +63,33 @@
                             <p>홈페이지</p>
                         </div>
                         <div id="txt-list-content">
-                            <p>0-31 강남 전시실,주소:서울특별시 강남구 역삼로7길 16, 역삼1문화센터 1층 dfdfdffdfdfdfdfdfd</p> <!--/* PLACE */-->
-                            <p>마포문화재단</p> <!--/*  ORG_NAME */-->
-                            <p>마포구</p> <!--/* GUNAME */-->
-                            <p>2024-11-09 ~ 2024-01-28</p> <!--/* DATE */-->
-                            <p>어린이</p> <!--/* USE_TRGT */-->
-                            <p>5000 원</p> <!--/* USE_FEE */-->
+                            <p th:text="${together.TITLE}"></p> <!--/* PLACE */-->
+                            <p th:text="${together.ORG_NAME}"></p> <!--/*  ORG_NAME */-->
+                            <p th:text="${together.GUNAME}"></p> <!--/* GUNAME */-->
+                            <p th:text="${together.DATE}"></p> <!--/* DATE */-->
+                            <p th:text="${together.USE_TRGT}"></p> <!--/* USE_TRGT */-->
+                            <p th:text="${together.USE_FEE}"></p> <!--/* USE_FEE */-->
                             <p>
-                                <a
-                                    href="https://www.sfac.or.kr/participation/sfac_program.do?pageIndex=&eduMstSeq=33218&eduScheSeq=&mode=VIEW&mstStatus=&eduGubunSel="
-                                    >바로가기
-                                </a>
+                                <a th:if="${not #strings.isEmpty(together.ORG_LINK)}" th:href="${together.ORG_LINK}" target="_blank">바로가기 </a>
+                                <span th:unless="${not #strings.isEmpty(together.ORG_LINK)}">-</span>
                                 <!--/* ORG_LINK */-->
+
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="map-wrap"></div>
+            <div id="map-wrap">
+                <input type="hidden" th:value="${together.LOT}" id="LOT">
+                <input type="hidden" th:value="${together.LAT}" id="LAT">
+            </div>
             <!--/* 위도 - LOT   경도 - LAT */-->
+
+
+
+
+
         </div>
 
         <!--/* footer */-->

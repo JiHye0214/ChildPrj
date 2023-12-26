@@ -226,6 +226,16 @@ SELECT COUNT(*)
   FROM together
  WHERE CODENAME NOT LIKE '%체험%'
    AND CODENAME NOT LIKE '%축제%';
+  
+DELETE FROM together
+  WHERE DATE < #{currentDate};
+ 
+ SELECT LOT,LAT
+FROM together;
+
+
+ SELECT LA,LO
+FROM child_house ;
 
 -- ----------------------------------------
 
@@ -242,6 +252,7 @@ SELECT *
 
 SELECT COUNT(*)
   FROM child_house;
+
 
 
 

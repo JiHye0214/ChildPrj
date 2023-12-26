@@ -47,8 +47,8 @@ public class Together {
         together.setMAIN_IMG(getTextValue(row, "MAIN_IMG"));
         together.setSTRTDATE(getTextValue(row, "STRTDATE"));
         together.setEND_DATE(getTextValue(row, "END_DATE"));
-        together.setLOT(getDoubleValue(row, "LOT"));
-        together.setLAT(getDoubleValue(row, "LAT"));
+        together.setLOT(getDoubleValue(row, "LAT"));
+        together.setLAT(getDoubleValue(row, "LOT"));
 
         return together;
     }

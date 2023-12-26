@@ -147,8 +147,8 @@ CREATE TABLE together
 	MAIN_IMG varchar(255),
 	STRTDATE varchar(255),
 	END_DATE varchar(255),
-	LOT decimal(65,20),
-	LAT decimal(65,20),
+	LOT double(65,20),
+	LAT double(65,20),
 	zzimCnt int DEFAULT 0,
 	PRIMARY KEY (id)
 );

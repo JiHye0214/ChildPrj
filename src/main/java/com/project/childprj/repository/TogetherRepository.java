@@ -24,4 +24,6 @@ public interface TogetherRepository {
 
     // 특정 id 함께하기 조회
     Together selectTogether(Long id);
+
+
 }

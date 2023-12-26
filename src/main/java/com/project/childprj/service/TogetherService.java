@@ -18,4 +18,6 @@ public interface TogetherService {
 
     // 특정 id 함께하기 조회
     Together getTogether(Long id);
+
+
 }
