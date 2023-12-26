@@ -1,6 +1,8 @@
 package com.project.childprj.controller;
 
+import com.project.childprj.domain.Zzim;
 import com.project.childprj.service.TogetherService;
+import com.project.childprj.service.ZzimService;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +21,12 @@ public class TogetherController {
     @Autowired
     private TogetherService togetherService;
 
+    @Autowired
+    private ZzimService zzimService;
+
     @GetMapping("/list")
-    public String togetherList(Integer page
+    public String togetherList(
+            Integer page
             , String type
             , Model model
             , HttpServletRequest request
@@ -67,6 +73,29 @@ public class TogetherController {
         }
 
         return "together/detail";
+    }
+
+    // 찜 추가 & 해제
+    @PostMapping("/toggleZzim")
+    public String addZzim(Long togetherId, Long page, String type, RedirectAttributes redirectAttrs) {
+        Long userId = U.getLoggedUser().getId();
+        boolean isZzimChecked = zzimService.isZzimChecked(userId, togetherId);
+
+//        System.out.println(togetherId);
+//        System.out.println(isZzimChecked);
+
+        if (!isZzimChecked) {
+            zzimService.insertZzim(userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
+            togetherService.changeZzimCnt(1L, togetherId); // together 테이블의 zzimCnt +1 or -1 (home 의 그래프 hot 5 정렬 위해)
+        } else {
+            zzimService.deleteZzim(userId, togetherId);
+            togetherService.changeZzimCnt(-1L, togetherId);
+        }
+
+        redirectAttrs.addAttribute("page", page);
+        redirectAttrs.addAttribute("type", type);
+
+        return "redirect:/together/list";
     }
 
 }

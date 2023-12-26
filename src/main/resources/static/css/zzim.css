@@ -104,11 +104,6 @@ svg {
     line-height: 45px;
     transition: 0.2s all;
 }
-#pagination-content > li > a:hover {
-    background-color: rgb(255, 209, 209);
-    border-radius: 50%;
-}
-
 #pagination-content > li > a {
     display: block;
     height: 35px;
@@ -116,4 +111,11 @@ svg {
     margin: 0 3px;
     text-align: center;
     line-height: 35px;
+    border-radius: 50%;
+}
+#pagination-content > li > a:hover {
+    background-color: rgb(255, 209, 209);
+}
+#pagination-content > li > a.active {
+    background-color: rgb(255, 209, 209);
 }

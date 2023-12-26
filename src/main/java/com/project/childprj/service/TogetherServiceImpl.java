@@ -3,7 +3,9 @@ package com.project.childprj.service;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.project.childprj.domain.Together;
+import com.project.childprj.domain.Zzim;
 import com.project.childprj.repository.TogetherRepository;
+import com.project.childprj.repository.ZzimRepository;
 import com.project.childprj.util.U;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,12 @@ public class TogetherServiceImpl implements TogetherService {
     private String SeoulDataKey;
 
     private TogetherRepository togetherRepository;
+    private ZzimRepository zzimRepository;
 
     @Autowired
     public TogetherServiceImpl(SqlSession sqlSession) {
         togetherRepository = sqlSession.getMapper(TogetherRepository.class);
+        zzimRepository = sqlSession.getMapper(ZzimRepository.class);
     }
 
     @Override
@@ -133,6 +137,11 @@ public class TogetherServiceImpl implements TogetherService {
     @Override
     public Together getTogether(Long id) {
         return togetherRepository.selectTogether(id);
+    }
+
+    @Override
+    public int changeZzimCnt(Long num, Long id) {
+        return togetherRepository.changeZzimCnt(num, id);
     }
 
 }

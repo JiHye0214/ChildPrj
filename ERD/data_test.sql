@@ -243,6 +243,46 @@ SELECT *
 SELECT COUNT(*)
   FROM child_house;
 
+-- ----------------------------------------
+
+-- zzim 조회
+
+SELECT *
+  FROM zzim;
+
+SELECT *
+  FROM together;
+
+SELECT COUNT(*)
+  FROM together;
+
+SELECT z.id       "z_id"
+     , z.userId   "z_userId"
+     , z.togetherId "z_togetherId"
+     , t.id       "t_id"
+     , t.TITLE    "t_TITLE"
+     , t.DATE     "t_DATE"
+     , t.MAIN_IMG "t_MAIN_IMG"
+     , t.zzimCnt  "t_zzimCnt"
+  FROM zzim z
+     , together t
+ WHERE z.togetherId = t.id;
+   AND z.userId = 1
+ ORDER BY z.id DESC
+ LIMIT 0, 5;
+
+UPDATE together
+   SET zzimCnt = zzimCnt + -1
+ WHERE id = 1;
+
+
+
+
+
+
+
+
+
 
 
 
