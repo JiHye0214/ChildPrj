@@ -1,8 +1,4 @@
 
-.main {
-    position: relative;
-}
-
 .main img {
     border-radius: 50%;
 }
@@ -10,13 +6,16 @@
 .market-wrapper {
     width: 1200px;
     margin: 30px auto 0;
-    border-radius: 7px;
 }
 
 /* market header */
 .market-header-wrap {
     display: flex;
     justify-content: space-between;
+
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid var(--border-color);
 }
 
 .market-header {
@@ -33,7 +32,7 @@
 
 /* market main */
 .market-main {
-    margin: 20px 0 80px;
+    margin-bottom: 80px;
 }
 
 .market-main-title-wrap {
@@ -41,8 +40,9 @@
     justify-content: space-between;
     align-items: center;
 
-    border-top: 1.5px solid var(--border-color);
-    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid var(--border-color);
 }
 
 .market-writer-title-left {
@@ -53,10 +53,6 @@
 .market-writer-title-right {
     display: flex;
     align-items: center;
-}
-
-.market-writer-title-right > img:hover {
-    cursor: default;
 }
 
 .market-writer-region {
@@ -78,12 +74,12 @@
 }
 
 .market-main-content {
-    border-top: 1.5px solid var(--border-color);
-    border-bottom: 1.5px solid var(--border-color);
     font-size: 18px;
-    padding: 20px 0;
-    margin: 20px 0;
     height: 200px;
+
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid var(--border-color);
 }
 
 .market-btn {
@@ -110,84 +106,4 @@
 .market-main-btn {
     display: flex;
     justify-content: end;
-}
-
-/* market comment */
-.market-comment {
-    margin-top: 50px;
-}
-
-.market-comment-content {
-    background-color: var(--comment-color);
-    padding: 10px 15px;
-    margin-top: 10px;
-    border-radius: 5px;
-
-    display: flex;
-    align-items: center;
-    font-size: 15px;
-}
-
-.market-comment-write-wrap {
-    display: flex;
-    align-items: center;
-    background-color: var(--light-raise);
-}
-
-.market-comment-write-wrap> .comment-writer-nickname {
-    width: 19%;
-}
-
-.write-comment-input {
-    width: 71.4%;
-    padding: 5px 10px;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    font-size: 15px;
-    outline: none;
-}
-
-.write-comment-input:focus {
-    border:2px solid var(--raise-btn);
-}
-
-.comment-writer-pic {
-    margin-right: 10px;
-}
-
-.comment-writer-nickname {
-    width: 20%;
-}
-
-.comment-writer-content {
-    width: 70%;
-}
-
-.raise-btn {
-    background-color: var(--raise-btn);
-    height: 35.33px;
-    width: 50px;
-    margin-left: 15px;
-
-    &:hover {
-        background-color: var(--raise-color);
-        cursor: pointer;
-    }
-}
-
-.comment-delete-btn {
-    border: none;
-    border-radius: 5px;
-    margin-left: 10px;
-    padding: 5px 10px;
-    background: salmon;
-    height: 35px;
-    width: 50px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 15px;
-
-    &:hover {
-        cursor: pointer;
-    }
 }

@@ -53,7 +53,7 @@
                 <div id="list-wrap">
                     <div class="list-content" th:each="product, iterState : ${products}">
                         <a th:href="@{'/product/detail/' + ${product.id}}">
-                            <div class="product-img"></div>
+                            <img class="product-img" th:src="@{'/upload/'} + ${product.productImg.fileName}">
                             <div class="product-title" th:text="${product.productName}"></div>
                             <div class="product-price" th:text="${product.price} == 0 ? '나눔' : ${product.price} + '원'"></div>
                             <div class="product-region" th:text="${product.region}"></div>

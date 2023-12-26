@@ -21,4 +21,5 @@ public class Product {
     private Long viewCnt;
     private LocalDateTime createDate;
     private User user;
+    private ProductImg productImg;
 }

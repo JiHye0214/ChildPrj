@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.childprj.repository.ProductImgRepository">
+
+    <!-- 특정 마켓 글 대표사진 가져오기 -->
+    <select id="findByProduct" resultType="com.project.childprj.domain.ProductImg">
+        SELECT *
+        FROM product_img
+        WHERE productId = #{productId}
+    </select>
+
+    <!--프사 넣기-->
+    <insert id="imgInsert" flushCache="true" parameterType="com.project.childprj.domain.ProductImg">
+        INSERT INTO product_img (productId, sourceName, fileName)
+        VALUES (#{productId}, #{sourceName}, #{fileName})
+    </insert>
+
+    <!--프사 지우기-->
+    <delete id="imgDelete" flushCache="true" parameterType="com.project.childprj.domain.ProductImg">
+        DELETE from product_img
+        WHERE productId = #{productId}
+    </delete>
+
+</mapper>

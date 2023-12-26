@@ -5,18 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Post {
+public class Zzim {
     private Long id;
-    private String title;
-    private String content;
-    private Long viewCnt;
-    private Long recommendCnt;
-    private LocalDateTime createDate;
-    private User user;
+    private Long userId;
+    private Together together;
+    private String type;
 }

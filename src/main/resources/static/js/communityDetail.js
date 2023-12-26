@@ -1,9 +1,9 @@
-const $commentInput = document.querySelector(".talk-comment-content > .write-comment-input");
-const $commentWriteBtn = document.querySelector(".talk-comment-content > .talk-btn");
+const $commentInput = document.querySelector(".raise-comment-content > .write-comment-input");
+const $commentWriteBtn = document.querySelector(".raise-comment-content > .talk-btn");
 
-const $writeForm = document.querySelector(".talk-comment-content");
+const $writeForm = document.querySelector(".raise-comment-content");
 const cmtDelBtnArr = document.querySelectorAll(".comment-delete-btn");
-const cmtFormArr = document.querySelectorAll(".post-comment-content");
+const cmtFormArr = document.querySelectorAll(".raise-comment-content");
 
 // 추 -> 비추
 const clickOpposite = () => {
@@ -34,9 +34,9 @@ $commentWriteBtn.addEventListener("click", clickMarketCommentWriteBtn);
 const formWithBtn = [];
 let index = 0;
 
-for(let i=0; i<cmtFormArr.length; i++){
+for(let i=0; i<cmtFormArr.length-1; i++){
     if(cmtFormArr[i].childElementCount == 6){ // js 너란 녀석..
-        console.log(cmtFormArr[i].children[3].style.width = `730px`);
+        cmtFormArr[i].children[3].style.width = `730px`;
         formWithBtn[index] = cmtFormArr[i];
         formWithBtn[index].name = index; // 해당 폼 이름 바꾸기
         index++;

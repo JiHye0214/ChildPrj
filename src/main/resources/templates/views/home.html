@@ -70,7 +70,7 @@
                         </ul>
                         <ul th:each="product5 : ${productHotFive}" class="postTopWrap">
                             <li class="grade"></li>
-                            <li class="overflow"><a class="postTitle" th:href="@{'/post/detail/' + ${product5.id}}" th:text="${product5.productName}"></a></li>
+                            <li class="overflow"><a class="postTitle" th:href="@{'/product/detail/' + ${product5.id}}" th:text="${product5.productName}"></a></li>
                             <li class="overflow" th:text="${product5.user.nickname}"></li>
                             <li th:text="${product5.viewCnt}"></li>
                         </ul>

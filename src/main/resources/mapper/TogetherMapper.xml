@@ -64,6 +64,10 @@
          WHERE id = #{id}
     </select>
 
-
+    <update id="changeZzimCnt" flushCache="true">
+        UPDATE together
+           SET zzimCnt = zzimCnt + #{num}
+         WHERE id = #{id}
+    </update>
 
 </mapper>

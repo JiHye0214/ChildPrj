@@ -1,9 +1,9 @@
 package com.project.childprj.controller;
 
-import com.project.childprj.domain.User;
-import com.project.childprj.domain.UserImg;
-import com.project.childprj.domain.UserValidator;
+import com.project.childprj.domain.*;
+import com.project.childprj.service.TogetherService;
 import com.project.childprj.service.UserService;
+import com.project.childprj.service.ZzimService;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,12 +34,15 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @GetMapping("/zzim")
-    public void togetherZzim(HttpServletRequest request){
-    }
+    @Autowired
+    private TogetherService togetherService;
+
+    @Autowired
+    private ZzimService zzimService;
 
     @GetMapping("/logIn")
     public String logIn(){
@@ -63,6 +66,14 @@ public class UserController {
     public String find(User user, Model model){
         model.addAttribute("user", user);
         return "/user/find";
+    }
+
+    // 찜리스트
+    @GetMapping("/zzim")
+    public void togetherZzim(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
+                             Model model
+    ) {
+        zzimService.zzimList(page, model);
     }
 
     // 로그인
@@ -170,6 +181,25 @@ public class UserController {
             return "redirect:/home";
         }
         return "/user/dropFail";
+    }
+
+    // 찜 해제
+    @PostMapping("/deleteZzim")
+    public String deleteZzim(Long userId, Long togetherId) {
+
+        // zzim 테이블에서 데이터 삭제
+        zzimService.deleteZzim(userId, togetherId);
+
+        // together 테이블의 zzimCnt 변경
+//        boolean isZzimCilked = togetherService.isZzimCheck(togetherId);
+
+//        if (!isZzimCilked) {
+//            togetherService.changeZzimCnt(1L, togetherId);
+//        } else {
+//            togetherService.changeZzimCnt(-1L, togetherId);
+//        }
+
+        return "redirect:/user/zzim";
     }
 
 // ------------------validator--------------------

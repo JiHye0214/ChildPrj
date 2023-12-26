@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,27 +32,25 @@ public class PostServiceImpl implements PostService{
 
     // 글 목록 조회 (페이징 + 검색어)
     @Override
-    public List<Post> list(Integer page, String sq, Model model) {
-        HttpSession session = U.getSession();
+    public List<Post> list(Integer page, String sq, String postOrderWay, Model model) {
 
-        if (page == null) page = 1;
+        // 검색결과 없을 때 정렬 --> 전체 보여주기 방지
+        String validSq = sq;
+
         if (page < 1) page = 1;
-
-        if (sq == null) sq = "";
-
-        String postOrderWay = (String) session.getAttribute("postOrderWay");
-        if (postOrderWay == null) postOrderWay = "최신순";
 
         Integer pagesPerSection = 5;
         Integer rowsPerPage = 5;
 
         int totalLength = postRepository.selectCountAll(sq);
+        if(totalLength == 0) validSq = "";
         int totalPage = (int) Math.ceil(totalLength / (double) rowsPerPage);
 
         int startPage = 0;
         int endPage = 0;
 
-        List<Post> posts = null;
+        // null --> 서치 시 없으면 에러남
+        List<Post> posts = new ArrayList<>();
 
         if (totalLength > 0) {
             if (page > totalPage) page = totalPage;
@@ -63,9 +62,9 @@ public class PostServiceImpl implements PostService{
             if (endPage > totalPage) endPage = totalPage;
 
             if (postOrderWay.equals("최신순")) {
-                posts = postRepository.selectFromCntOrderByDate(fromRow, rowsPerPage, sq);
+                posts = postRepository.selectFromCntOrderByDate(fromRow, rowsPerPage, validSq);
             } else if (postOrderWay.equals("추천순")) {
-                posts = postRepository.selectFromCntOrderByRcmCnt(fromRow, rowsPerPage, sq);
+                posts = postRepository.selectFromCntOrderByRcmCnt(fromRow, rowsPerPage, validSq);
             }
             model.addAttribute("posts", posts);
         } else {
@@ -101,15 +100,20 @@ public class PostServiceImpl implements PostService{
     // 특정 글 가져오기
     @Override
     public Post postDetail(Long id) {
-
-
-        postRepository.incViewCnt(id);
         return postRepository.findPostById(id);
+    }
+
+    // 조회수 올리기
+    @Override
+    public void incViewCnt(Long id) {
+        postRepository.incViewCnt(id);
     }
 
     // 특정 글 삭제
     @Override
-    public int detailDelete(Long id) { return postRepository.detailDelete(id); }
+    public int detailDelete(Long id) {
+        return postRepository.detailDelete(id);
+    }
 
     // 추천 눌렀나?
     @Override

@@ -38,11 +38,11 @@ $protectTitle.addEventListener("mouseout", mouseOut);
 $raiseTitle.addEventListener("mouseout", mouseOut);
 
 // graph
-const graphGrade = document.querySelectorAll(".grade");
+const graphWrap = document.querySelectorAll(".graph");
 
-let i=1;
-for(e of graphGrade){
-    e.innerText = i;
-    i++;
-    if(i == 6) i = 1;
+for(let i=0; i<graphWrap.length; i++){
+    let count = graphWrap[i].childElementCount;
+    for(let j=1; j<count; j++){
+        graphWrap[i].children[j].children[0].innerText = j;
+    }
 }

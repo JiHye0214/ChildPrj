@@ -7,13 +7,16 @@ import java.util.List;
 
 public interface PostService {
     // 글 목록 조회 (페이징 + 검색어)
-    List<Post> list(Integer page, String sq, Model model);
+    List<Post> list(Integer page, String sq, String postOrderWay, Model model);
 
     // 글 작성
     int write(Post post);
 
     // 특정 글 상세
     Post postDetail(Long id);
+
+    // 조회수 올리기
+    void incViewCnt(Long id);
 
     // 글 삭제
     int detailDelete(Long id);

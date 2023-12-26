@@ -2,6 +2,7 @@ package com.project.childprj.controller;
 
 import com.project.childprj.service.*;
 import com.project.childprj.util.U;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,7 +35,11 @@ public class HomeController {
     private ProductService productService;
 
     @GetMapping("/home")
-    public String home(Model model) {
+    public String home(Model model, HttpServletRequest request) {
+
+        String uri = U.getRequest().getRequestURI();
+        request.getSession().setAttribute("prevPage", uri);
+
         int startIndex = 1;
         int endIndex = 200;
 
@@ -42,6 +47,8 @@ public class HomeController {
         kindergardenService.saveKindergarden(startIndex, endIndex);
         childHouseService.saveChildHouse(startIndex, endIndex);
         U.getSession().setAttribute("childCenter", childCenterService.getChildCenter(startIndex, endIndex));
+
+
 
         // graph
         model.addAttribute("productHotFive", productService.selectFive());

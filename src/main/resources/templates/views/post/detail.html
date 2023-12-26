@@ -65,7 +65,7 @@
                         <div class="talk-right-btn-wrap">
                             <a th:href="@{/post/write}" class="talk-btn">작성</a>
                             <a th:href="@{'/post/update/' + ${post.id}}" class="talk-btn" th:if="${logged_user.id == post.user.id}">수정</a>
-                            <form method="POST" name="detailDelete" th:action="@{/post/detailDelete}" th:if="${logged_user.id == post.user.id}">
+                            <form method="POST" name="detailDelete" th:action="@{/post/detailDelete}" th:if="${logged_user.id == post.user.id} or ${logged_user.authority.authName == 'ADMIN'}">
                                 <input type="hidden" name="id" th:value="${post.id}">
                                 <input type="button" class="talk-btn delBtn" onclick="clickDetailDelBtn()" value="삭제" />
                             </form>

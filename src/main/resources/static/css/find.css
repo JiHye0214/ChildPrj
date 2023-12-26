@@ -12,7 +12,6 @@
 
 /* 찾기 큰 네모 */
 .find-inform-wrap {
-    margin-top: 40px;
     width: 500px;
     height: 405px;
     background-color: var(--light-gray);

@@ -151,3 +151,37 @@
 .write-btn-wrap {
     display: flex;
 }
+
+/* 대표 이미지 첨부 */
+.picture-btn{
+    border: 1.5px solid var(--border-color);
+    border-radius: 5px;
+    padding: 5px 7px;
+    text-align: center;
+    width: 80px;
+    font-size: 15px;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.fileBox {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.fileBox > div:nth-child(1) {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.confirmBox {
+    position: absolute;
+    top: 38px;
+    left: 86px;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}

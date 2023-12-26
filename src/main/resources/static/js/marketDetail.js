@@ -1,9 +1,9 @@
-const $commentWriteBtn = document.querySelector(".market-comment-content > .market-btn");
-const $commentInput = document.querySelector(".market-comment-content > .write-comment-input");
+const $commentWriteBtn = document.querySelector(".raise-comment-content > .market-btn");
+const $commentInput = document.querySelector(".raise-comment-content > .write-comment-input");
 const $price = document.querySelector(".market-writer-price");
 
 const cmtDelBtnArr = document.querySelectorAll(".comment-delete-btn");
-const cmtFormArr = document.querySelectorAll(".product-comment-content");
+const cmtFormArr = document.querySelectorAll(".raise-comment-content");
 
 // 가격 0 --> 나눔
 if($price.innerText == "0"){
@@ -29,8 +29,9 @@ $commentWriteBtn.addEventListener("click", clickMarketCommentWriteBtn);
 const formWithBtn = [];
 let index = 0;
 
-for(let i=0; i<cmtFormArr.length; i++){
+for(let i=0; i<cmtFormArr.length-1; i++){
     if(cmtFormArr[i].childElementCount == 6){ // js 너란 녀석..
+        cmtFormArr[i].children[3].style.width = `730px`;
         formWithBtn[index] = cmtFormArr[i];
         formWithBtn[index].name = index; // 해당 폼 이름 바꾸기
         index++;

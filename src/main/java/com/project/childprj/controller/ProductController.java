@@ -19,10 +19,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/product")
@@ -39,11 +41,16 @@ public class ProductController {
 
     // 글 목록
     @GetMapping("/list")
-    public void list(Integer page, String sq, Model model, HttpServletRequest request) {
+    public void list(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
+                     @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
+                     @RequestParam(name = "productOrderWay", required = false, defaultValue = "최신순") String productOrderWay,
+                     Model model,
+                     HttpServletRequest request
+    ) {
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
 
-        productService.list(page, sq, model);
+        productService.list(page, sq, productOrderWay, model);
     }
 
     // 글 상세
@@ -52,6 +59,7 @@ public class ProductController {
 
         // 일단 얘가 null이면 나머지가 전달 안 됨 --> 글만 먼저 전달해야 unleaa/if가 작동하네 깐깐한 자식
         model.addAttribute("product", productService.productDetail(id)); // 특정 글
+        productService.incViewCnt(id);
 
         if(productService.productDetail(id) != null){
             List<ProductComment> list = productCommentService.cmtList(id);
@@ -71,17 +79,23 @@ public class ProductController {
 
     // 글 수정 페이지
     @GetMapping("/update/{id}")
-    public String update(@PathVariable Long id, Model model) {
+    public String update(@PathVariable(name = "id") Long id, Model model) {
         Product product = productService.productDetail(id);
+        product.setProductImg(productService.findByProduct(id));
         model.addAttribute("product", product);
-        model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
+        model.addAttribute("writerImg", userService.findUserImg(productService.productDetail(id).getUser().getId())); // 글 작성자 img
+
+        model.addAttribute("cmtWriterImg", userService.findUserImg(U.getLoggedUser().getId())); // 댓글 쓸 사람 img
         return "product/update";
     }
 
     // 글 목록 - 정렬
     @PostMapping("/orderWay")
-    public String orderWay(String productOrderWay, String sq, RedirectAttributes redirectAttrs) {
-        U.getSession().setAttribute("productOrderWay", productOrderWay);
+    public String orderWay(@RequestParam(name = "productOrderWay", required = false, defaultValue = "최신순") String productOrderWay,
+                           @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
+                           RedirectAttributes redirectAttrs
+    ) {
+        redirectAttrs.addAttribute("productOrderWay", productOrderWay);
         redirectAttrs.addAttribute("sq", sq);
 
         return "redirect:/product/list";
@@ -89,7 +103,11 @@ public class ProductController {
 
     // 글 목록 - 검색
     @PostMapping("/search")
-    public String search(String sq, RedirectAttributes redirectAttrs) {
+    public String search(@RequestParam(name = "productOrderWay", required = false, defaultValue = "최신순") String productOrderWay,
+                         @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
+                         RedirectAttributes redirectAttrs
+    ) {
+        redirectAttrs.addAttribute("productOrderWay", productOrderWay);
         redirectAttrs.addAttribute("sq", sq);
 
         return "redirect:/product/list";
@@ -102,18 +120,21 @@ public class ProductController {
             , BindingResult result
             , Model model
             , RedirectAttributes redirectAttrs
+            ,@RequestParam Map<String, MultipartFile> file
     ) {
-        if (result.hasErrors()) {
-            redirectAttrs.addFlashAttribute("price", product.getPrice());
-            redirectAttrs.addFlashAttribute("productName", product.getProductName());
-            redirectAttrs.addFlashAttribute("region", product.getRegion());
-            redirectAttrs.addFlashAttribute("content", product.getContent());
 
-            return "redirect:/product/write";
-        }
+//        if (result.hasErrors()) {
+//            redirectAttrs.addFlashAttribute("price", product.getPrice());
+//            redirectAttrs.addFlashAttribute("productName", product.getProductName());
+//            redirectAttrs.addFlashAttribute("region", product.getRegion());
+//            redirectAttrs.addFlashAttribute("content", product.getContent());
+//
+//            return "redirect:/product/write";
+//        }
 
         model.addAttribute("result", productService.write(product));
-        return "/product/writeOk";
+        model.addAttribute("insert", productService.imgInsert(file, product.getId()));
+        return "product/writeOk";
     }
 
     // 글 수정
@@ -123,17 +144,19 @@ public class ProductController {
             , BindingResult result
             , Model model
             , RedirectAttributes redirectAttrs
+            ,@RequestParam Map<String, MultipartFile> file
     ) {
-        if (result.hasErrors()) {
-            redirectAttrs.addFlashAttribute("price", product.getPrice());
-            redirectAttrs.addFlashAttribute("productName", product.getProductName());
-            redirectAttrs.addFlashAttribute("region", product.getRegion());
-            redirectAttrs.addFlashAttribute("content", product.getContent());
-
-            return "redirect:/product/update/" + product.getId();
-        }
+//        if (result.hasErrors()) {
+//            redirectAttrs.addFlashAttribute("price", product.getPrice());
+//            redirectAttrs.addFlashAttribute("productName", product.getProductName());
+//            redirectAttrs.addFlashAttribute("region", product.getRegion());
+//            redirectAttrs.addFlashAttribute("content", product.getContent());
+//
+//            return "redirect:/product/update/" + product.getId();
+//        }
 
         model.addAttribute("result", productService.update(product));
+        model.addAttribute("insert", productService.imgInsert(file, product.getId()));
         return "product/updateOk";
     }
 

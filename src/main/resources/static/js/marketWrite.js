@@ -128,6 +128,7 @@ const priceInput = document.querySelector("#price");
 const productNameInput = document.querySelector("#productName");
 const writeBtn = document.querySelector("#submit-btn");
 const errMsgs = document.querySelectorAll(".err-msg");
+const writeForm = document.querySelector(".talk-wrapper > form");
 
 const scroll = (topVal) => {
     window.scrollTo({
@@ -188,3 +189,14 @@ writeBtn.addEventListener("click", () => {
         document.forms["market-write-form"].submit();
     }
 });
+
+// 대표 이미지
+const productPic = document.querySelector(".product-pic");
+const confirm = document.querySelector(".confirmBox");
+
+productPic.onchange = function() {
+
+    const splitPic = productPic.value.split("");
+    const joinPic = splitPic.slice(12).join("");
+    confirm.innerText = joinPic;
+};

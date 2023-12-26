@@ -21,7 +21,7 @@
     background-color: var(--light-gray);
     border: 2px solid transparent;
     border-radius: 3px;
-    margin-top: 15px;
+    margin-bottom: 15px;
     padding-left: 20px;
     font-size: 18px;
     outline: none;
@@ -30,21 +30,13 @@
         color: var(--input-placeholder);
         font-size: 15px;
     }
-
-    &:nth-child(2) {
-        margin-bottom: 15px;
-    }
 }
 
 /* login btn */
 .login-input-wrap > form > .login-btn {
     background-color: var(--cloud-color);
     color: white;
-    border-radius: 3px;
-    height: 70px;
-    margin-bottom: 15px;
     font-weight: 700;
-    font-size: 20px;
     padding: 0;
 
     display: flex;

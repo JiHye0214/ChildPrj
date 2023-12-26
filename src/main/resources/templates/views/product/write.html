@@ -32,7 +32,7 @@
                     </div>
 
                     <!--/* market write */-->
-                    <form name="market-write-form" autocomplete="off" th:action="@{/product/write}" method="post">
+                    <form name="market-write-form" autocomplete="off" enctype="multipart/form-data" th:action="@{/product/write}" method="post">
                         <div class="market-write-wrap write-info">
                             <input type="text" id="price" placeholder="가격" name="price" th:value="${price}" />
 
@@ -60,6 +60,15 @@
                         <div class="market-write-wrap content-wrap">
                             <textarea id="content" name="content" th:utext="${content}"></textarea>
                             <p class="err-msg"></p>
+                        </div>
+
+                        <div class="market-write-wrap fileBox">
+                            <div>대표 이미지🖼️</div>
+                            <label for="file" class="picture-btn">
+                                파일 선택
+                            </label>
+                            <input style="display:none;" accept="image/*" id="file" class="product-pic" name="productImg" type="file"/>
+                            <div class="confirmBox"></div>
                         </div>
 
                         <div class="write-btn-wrap">

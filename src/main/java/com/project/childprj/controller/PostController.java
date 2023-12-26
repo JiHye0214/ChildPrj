@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,19 +37,25 @@ public class PostController {
 
     // 글 목록
     @GetMapping("/list")
-    public void postList(Integer page, String sq, Model model, HttpServletRequest request){
+    public void postList(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
+                         @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
+                         @RequestParam(name = "postOrderWay", required = false, defaultValue = "최신순") String postOrderWay,
+                         Model model,
+                         HttpServletRequest request
+    ){
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
 
-        postService.list(page, sq, model);
+        postService.list(page, sq, postOrderWay, model);
     }
 
     // 글 상세
     @GetMapping("/detail/{id}")
     public String marketDetail(@PathVariable(name = "id") Long id, Model model) {
 
-        // 일단 얘가 null이면 나머지가 전달 안 됨 --> 글만 먼저 전달해야 unleaa/if가 작동하네 깐깐한 자식
+        // 일단 얘가 null이면 나머지가 전달 안 됨 --> 글만 먼저 전달해야 unless/if가 작동하네 깐깐한 자식
         model.addAttribute("post", postService.postDetail(id)); // 특정 글
+        postService.incViewCnt(id); // 랜더함수랑 조회수 같이 두니까 뭐 할 때마다 세 번씩 올라가는 거 너무 킹받
 
         if(postService.postDetail(id) != null){
             List<PostComment> list = postCommentService.cmtList(id);
@@ -71,7 +78,7 @@ public class PostController {
 
     // 글 수정 페이지
     @GetMapping("/update/{id}")
-    public String postUpdate(@PathVariable Long id, Model model) {
+    public String postUpdate(@PathVariable(name = "id") Long id, Model model) {
         Post post = postService.postDetail(id);
         model.addAttribute("post", post);
         model.addAttribute("writerImg", userService.findUserImg(U.getLoggedUser().getId())); // 작성자 img
@@ -80,8 +87,11 @@ public class PostController {
 
     // 글 목록 - 정렬
     @PostMapping("/orderWay")
-    public String orderWay(String postOrderWay, String sq, RedirectAttributes redirectAttrs) {
-        U.getSession().setAttribute("postOrderWay", postOrderWay);
+    public String orderWay(@RequestParam(name = "postOrderWay", required = false, defaultValue = "최신순") String postOrderWay,
+                           @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
+                           RedirectAttributes redirectAttrs
+    ) {
+        redirectAttrs.addAttribute("postOrderWay", postOrderWay);
         redirectAttrs.addAttribute("sq", sq);
 
         return "redirect:/post/list";
@@ -89,7 +99,11 @@ public class PostController {
 
     // 글 목록 - 검색
     @PostMapping("/search")
-    public String search(String sq, RedirectAttributes redirectAttrs) {
+    public String search(@RequestParam(name = "postOrderWay", required = false, defaultValue = "최신순") String postOrderWay,
+                         @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
+                         RedirectAttributes redirectAttrs
+    ) {
+        redirectAttrs.addAttribute("postOrderWay", postOrderWay);
         redirectAttrs.addAttribute("sq", sq);
 
         return "redirect:/post/list";

@@ -4,19 +4,22 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block th:fragment="postComment">
+    <head>
+        <link rel="stylesheet" th:href="@{/css/comment.css}" />
+    </head>
     <!--/* market comment */-->
-    <div class="talk-comment">
-        <div class="talk-comment-wrap">
-            <form method="POST" th:action="@{/post/cmtDelete}" th:each="cmt : ${postCmt}" class="post-comment-content talk-comment-content" >
+    <div class="raise-comment">
+        <div class="raise-comment-wrap">
+            <form method="POST" th:action="@{/post/cmtDelete}" th:each="cmt : ${postCmt}" class="raise-comment-content raise-comment-content" >
                 <input type="hidden" name="id" th:value="${cmt.id}"/>
                 <img class="comment-writer-pic" th:src="@{'/upload/' + ${cmt.userImg.fileName}}" width="40px" height="40px"/>
                 <div class="comment-writer-nickname" th:text="${cmt.user.nickname}"></div>
                 <div class="comment-writer-content" th:text="${cmt.content}"></div>
                 <div class="comment-writer-time">[[${#temporals.format(cmt.createDate, 'yy.MM.dd')}]]</div>
-                <input type="button" class="comment-delete-btn" th:if="${logged_user.id == cmt.user.id}" onclick="clickCmtDelBtn()" value="삭제" />
+                <input type="button" class="comment-delete-btn" th:if="${logged_user.id == cmt.user.id} or ${logged_user.authority.authName == 'ADMIN'}" onclick="clickCmtDelBtn()" value="삭제" />
             </form>
         </div>
-        <form name="writeComment" autocomplete="off" method="POST" th:action="@{/post/cmtWrite}" class="talk-comment-content talk-comment-write-wrap">
+        <form name="writeComment" autocomplete="off" method="POST" th:action="@{/post/cmtWrite}" class="raise-comment-content raise-comment-write-wrap">
             <input type="hidden" name="postId" th:value="${post.id}"/>
             <input type="hidden" name="userId" th:value="${logged_user.id}"/>
             <img class="comment-writer-pic" th:src="@{'/upload/' + ${cmtWriterImg.fileName}}" width="40px" height="40px" />
