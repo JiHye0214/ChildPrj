@@ -177,4 +177,19 @@ public class TogetherServiceImpl implements TogetherService {
         return togetherRepository.selectFive();
     }
 
+    // 타입 넣기
+    @Override
+    public int changeType1() {
+        return togetherRepository.changeType1();
+    }
+
+    @Override
+    public int changeType2() {
+        return togetherRepository.changeType2();
+    }
+
+    @Override
+    public int changeType3() {
+        return togetherRepository.changeType3();
+    }
 }

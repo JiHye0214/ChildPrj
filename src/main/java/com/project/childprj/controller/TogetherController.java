@@ -92,7 +92,7 @@ public class TogetherController {
         boolean isZzimChecked = zzimService.isZzimChecked(userId, togetherId);
 
         if (!isZzimChecked) {
-            zzimService.insertZzim(type, userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
+            zzimService.insertZzim(userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
             togetherService.changeZzimCnt(1L, togetherId); // together 테이블의 zzimCnt +1 or -1 (home 의 그래프 hot 5 정렬 위해)
             togetherService.changeIsZzimClicked("true", togetherId); // together 테이블의 isZzimClicked "true" or "false" (유저당 찜 하트 기록 위해)
         } else {
@@ -118,7 +118,7 @@ public class TogetherController {
         boolean isZzimChecked = zzimService.isZzimChecked(userId, togetherId);
 
         if (!isZzimChecked) {
-            zzimService.insertZzim(type, userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
+            zzimService.insertZzim(userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
             togetherService.changeZzimCnt(1L, togetherId); // together 테이블의 zzimCnt +1 or -1 (home 의 그래프 hot 5 정렬 위해)
             togetherService.changeIsZzimClicked("true", togetherId); // together 테이블의 isZzimClicked "true" or "false" (유저당 찜 하트 기록 위해)
         } else {

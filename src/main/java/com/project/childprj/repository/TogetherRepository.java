@@ -42,4 +42,9 @@ public interface TogetherRepository {
 
     // home -- select five
     List<Together> selectFive();
+
+    // 타입 넣기
+    int changeType1();
+    int changeType2();
+    int changeType3();
 }

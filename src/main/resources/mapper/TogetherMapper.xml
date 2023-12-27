@@ -98,4 +98,23 @@
            LIMIT 5
     </select>
 
+    <update id="changeType1" flushCache="true">
+        UPDATE together
+        SET TYPE = '체험'
+        WHERE CODENAME LIKE '%체험%';
+    </update>
+
+    <update id="changeType2" flushCache="true">
+        UPDATE together
+        SET TYPE = '축제'
+        WHERE CODENAME LIKE '%축제%';
+    </update>
+
+    <update id="changeType3" flushCache="true">
+        UPDATE together
+        SET TYPE = '공연ㆍ예술'
+        WHERE CODENAME NOT LIKE '%체험%'
+        AND CODENAME NOT LIKE '%축제%';
+    </update>
+
 </mapper>

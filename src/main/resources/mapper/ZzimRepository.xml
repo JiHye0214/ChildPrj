@@ -10,25 +10,25 @@
         <result column="t_TITLE" property="TITLE"/>
         <result column="t_DATE" property="DATE"/>
         <result column="t_MAIN_IMG" property="MAIN_IMG"/>
+        <result column="t_type" property="type"/>
         <result column="t_zzimCnt" property="zzimCnt"/>
         <result column="t_isZzimClicked" property="isZzimClicked"/>
     </resultMap>
 
     <resultMap id="mapZzim" type="com.project.childprj.domain.Zzim">
         <result column="z_id" property="id"/>
-        <result column="z_type" property="type"/>
         <result column="z_userId" property="userId"/>
         <collection resultMap="mapTogether" property="together"/>
     </resultMap>
 
     <sql id="SELECT_BASE">
         SELECT z.id            "z_id"
-             , z.type          "z_type"
              , z.userId        "z_userId"
              , t.id            "t_id"
              , t.TITLE         "t_TITLE"
              , t.DATE          "t_DATE"
              , t.MAIN_IMG      "t_MAIN_IMG"
+             , t.type          "t_type"
              , t.zzimCnt       "t_zzimCnt"
              , t.isZzimClicked "t_isZzimClicked"
           FROM zzim z
@@ -58,8 +58,8 @@
 
     <insert id="insertZzim" flushCache="true" parameterType="com.project.childprj.domain.Zzim"
             useGeneratedKeys="true" keyColumn="id" keyProperty="id">
-        INSERT INTO zzim(type, userId, togetherId)
-        VALUES (#{type}, #{userId}, #{together.id})
+        INSERT INTO zzim(userId, togetherId)
+        VALUES (#{userId}, #{together.id})
     </insert>
 
     <delete id="deleteZzim" flushCache="true" parameterType="com.project.childprj.domain.Zzim">

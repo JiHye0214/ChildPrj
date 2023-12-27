@@ -66,8 +66,8 @@
                         </ul>
                         <ul th:each="zzim5 : ${zzimHotFive}" class="postTopWrap zzimTopWrap">
                             <li class="grade"></li>
-                            <li class="overflow" ></li>
-                            <li class="overflow"><a class="zzimTitle" th:href="@{'/together/detail?type=' + '${zzim} + ${zzim5.id}}" th:text="${zzim5.TITLE}"></a></li>
+                            <li class="overflow" th:text="${zzim5.type}"></li>
+                            <li class="overflow"><a class="zzimTitle" th:href="@{'/together/detail/' + ${zzim5.type} + '/' + ${zzim5.id}}" th:text="${zzim5.TITLE}"></a></li>
                             <li th:text="${zzim5.zzimCnt}"></li>
                         </ul>
                     </div>

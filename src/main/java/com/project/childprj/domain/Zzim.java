@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Zzim {
     private Long id;
-    private String type;
     private Long userId;
     private Together together;
 }

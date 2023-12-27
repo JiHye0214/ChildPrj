@@ -77,12 +77,11 @@ public class ZzimServiceImpl implements ZzimService {
     }
 
     @Override
-    public int insertZzim(String type, Long userId, Long togetherId) {
+    public int insertZzim(Long userId, Long togetherId) {
         Together together = togetherRepository.selectTogether(togetherId);
         together.setIsZzimClicked("true");
 
         Zzim zzim = new Zzim();
-        zzim.setType(type);
         zzim.setUserId(userId);
         zzim.setTogether(together);
 
