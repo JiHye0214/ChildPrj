@@ -36,7 +36,6 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model, HttpServletRequest request) {
-
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
 
@@ -46,9 +45,7 @@ public class HomeController {
         togetherService.saveTogether(startIndex, 500);
         kindergardenService.saveKindergarden(startIndex, endIndex);
         childHouseService.saveChildHouse(startIndex, endIndex);
-        U.getSession().setAttribute("childCenter", childCenterService.getChildCenter(startIndex, endIndex));
-
-
+        U.getSession().setAttribute("childCenter", childCenterService.getChildCenter(11, 210));
 
         // graph
         model.addAttribute("productHotFive", productService.selectFive());
