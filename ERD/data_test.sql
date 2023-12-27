@@ -262,6 +262,11 @@ SELECT *
 
 SELECT *
   FROM together;
+ 
+ SELECT *
+        from together
+        ORDER BY zzimCnt DESC
+        LIMIT 5
 
 SELECT COUNT(*)
   FROM together;

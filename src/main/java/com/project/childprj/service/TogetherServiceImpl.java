@@ -171,4 +171,10 @@ public class TogetherServiceImpl implements TogetherService {
         return togetherRepository.changeIsZzimClicked(bool, id);
     }
 
+    // home -- select five
+//    @Override
+//    public List<Together> selectFive() {
+//        return togetherRepository.selectFive();
+//    }
+
 }

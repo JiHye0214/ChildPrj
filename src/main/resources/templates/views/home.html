@@ -57,7 +57,20 @@
             <div class="all-graph-wrap">
                 <div class="graph-wrap">
                     <div class="graph-title">ZZIM <span>HOT 5 🔥</span></div>
-                    <div class="graph">GRAPH</div>
+                    <div class="graph">
+                        <ul class="postTopWrap">
+                            <li>No</li>
+                            <li>분류</li>
+                            <li>프로그램명</li>
+                            <li>찜개수</li>
+                        </ul>
+                        <ul th:each="zzim5 : ${zzimHotFive}" class="postTopWrap">
+                            <li class="grade"></li>
+                            <li class="overflow"><a class="postTitle" th:href="@{'/together/detail?type=' + '${together.type} + ${product5.id}}" th:text="${product5.productName}"></a></li>
+                            <li class="overflow" th:text="${product5.user.nickname}"></li>
+                            <li th:text="${product5.viewCnt}"></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="graph-wrap">
                     <div class="graph-title">알뜰시장 조회 <span>HOT 5 🔥</span></div>
@@ -96,18 +109,7 @@
                 <div class="graph-wrap">
                     <div class="graph-title">나머지 하나 <span>HOT 5 🔥</span></div>
                     <div class="graph">
-                        <ul class="postTopWrap">
-                            <li>No</li>
-                            <li>제목</li>
-                            <li>작성자</li>
-                            <li>추천수</li>
-                        </ul>
-                        <ul th:each="post5 : ${postHotFive}" class="postTopWrap">
-                            <li class="grade"></li>
-                            <li class="overflow"><a class="postTitle" th:href="@{'/post/detail/' + ${post5.id}}" th:text="${post5.title}"></a></li>
-                            <li class="overflow" th:text="${post5.user.nickname}"></li>
-                            <li th:text="${post5.recommendCnt}"></li>
-                        </ul>
+
                     </div>
                 </div>
             </div>
