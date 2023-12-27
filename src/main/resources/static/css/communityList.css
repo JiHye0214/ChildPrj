@@ -37,6 +37,39 @@
 
 /* ------------------------------------------------------------ */
 
+/* 검색 결과 없을 때 */
+.noPostWrap {
+    height: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.noPostWrap > img {
+    margin-bottom: 40px;
+    width: 100px;
+}
+
+.noPostWrap > div {
+    color: #b47a1f;
+}
+
+.noPostWrap > a {
+    margin-top: 15px;
+    font-size: 15px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/*---------------------------------------*/
+
 #communityList-wrap {
     margin: 30px auto;
     width: 1200px;

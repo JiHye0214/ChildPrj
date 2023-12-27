@@ -39,7 +39,6 @@
                 <span>커뮤니티</span>
                 <img src="/img/chat.png" height="30px" />
             </div>
-
             <div id="list-section">
                 <div id="listHeader-wrap">
                     <div id="writeBtn">
@@ -64,7 +63,15 @@
                     </div>
                 </div>
 
-                <div id="list-wrap">
+                <th:block th:unless="${posts}">
+                    <div class="noPostWrap">
+                        <img src="/img/notFound2.png" width="50px;">
+                        <div>검색 결과가 없습니다</div>
+                        <a th:href="@{/post/list}">뒤로 가기</a>
+                    </div>
+                </th:block>
+
+                <div th:if="${posts}" id="list-wrap">
                     <div id="thead">
                         <p>NO</p>
                         <p>제목</p>

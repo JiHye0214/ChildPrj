@@ -35,6 +35,39 @@
     column-gap: 35px;
     row-gap: 40px;
 }
+
+/* 찜 없을 때 */
+.noZzimWrap {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.noZzimWrap > img {
+    margin-bottom: 40px;
+    width: 100px;
+}
+
+.noZzimWrap > div {
+    color: #802c2c;
+}
+
+.noZzimWrap > a {
+    margin-top: 15px;
+    font-size: 15px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+/*---------------------------------------*/
+
 .list-content {
     position: relative;
 }

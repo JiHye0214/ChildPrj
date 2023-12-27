@@ -1,3 +1,16 @@
+// 상세 valid
+
+const detailText = document.querySelectorAll("#txt-list-content > p");
+
+for(e of detailText){
+    if(e.innerText == ""){
+        e.innerText = "-";
+    }
+}
+
+// ----------------------------------------------
+// 찜 버튼
+
 const heartBtn = document.querySelector("#heart");
 const zzimForm = document.querySelector("#zzimBtn");
 const isZzimClicked = document.querySelector("#isZzimClicked");
@@ -20,6 +33,7 @@ heartBtn.addEventListener("click", () => {
 });
 
 // ----------------------------------------------
+// 지도
 
 const lot = document.querySelector("#LOT");
 const lat = document.querySelector("#LAT");

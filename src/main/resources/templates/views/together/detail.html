@@ -23,7 +23,7 @@
             <input type="hidden" th:value="${logged}" id="logged" />
 
             <div id="route-wrap">
-                <p th:text="${type}">체험</p>
+                <a th:href="@{'/together/list?type=' + ${type}}" th:text="${type}"></a>
                 <img src="/img/rightArrow.png" />
                 <p th:text="${together.TITLE}"></p>
             </div>

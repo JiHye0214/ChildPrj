@@ -50,6 +50,14 @@
                     </div>
                 </div>
 
+                <th:block th:unless="${products}">
+                    <div class="noProductWrap">
+                        <img src="/img/notFound2.png" width="50px;">
+                        <div>검색 결과가 없습니다</div>
+                        <a th:href="@{/product/list}">뒤로 가기</a>
+                    </div>
+                </th:block>
+
                 <div id="list-wrap">
                     <div class="list-content" th:each="product, iterState : ${products}">
                         <a th:href="@{'/product/detail/' + ${product.id}}">
