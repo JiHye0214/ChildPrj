@@ -16,6 +16,11 @@
     column-gap: 10px;
     font-size: 24px;
 }
+
+#route-wrap > a:hover {
+    text-decoration: underline;
+}
+
 #route-wrap > img {
     width: 20px;
     height: 20px;

@@ -21,7 +21,7 @@
         <!--/* section */-->
         <div id="protectDetail-wrap">
             <div id="route-wrap">
-                <p th:text="${type}"></p>
+                <a th:href="@{'/protect/list?type=' + ${type}}" th:text="${type}"></a>
                 <img src="/img/rightArrow.png" />
                 <p th:if="${kindergarden}" th:text="${kindergarden.KINDERNAME}"></p>
                 <p th:if="${childHouse}" th:text="${childHouse.CRNAME}"></p>
