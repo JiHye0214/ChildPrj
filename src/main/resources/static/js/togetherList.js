@@ -1,5 +1,5 @@
+const heartsBtns = document.querySelectorAll(".heart");
 const zzimForms = document.querySelectorAll(".content-zzimBtn");
-const heartsBtns = document.querySelectorAll("#heart");
 const isZzimClicked = document.querySelectorAll(".isZzimClicked");
 
 heartsBtns.forEach((heart, i) => {

@@ -42,16 +42,16 @@
             <div id="list-section">
                 <div id="list-wrap">
                     <div class="list-content" th:each="together : ${togethers}">
-                        <a th:href="@{'/together/detail?type=' + ${type} + '&id=' + ${together.id}}">
+                        <a th:href="@{'/together/detail/' + ${type} + '/' + ${together.id}}">
                             <div class="content-img" th:style="'background-image: url(' + ${together.MAIN_IMG} + ')'"></div>
                             <div class="content-title" th:text="${together.TITLE}"></div>
                             <div class="content-period" th:text="${together.DATE}"></div>
                         </a>
-                        <form class="content-zzimBtn" th:action="@{/together/toggleZzim}" method="POST">
+                        <form class="content-zzimBtn" th:action="@{/together/listZzimToggle}" method="POST">
                             <input type="hidden" th:value="${together.id}" name="togetherId" />
                             <input type="hidden" th:value="${type}" name="type" />
                             <input type="hidden" th:value="${page}" name="page" />
-                            <input type="hidden" th:value="${together.isZzimClicked}" class="isZzimClicked" >
+                            <input type="hidden" th:value="${together.isZzimClicked}" class="isZzimClicked" />
                             <svg
                                 t="1689815540548"
                                 class="icon"
@@ -64,7 +64,7 @@
                                     d="M742.4 101.12A249.6 249.6 0 0 0 512 256a249.6 249.6 0 0 0-230.72-154.88C143.68 101.12 32 238.4 32 376.32c0 301.44 416 546.56 480 546.56s480-245.12 480-546.56c0-137.92-111.68-275.2-249.6-275.2z"
                                     fill="#231F20"
                                     p-id="2272"
-                                    id="heart"
+                                    class="heart"
                                 ></path>
                             </svg>
                         </form>

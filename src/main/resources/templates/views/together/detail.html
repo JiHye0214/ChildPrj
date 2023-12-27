@@ -23,14 +23,16 @@
             <div id="route-wrap">
                 <p th:text="${type}">체험</p>
                 <img src="/img/rightArrow.png" />
-                <p th:text="${together.TITLE}"></p> <!--/* TITLE */-->
+                <p th:text="${together.TITLE}"></p>
             </div>
 
             <div id="detail-wrap">
                 <div id="img-wrap">
-
-                    <div id="img" th:style="'background-image: url(' + ${together.MAIN_IMG} + ')'"></div> <!--/* MAIN_IMG */-->
-                    <div id="zzimBtn">
+                    <div id="img" th:style="'background-image: url(' + ${together.MAIN_IMG} + ')'"></div>
+                    <form id="zzimBtn" th:action="@{/together/detailZzimToggle}" method="POST">
+                        <input type="hidden" th:value="${together.id}" name="togetherId" />
+                        <input type="hidden" th:value="${type}" name="type" />
+                        <input type="hidden" th:value="${together.isZzimClicked}" id="isZzimClicked" />
                         <svg
                             t="1689815540548"
                             class="icon"
@@ -46,12 +48,11 @@
                                 id="heart"
                             ></path>
                         </svg>
-                    </div>
+                    </form>
                 </div>
 
                 <div id="txt-wrap">
-
-                    <div id="txt-title" th:text="${together.TITLE}"></div> <!--/* TITLE */-->
+                    <div id="txt-title" th:text="${together.TITLE}"></div>
                     <div id="txt-list">
                         <div id="txt-list-title">
                             <p>장소</p>
@@ -63,17 +64,15 @@
                             <p>홈페이지</p>
                         </div>
                         <div id="txt-list-content">
-                            <p th:text="${together.TITLE}"></p> <!--/* PLACE */-->
-                            <p th:text="${together.ORG_NAME}"></p> <!--/*  ORG_NAME */-->
-                            <p th:text="${together.GUNAME}"></p> <!--/* GUNAME */-->
-                            <p th:text="${together.DATE}"></p> <!--/* DATE */-->
-                            <p th:text="${together.USE_TRGT}"></p> <!--/* USE_TRGT */-->
-                            <p th:text="${together.USE_FEE}"></p> <!--/* USE_FEE */-->
+                            <p th:text="${together.TITLE}"></p>
+                            <p th:text="${together.ORG_NAME}"></p>
+                            <p th:text="${together.GUNAME}"></p>
+                            <p th:text="${together.DATE}"></p>
+                            <p th:text="${together.USE_TRGT}"></p>
+                            <p th:text="${together.USE_FEE}"></p>
                             <p>
-                                <a th:if="${not #strings.isEmpty(together.ORG_LINK)}" th:href="${together.ORG_LINK}" target="_blank">바로가기 </a>
+                                <a th:if="${not #strings.isEmpty(together.ORG_LINK)}" th:href="${together.ORG_LINK}" target="_blank">바로가기</a>
                                 <span th:unless="${not #strings.isEmpty(together.ORG_LINK)}">-</span>
-                                <!--/* ORG_LINK */-->
-
                             </p>
                         </div>
                     </div>
@@ -84,8 +83,6 @@
                 <input type="hidden" th:value="${together.LOT}" id="LOT">
                 <input type="hidden" th:value="${together.LAT}" id="LAT">
             </div>
-            <!--/* 위도 - LOT   경도 - LAT */-->
-
         </div>
 
         <!--/* footer */-->

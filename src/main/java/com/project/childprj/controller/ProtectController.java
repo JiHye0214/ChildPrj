@@ -63,8 +63,8 @@ public class ProtectController {
 
     @GetMapping("/detail/{type}/{id}")
     public String protectDetail(
-            @PathVariable String type
-            , @PathVariable Long id
+            @PathVariable(name = "type") String type
+            , @PathVariable(name = "id") Long id
             , Model model
             , HttpServletRequest request
             , RedirectAttributes redirectAttrs

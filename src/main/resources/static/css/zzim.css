@@ -68,7 +68,7 @@
 svg {
     width: 35px;
 }
-#heart {
+.heart {
     fill: rgb(255, 80, 80);
     stroke: #333;
     stroke-width: 60px;

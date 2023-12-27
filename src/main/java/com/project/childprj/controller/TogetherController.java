@@ -1,5 +1,6 @@
 package com.project.childprj.controller;
 
+import com.project.childprj.domain.Together;
 import com.project.childprj.service.TogetherService;
 import com.project.childprj.service.ZzimService;
 import com.project.childprj.util.U;
@@ -54,9 +55,9 @@ public class TogetherController {
     }
 
     @GetMapping("/detail/{type}/{id}")
-    public String protectDetail(
-            @PathVariable String type
-            , @PathVariable Long id
+    public String togetherDetail(
+            @PathVariable(name = "type") String type
+            , @PathVariable(name = "id") Long id
             , Model model
             , HttpServletRequest request
             , RedirectAttributes redirectAttrs
@@ -68,19 +69,48 @@ public class TogetherController {
             model.addAttribute("type", type);
             model.addAttribute("together", togetherService.getTogether(id));
 
+            Together together = togetherService.getTogether(id);
+            System.out.println(together);
+
+            return "together/detail";
         } else {
             redirectAttrs.addAttribute("type", "체험");
             return "redirect:/together/list";
         }
 
-        return "together/detail";
     }
 
-    // 찜 추가 & 해제
-    @PostMapping("/toggleZzim")
-    public String addZzim(
+    // 리스트에서 찜 추가 & 해제
+    @PostMapping("/listZzimToggle")
+    public String listZzimToggle(
             @RequestParam(name = "togetherId", required = false) Long togetherId
+            , @RequestParam(name = "type", required = false) String type
             , @RequestParam(name = "page", required = false) Long page
+            , RedirectAttributes redirectAttrs
+    ) {
+        Long userId = U.getLoggedUser().getId();
+        boolean isZzimChecked = zzimService.isZzimChecked(userId, togetherId);
+
+        if (!isZzimChecked) {
+            zzimService.insertZzim(type, userId, togetherId); // zzim 테이블에 데이터 추가 or 삭제
+            togetherService.changeZzimCnt(1L, togetherId); // together 테이블의 zzimCnt +1 or -1 (home 의 그래프 hot 5 정렬 위해)
+            togetherService.changeIsZzimClicked("true", togetherId); // together 테이블의 isZzimClicked "true" or "false" (유저당 찜 하트 기록 위해)
+        } else {
+            zzimService.deleteZzim(userId, togetherId);
+            togetherService.changeZzimCnt(-1L, togetherId);
+            togetherService.changeIsZzimClicked("false", togetherId);
+        }
+
+        redirectAttrs.addAttribute("type", type);
+        redirectAttrs.addAttribute("page", page);
+
+        return "redirect:/together/list";
+    }
+
+    // 상세에서 찜 추가 & 해제
+    @PostMapping("/detailZzimToggle")
+    public String detailZzimToggle(
+            @RequestParam(name = "togetherId", required = false) Long togetherId
             , @RequestParam(name = "type", required = false) String type
             , RedirectAttributes redirectAttrs
     ) {
@@ -97,10 +127,10 @@ public class TogetherController {
             togetherService.changeIsZzimClicked("false", togetherId);
         }
 
-        redirectAttrs.addAttribute("page", page);
         redirectAttrs.addAttribute("type", type);
+        redirectAttrs.addAttribute("togetherId", togetherId);
 
-        return "redirect:/together/list";
+        return "redirect:/together/detail/{type}/{togetherId}";
     }
 
 }

@@ -131,7 +131,7 @@
 svg {
     width: 35px;
 }
-#heart {
+.heart {
     fill: white;
     stroke: #333;
     stroke-width: 60px;
