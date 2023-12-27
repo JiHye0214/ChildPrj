@@ -26,6 +26,39 @@
     margin-right: 10px;
 }
 
+/*---------------------------------------*/
+
+/* 검색 결과 없을 때 */
+.noProductWrap {
+    height: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.noProductWrap > img {
+    margin-bottom: 40px;
+    width: 100px;
+}
+
+.noProductWrap > div {
+    color: #b47a1f;
+}
+
+.noProductWrap > a {
+    margin-top: 15px;
+    font-size: 15px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 /* ------------------------------------------------------------ */
 
 #listHeader-wrap {

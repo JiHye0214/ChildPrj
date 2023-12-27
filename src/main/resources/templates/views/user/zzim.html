@@ -27,7 +27,14 @@
 
             <div id="list-section">
                 <div id="list-wrap">
-                    <div class="list-content" th:each="zzim : ${zzims}">
+                    <th:block th:unless="${zzims}">
+                        <div class="noZzimWrap">
+                            <img src="/img/notFound.png" width="50px;">
+                            <div>찜하신 프로그램이 없습니다</div>
+                            <a th:href="@{/together/list}">찜하러 가기</a>
+                        </div>
+                    </th:block>
+                    <div th:if="${zzims}" class="list-content" th:each="zzim : ${zzims}">
                         <a th:href="@{'/together/detail/' + ${zzim.together.type} + '/' + ${zzim.together.id}}">
                             <div class="content-img" th:style="'background-image: url(' + ${zzim.together.MAIN_IMG} + ')'"></div>
                             <div th:text="${zzim.together.type}" class="content-type"></div>
