@@ -53,6 +53,17 @@
 .list-content > a:hover {
     border: 1px solid #898989;
 }
+.content-type {
+    background-color: green;
+    color: white;
+    padding: 7px 10px;
+    position: absolute;
+    border-radius: 0 5px 5px 0;
+    font-size: 15px;
+    font-weight: 600;
+    left: 0;
+    top: 16px;
+}
 .content-img {
     width: 160px;
     height: 225px;

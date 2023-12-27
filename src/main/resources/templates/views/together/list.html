@@ -44,6 +44,7 @@
                     <div class="list-content" th:each="together : ${togethers}">
                         <a th:href="@{'/together/detail/' + ${type} + '/' + ${together.id}}">
                             <div class="content-img" th:style="'background-image: url(' + ${together.MAIN_IMG} + ')'"></div>
+                            <div th:text="${type}" class="content-type"></div>
                             <div class="content-title" th:text="${together.TITLE}"></div>
                             <div class="content-period" th:text="${together.DATE}"></div>
                         </a>
