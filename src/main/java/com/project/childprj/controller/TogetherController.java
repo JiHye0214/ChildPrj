@@ -7,6 +7,7 @@ import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -66,11 +67,17 @@ public class TogetherController {
         request.getSession().setAttribute("prevPage", uri);
 
         if (type.equals("체험") || type.equals("축제") || type.equals("공연ㆍ예술")) {
-            model.addAttribute("type", type);
-            model.addAttribute("together", togetherService.getTogether(id));
+//            String user = "" + SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//            String logged = null;
+//            if (!user.equals("anonymousUser")) {
+//                logged = "true";
+//            }
+//
+//            model.addAttribute("logged", logged);
+//            model.addAttribute("type", type);
 
-            Together together = togetherService.getTogether(id);
-            System.out.println(together);
+            togetherService.togetherDetail(type, id, model);
+            model.addAttribute("together", togetherService.getTogether(id));
 
             return "together/detail";
         } else {

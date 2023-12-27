@@ -16,6 +16,9 @@ public interface TogetherService {
     // 함께하기 페이징 목록 조회
     List<Together> togetherList(Integer page, String type, Model model);
 
+    // 로그인 페이지에서 함께하기 목록 거치지 않고 디테일로 접근할 때 isZzimChecked 재설정
+    String togetherDetail(String type, Long id, Model model);
+
     // 특정 id 함께하기 조회
     Together getTogether(Long id);
 

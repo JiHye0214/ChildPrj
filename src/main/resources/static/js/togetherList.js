@@ -1,6 +1,7 @@
 const heartsBtns = document.querySelectorAll(".heart");
 const zzimForms = document.querySelectorAll(".content-zzimBtn");
 const isZzimClicked = document.querySelectorAll(".isZzimClicked");
+const logged = document.querySelector("#logged");
 
 heartsBtns.forEach((heart, i) => {
     if (isZzimClicked[i].value == "true") {
@@ -10,8 +11,14 @@ heartsBtns.forEach((heart, i) => {
     }
 
     heart.addEventListener("click", () => {
-        zzimForms[i].name = "zzimFrm_" + i;
-        zzimForms[i].submit();
+        console.log(logged.value);
+
+        if (logged.value) {
+            zzimForms[i].name = "zzimFrm_" + i;
+            zzimForms[i].submit();
+        } else {
+            location.href = "/user/logIn";
+        }
     });
 });
 

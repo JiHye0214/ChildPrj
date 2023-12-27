@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.client.RestTemplate;
@@ -87,8 +88,6 @@ public class TogetherServiceImpl implements TogetherService {
 
     @Override
     public List<Together> togetherList(Integer page, String type, Model model) {
-        Long userId = U.getLoggedUser().getId();
-
         if (page < 1) page = 1;
 
         Integer pagesPerSection = 10;
@@ -106,20 +105,32 @@ public class TogetherServiceImpl implements TogetherService {
         int startPage = 0;
         int endPage = 0;
 
+        String user = "" + SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String logged = null;
+
         // 전체 isZzimClicked "false" 로 변경
         togetherRepository.changeAllZzimClicked();
-        int allTogetherLen = togetherRepository.countAllTogether();
-        List<Together> allTogether = togetherRepository.selectAllTogether();
 
-        if (allTogetherLen > 0 && userId != 0) {
-            for (var together : allTogether) {
-                boolean isZzimChecked = zzimService.isZzimChecked(userId, together.getId());
+        if (!user.equals("anonymousUser")) {
+            int allTogetherLen = togetherRepository.countAllTogether();
+            List<Together> allTogether = togetherRepository.selectAllTogether();
 
-                // 찜 되어있는 together 는 "true" 로 변경
-                if (isZzimChecked) {
-                    togetherRepository.changeIsZzimClicked("true", together.getId());
+            Long userId = U.getLoggedUser().getId();
+
+            if (allTogetherLen > 0) {
+                for (var together : allTogether) {
+                    boolean isZzimChecked = zzimService.isZzimChecked(userId, together.getId());
+
+                    // 찜 되어있는 together 는 "true" 로 변경
+                    if (isZzimChecked) {
+                        togetherRepository.changeIsZzimClicked("true", together.getId());
+                    }
                 }
             }
+
+            System.out.println("로그인됨 : " + userId);
+
+            logged = "true";
         }
 
         List<Together> togethers = null;
@@ -152,8 +163,45 @@ public class TogetherServiceImpl implements TogetherService {
         model.addAttribute("url", U.getRequest().getRequestURI());
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
+        model.addAttribute("logged", logged);
 
         return togethers;
+    }
+
+    @Override
+    public String togetherDetail(String type, Long id, Model model) {
+        String user = "" + SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String logged = null;
+
+        // 전체 isZzimClicked "false" 로 변경
+        togetherRepository.changeAllZzimClicked();
+
+        if (!user.equals("anonymousUser")) {
+            int allTogetherLen = togetherRepository.countAllTogether();
+            List<Together> allTogether = togetherRepository.selectAllTogether();
+
+            Long userId = U.getLoggedUser().getId();
+
+            if (allTogetherLen > 0) {
+                for (var together : allTogether) {
+                    boolean isZzimChecked = zzimService.isZzimChecked(userId, together.getId());
+
+                    // 찜 되어있는 together 는 "true" 로 변경
+                    if (isZzimChecked) {
+                        togetherRepository.changeIsZzimClicked("true", together.getId());
+                    }
+                }
+            }
+
+            System.out.println("로그인됨 : " + userId);
+
+            logged = "true";
+        }
+
+        model.addAttribute("type", type);
+        model.addAttribute("logged", logged);
+
+        return logged; // 의미 없는 값
     }
 
     @Override

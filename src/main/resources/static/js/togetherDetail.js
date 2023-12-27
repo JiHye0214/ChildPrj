@@ -1,8 +1,7 @@
 const heartBtn = document.querySelector("#heart");
 const zzimForm = document.querySelector("#zzimBtn");
 const isZzimClicked = document.querySelector("#isZzimClicked");
-
-console.log(isZzimClicked.value);
+const logged = document.querySelector("#logged");
 
 if (isZzimClicked.value == "true") {
     heartBtn.style.fill = "rgb(255, 80, 80)";
@@ -11,8 +10,13 @@ if (isZzimClicked.value == "true") {
 }
 
 heartBtn.addEventListener("click", () => {
-    // zzimForm.name = "zzimFrm_" + i;
-    zzimForm.submit();
+    console.log(logged.value);
+
+    if (logged.value) {
+        zzimForm.submit();
+    } else {
+        location.href = "/user/logIn";
+    }
 });
 
 // ----------------------------------------------
