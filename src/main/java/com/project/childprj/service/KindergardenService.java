@@ -18,4 +18,7 @@ public interface KindergardenService {
 
     // 특정 id 유치원 조회
     Kindergarden getKindergarden(Long id);
+
+    // 전체 조회
+    List<Kindergarden> selectAll();
 }

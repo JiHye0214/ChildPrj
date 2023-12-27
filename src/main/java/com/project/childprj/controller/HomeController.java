@@ -55,7 +55,9 @@ public class HomeController {
         togetherService.changeType3();
 
         // graph
+        model.addAttribute("kindergarden", kindergardenService.selectAll());
         model.addAttribute("childHouse", childHouseService.selectAll());
+//        model.addAttribute("childCenter", childCenterService.selectAll());
         model.addAttribute("zzimHotFive", togetherService.selectFive());
         model.addAttribute("productHotFive", productService.selectFive());
         model.addAttribute("postHotFive", postService.selectFive());

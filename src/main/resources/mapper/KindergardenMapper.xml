@@ -39,4 +39,9 @@
          WHERE id = #{id}
     </select>
 
+    <select id="selectAll">
+        SELECT *
+        FROM kindergarden
+    </select>
+
 </mapper>

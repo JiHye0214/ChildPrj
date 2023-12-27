@@ -213,7 +213,7 @@
     margin: 20px;
 }
 
-.graph-wrap > .graph-title > span {
+.graph-wrap > .graph-title > span:nth-child(2) {
     color: red;
 }
 
@@ -319,7 +319,7 @@
     justify-content: flex-end;
 }
 
-.graphText {
+.graphText1, .graphText2 {
     height: 15%;
     display: flex;
     align-items: center;
@@ -329,7 +329,7 @@
     font-size: 16px;
 }
 
-.graphText > div {
+.graphText1 > div, .graphText2 > div {
     margin: 0 20px;
 
     &:nth-child(1) {
@@ -337,14 +337,14 @@
     }
 }
 
-.graphBar {
+.graphBar1, .graphBar2 {
     height: 85%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
 }
 
-.graphBar > div {
+.graphBar1 > div, .graphBar2 > div {
     background: pink;
     width: 50px;
     margin: 0 17px;
@@ -359,7 +359,39 @@
     }
 }
 
+/* ---------- 변하는 바 그래프 ---------- */
+.change-wrap{
+    position: relative;
+    width: 520px;
+    height: 394.67px;
+}
 
+.change-wrap > .graph-wrap {
+    background: pink;
+    position: absolute;
+
+    &:nth-child(1) {
+        animation: opacity 7s infinite alternate;
+        animation-timing-function : cubic-bezier(1,0,0,1);
+        z-index: 2;
+    }
+
+    &:nth-child(2) {
+        z-index: 1;
+    }
+}
+
+@keyframes opacity {
+    from{
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 
 /* media screen */
 

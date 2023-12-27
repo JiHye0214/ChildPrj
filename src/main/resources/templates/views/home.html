@@ -72,20 +72,40 @@
                         </ul>
                     </div>
                 </div>
-                <div class="graph-wrap">
-                    <div class="graph-title">어린이집 지역 <span>HOT 5 🔥</span></div>
-                    <div class="graph">
-                        <div>
-                            <div th:each="child : ${childHouse}">
-                                <input type="hidden" id="value" th:value="${child.CRADDR}"/>
+
+                <!-- 바뀔 거임 -->
+                <div class="change-wrap">
+                    <div class="graph-wrap">
+                        <div class="graph-title">유치원 지역 <span>HOT 5 🔥</span></div>
+                        <div class="graph">
+                            <div>
+                                <div th:each="kinder : ${kindergarden}">
+                                    <input type="hidden" id="value1" th:value="${kinder.ADDR}"/>
+                                </div>
+                            </div>
+                            <div class="barGraph">
+                                <div class="graphBar1"></div>
+                                <div class="graphText1"></div>
                             </div>
                         </div>
-                        <div class="barGraph">
-                            <div class="graphBar"></div>
-                            <div class="graphText"></div>
+                    </div>
+                    <div class="graph-wrap">
+                        <div class="graph-title">어린이집 지역 <span>HOT 5 🔥</span></div>
+                        <div class="graph">
+                            <div>
+                                <div th:each="child : ${childHouse}">
+                                    <input type="hidden" id="value2" th:value="${child.CRADDR}"/>
+                                </div>
+                            </div>
+                            <div class="barGraph">
+                                <div class="graphBar2"></div>
+                                <div class="graphText2"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!------------>
                 <div class="graph-wrap">
                     <div class="graph-title">커뮤니티 추천 <span>HOT 5 🔥</span></div>
                     <div class="graph table">

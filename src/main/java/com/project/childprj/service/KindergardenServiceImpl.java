@@ -125,4 +125,10 @@ public class KindergardenServiceImpl implements KindergardenService {
         return kindergardenRepository.selectKindergarden(id);
     }
 
+    // 전체 조회
+    @Override
+    public List<Kindergarden> selectAll() {
+        return kindergardenRepository.selectAll();
+    }
+
 }
