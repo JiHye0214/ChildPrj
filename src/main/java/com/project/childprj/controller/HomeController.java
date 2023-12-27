@@ -38,9 +38,6 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model, HttpServletRequest request) {
-//        Long userId = ((User) U.getLoggedUser()).getId();
-//        System.out.println("======================= " + userId + " =======================" );
-        System.out.println("==========*" + SecurityContextHolder.getContext().getAuthentication().getPrincipal() + "*==========");
 
         String uri = U.getRequest().getRequestURI();
         request.getSession().setAttribute("prevPage", uri);
@@ -58,7 +55,6 @@ public class HomeController {
         togetherService.changeType3();
 
         // graph
-//        System.out.println("------------together-----------" + togetherService.selectFive());
         model.addAttribute("zzimHotFive", togetherService.selectFive());
         model.addAttribute("productHotFive", productService.selectFive());
         model.addAttribute("postHotFive", postService.selectFive());
