@@ -45,7 +45,7 @@
                         <div class="mypage-content-content">
                             <div>프로필사진</div>
                             <div class="picture-change-wrap">
-                                <img style="border-radius:50%;" th:src="@{'/upload/'} + ${userImg.fileName}" width="80px" height="80px"/>
+                                <img style="border-radius:50%;" th:if="${userImg}" th:src="@{'/upload/'} + ${userImg.fileName}" width="80px" height="80px"/>
                                 <!--프사 변경-->
                                 <form method="POST" th:action="@{/user/userImg}" enctype="multipart/form-data">
                                     <label for="file" class="picture-btn">

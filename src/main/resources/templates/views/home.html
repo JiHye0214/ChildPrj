@@ -73,20 +73,9 @@
                     </div>
                 </div>
                 <div class="graph-wrap">
-                    <div class="graph-title">알뜰시장 조회 <span>HOT 5 🔥</span></div>
+                    <div class="graph-title">나머지 하나 <span>HOT 5 🔥</span></div>
                     <div class="graph">
-                        <ul class="postTopWrap">
-                            <li>No</li>
-                            <li>물품</li>
-                            <li>작성자</li>
-                            <li>조회수</li>
-                        </ul>
-                        <ul th:each="product5 : ${productHotFive}" class="postTopWrap">
-                            <li class="grade"></li>
-                            <li class="overflow"><a class="postTitle" th:href="@{'/product/detail/' + ${product5.id}}" th:text="${product5.productName}"></a></li>
-                            <li class="overflow" th:text="${product5.user.nickname}"></li>
-                            <li th:text="${product5.viewCnt}"></li>
-                        </ul>
+
                     </div>
                 </div>
                 <div class="graph-wrap">
@@ -107,9 +96,20 @@
                     </div>
                 </div>
                 <div class="graph-wrap">
-                    <div class="graph-title">나머지 하나 <span>HOT 5 🔥</span></div>
+                    <div class="graph-title">알뜰시장 조회 <span>HOT 5 🔥</span></div>
                     <div class="graph">
-
+                        <ul class="postTopWrap">
+                            <li>No</li>
+                            <li>물품</li>
+                            <li>작성자</li>
+                            <li>조회수</li>
+                        </ul>
+                        <ul th:each="product5 : ${productHotFive}" class="postTopWrap">
+                            <li class="grade"></li>
+                            <li class="overflow"><a class="postTitle" th:href="@{'/product/detail/' + ${product5.id}}" th:text="${product5.productName}"></a></li>
+                            <li class="overflow" th:text="${product5.user.nickname}"></li>
+                            <li th:text="${product5.viewCnt}"></li>
+                        </ul>
                     </div>
                 </div>
             </div>

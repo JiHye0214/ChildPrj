@@ -55,7 +55,10 @@ public class UserController {
     @GetMapping("/mypage")
     public void mypage(Model model){
 
-        model.addAttribute("userImg", userService.findUserImg(U.getLoggedUser().getId()));
+        Long id = U.getLoggedUser().getId();
+        UserImg userImg = userService.findUserImg(id);
+        model.addAttribute("userImg", userImg);
+//        return "aaaa";
     }
 
     @GetMapping("/signUpAgree")
@@ -195,12 +198,8 @@ public class UserController {
 
 // ------------------validator--------------------
 
-    @Autowired
-    UserValidator userValidator;
-
-    @InitBinder("User")
+    @InitBinder("user")
     public void intiBinder(WebDataBinder binder) {
-
-        binder.setValidator(userValidator);
+        binder.setValidator(new UserValidator(userService));
     }
 }

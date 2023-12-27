@@ -8,11 +8,13 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-@Component
 public class UserValidator implements Validator {
 
-    @Autowired
     UserService userService; // DB 접근
+
+    public UserValidator(UserService userService){
+        this.userService = userService;
+    }
 
     @Autowired
     private PasswordEncoder passwordEncoder;
