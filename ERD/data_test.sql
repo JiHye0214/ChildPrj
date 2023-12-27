@@ -285,7 +285,18 @@ UPDATE together
    SET zzimCnt = zzimCnt + -1
  WHERE id = 1;
 
+UPDATE together
+   SET TYPE = '체험'
+ WHERE CODENAME LIKE '%체험%';
 
+UPDATE together
+   SET TYPE = '축제'
+ WHERE CODENAME LIKE '%축제%';
 
+UPDATE together
+   SET TYPE = '공연ㆍ예술'
+ WHERE CODENAME NOT LIKE '%체험%'
+   AND CODENAME NOT LIKE '%축제%';
 
-
+SELECT *
+  FROM together;
