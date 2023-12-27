@@ -125,4 +125,9 @@ public class ChildHouseServiceImpl implements ChildHouseService {
         return childHouseRepository.selectChildHouse(id);
     }
 
+    @Override
+    public List<ChildHouse> selectAll() {
+        return childHouseRepository.selectAll();
+    }
+
 }

@@ -44,4 +44,9 @@
          WHERE id = #{id}
     </select>
 
+    <select id="selectAll" resultType="com.project.childprj.domain.ChildHouse">
+        SELECT *
+        FROM child_house
+    </select>
+
 </mapper>

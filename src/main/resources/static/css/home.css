@@ -311,6 +311,56 @@
     }
 }
 
+/* bar graph */
+.barGraph {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.graphText {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 0 10px;
+    border-radius: 0 0 7px 7px;
+    font-size: 16px;
+}
+
+.graphText > div {
+    margin: 0 20px;
+
+    &:nth-child(1) {
+        font-weight: 600;
+    }
+}
+
+.graphBar {
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.graphBar > div {
+    background: pink;
+    width: 50px;
+    margin: 0 17px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    border-radius: 3px 3px 0 0;
+
+    &:nth-child(1) {
+        font-weight: 600;
+        background-color: var(--protect-color);
+    }
+}
+
+
+
 /* media screen */
 
 @media screen and (max-height: 700px) {

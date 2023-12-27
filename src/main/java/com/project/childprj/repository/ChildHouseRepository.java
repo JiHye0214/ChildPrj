@@ -19,4 +19,7 @@ public interface ChildHouseRepository {
 
     // 특정 id 어린이집 조회
     ChildHouse selectChildHouse(Long id);
+
+    // 전체 불러오기
+    List<ChildHouse> selectAll();
 }

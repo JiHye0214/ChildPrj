@@ -57,7 +57,7 @@
             <div class="all-graph-wrap">
                 <div class="graph-wrap">
                     <div class="graph-title">ZZIM <span>HOT 5 🔥</span></div>
-                    <div class="graph">
+                    <div class="graph table">
                         <ul class="postTopWrap zzimTopWrap">
                             <li>No</li>
                             <li>분류</li>
@@ -73,14 +73,22 @@
                     </div>
                 </div>
                 <div class="graph-wrap">
-                    <div class="graph-title">나머지 하나 <span>HOT 5 🔥</span></div>
+                    <div class="graph-title">어린이집 지역 <span>HOT 5 🔥</span></div>
                     <div class="graph">
-
+                        <div>
+                            <div th:each="child : ${childHouse}">
+                                <input type="hidden" id="value" th:value="${child.CRADDR}"/>
+                            </div>
+                        </div>
+                        <div class="barGraph">
+                            <div class="graphBar"></div>
+                            <div class="graphText"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="graph-wrap">
                     <div class="graph-title">커뮤니티 추천 <span>HOT 5 🔥</span></div>
-                    <div class="graph">
+                    <div class="graph table">
                         <ul class="postTopWrap">
                             <li>No</li>
                             <li>제목</li>
@@ -97,7 +105,7 @@
                 </div>
                 <div class="graph-wrap">
                     <div class="graph-title">알뜰시장 조회 <span>HOT 5 🔥</span></div>
-                    <div class="graph">
+                    <div class="graph table">
                         <ul class="postTopWrap">
                             <li>No</li>
                             <li>물품</li>

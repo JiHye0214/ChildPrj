@@ -18,4 +18,6 @@ public interface ChildHouseService {
 
     // 특정 id 어린이집 조회
     ChildHouse getChildHouse(Long id);
+
+    List<ChildHouse> selectAll();
 }

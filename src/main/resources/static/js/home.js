@@ -38,11 +38,104 @@ $protectTitle.addEventListener("mouseout", mouseOut);
 $raiseTitle.addEventListener("mouseout", mouseOut);
 
 // graph
-const graphWrap = document.querySelectorAll(".graph");
+const graphWrap = document.querySelectorAll(".table");
 
 for(let i=0; i<graphWrap.length; i++){
     let count = graphWrap[i].childElementCount;
     for(let j=1; j<count; j++){
         graphWrap[i].children[j].children[0].innerText = j;
     }
+}
+//-----------------------------------------------------------------
+const resultArr = []; // 최종 배열 (객체 든 배열)
+
+const valueArr = document.querySelectorAll("#value");
+const regionArr = [];
+
+// 25개 빈 배열
+const guCount = [];
+for(let i=0; i<25; i++){
+    guCount[i] = 0;
+}
+
+// 구 이름 배열
+const guNames = [
+    "강남구",
+    "강동구",
+    "강북구",
+    "강서구",
+    "관악구",
+    "광진구",
+    "구로구",
+    "금천구",
+    "노원구",
+    "도봉구",
+    "동대문구",
+    "동작구",
+    "마포구",
+    "서대문구",
+    "서초구",
+    "성동구",
+    "성북구",
+    "송파구",
+    "양천구",
+    "영등포구",
+    "용산구",
+    "은평구",
+    "종로구",
+    "중구",
+    "중랑구",
+];
+
+// 객체 25개 들어간 배열 만들기
+for(let i=0; i<25; i++){
+    let data = {};
+    data.region = guNames[i];
+    data.count = guCount[i];
+
+    resultArr.push(data);
+}
+
+// 지역 count
+for(let i=0; i<valueArr.length; i++) {
+    regionArr[i] = valueArr[i].value.split(" "); // 글자 나누기
+
+    for(let j=0; j<25; j++){
+        if(regionArr[i][1] == resultArr[j].region){
+            resultArr[j].count++;
+        }
+    }
+}
+
+// 정렬
+let result = resultArr.sort(function (b, a) {
+    return a.count - b.count;
+});
+
+// 5개만 추려
+result = result.slice(0, 5);
+
+// 5개 이름 그리기
+const graphText = document.querySelector(".graphText");
+const graphBar = document.querySelector(".graphBar");
+
+// text
+for(let i=0; i<5; i++){
+    let text = result[i].region;
+    graphText.innerHTML += `<div class="gu">${text}</div>`;
+}
+
+// bar
+for(let i=0; i<5; i++){
+    let count = result[i].count;
+    graphBar.innerHTML += `<div class="count">${count}</div>`;
+}
+
+// bar setting
+const graphBarArr = document.querySelectorAll(".count");
+for(let i=0; i<5; i++){
+
+    // bar 높이 비율
+    let count = result[i].count * 4;
+    graphBarArr[i].style.height = `${count}%`;
 }
