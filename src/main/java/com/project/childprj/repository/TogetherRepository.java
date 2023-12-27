@@ -39,4 +39,7 @@ public interface TogetherRepository {
 
     // 전체 함께하기 찜 클릭 여부 "false" 로 변경
     int changeAllZzimClicked();
+
+    // home -- select five
+//    List<Together> selectFive();
 }

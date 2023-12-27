@@ -24,4 +24,7 @@ public interface TogetherService {
 
     // 특정 id 함께하기 찜 클릭 여부 변경 (찜 추가 시 bool : "true" / 찜 해제 시 bool : "false")
     int changeIsZzimClicked(String bool, Long id);
+
+//    // select five
+//    List<Together> selectFive();
 }
