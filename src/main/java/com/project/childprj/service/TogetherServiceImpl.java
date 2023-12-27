@@ -172,9 +172,9 @@ public class TogetherServiceImpl implements TogetherService {
     }
 
     // home -- select five
-//    @Override
-//    public List<Together> selectFive() {
-//        return togetherRepository.selectFive();
-//    }
+    @Override
+    public List<Together> selectFive() {
+        return togetherRepository.selectFive();
+    }
 
 }

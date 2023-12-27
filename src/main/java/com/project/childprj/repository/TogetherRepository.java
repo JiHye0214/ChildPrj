@@ -41,5 +41,5 @@ public interface TogetherRepository {
     int changeAllZzimClicked();
 
     // home -- select five
-//    List<Together> selectFive();
+    List<Together> selectFive();
 }

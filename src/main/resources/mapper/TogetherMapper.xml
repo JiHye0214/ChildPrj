@@ -91,11 +91,11 @@
            SET isZzimClicked = "false"
     </update>
 
-<!--    <select id="selectFive" resultMap="mapPost">-->
-<!--          SELECT *-->
-<!--            FROM together-->
-<!--        ORDER BY zzimCnt DESC-->
-<!--           LIMIT 5-->
-<!--    </select>-->
+    <select id="selectFive">
+          SELECT *
+            FROM together
+        ORDER BY zzimCnt DESC
+           LIMIT 5
+    </select>
 
 </mapper>

@@ -49,7 +49,7 @@ public class HomeController {
         U.getSession().setAttribute("childCenter", childCenterService.getChildCenter(11, 210));
 
         // graph
-//        model.addAttribute("zzimHotFive", togetherService.selectFive());
+        model.addAttribute("zzimHotFive", togetherService.selectFive());
         model.addAttribute("productHotFive", productService.selectFive());
         model.addAttribute("postHotFive", postService.selectFive());
 

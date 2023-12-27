@@ -58,17 +58,17 @@
                 <div class="graph-wrap">
                     <div class="graph-title">ZZIM <span>HOT 5 🔥</span></div>
                     <div class="graph">
-                        <ul class="postTopWrap">
+                        <ul class="postTopWrap zzimTopWrap">
                             <li>No</li>
                             <li>분류</li>
                             <li>프로그램명</li>
                             <li>찜개수</li>
                         </ul>
-                        <ul th:each="zzim5 : ${zzimHotFive}" class="postTopWrap">
+                        <ul th:each="zzim5 : ${zzimHotFive}" class="postTopWrap zzimTopWrap">
                             <li class="grade"></li>
-                            <li class="overflow"><a class="postTitle" th:href="@{'/together/detail?type=' + '${together.type} + ${product5.id}}" th:text="${product5.productName}"></a></li>
-                            <li class="overflow" th:text="${product5.user.nickname}"></li>
-                            <li th:text="${product5.viewCnt}"></li>
+                            <li class="overflow" ></li>
+                            <li class="overflow"><a class="zzimTitle" th:href="@{'/together/detail?type=' + '${zzim} + ${zzim5.id}}" th:text="${zzim5.TITLE}"></a></li>
+                            <li th:text="${zzim5.zzimCnt}"></li>
                         </ul>
                     </div>
                 </div>

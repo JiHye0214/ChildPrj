@@ -281,6 +281,29 @@
     }
 }
 
+.zzimTopWrap > li {
+    height: 45px;
+    line-height: 3;
+    padding: 0 5px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &:nth-child(1){
+        width: 40px;
+    }
+    &:nth-child(2){
+        width: 100px;
+    }
+    &:nth-child(3){
+        width: 264px;
+    }
+    &:nth-child(4){
+        width: 60px;
+    }
+}
+
 .postTitle {
     &:hover {
         cursor: pointer;
