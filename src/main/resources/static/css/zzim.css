@@ -38,7 +38,7 @@
 
 /* 찜 없을 때 */
 .noZzimWrap {
-    height: 500px;
+    height: 437px;
     display: flex;
     flex-direction: column;
     justify-content: center;

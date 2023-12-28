@@ -10,6 +10,7 @@ let regex = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
 const signUpValidation = () => {
 
     let count = 0;
+    let idCheck = false;
     let pwCheck = false;
     let emailCheck = false;
 
@@ -28,6 +29,8 @@ const signUpValidation = () => {
     if(inputArr[0].value != ""){
         if(inputArr[0].value.length < 6){
             warnMsgArr[0].innerHTML = "아이디는 6자 이상으로 입력해 주세요";
+        } else {
+            idCheck = true;
         }
     }
 
@@ -49,7 +52,7 @@ const signUpValidation = () => {
     }
 
     // submit
-     if(count == 6 && pwCheck && emailCheck) {
+     if(count == 6 && idCheck && pwCheck && emailCheck) {
         document.forms["signup"].submit();
      }
 }
