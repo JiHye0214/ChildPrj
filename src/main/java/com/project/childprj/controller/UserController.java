@@ -45,8 +45,8 @@ public class UserController {
     private ZzimService zzimService;
 
     @GetMapping("/logIn")
-    public String logIn(){
-        return "/user/logIn";
+    public void logIn(){
+//        return "user/logIn";
     };
 
     @GetMapping("/signUp")
