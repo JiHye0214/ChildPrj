@@ -43,11 +43,9 @@ public class SecurityConfig {
                         .anyRequest().permitAll()
                 )
 
-                // login setting
-                // ⭐⭐⭐⭐⭐ DB에서 password가 암호화 되어 있지 않으면 Spring Security의 로그인 기능을 이용할 수 없다니!!!
                 .formLogin(form -> {
                             form
-                                    .usernameParameter("loginId") // loadUserByUserName() 매개변수 username을 loginId로 바꾸기
+                                    .usernameParameter("loginId")
                                     .loginPage("/user/logIn")
                                     .loginProcessingUrl("/user/logIn")
                                     .successHandler(new LoginSuccess("/home"))
@@ -55,19 +53,15 @@ public class SecurityConfig {
                         }
                 )
 
-                // logout setting
                 .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer
-                        .logoutUrl("/doLogout") // 근데 이런 거 없는데..?
+                        .logoutUrl("/doLogout")
                         .logoutSuccessUrl("/home")
-                        .invalidateHttpSession(false) // 이게 머지
-//                        .logoutSuccessHandler(new LogoutSuccess())
+                        .invalidateHttpSession(false)
                 )
 
-                // exception
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
                         .accessDeniedHandler(new AccessDeniedHandler1())
                 )
-//
                 .build();
     }
 }

@@ -78,6 +78,9 @@ public class UserController {
         return "user/login";
     }
 
+    @PostMapping("/logIn")
+    public void login(){};
+
     // 찾기 - 아이디 (이메일)
     @PostMapping("/findId")
     public String findId(User user, Model model){
