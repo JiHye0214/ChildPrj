@@ -74,7 +74,9 @@ public class UserController {
 
     // 로그인
     @PostMapping("/logIn")
-    public void logInPost(){};
+    public String logInPost(){
+        return "user/logIn";
+    };
 
     // 로그인 에러
     @PostMapping("/loginError")
