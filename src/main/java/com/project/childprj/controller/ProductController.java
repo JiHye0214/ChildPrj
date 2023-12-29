@@ -141,7 +141,7 @@ public class ProductController {
         String content = productComment.getContent();
 
         model.addAttribute("change", productCommentService.cmtWrite(userId, productId, content));
-        return "/product/success";
+        return "product/success";
     }
 
     // 댓글 삭제
@@ -149,7 +149,7 @@ public class ProductController {
     public String marketCmtDel(ProductComment productComment, Model model) {
         Long cmtId = productComment.getId();
         model.addAttribute("change", productCommentService.cmtRemove(cmtId));
-        return "/product/success";
+        return "product/success";
     }
 
     // 글 삭제
@@ -157,7 +157,7 @@ public class ProductController {
     public String detailDelete(Product product, Model model) {
         Long productId = product.getId();
         model.addAttribute("delete", productService.detailDelete(productId));
-        return "/product/deleteOk";
+        return "product/deleteOk";
     }
 
 }

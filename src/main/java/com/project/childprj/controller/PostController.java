@@ -125,7 +125,7 @@ public class PostController {
         }
 
         model.addAttribute("result", postService.write(post));
-        return "/post/writeOk";
+        return "post/writeOk";
     }
 
     // 글 수정
@@ -155,7 +155,7 @@ public class PostController {
         String content = postComment.getContent();
 
         model.addAttribute("change", postCommentService.cmtWrite(userId, postId, content));
-        return "/post/success";
+        return "post/success";
     }
 
     // 댓글 삭제
@@ -163,7 +163,7 @@ public class PostController {
     public String marketCmtDel(PostComment postComment, Model model) {
         Long cmtId = postComment.getId();
         model.addAttribute("change", postCommentService.cmtRemove(cmtId));
-        return "/post/success";
+        return "post/success";
     }
 
     // 글 삭제
@@ -171,7 +171,7 @@ public class PostController {
     public String detailDelete(Post post, Model model) {
         Long postId = post.getId();
         model.addAttribute("delete", postService.detailDelete(postId));
-        return "/post/deleteOk";
+        return "post/deleteOk";
     }
 
     // 추천
@@ -180,7 +180,7 @@ public class PostController {
         Long postId = post.getId();
         Long userId = U.getLoggedUser().getId();
         postService.recommend(userId, postId);
-        return "/post/success";
+        return "post/success";
     }
 
     // 비추천
@@ -189,7 +189,7 @@ public class PostController {
         Long postId = post.getId();
         Long userId = U.getLoggedUser().getId();
         postService.opposite(userId, postId);
-        return "/post/success";
+        return "post/success";
     }
 
 }

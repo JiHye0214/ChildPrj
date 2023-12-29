@@ -89,7 +89,7 @@ public class UserController {
         String findEmail = user.getEmail();
         model.addAttribute("findId", userService.findIdPwByEmail(findName, findEmail)); // boolean
         model.addAttribute("user", userService.userIdIs(findEmail));
-        return "/user/find";
+        return "user/find";
     }
 
     // 찾기 - 비번 (아이디)
@@ -135,7 +135,7 @@ public class UserController {
 
         int resister = userService.signUp(user);
         model.addAttribute("result", resister);
-        return "/user/signUpOk";
+        return "user/signUpOk";
     }
 
     // 마이페이지 - 프사 변경
@@ -151,7 +151,7 @@ public class UserController {
 
         U.getLoggedUser().setNickname(user.getNickname());
         model.addAttribute("change", userService.modifyNickname(user));
-        return "/user/changeOk";
+        return "user/changeOk";
     }
 
     // 마이페이지 - 비번 변경
@@ -159,7 +159,7 @@ public class UserController {
     public String fixPassword(User user, Model model){
 
         model.addAttribute("change", userService.modifyPassword(user));
-        return "/user/changeOk";
+        return "user/changeOk";
     }
 
     // 마이페이지 - 회원 탈퇴
@@ -176,7 +176,7 @@ public class UserController {
             }
             return "redirect:/home";
         }
-        return "/user/dropFail";
+        return "user/dropFail";
     }
 
     // 찜 해제
