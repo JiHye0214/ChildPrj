@@ -1,4 +1,7 @@
 # 서버 포트 번호
+env:
+  info: prod
+
 server:
   port: 80
 
@@ -53,5 +56,3 @@ app:
     #서울시 문화행사 공공데이터
     SeoulDataKey: 6153504b4a676f6f3434506f677756
 
-env:
-  info: prod
