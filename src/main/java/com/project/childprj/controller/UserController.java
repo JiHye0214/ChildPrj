@@ -72,12 +72,6 @@ public class UserController {
         zzimService.zzimList(page, model);
     }
 
-    // 로그인
-    @PostMapping("/logIn")
-    public String logInPost(){
-        return "user/logIn";
-    };
-
     // 로그인 에러
     @PostMapping("/loginError")
     public String loginError(){
