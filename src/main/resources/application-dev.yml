@@ -1,0 +1,55 @@
+# 서버 포트 번호
+server:
+  port: 8090
+
+spring:
+  #콘솔 ANSI 색상
+  output:
+    ansi:
+      enabled: always
+
+  # Thymeleaf 설정
+  thymeleaf:
+    cache: false
+    prefix: classpath:templates/views/
+
+  # datasource 설정
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mychild?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: 'hmpj'
+    password: 'goanfvkwjs'
+
+  # security 설정
+#  security:
+#    user:
+#      name: root
+#      password: 00000000
+
+# MyBatis 매퍼(mapper) 파일 위치 설정
+# src/main/resources 이하의 경로 지정
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+
+
+app:
+
+  # 페이징 관련 세팅값
+  pagination:
+    write_pages: 10  # 기본 write_pages 값. 한 [페이징] 당 몇개의 페이지가 표시되나
+    page_rows: 10    # 기본 page_rows 값.  한 '페이지'에 몇개의 글을 리스트 할것인가?
+
+  #파일 업로드 경로
+  upload:
+    path: upload
+
+  #api_key
+  #서울시 유치원 공공데이터
+  api:
+    kinderKey: 6153504b4a676f6f3434506f677756
+    #서울시 어린이집 공공데이터
+    childHouseKey: 6153504b4a676f6f3434506f677756
+    #서울시 아동센터 공공데이터
+    childCenterKey: 6153504b4a676f6f3434506f677756
+    #서울시 문화행사 공공데이터
+    SeoulDataKey: 6153504b4a676f6f3434506f677756
