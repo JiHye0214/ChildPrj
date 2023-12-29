@@ -1,4 +1,7 @@
 # 서버 포트 번호
+env:
+  info: prod
+
 server:
   port: 80
 
