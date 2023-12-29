@@ -29,9 +29,6 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
-    // Autowired / GetMapping(RequestMapping) / PostMapping 구분해 놓기!
-    // PostMapping 주석 간단 설명
-
     @Autowired
     private UserService userService;
 
@@ -45,9 +42,7 @@ public class UserController {
     private ZzimService zzimService;
 
     @GetMapping("/logIn")
-    public void logIn(){
-//        return "user/logIn";
-    };
+    public void logIn(){};
 
     @GetMapping("/signUp")
     public void signUp(){};
@@ -58,7 +53,6 @@ public class UserController {
         Long id = U.getLoggedUser().getId();
         UserImg userImg = userService.findUserImg(id);
         model.addAttribute("userImg", userImg);
-//        return "aaaa";
     }
 
     @GetMapping("/signUpAgree")
@@ -66,12 +60,10 @@ public class UserController {
     }
 
     @GetMapping("/find")
-    public String find(User user, Model model){
+    public void find(User user, Model model){
         model.addAttribute("user", user);
-        return "/user/find";
     }
 
-    // 찜리스트
     @GetMapping("/zzim")
     public void togetherZzim(
             @RequestParam(name = "page", required = false, defaultValue = "1") Integer page,

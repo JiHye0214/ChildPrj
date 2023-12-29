@@ -67,14 +67,6 @@ public class TogetherController {
         request.getSession().setAttribute("prevPage", uri);
 
         if (type.equals("체험") || type.equals("축제") || type.equals("공연ㆍ예술")) {
-//            String user = "" + SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//            String logged = null;
-//            if (!user.equals("anonymousUser")) {
-//                logged = "true";
-//            }
-//
-//            model.addAttribute("logged", logged);
-//            model.addAttribute("type", type);
 
             togetherService.togetherDetail(type, id, model);
             model.addAttribute("together", togetherService.getTogether(id));
@@ -87,7 +79,6 @@ public class TogetherController {
 
     }
 
-    // 리스트에서 찜 추가 & 해제
     @PostMapping("/listZzimToggle")
     public String listZzimToggle(
             @RequestParam(name = "togetherId", required = false) Long togetherId

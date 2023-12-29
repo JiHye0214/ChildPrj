@@ -2,27 +2,18 @@ package com.project.childprj.controller;
 
 import com.project.childprj.domain.Product;
 import com.project.childprj.domain.ProductComment;
-import com.project.childprj.domain.User;
-import com.project.childprj.domain.UserImg;
 import com.project.childprj.service.ProductCommentService;
 import com.project.childprj.service.ProductService;
 import com.project.childprj.service.UserService;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +30,6 @@ public class ProductController {
     @Autowired
     private ProductCommentService productCommentService;
 
-    // 글 목록
     @GetMapping("/list")
     public void list(@RequestParam(name = "page", required = false, defaultValue = "1") Integer page,
                      @RequestParam(name = "sq", required = false, defaultValue = "") String sq,
@@ -124,17 +114,8 @@ public class ProductController {
             ,@RequestParam Map<String, MultipartFile> file
     ) {
 
-//        if (result.hasErrors()) {
-//            redirectAttrs.addFlashAttribute("price", product.getPrice());
-//            redirectAttrs.addFlashAttribute("productName", product.getProductName());
-//            redirectAttrs.addFlashAttribute("region", product.getRegion());
-//            redirectAttrs.addFlashAttribute("content", product.getContent());
-//
-//            return "redirect:/product/write";
-//        }
-
         model.addAttribute("result", productService.write(product));
-        model.addAttribute("insert", productService.imgInsert(file, product.getId()));
+        productService.imgInsert(file, product.getId());
         return "product/writeOk";
     }
 
@@ -147,15 +128,6 @@ public class ProductController {
             , RedirectAttributes redirectAttrs
             ,@RequestParam Map<String, MultipartFile> file
     ) {
-//        if (result.hasErrors()) {
-//            redirectAttrs.addFlashAttribute("price", product.getPrice());
-//            redirectAttrs.addFlashAttribute("productName", product.getProductName());
-//            redirectAttrs.addFlashAttribute("region", product.getRegion());
-//            redirectAttrs.addFlashAttribute("content", product.getContent());
-//
-//            return "redirect:/product/update/" + product.getId();
-//        }
-
         model.addAttribute("result", productService.update(product));
         model.addAttribute("insert", productService.imgInsert(file, product.getId()));
         return "product/updateOk";
