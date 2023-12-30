@@ -135,14 +135,14 @@ public class UserController {
 
         int resister = userService.signUp(user);
         model.addAttribute("result", resister);
-        return "/user/signUpOk";
+        return "user/signUpOk";
     }
 
     // 마이페이지 - 프사 변경
     @PostMapping("/userImg") // @RequestParam : 얘는 name 값을 가져온다!!
     public String fixUserImg(@RequestParam Map<String, MultipartFile> file, Model model){
         model.addAttribute("change", userService.insertImg(file));
-        return "/user/changeSuccess";
+        return "user/changeSuccess";
     }
 
     // 마이페이지 - 닉네임 변경
@@ -151,7 +151,7 @@ public class UserController {
 
         U.getLoggedUser().setNickname(user.getNickname());
         model.addAttribute("change", userService.modifyNickname(user));
-        return "/user/changeOk";
+        return "user/changeOk";
     }
 
     // 마이페이지 - 비번 변경
