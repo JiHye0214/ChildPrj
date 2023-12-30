@@ -11,7 +11,8 @@ const signUpValidation = () => {
 
     let count = 0;
     let idCheck = false;
-    let pwCheck = false;
+    let pwCheck1 = false;
+    let pwCheck2 = false;
     let emailCheck = false;
 
     // 모두 입력 valid
@@ -36,9 +37,17 @@ const signUpValidation = () => {
 
     // 비밀번호 일치 확인
     if(inputArr[1].value == inputArr[2].value){
-        pwCheck = true;
+        pwCheck1 = true;
     } else {
+        warnMsgArr[2].innerHTML = "";
         warnMsgArr[2].innerHTML = "비밀번호가 일치하지 않습니다";
+    }
+
+    if(inputArr[1].value.length > 8){
+        pwCheck2 = true;
+    } else {
+        warnMsgArr[2].innerHTML = "";
+        warnMsgArr[2].innerHTML = "비밀번호는 8자리 이상으로 입력해 주세요";
     }
 
     // 이메일 정규표현식 확인
