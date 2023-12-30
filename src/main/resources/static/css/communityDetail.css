@@ -51,6 +51,10 @@
     border-bottom: 1.5px solid var(--border-color);
 }
 
+.talk-main-content > p img {
+    border-radius: 0;
+}
+
 .talk-main-btn {
     display: flex;
     justify-content: space-between;

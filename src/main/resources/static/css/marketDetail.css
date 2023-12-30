@@ -80,6 +80,10 @@
     border-bottom: 1.5px solid var(--border-color);
 }
 
+.market-main-content > p img {
+    border-radius: 0;
+}
+
 .market-btn {
     height: 35px;
     width: 50px;
