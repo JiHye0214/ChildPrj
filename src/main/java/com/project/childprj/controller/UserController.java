@@ -79,7 +79,7 @@ public class UserController {
     }
 
     @PostMapping("/logIn")
-    public void login(){};
+    public void login(){}
 
     // 찾기 - 아이디 (이메일)
     @PostMapping("/findId")

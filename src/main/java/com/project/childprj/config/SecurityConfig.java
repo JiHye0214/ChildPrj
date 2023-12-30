@@ -43,14 +43,12 @@ public class SecurityConfig {
                         .anyRequest().permitAll()
                 )
 
-                .formLogin(form -> {
-                            form
-                                    .usernameParameter("loginId")
-                                    .loginPage("/user/logIn")
-                                    .loginProcessingUrl("/user/logIn")
-                                    .successHandler(new LoginSuccess("/home"))
-                                    .failureHandler(new LoginFailure());
-                        }
+                .formLogin(form -> form
+                        .usernameParameter("loginId")
+                        .loginPage("/user/logIn")
+                        .loginProcessingUrl("/user/logIn")
+                        .successHandler(new LoginSuccess("/home"))
+                        .failureHandler(new LoginFailure())
                 )
 
                 .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer
@@ -62,6 +60,7 @@ public class SecurityConfig {
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> httpSecurityExceptionHandlingConfigurer
                         .accessDeniedHandler(new AccessDeniedHandler1())
                 )
+
                 .build();
     }
 }
