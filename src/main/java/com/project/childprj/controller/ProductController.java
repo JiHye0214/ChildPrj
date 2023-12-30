@@ -103,7 +103,6 @@ public class ProductController {
 
         return "redirect:/product/list";
     }
-
     // 글 작성
     @PostMapping("/write")
     public String writeOk(
