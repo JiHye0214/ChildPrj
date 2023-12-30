@@ -33,10 +33,10 @@
                         <form name="change" th:action="@{/user/password}" method="POST" class="change-pw-wrap">
                             <input type="hidden" name="loginId" th:value="${user.loginId}"/>
                             <div class="change-pw-content">
-                                <input type="text" name="password" placeholder="신규 비밀번호"/>
+                                <input type="password" name="password" placeholder="신규 비밀번호"/>
                             </div>
                             <div class="change-pw-content">
-                                <input type="text" name="rePassword" placeholder="비밀번호 확인"/>
+                                <input type="password" name="rePassword" placeholder="비밀번호 확인"/>
                             </div>
                             <div class="login-warn errorMsg"></div>
                             <div class="login-warn errorMsg"></div>

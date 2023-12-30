@@ -84,10 +84,10 @@
                             <form th:action="@{/user/password}" method="POST" name="pwChange" th:with="user=${#authentication.getPrincipal().getUser()}" class="change-pw-wrap">
                                 <input type="hidden" name="loginId" th:value="${user.loginId}"/>
                                 <div class="change-pw-content">
-                                    <input type="text" name="password" placeholder="신규 비밀번호"/>
+                                    <input type="password" name="password" placeholder="신규 비밀번호"/>
                                 </div>
                                 <div class="change-pw-content">
-                                    <input type="text" name="rePassword" placeholder="비밀번호 확인"/>
+                                    <input type="password" name="rePassword" placeholder="비밀번호 확인"/>
                                 </div>
                                 <input type="button" class="change-pw-complete" value="완료" />
                             </form>
