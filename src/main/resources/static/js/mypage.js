@@ -48,7 +48,8 @@ const clickPasswordChangeBtn = () => {
 const clickPasswordChangeCompleteBtn = () => {
 
     let count = 0;
-    let pwCheck = false;
+    let pwCheck1 = false;
+    let pwCheck2 = false;
 
     // 모두 입력헀는지
     for(let i=0; i<pwInputArr.length; i++){
@@ -63,12 +64,19 @@ const clickPasswordChangeCompleteBtn = () => {
 
     // 비밀번호 일치 확인
     if(pwInputArr[0].value == pwInputArr[1].value){
-        pwCheck = true;
+        pwCheck1 = true;
     } else {
         alert("비밀번호가 일치하지 않습니다");
     }
 
-    if(count == 2 && pwCheck == true) {
+    // 8자리 확인
+    if(pwInputArr[0].value.length >= 8){
+        pwCheck2 = true;
+    } else {
+        alert("비밀번호는 8자리 이상으로 입력해 주세요");
+    }
+
+    if(count == 2 && pwCheck1 == true && pwCheck2 == true) {
         document.forms["pwChange"].submit();
     }
 

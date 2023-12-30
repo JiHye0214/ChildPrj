@@ -43,7 +43,7 @@ const signUpValidation = () => {
         warnMsgArr[2].innerHTML = "비밀번호가 일치하지 않습니다";
     }
 
-    if(inputArr[1].value.length > 8){
+    if(inputArr[1].value.length >= 8){
         pwCheck2 = true;
     } else {
         warnMsgArr[2].innerHTML = "";
@@ -61,7 +61,7 @@ const signUpValidation = () => {
     }
 
     // submit
-     if(count == 6 && idCheck && pwCheck && emailCheck) {
+     if(count == 6 && idCheck && pwCheck1 && pwCheck2 && emailCheck) {
         document.forms["signup"].submit();
      }
 }
