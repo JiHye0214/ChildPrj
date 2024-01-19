@@ -1,7 +1,7 @@
 # 우리아이
 <br />
 <div align="center">
-  <img width="300" src="./src/main/resources/static/img/logo.png" alt="logoImage">
+  <img width="300" src="./src/main/resources/static/img/logo-removebg.png" alt="logoImage">
 </div>
 
 <div align="center">
