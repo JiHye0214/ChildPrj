@@ -15,7 +15,7 @@
 ## ⏱ 개발 기간
 23.11.27 ~ 23.12.29
 
-## 🧑 팀원 소개 ‍ 
+## 🧑🏻 팀원 소개 ‍ 
 - 팀원 : [JiHye0214](https://github.com/JiHye0214)
 - 팀원 : [jang_9120](https://github.com/jang1234567)
 - 팀원 : [cjkywe07](https://github.com/cjkywe07)
