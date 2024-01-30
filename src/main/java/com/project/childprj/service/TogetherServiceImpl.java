@@ -24,13 +24,17 @@ import java.util.Map;
 @Service
 public class TogetherServiceImpl implements TogetherService {
 
-    @Value("${app.api.SeoulDataKey}")
-    private String SeoulDataKey;
+    @Value("${app.api.seoulDataKey}")
+    private String seoulDataKey;
+
+    @Value("${app.api.mapKey}")
+    private String mapKey;
 
     @Autowired
     private ZzimService zzimService;
 
     private TogetherRepository togetherRepository;
+
     private ZzimRepository zzimRepository;
 
     @Autowired
@@ -50,7 +54,7 @@ public class TogetherServiceImpl implements TogetherService {
         String service = "culturalEventInfo"; // 서비스명
 
         String uri = String.format("http://openapi.seoul.go.kr:8088/%s/%s/%s/%d/%d",
-                SeoulDataKey, type, service, startIndex, endIndex);
+                seoulDataKey, type, service, startIndex, endIndex);
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.getForEntity(uri, String.class);

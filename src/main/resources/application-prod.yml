@@ -43,13 +43,18 @@ app:
     path: upload
 
   #api_key
-  #서울시 유치원 공공데이터
   api:
+    #서울시 유치원 공공데이터
     kinderKey: 6153504b4a676f6f3434506f677756
+
     #서울시 어린이집 공공데이터
     childHouseKey: 6153504b4a676f6f3434506f677756
+
     #서울시 아동센터 공공데이터
     childCenterKey: 6153504b4a676f6f3434506f677756
-    #서울시 문화행사 공공데이터
-    SeoulDataKey: 6153504b4a676f6f3434506f677756
 
+    #서울시 문화행사 공공데이터
+    seoulDataKey: 6153504b4a676f6f3434506f677756
+
+    # 지도
+    mapKey : de6ec0b9d53cc83018f6d96a0daa43fa

@@ -25,7 +25,7 @@ for(let i=0; i<menuArr.length; i++){
     } else if((linkArr[3] == "post") || (linkArr[3] == "product")){
         menuArr[2].style.color = textColor[2];
     } else {
-        menuArr[i].style.color = textColor[3];
+        menuArr[i].style.color = ``;
     }
 }
 
