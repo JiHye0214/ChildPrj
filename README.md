@@ -21,7 +21,7 @@
 - 팀원 : [cjkywe07](https://github.com/cjkywe07)
 
 ## 💻 기능 및 화면 소개
-### 메인
+### 홈
   - #### 설명
     <div>
       <img width="600" src="./src/main/resources/static/viewImg/1_home1.jpg" alt="">
