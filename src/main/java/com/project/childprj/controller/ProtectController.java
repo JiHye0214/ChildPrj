@@ -7,6 +7,7 @@ import com.project.childprj.service.KindergardenService;
 import jakarta.servlet.http.HttpServletRequest;
 import com.project.childprj.util.U;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/protect")
 public class ProtectController {
+
+    @Value("${app.api.mapKey}")
+    private String mapKey;
 
     @Autowired
     private KindergardenService kindergardenService;
@@ -73,9 +77,11 @@ public class ProtectController {
         request.getSession().setAttribute("prevPage", uri);
 
         if (type.equals("유치원")) {
+            model.addAttribute("mapKey", mapKey);
             model.addAttribute("type", type);
             model.addAttribute("kindergarden", kindergardenService.getKindergarden(id));
         } else if (type.equals("어린이집")) {
+            model.addAttribute("mapKey", mapKey);
             model.addAttribute("type", type);
             model.addAttribute("childHouse", childHouseService.getChildHouse(id));
         } else {

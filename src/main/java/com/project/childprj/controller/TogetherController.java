@@ -6,6 +6,7 @@ import com.project.childprj.service.ZzimService;
 import com.project.childprj.util.U;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ import java.util.Map;
 @Controller
 @RequestMapping("/together")
 public class TogetherController {
+
+    @Value("${app.api.mapKey}")
+    private String mapKey;
 
     @Autowired
     private TogetherService togetherService;
@@ -67,8 +71,8 @@ public class TogetherController {
         request.getSession().setAttribute("prevPage", uri);
 
         if (type.equals("체험") || type.equals("축제") || type.equals("공연ㆍ예술")) {
-
             togetherService.togetherDetail(type, id, model);
+            model.addAttribute("mapKey", mapKey);
             model.addAttribute("together", togetherService.getTogether(id));
 
             return "together/detail";
