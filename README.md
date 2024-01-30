@@ -21,92 +21,84 @@
 - 팀원 : [cjkywe07](https://github.com/cjkywe07)
 
 ## 💻 기능 및 화면 소개
-### 홈
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/1_home1.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/2_home2.jpg" alt="">
-    </div>
+### 1. &nbsp;홈
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/1_home1.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/2_home2.jpg" alt="">
+  </div>
 
-### 로그인/회원가입
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/3_signUpAgree.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/4_signUp.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/5_logIn.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/6_idPwFind.jpg" alt="">
-    </div>
+### 2. &nbsp;로그인/회원가입
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/3_signUpAgree.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/4_signUp.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/5_logIn.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/6_idPwFind.jpg" alt="">
+  </div>
     
-### 마이페이지
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/7_myPage1.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/8_myPage2.jpg" alt="">
-    </div>
+### 3. &nbsp;마이페이지
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/7_myPage1.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/8_myPage2.jpg" alt="">
+  </div>
 
-### 찜리스트
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/9_zzimList.jpg" alt="">
-    </div>
+### 4. &nbsp;찜리스트
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/9_zzimList.jpg" alt="">
+  </div>
 
-### 함께하기
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/10_togetherList.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/11_togetherDetail.jpg" alt="">
-    </div>
+### 5. &nbsp;함께하기
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/10_togetherList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/11_togetherDetail.jpg" alt="">
+  </div>
 
-### 지켜주기
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/12_protectList.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/13_protectDetail.jpg" alt="">
-    </div>
+### 6. &nbsp;지켜주기
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/12_protectList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/13_protectDetail.jpg" alt="">
+  </div>
 
-### 같이키우기 - 커뮤니티
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/14_communityList.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/15_communityWrite.jpg" alt="">
-    </div>
-     <div>
-      <img width="600" src="./src/main/resources/static/viewImg/16_communityDetail.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/17_communityUpdate.jpg" alt="">
-    </div>
+### 7. &nbsp;같이키우기 - 커뮤니티
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/14_communityList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/15_communityWrite.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/16_communityDetail.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/17_communityUpdate.jpg" alt="">
+  </div>
 
-### 같이키우기 - 알뜰시장
-  - #### 설명
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/18_marketList.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/19_marketWrite.jpg" alt="">
-    </div>
-     <div>
-      <img width="600" src="./src/main/resources/static/viewImg/20_marketDetail.jpg" alt="">
-    </div>
-    <div>
-      <img width="600" src="./src/main/resources/static/viewImg/21_marketUpdate.jpg" alt="">
-    </div>
+### 8. &nbsp;같이키우기 - 알뜰시장
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/18_marketList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/19_marketWrite.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/20_marketDetail.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/21_marketUpdate.jpg" alt="">
+  </div>
 
 ## ⚙ Stacks
 ### Environment
