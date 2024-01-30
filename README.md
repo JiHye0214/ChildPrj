@@ -15,66 +15,89 @@
 ## ⏱ 개발 기간
 23.11.27 ~ 23.12.29
 
-## 🧑 팀원 소개 ‍ 
+## 🧑🏻 팀원 소개 ‍ 
 - 팀원 : [JiHye0214](https://github.com/JiHye0214)
 - 팀원 : [jang_9120](https://github.com/jang1234567)
 - 팀원 : [cjkywe07](https://github.com/cjkywe07)
 
 ## 💻 기능 및 화면 소개
-### ~~ 페이지
-- ㅁ
-- ㅁ
+### 1. &nbsp;홈
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/1_home1.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/2_home2.jpg" alt="">
+  </div>
 
-  - #### 웹
-    <div>
-      <img width="600" src="./public/map1-1.jpg" alt="dongFindPage1">
-    </div>
-    <div>
-      <img width="600" src="./public/map1-2.jpg" alt="dongFindPage2">
-    </div>
-  
-  - #### 모바일
-    <div>
-      <img width="250" src="./public/map1-mobile.jpg" alt="dongFindPage-m">
-    </div>
-
-### ~~ 페이지
-- ㅁ
-- ㅁㅁ
-
-  - #### 웹
-    <div>
-      <img width="600" src="./public/map2-1.jpg" alt="infraFindPage1">
-    </div>
-    <div>
-      <img width="600" src="./public/map2-2.jpg" alt="infraFindPage2">
-    </div>
+### 2. &nbsp;로그인/회원가입
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/3_signUpAgree.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/4_signUp.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/5_logIn.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/6_idPwFind.jpg" alt="">
+  </div>
     
-  - #### 모바일
-    <div>
-      <img width="250" src="./public/map2-mobile.jpg" alt="infraFindPage-m">
-    </div>
-
-### ~~ 페이지
-- #### 웹
+### 3. &nbsp;마이페이지
   <div>
-    <img width="600" src="./public/mainPage.png" alt="mainPage">
+    <img width="600" src="./src/main/resources/static/viewImg/7_myPage1.jpg" alt="">
   </div>
-  
-- #### 모바일
   <div>
-    <img width="250" src="./public/mainPage-mobile.png" alt="mainPage-m">
+    <img width="600" src="./src/main/resources/static/viewImg/8_myPage2.jpg" alt="">
   </div>
 
-### ~~ 페이지
-- #### 웹
+### 4. &nbsp;찜리스트
   <div>
-    <img width="600" src="./public/aboutUsPage.png" alt="aboutUsPage">
+    <img width="600" src="./src/main/resources/static/viewImg/9_zzimList.jpg" alt="">
   </div>
 
-- #### 모바일
+### 5. &nbsp;함께하기
   <div>
-    <img width="250" src="./public/aboutUsPage-mobile.png" alt="aboutUsPage-m">
+    <img width="600" src="./src/main/resources/static/viewImg/10_togetherList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/11_togetherDetail.jpg" alt="">
+  </div>
+
+### 6. &nbsp;지켜주기
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/12_protectList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/13_protectDetail.jpg" alt="">
+  </div>
+
+### 7. &nbsp;같이키우기 - 커뮤니티
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/14_communityList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/15_communityWrite.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/16_communityDetail.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/17_communityUpdate.jpg" alt="">
+  </div>
+
+### 8. &nbsp;같이키우기 - 알뜰시장
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/18_marketList.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/19_marketWrite.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/20_marketDetail.jpg" alt="">
+  </div>
+  <div>
+    <img width="600" src="./src/main/resources/static/viewImg/21_marketUpdate.jpg" alt="">
   </div>
 
 ## ⚙ Stacks
