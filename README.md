@@ -5,12 +5,12 @@
 </div>
 
 <div align="center">
-  <h4>부모와 아이들이 추억을 쌓을 수 있는 공간 ( http://13.209.217.91/ )</h4>
+  <h4>부모와 아이들이 추억을 쌓을 수 있는 공간</h4>
 </div>
 
 ## 📁 프로젝트 소개
 부모와 아이들이 함께 추억을 쌓을 수 있는 문화 행사 정보를 제공하고, <br />
-부모들이 육아 및 아이 용품 등에 관하여 서로 유익한 정보를 주고받으며 소통할 수 있는 공간을 마련해준다.
+부모들이 육아 및 아이 용품 등에 관하여 서로 유익한 정보를 주고받으며 소통할 수 있는 공간을 마련해 준다.
 
 ## ⏱ 개발 기간
 23.11.27 ~ 23.12.29
@@ -92,10 +92,11 @@
   <img src="https://img.shields.io/badge/HTML-E34F26?style=flat&logo=html5&logoColor=white"/>
   <img src="https://img.shields.io/badge/CSS-1572B6?style=flat&logo=css3&logoColor=white"/>
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/JAVA-5382A1?style=flat"/>
+  <img src="https://img.shields.io/badge/Java-5382A1?style=flat"/>
   <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=flat&logo=thymeleaf&logoColor=white"/>
   <img src="https://img.shields.io/badge/Springboot-6DB33F?style=flat&logo=springboot&logoColor=white"/>
   <img src="https://img.shields.io/badge/MYSQL-4479A1?style=flat&logo=mysql&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MyBatis-362929?style=flat"/>
 </div>
 
 ### API
